@@ -61,7 +61,7 @@ The skills are free and stay free. They are the open core of a larger system, De
 
 Roy Vergara. Ten plus years in product design leadership. The library exists because the trust gap is real and measured: far fewer designers trust AI output than developers do. Closing it takes someone with deep design judgment and AI fluency, not another dev flavored tool drop. That is the lane this fills.
 
-Newsletter: **Fluent by Design**. AI made production cheap, judgment got expensive, and this is the weekly working through of what that means for design teams.
+Newsletter: **[Fluent by Design](https://fluentxdesign.substack.com/)**. AI made production cheap, judgment got expensive, and this is the weekly working through of what that means for design teams.
 
 ## License
 
