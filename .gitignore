@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Claude Code local config
+.claude/
+
+# Environment and secrets
+.env
+.env.*
+*.local
+
+# Node, if any tooling gets added later
+node_modules/
+npm-debug.log*
+
+# OS and misc
+Thumbs.db
+desktop.ini
