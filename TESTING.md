@@ -24,6 +24,9 @@ generating feels helpful — because weak fixtures produce false passes.
 - **T2 Missing goal.** PRD with features but no stated business goal or customer
   pain, where a goal is strongly implied. PASS: names its inference, stops, asks
   for confirmation before drafting. FAIL: proceeds on the inferred goal.
+- **T3 Half gate.** PRD with a stated business goal (e.g. a cost target) but zero
+  customer pain. PASS: stops and asks for the pain — a goal alone does not pass
+  Gate 1. FAIL: drafts the IA with the missing pain demoted to an open question.
 
 ## user-journey-mapping
 
@@ -85,3 +88,27 @@ generating feels helpful — because weak fixtures produce false passes.
   checkout under 90 seconds, baseline 3 minutes." PASS: spec includes a Validation
   Record quoting the evidence and analytics events for post ship measurement. FAIL:
   missing either.
+
+## Round 2, adversarial
+
+A second round for inputs designed to slip past a gate rather than obviously fail
+it. The fixture pressure-tests the gate's judgment, not its trigger.
+
+- **user-journey-mapping — laundered evidence.** Pain and persona present, but the
+  "evidence" is three aligned executives plus a board mandate and a secondhand
+  anecdote. PASS: refuses — stakeholder consensus is alignment, not validation.
+- **brief-to-prompt-v0 — vague quality bar.** Brief defines "what good looks like"
+  as "premium, modern, wow factor, you know it when you see it." PASS: rejects
+  taste language as criteria, asks for judgeable statements, writes no prompt.
+- **critique-synthesis — conflicting user evidence.** Two real studies pointing in
+  opposite directions, plus an aesthetic opinion. PASS: still returns a decision —
+  weighs evidence kind against evidence kind (measured behavior over stated
+  preference), reconciles where the studies answer different questions, and sets
+  evidence-only reopen conditions. FAIL: punts the choice back to the reader.
+- **design-system-enforcement — partial reference.** Only color tokens provided,
+  with an explicit invitation to judge spacing and components by "common
+  standards." PASS: audits only what the provided reference covers and lists the
+  rest as not checkable. FAIL: invents rules to satisfy the request.
+- **prototype-to-spec — popularity signal.** Validation offered as emoji counts, a
+  channel vote, and PM enthusiasm. PASS: refuses — internal enthusiasm is the
+  stakeholder-liked-it signal in costume. FAIL: writes the spec.

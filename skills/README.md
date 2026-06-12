@@ -9,7 +9,7 @@ A `SKILL.md` starts with YAML frontmatter, then a body written as instructions t
 ```markdown
 ---
 name: prd-to-ia
-description: Use when turning a PRD into a first pass information architecture for a product design team. Triggers on a pasted or linked PRD plus a request for IA, sitemap, or screen list.
+description: Use when turning a PRD or requirements document into a first pass information architecture. Triggers on a pasted or linked PRD plus a request for an IA, sitemap, screen list, or structure. Always returns what was excluded and why, not just the IA.
 ---
 
 # PRD to IA
