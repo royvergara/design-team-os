@@ -43,6 +43,8 @@ The first eight shipped in v0.1 on June 12, 2026. All eight are live under `skil
 | brief-to-prompt-bolt | Decision | Converts a brief into a clean Bolt.new prompt | v0.1 |
 | figma-plugin-orchestration | Decision | Coordinates Figma plugin steps from one instruction | v0.1 |
 
+Each skill enforces its gate in practice, not just on paper. It refuses or flags when the inputs are not there: `prd-to-ia` will not draft without both a stated business goal and a customer pain, `user-journey-mapping` will not map without real evidence behind the pain, `prototype-to-spec` will not write a spec without a validation signal, and `design-system-enforcement` will not audit against a system it had to imagine. That refusal behavior is the point of each skill, and it is what the tests in [TESTING.md](TESTING.md) verify.
+
 ## Install
 
 Each skill is a folder under `skills/` containing a `SKILL.md`. To use one:
@@ -69,4 +71,4 @@ MIT. See [LICENSE](LICENSE). Use it, fork it, ship it.
 
 ## Status
 
-v0.1, shipped June 12, 2026. The first eight skills are live, smoke tested against their gates (see [TESTING.md](TESTING.md)), and ready to use. New skills drop every Friday.
+v0.1, shipped June 12, 2026. The first eight skills are live, tested against their gates across smoke and adversarial rounds (see [TESTING.md](TESTING.md)), and ready to use. New skills drop every Friday.
