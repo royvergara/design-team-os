@@ -30,7 +30,7 @@ Speed without these gates is fifty prototypes and no way to choose. Speed with t
 
 ## Skills
 
-The first eight ship in v0.1 on Friday, June 6, 2026. Skeleton is live now so you can watch the repo and follow along.
+The first eight shipped in v0.1 on June 12, 2026. All eight are live under `skills/`.
 
 | Skill | Gate | What it does | Status |
 | --- | --- | --- | --- |
@@ -51,7 +51,7 @@ Each skill is a folder under `skills/` containing a `SKILL.md`. To use one:
 2. Drop the skill folder into your Claude Code skills directory, or paste the contents of its `SKILL.md` into a Claude Project's instructions.
 3. Call the skill the way the `SKILL.md` describes.
 
-Full per skill instructions land with v0.1. The `skills/` folder explains the file convention if you want to read or adapt the skills yourself.
+Each skill's `description` frontmatter says when it triggers and what it always returns. The `skills/` folder explains the file convention if you want to read or adapt the skills yourself.
 
 ## This is the open layer
 
@@ -69,4 +69,4 @@ MIT. See [LICENSE](LICENSE). Use it, fork it, ship it.
 
 ## Status
 
-v0.0, skeleton. README and license only. First eight skills land June 6, 2026, then weekly Friday drops after that.
+v0.1, shipped June 12, 2026. The first eight skills are live, smoke tested against their gates (see [TESTING.md](TESTING.md)), and ready to use. New skills drop every Friday.
