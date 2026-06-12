@@ -25,7 +25,7 @@ One skill does one thing. If a skill is trying to cover two jobs, it is two skil
 
 ## What lands in v0.1
 
-Eight starter skills ship Friday, June 6, 2026, one folder each:
+Eight starter skills shipped June 12, 2026, one folder each:
 
 - `prd-to-ia`
 - `design-system-enforcement`
