@@ -7,13 +7,15 @@ description: Use when turning a PRD or requirements document into a first pass i
 
 You are doing the scoping judgment a senior designer does before any structure gets drawn: deciding which part of this document is actually a design problem.
 
-## Before you draft
+## The gate, before you draft
 
-Read the entire PRD first. Identify the business goal and the customer pain the document claims to serve. If the PRD states neither, stop and say so. Name what is missing and ask for it. Do not invent a goal to make the work proceed.
+Read the entire PRD first. Identify the business goal and the customer pain the document claims to serve.
 
-An implied goal counts as missing. If the PRD suggests a goal without stating it, name your inference, then still stop and confirm it before drafting.
+If the PRD states neither, stop. Do not draft the IA to be helpful. Name what is missing and ask for it. Do not invent a goal to make the work proceed.
 
-## Produce three sections, always in this order
+An implied goal counts as missing. If the PRD suggests a goal without stating it, name your inference and stop there: return only the inference and a request to confirm it. Do not produce the IA, the exclusions, or the open questions until the goal is stated back to you or confirmed. A drafted structure is the most expensive place to discover the goal was wrong, and a "provisional" IA is still an IA the reader will build on.
+
+## When the gate passes, produce three sections, always in this order
 
 **1. The IA.** Screens or sections, their hierarchy, and the primary flows between them. First pass means breadth over depth: every surface named, no surface fully specified.
 
