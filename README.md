@@ -51,7 +51,7 @@ Each skill is a folder under `skills/` containing a `SKILL.md`. To use one:
 2. Drop the skill folder into your Claude Code skills directory, or paste the contents of its `SKILL.md` into a Claude Project's instructions.
 3. Call the skill the way the `SKILL.md` describes.
 
-Full per skill instructions land with v0.1. The `skills/` folder explains the file convention if you want to read or adapt the skills yourself.
+For the full picture — project vs user-level install, when to reference a skill as-is vs fork it, supplying your context once via a [project profile](templates/project-profile.schema.md), and the checklist for keeping a tuned fork honest — see **[IMPLEMENTATION.md](IMPLEMENTATION.md)**. The `skills/` folder explains the file convention if you want to read or adapt the skills yourself.
 
 ## This is the open layer
 
