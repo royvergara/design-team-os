@@ -1,0 +1,50 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# STAGED CI WORKFLOW — not active yet.
+#
+# This file is parked under ci/ because pushing files into .github/workflows/
+# requires a GitHub token with the `workflow` OAuth scope, which the committing
+# session did not have. The config itself is final.
+#
+# TO ACTIVATE (either path):
+#   A. From a machine with a workflow-scoped token:
+#        gh auth refresh -s workflow -h github.com
+#        git mv ci/gates.yml .github/workflows/gates.yml && git commit && git push
+#   B. From the GitHub web UI (no scope needed — browser commits are exempt):
+#        Add file → .github/workflows/gates.yml → paste everything BELOW this header.
+#
+# Also add an ANTHROPIC_API_KEY repo secret (Settings → Secrets → Actions).
+# ─────────────────────────────────────────────────────────────────────────────
+
+name: skill-gates
+
+# Runs the skill smoke tests (tests/run.sh) against the live Claude CLI.
+# These spawn real agents and cost a little per run, so this does NOT run on
+# every push. Trigger it manually (workflow_dispatch) or by adding the
+# `run-gates` label to a PR.
+#
+# Note: tests/run.sh is non-deterministic (a borderline gate can red on a
+# single run). If a gate flakes, re-run the job before treating it as a real
+# failure — or extend run.sh to run each fixture N times and pass on majority.
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [labeled, synchronize]
+
+jobs:
+  gates:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.labels.*.name, 'run-gates')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Claude CLI
+        run: |
+          curl -fsSL https://claude.ai/install.sh | bash
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: Run skill gates
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CLAUDE_TEST_MODEL: claude-haiku-4-5-20251001
+        run: bash tests/run.sh
