@@ -42,6 +42,24 @@ The first eight ship in v0.1 on Friday, June 6, 2026. Skeleton is live now so yo
 | brief-to-prompt-v0 | Decision | Converts a brief into a clean v0 by Vercel prompt | v0.1 |
 | brief-to-prompt-bolt | Decision | Converts a brief into a clean Bolt.new prompt | v0.1 |
 | figma-plugin-orchestration | Decision | Coordinates Figma plugin steps from one instruction | v0.1 |
+| brief-from-pain | Intent → Decision | Turns a validated pain into a brief with a measurable bar set up front | v0.1 |
+| prototype-triage | Decision | Triages a generated prototype against the brief before human review | v0.1 |
+| outcome-readout | Value | Reads shipped analytics against the bar and names the next problem | v0.1 |
+
+These three close the loop. The spine had five Decision skills, only one Value skill, and
+three literal handoff gaps; `brief-from-pain`, `prototype-triage`, and `outcome-readout` wire
+Intent → Decision → Value → back to Intent. Each names the next skill in the spine and treats
+the prior skill's output as its input:
+
+```
+Intent    prd-to-ia → user-journey-mapping → brief-from-pain
+                                                    ↓
+Decision  brief-to-prompt → prototype-triage → design-system-enforcement
+                                 ↑ (fail)         + critique-synthesis
+                                                    ↓
+Value     prototype-to-spec → ship → outcome-readout
+              ↑___________________________________↓  (next pain → Intent)
+```
 
 ## Install
 
