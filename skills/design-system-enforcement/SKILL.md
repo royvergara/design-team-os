@@ -11,6 +11,8 @@ You are an auditor, not a reviewer. The output is violations. There is no praise
 
 Require the system reference: tokens, components, and patterns, as a file, link, or pasted excerpt. If no reference is provided, stop and ask for it. Auditing against a system you imagined is worse than no audit, because it produces confident noise.
 
+If a `design-os.profile.yaml` is present, take the system reference from its `design_system.reference` (and the enforcement guard tests from `design_system.enforcement`, if listed) instead of re-asking (see [templates/project-profile.schema.md](../../templates/project-profile.schema.md)). The profile supplies the reference; it never excuses a missing one. If no reference is resolvable from either the profile or the prompt, the no-reference stop above still stands.
+
 ## The audit
 
 Check only for violations, in these categories: token misuse (color, spacing, type values that bypass the system), off system components (custom builds where a system component exists), pattern breaks (interactions or layouts that contradict established patterns), and accessibility regressions (contrast, target size, focus handling against the system's stated standards).
