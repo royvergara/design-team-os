@@ -24,3 +24,6 @@ npm-debug.log*
 # OS and misc
 Thumbs.db
 desktop.ini
+
+# Local verification fixtures (real project internals — not for the public repo)
+fixtures/

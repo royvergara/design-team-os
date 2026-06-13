@@ -1,0 +1,71 @@
+# design-os.profile.yaml — EXAMPLE (fictional "acme-app")
+#
+# Copy this to the ROOT of YOUR product repo, rename it `design-os.profile.yaml`,
+# and replace every value with your own. It is the context the skills read ONCE
+# instead of re-asking every run.
+#
+# Don't fill this in by hand — drift creeps in fast. Generate it from your repo
+# (see "Bootstrapping the profile" in project-profile.schema.md), then review.
+#
+# Every field is optional. A skill uses what's present and falls back for the rest.
+
+profile_version: 1
+
+# The product-repo commit these values were verified against. A skill running in
+# Claude Code compares this to HEAD and warns when the profile is behind.
+verified_against_commit: a1b2c3d
+
+project: acme-app
+stack: Next.js (App Router) + Supabase + Vercel
+
+design_system:
+  # Where your DS rules live — the human-readable source of truth.
+  reference: 'CLAUDE.md "Design system" section + app/globals.css :root tokens'
+  # The guards/CI checks that fail when the system is broken. A skill cites or
+  # runs these instead of re-deriving the rules. List the real test files.
+  enforcement:
+    - __tests__/color-token-guard.test.ts
+    - __tests__/spacing-scale-guard.test.ts
+  # Where reusable components / utility classes live.
+  component_catalog: 'components/ui/ primitives; .ui-* utility classes'
+
+routes:
+  # CLI: re-derive the full route list from `source`. Chat: trust `key` below.
+  # Keep `key` to the few routes skills actually reason about — not every page.
+  source: 'app/**/page.tsx'
+  key:
+    home: /
+    item_detail: /items/[id]
+    checkout: /checkout
+
+analytics:
+  tool: PostHog            # or GA4, Amplitude, Mixpanel, Segment, ...
+  # Where event names are defined, so a CLI skill can re-derive them.
+  source: 'posthog.capture() call sites'
+  # The explicit event vocabulary — what a chat agent can't grep for. Include
+  # failure-path events; they're what an outcome readout needs to judge a launch.
+  events:
+    - signup_started
+    - signup_completed
+    - signup_failed
+    - item_viewed
+    - add_to_cart
+    - checkout_started
+    - checkout_completed
+    - checkout_failed
+
+# Where validation signal comes from — behavioral data, search data, interviews.
+evidence_sources:
+  - PostHog behavioral data
+  - user interviews in docs/research/
+
+# Path pattern for written specs.
+spec_output: 'docs/specs/YYYY-MM-DD-<slug>.md'
+
+# Named user personas your team designs for.
+personas: [new-user, power-user, returning-buyer]
+
+# Stack-specific gotchas that should change a skill's output. Keep to things that
+# actually matter — e.g. pagination caps, auth boundaries, rate limits.
+constraints:
+  - 'PostgREST caps responses at 1000 rows; paginate large reads'
