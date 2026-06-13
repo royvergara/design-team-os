@@ -30,7 +30,7 @@ Speed without these gates is fifty prototypes and no way to choose. Speed with t
 
 ## Skills
 
-The first eight shipped in v0.1 on June 12, 2026. All are live under `skills/`.
+Eleven skills are live under `skills/`: the original eight (v0.1, June 12, 2026) plus three loop-closing skills (v0.2) that wire the gates into a full Intent → Decision → Value → Intent loop.
 
 | Skill | Gate | What it does | Status |
 | --- | --- | --- | --- |
@@ -77,13 +77,20 @@ Each `SKILL.md` is self-contained and gates its own inputs, so you can drop into
 
 ## Install
 
-Each skill is a folder under `skills/` containing a `SKILL.md`. To use one:
+Each skill is a folder under `skills/` containing a `SKILL.md`.
 
 1. Clone or download this repo.
-2. Drop the skill folder into your Claude Code skills directory, or paste the contents of its `SKILL.md` into a Claude Project's instructions.
-3. Call the skill the way the `SKILL.md` describes.
+2. Drop the skill folder into your Claude Code skills directory — `.claude/skills/` in a project (shared with the team) or `~/.claude/skills/` for every project — or paste its `SKILL.md` into a Claude Project's instructions.
 
-Each skill's `description` frontmatter says when it triggers and what it always returns. For the deeper guide — project vs. user-level install, when to reference a skill as-is vs. fork it, and supplying your context once via a [project profile](templates/project-profile.schema.md) — see [IMPLEMENTATION.md](IMPLEMENTATION.md). The `skills/` folder explains the file convention if you want to read or adapt the skills yourself.
+You don't invoke a skill by name. It triggers on the situation its `description` names — give Claude that input and the skill activates.
+
+## Quickstart
+
+Install `prd-to-ia`, then paste a PRD: *"Here's our PRD — turn it into an information architecture."* You get the IA, an explicit exclusions list, and the open questions worth taking to stakeholders.
+
+Now feed it a PRD that states a business goal but no customer pain. It won't draft. It names what's missing and asks for the pain first. **That refusal is the skill working** — it is the whole point of the library, and the same discipline runs through every skill: `user-journey-mapping` won't map without evidence, `prototype-to-spec` won't spec without a validation signal, `design-system-enforcement` won't audit a system it had to imagine. The gates are what you're installing.
+
+From there, follow the [Suggested workflow](#suggested-workflow) to run the skills in sequence, drop a [`design-os.profile.yaml`](templates/project-profile.schema.md) at your repo root so skills read your design system and event names instead of re-asking, and see [IMPLEMENTATION.md](IMPLEMENTATION.md) for project-vs-user install, reference-as-is vs. fork-and-tune, and the verification checklist. The tests in [TESTING.md](TESTING.md) show — and let you re-run — the gate behavior of every skill.
 
 ## This is the open layer
 
@@ -101,4 +108,4 @@ MIT. See [LICENSE](LICENSE). Use it, fork it, ship it.
 
 ## Status
 
-v0.1, shipped June 12, 2026. The first eight skills are live, tested against their gates across smoke and adversarial rounds (see [TESTING.md](TESTING.md)), and ready to use. New skills drop every Friday.
+v0.2. Eleven skills are live — the eight v0.1 skills plus three loop-closing additions (`brief-from-pain`, `prototype-triage`, `outcome-readout`) — each tested against its gate by a runnable harness (see [TESTING.md](TESTING.md)), and ready to use. New skills drop every Friday.
