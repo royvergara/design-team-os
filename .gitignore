@@ -25,5 +25,6 @@ npm-debug.log*
 Thumbs.db
 desktop.ini
 
-# Local verification fixtures (real project internals — not for the public repo)
-fixtures/
+# Local verification fixtures (real project internals — not for the public repo).
+# Anchored to the repo root so it does NOT match tests/fixtures/ (which ship).
+/fixtures/
