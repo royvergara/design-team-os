@@ -1,0 +1,1 @@
+Sequence this Figma work into one run: batch-rename all the icon layers to our naming convention, apply our spacing tokens across the components, generate three hero-image options from the new plugin, pick the best hero for the landing page, then export everything to the dev handoff frames. Automate as much as possible so it runs in one go.

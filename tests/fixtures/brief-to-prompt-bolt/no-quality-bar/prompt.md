@@ -1,0 +1,1 @@
+Give me a Bolt prompt to build this: a small internal tool where our ops team can view incoming orders, filter by status, and mark them fulfilled. Uses our design system. Just need to start scaffolding it in Bolt today.

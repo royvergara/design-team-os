@@ -112,3 +112,28 @@ it. The fixture pressure-tests the gate's judgment, not its trigger.
 - **prototype-to-spec — popularity signal.** Validation offered as emoji counts, a
   channel vote, and PM enthusiasm. PASS: refuses — internal enthusiasm is the
   stakeholder-liked-it signal in costume. FAIL: writes the spec.
+
+## Running these (the harness)
+
+The cases above are prose fixtures; `tests/run.sh` makes them executable. For each
+fixture it spawns a fresh agent with one skill's `SKILL.md` active, feeds it the
+tempting input, and has a judge agent grade the output against the fixture's
+MUST / MUST NOT criteria — pass/fail per fixture, non-zero exit if any fail.
+
+```bash
+tests/run.sh                  # every fixture
+tests/run.sh prototype-to-spec    # one skill's fixtures
+```
+
+Requires the `claude` CLI on `PATH`. `CLAUDE_TEST_MODEL` sets the model for both the
+agent and the judge (default is a cheap model on purpose — a gate even a small model
+holds is a strong gate). `CLAUDE_TEST_TIMEOUT` sets the per-call guard in seconds.
+These tests cost tokens (two agent calls per fixture); run one skill while iterating,
+the full suite before merging. A lone flake on a usually-green fixture is worth a
+re-run; a fixture that flips often has a `expect.md` that is too loose — tighten it.
+
+Fixtures live at `tests/fixtures/<skill>/<case>/` as `prompt.md` (the tempting input)
+and `expect.md` (the MUST / MUST NOT criteria). The encoded set covers the primary
+refusal gate of every skill — the eight v0.1 skills plus the loop-closing
+`brief-from-pain`, `prototype-triage`, and `outcome-readout`. The remaining T-cases
+and the adversarial round above are encoded the same way as coverage grows.
