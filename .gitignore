@@ -24,3 +24,6 @@ npm-debug.log*
 # OS and misc
 Thumbs.db
 desktop.ini
+
+# Local profile fixtures (real product internals — never published)
+/fixtures/

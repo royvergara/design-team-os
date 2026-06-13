@@ -30,7 +30,7 @@ Speed without these gates is fifty prototypes and no way to choose. Speed with t
 
 ## Skills
 
-The first eight shipped in v0.1 on June 12, 2026. All eight are live under `skills/`.
+The first eight shipped in v0.1 on June 12, 2026. All are live under `skills/`.
 
 | Skill | Gate | What it does | Status |
 | --- | --- | --- | --- |
@@ -42,8 +42,13 @@ The first eight shipped in v0.1 on June 12, 2026. All eight are live under `skil
 | brief-to-prompt-v0 | Decision | Converts a brief into a clean v0 by Vercel prompt | v0.1 |
 | brief-to-prompt-bolt | Decision | Converts a brief into a clean Bolt.new prompt | v0.1 |
 | figma-plugin-orchestration | Decision | Coordinates Figma plugin steps from one instruction | v0.1 |
+| brief-from-pain | Intent → Decision | Turns a validated pain into a brief with a measurable bar set up front | v0.2 |
+| prototype-triage | Decision | Triages a generated prototype against the brief before human review | v0.2 |
+| outcome-readout | Value | Reads shipped analytics against the bar and names the next problem | v0.2 |
 
-Each skill enforces its gate in practice, not just on paper. It refuses or flags when the inputs are not there: `prd-to-ia` will not draft without both a stated business goal and a customer pain, `user-journey-mapping` will not map without real evidence behind the pain, `prototype-to-spec` will not write a spec without a validation signal, and `design-system-enforcement` will not audit against a system it had to imagine. That refusal behavior is the point of each skill, and it is what the tests in [TESTING.md](TESTING.md) verify.
+The last three close the loop end to end: Intent → Decision → Value → back to Intent. `brief-from-pain` bridges a validated pain into a brief, `prototype-triage` is the cheap readiness gate before human review, and `outcome-readout` reads the shipped result and hands strategy the next problem.
+
+Each skill enforces its gate in practice, not just on paper. It refuses or flags when the inputs are not there: `prd-to-ia` will not draft without both a stated business goal and a customer pain, `user-journey-mapping` will not map without real evidence behind the pain, `prototype-to-spec` will not write a spec without a validation signal, `design-system-enforcement` will not audit against a system it had to imagine, `brief-from-pain` will not write a brief until success is defined in advance, `prototype-triage` will not pass a prototype that misses its brief, and `outcome-readout` will not call a launch a win without the pre-registered number. That refusal behavior is the point of each skill, and it is what the tests in [TESTING.md](TESTING.md) verify.
 
 ## Suggested workflow
 
@@ -53,17 +58,20 @@ The skills work ad hoc, but they were built to run in order, following the three
 
 1. `prd-to-ia` — turn the PRD into a first pass IA and an explicit exclusions list. Its open questions feed the next step.
 2. `user-journey-mapping` — map the journey for the validated pain, grounded in real evidence. The named pain becomes the spine of the brief.
+3. `brief-from-pain` — turn that validated pain into a brief with scope and, before anything is generated, a measurable definition of what good looks like. This is the bar the Decision gate enforces.
 
 **Gate 2, Decision.**
 
-3. `brief-to-prompt-v0` or `brief-to-prompt-bolt` — convert the brief into a generation prompt. Pick by scope: v0 for a screen or component, Bolt for a full app or flow with data. Both refuse until the brief defines what good looks like, which sets the bar the next two steps enforce.
-4. `figma-plugin-orchestration` — when production work spans multiple Figma plugins. A utility inside this gate, not a fixed step.
-5. `design-system-enforcement` — audit what got generated against your system.
-6. `critique-synthesis` — fold scattered review feedback into one ranked direction.
+4. `brief-to-prompt-v0` or `brief-to-prompt-bolt` — convert the brief into a generation prompt. Pick by scope: v0 for a screen or component, Bolt for a full app or flow with data. Both refuse until the brief defines what good looks like, which sets the bar the next steps enforce.
+5. `figma-plugin-orchestration` — when production work spans multiple Figma plugins. A utility inside this gate, not a fixed step.
+6. `prototype-triage` — triage the generated prototype against the brief before it earns human review. A pass moves on; a fail routes back to the prompt step with the specific gaps, so review cycles are spent only on prototypes that meet the brief.
+7. `design-system-enforcement` — audit what passed triage against your system.
+8. `critique-synthesis` — fold scattered review feedback into one ranked direction.
 
 **Gate 3, Value.**
 
-7. `prototype-to-spec` — turn the chosen, validated prototype into a buildable spec. It refuses without a validation signal, which loops back to the evidence discipline from Gate 1.
+9. `prototype-to-spec` — turn the chosen, validated prototype into a buildable spec. It refuses without a validation signal, which loops back to the evidence discipline from Gate 1.
+10. `outcome-readout` — after the build ships, read the analytics against the brief's pre-registered bar, render the did-it-work verdict, and hand strategy the next problem worth starting. This is the loop back to Intent.
 
 Each `SKILL.md` is self-contained and gates its own inputs, so you can drop into any single skill on its own. The sequence is where the "PRD to validated, code ready prototype" path actually lives; ad hoc use gives you the unit of judgment without the connective tissue.
 
@@ -75,7 +83,7 @@ Each skill is a folder under `skills/` containing a `SKILL.md`. To use one:
 2. Drop the skill folder into your Claude Code skills directory, or paste the contents of its `SKILL.md` into a Claude Project's instructions.
 3. Call the skill the way the `SKILL.md` describes.
 
-Each skill's `description` frontmatter says when it triggers and what it always returns. The `skills/` folder explains the file convention if you want to read or adapt the skills yourself.
+Each skill's `description` frontmatter says when it triggers and what it always returns. For the deeper guide — project vs. user-level install, when to reference a skill as-is vs. fork it, and supplying your context once via a [project profile](templates/project-profile.schema.md) — see [IMPLEMENTATION.md](IMPLEMENTATION.md). The `skills/` folder explains the file convention if you want to read or adapt the skills yourself.
 
 ## This is the open layer
 
