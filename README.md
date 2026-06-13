@@ -52,7 +52,7 @@ Each skill enforces its gate in practice, not just on paper. It refuses or flags
 
 ## Suggested workflow
 
-The skills work ad hoc, but they were built to run in order, following the three gates. Used in sequence, each one's output is the next one's input, and the gates keep speed intentional from PRD to handoff.
+The skills work ad hoc, but they were built to run in order, following the three gates. Used in sequence, each one's output is the next one's input, and the gates keep speed intentional from PRD to handoff. [EXAMPLES.md](EXAMPLES.md) walks one real feature through this whole sequence, gates and refusals included.
 
 **Gate 1, Intent.**
 
@@ -90,7 +90,7 @@ Install `prd-to-ia`, then paste a PRD: *"Here's our PRD — turn it into an info
 
 Now feed it a PRD that states a business goal but no customer pain. It won't draft. It names what's missing and asks for the pain first. **That refusal is the skill working** — it is the whole point of the library, and the same discipline runs through every skill: `user-journey-mapping` won't map without evidence, `prototype-to-spec` won't spec without a validation signal, `design-system-enforcement` won't audit a system it had to imagine. The gates are what you're installing.
 
-From there, follow the [Suggested workflow](#suggested-workflow) to run the skills in sequence, drop a [`design-os.profile.yaml`](templates/project-profile.schema.md) at your repo root so skills read your design system and event names instead of re-asking, and see [IMPLEMENTATION.md](IMPLEMENTATION.md) for project-vs-user install, reference-as-is vs. fork-and-tune, and the verification checklist. The tests in [TESTING.md](TESTING.md) show — and let you re-run — the gate behavior of every skill.
+For the fastest sense of how the pieces fit, read **[EXAMPLES.md](EXAMPLES.md)** — one feature walked through all eleven skills, plus a trigger cheat sheet for what to say to set each one off. From there, follow the [Suggested workflow](#suggested-workflow) to run the skills in sequence, drop a [`design-os.profile.yaml`](templates/project-profile.schema.md) at your repo root so skills read your design system and event names instead of re-asking, and see [IMPLEMENTATION.md](IMPLEMENTATION.md) for project-vs-user install, reference-as-is vs. fork-and-tune, and the verification checklist. The tests in [TESTING.md](TESTING.md) show — and let you re-run — the gate behavior of every skill.
 
 ## This is the open layer
 
