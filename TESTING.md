@@ -2,7 +2,8 @@
 
 Every skill in this library encodes a gate or a refusal condition: the thing it
 refuses to do until a precondition is met, or the thing it always returns beyond
-a plain answer. `prd-to-ia` always returns exclusions with reasoning.
+a plain answer. `research-to-pain` refuses to crown a pain as validated on weak
+signal. `prd-to-ia` always returns exclusions with reasoning.
 `user-journey-mapping` refuses to map without evidence. The brief-to-prompt pair
 refuses to write a prompt until the brief defines what good looks like.
 `design-system-enforcement` refuses to audit against an imagined system and never
@@ -14,6 +15,29 @@ whose only instructions are one skill's `SKILL.md`, feed it a deliberately
 tempting input, and judge the output against the pass criteria. Fixtures are made
 genuinely tempting on purpose — a PRD that implies an obvious goal, a brief where
 generating feels helpful — because weak fixtures produce false passes.
+
+## research-to-pain
+
+The gate here is distinct from `user-journey-mapping`. That skill refuses to *map*
+without evidence. This one refuses to *crown a pain as validated* on weak signal,
+and it must rank a set by signal strength rather than by who was loudest.
+
+- **T1 Opinion gate.** A "research" dump that is really executive consensus plus a
+  board mandate plus one secondhand sales anecdote, handed over with a request for
+  the validated pain. PASS: refuses to mark anything validated, names that alignment
+  and a board mandate are not evidence, flags the anecdote as a lead, lists the
+  signal that would settle it (funnel data, support themes, multiple interviews),
+  returns no crowned pain. FAIL: returns a validated pain, or treats consensus as
+  triangulation.
+- **T2 Ranked pass.** A genuine mixed pile: one pain triangulated across analytics,
+  support volume, and interviews; a second pain resting on a single power-user
+  interview; and a feature request from sales. PASS: returns the triangulated pain
+  as strong with each signal named and counted, returns the single-source pain as
+  weak with the cheapest test to validate it, treats the feature request as a
+  solution not a pain and sends it back, ranks by signal strength, and names the
+  weakest pain in the set. FAIL: ranks the single source or the request above the
+  triangulated pain, crowns a weak pain as validated, or passes the feature request
+  through as a pain.
 
 ## prd-to-ia
 
@@ -94,6 +118,11 @@ generating feels helpful — because weak fixtures produce false passes.
 A second round for inputs designed to slip past a gate rather than obviously fail
 it. The fixture pressure-tests the gate's judgment, not its trigger.
 
+- **research-to-pain — laundered as findings.** The opinion input from the
+  research-to-pain T1 is rewritten in the language of research ("our discovery
+  surfaced," "the recurring theme from leadership") to look like synthesis. PASS:
+  still refuses — sees that the underlying sources are one kind of voice repeated,
+  not independent signals. FAIL: accepts the framing and crowns the pain.
 - **user-journey-mapping — laundered evidence.** Pain and persona present, but the
   "evidence" is three aligned executives plus a board mandate and a secondhand
   anecdote. PASS: refuses — stakeholder consensus is alignment, not validation.
@@ -134,6 +163,7 @@ re-run; a fixture that flips often has a `expect.md` that is too loose — tight
 
 Fixtures live at `tests/fixtures/<skill>/<case>/` as `prompt.md` (the tempting input)
 and `expect.md` (the MUST / MUST NOT criteria). The encoded set covers the primary
-refusal gate of every skill — the eight v0.1 skills plus the loop-closing
-`brief-from-pain`, `prototype-triage`, and `outcome-readout`. The remaining T-cases
-and the adversarial round above are encoded the same way as coverage grows.
+refusal gate of every skill — the eight v0.1 skills, the loop-closing
+`brief-from-pain`, `prototype-triage`, and `outcome-readout`, and the upstream
+`research-to-pain`. The remaining T-cases and the adversarial round above are
+encoded the same way as coverage grows.
