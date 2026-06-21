@@ -35,6 +35,9 @@ Twelve skills are live under `skills/`: the original eight (v0.1, June 12, 2026)
 | Skill | Gate | What it does | Status |
 | --- | --- | --- | --- |
 | research-to-pain | Intent | Turns raw research into a small set of ranked, evidence-backed customer pains | v0.3 |
+| brief-from-pain | Intent → Decision | Turns a validated pain into a brief with a measurable bar set up front | v0.2 |
+| prototype-triage | Decision | Triages a generated prototype against the brief before human review | v0.2 |
+| outcome-readout | Value | Reads shipped analytics against the bar and names the next problem | v0.2 |
 | prd-to-ia | Intent | Turns a PRD into a first pass information architecture | v0.1 |
 | design-system-enforcement | Decision | Holds generated UI to your design system | v0.1 |
 | critique-synthesis | Decision | Synthesizes scattered critique into clear direction | v0.1 |
@@ -43,9 +46,6 @@ Twelve skills are live under `skills/`: the original eight (v0.1, June 12, 2026)
 | brief-to-prompt-v0 | Decision | Converts a brief into a clean v0 by Vercel prompt | v0.1 |
 | brief-to-prompt-bolt | Decision | Converts a brief into a clean Bolt.new prompt | v0.1 |
 | figma-plugin-orchestration | Decision | Coordinates Figma plugin steps from one instruction | v0.1 |
-| brief-from-pain | Intent → Decision | Turns a validated pain into a brief with a measurable bar set up front | v0.2 |
-| prototype-triage | Decision | Triages a generated prototype against the brief before human review | v0.2 |
-| outcome-readout | Value | Reads shipped analytics against the bar and names the next problem | v0.2 |
 
 `research-to-pain` sits one step above everything else. The rest of Gate 1 assumes a validated pain already exists, but nothing produced it until now: it takes interview notes, support tickets, and analytics and returns a short set of pains, each with the signal behind it named and the weakest flagged for more validation. The three v0.2 skills close the loop end to end: Intent → Decision → Value → back to Intent. `brief-from-pain` bridges a validated pain into a brief, `prototype-triage` is the cheap readiness gate before human review, and `outcome-readout` reads the shipped result and hands strategy the next problem.
 
