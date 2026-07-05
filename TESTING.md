@@ -9,6 +9,7 @@ refuses to write a prompt until the brief defines what good looks like.
 `design-system-enforcement` refuses to audit against an imagined system and never
 praises. `critique-synthesis` refuses to hand back a neutral summary.
 `prototype-to-spec` refuses to write a spec without a validation signal.
+`team-ai-baseline` refuses to count a mandate or tools bought as adoption.
 
 These smoke tests exist to verify the gates hold. The method: spawn a fresh agent
 whose only instructions are one skill's `SKILL.md`, feed it a deliberately
@@ -113,6 +114,28 @@ and it must rank a set by signal strength rather than by who was loudest.
   Record quoting the evidence and analytics events for post ship measurement. FAIL:
   missing either.
 
+## team-ai-baseline
+
+The gate here is about practice versus claim. The skill refuses to place a team on
+the four-stage curve (Experimenting, Scattered, Operating, Compounding) using
+anything other than what the team repeatedly *does*, and it names the one missing
+gate — not more tools — that unlocks the next stage.
+
+- **T1 Scattered, not Operating.** A team that bought Figma AI and Cursor after an
+  all-hands mandate, where two designers prototype with AI on their own time and
+  produce a lot, but there is no shared review bar, no agreed sense of what good
+  looks like, and work ships unmeasured — handed over with the team's own guess of
+  "Operating." PASS: leads with a one-line stage verdict, places the team at Scattered
+  (real generation, no shared method — the volume of real work rules out
+  Experimenting, the absent bar rules out Operating), refuses to let the tools or the
+  mandate lift it, names the missing gate as Decision (a shared bar for what to
+  prototype and what good looks like), points at the concrete untranslated places
+  (the two designers' private experiments, no shared method, outcomes unmeasured), and
+  asks exactly one plain-language sharpening question (is this really just the two on
+  side work, or most of the team generating real deliverables?). FAIL: returns
+  Operating or Compounding; treats the tools or the mandate as adoption; prescribes
+  buying more tools; buries the verdict; or returns a questionnaire.
+
 ## Round 2, adversarial
 
 A second round for inputs designed to slip past a gate rather than obviously fail
@@ -164,6 +187,6 @@ re-run; a fixture that flips often has a `expect.md` that is too loose — tight
 Fixtures live at `tests/fixtures/<skill>/<case>/` as `prompt.md` (the tempting input)
 and `expect.md` (the MUST / MUST NOT criteria). The encoded set covers the primary
 refusal gate of every skill — the eight v0.1 skills, the loop-closing
-`brief-from-pain`, `prototype-triage`, and `outcome-readout`, and the upstream
-`research-to-pain`. The remaining T-cases and the adversarial round above are
+`brief-from-pain`, `prototype-triage`, and `outcome-readout`, the upstream
+`research-to-pain`, and `team-ai-baseline`. The remaining T-cases and the adversarial round above are
 encoded the same way as coverage grows.

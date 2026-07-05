@@ -30,10 +30,11 @@ Speed without these gates is fifty prototypes and no way to choose. Speed with t
 
 ## Skills
 
-Twelve skills are live under `skills/`: the original eight (v0.1, June 12, 2026), three loop-closing skills (v0.2) that wire the gates into a full Intent → Decision → Value → Intent loop, and the most upstream skill in the library (v0.3) that produces the validated pain everything else assumes.
+Thirteen skills are live under `skills/`: the original eight (v0.1, June 12, 2026), three loop-closing skills (v0.2) that wire the gates into a full Intent → Decision → Value → Intent loop, the most upstream skill in the library (v0.3) that produces the validated pain everything else assumes, and `team-ai-baseline` (v0.4), which sits above the gates and tells a team whether it is actually running them.
 
 | Skill | Gate | What it does | Status |
 | --- | --- | --- | --- |
+| team-ai-baseline | All gates | Places a team honestly on the AI maturity curve and names the one gate holding it back | v0.4 |
 | research-to-pain | Intent | Turns raw research into a small set of ranked, evidence-backed customer pains | v0.3 |
 | brief-from-pain | Intent → Decision | Turns a validated pain into a brief with a measurable bar set up front | v0.2 |
 | prototype-triage | Decision | Triages a generated prototype against the brief before human review | v0.2 |
@@ -49,7 +50,7 @@ Twelve skills are live under `skills/`: the original eight (v0.1, June 12, 2026)
 
 `research-to-pain` sits one step above everything else. The rest of Gate 1 assumes a validated pain already exists, but nothing produced it until now: it takes interview notes, support tickets, and analytics and returns a short set of pains, each with the signal behind it named and the weakest flagged for more validation. The three v0.2 skills close the loop end to end: Intent → Decision → Value → back to Intent. `brief-from-pain` bridges a validated pain into a brief, `prototype-triage` is the cheap readiness gate before human review, and `outcome-readout` reads the shipped result and hands strategy the next problem.
 
-Each skill enforces its gate in practice, not just on paper. It refuses or flags when the inputs are not there: `research-to-pain` will not crown a pain as validated on stakeholder opinion or a single source, `prd-to-ia` will not draft without both a stated business goal and a customer pain, `user-journey-mapping` will not map without real evidence behind the pain, `prototype-to-spec` will not write a spec without a validation signal, `design-system-enforcement` will not audit against a system it had to imagine, `brief-from-pain` will not write a brief until success is defined in advance, `prototype-triage` will not pass a prototype that misses its brief, and `outcome-readout` will not call a launch a win without the pre-registered number. That refusal behavior is the point of each skill, and it is what the tests in [TESTING.md](TESTING.md) verify.
+Each skill enforces its gate in practice, not just on paper. It refuses or flags when the inputs are not there: `research-to-pain` will not crown a pain as validated on stakeholder opinion or a single source, `prd-to-ia` will not draft without both a stated business goal and a customer pain, `user-journey-mapping` will not map without real evidence behind the pain, `prototype-to-spec` will not write a spec without a validation signal, `design-system-enforcement` will not audit against a system it had to imagine, `brief-from-pain` will not write a brief until success is defined in advance, `prototype-triage` will not pass a prototype that misses its brief, `outcome-readout` will not call a launch a win without the pre-registered number, and `team-ai-baseline` will not count a mandate or tools bought as adoption or place a team above what its actual practice supports. That refusal behavior is the point of each skill, and it is what the tests in [TESTING.md](TESTING.md) verify.
 
 ## Suggested workflow
 
@@ -110,4 +111,4 @@ MIT. See [LICENSE](LICENSE). Use it, fork it, ship it.
 
 ## Status
 
-v0.3. Twelve skills are live: the eight v0.1 skills, the three loop-closing v0.2 additions (`brief-from-pain`, `prototype-triage`, `outcome-readout`), and the upstream `research-to-pain` (v0.3), each tested against its gate by a runnable harness (see [TESTING.md](TESTING.md)), and ready to use. New skills drop every Friday.
+v0.4. Thirteen skills are live: the eight v0.1 skills, the three loop-closing v0.2 additions (`brief-from-pain`, `prototype-triage`, `outcome-readout`), the upstream `research-to-pain` (v0.3), and `team-ai-baseline` (v0.4), each tested against its gate by a runnable harness (see [TESTING.md](TESTING.md)), and ready to use. New skills drop every Friday.
