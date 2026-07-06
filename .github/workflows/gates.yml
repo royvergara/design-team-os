@@ -18,6 +18,9 @@ on:
   push:
     branches: [main]
   pull_request:
+    # `labeled` is not in GitHub's default PR event types — without it, adding
+    # the run-gates label would never trigger the LLM job below.
+    types: [opened, synchronize, reopened, labeled]
   workflow_dispatch:
 
 jobs:
@@ -38,6 +41,9 @@ jobs:
 
       - name: Check skill cross-references resolve
         run: bash tests/check-references.sh
+
+      - name: Check manifest version matches CHANGELOG
+        run: bash tests/check-version.sh
 
   gates:
     if: github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.labels.*.name, 'run-gates')
