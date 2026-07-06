@@ -112,6 +112,8 @@ You don't invoke a skill by name — it triggers on the situation its `descripti
 
 ## Quickstart
 
+**Not sure you need any of this?** Run the 60-second, zero-install [team AI baseline](BASELINE.md) — paste one prompt into any Claude and get an honest read of where your team actually sits on the AI maturity curve, and the one gate holding it there. That gate maps to the exact skills to start with.
+
 Install `research-to-pain`, then hand it a pile of raw research: *"Here are our interview notes, support tickets, and the activation funnel. What's the real pain?"* You get a short set of pains, each with the signal named, ranked by how much independent evidence agrees, the weakest one flagged with the cheapest test to firm it up.
 
 Now hand it research that is really just opinion, three execs who agree and a board mandate. It won't crown a validated pain. It names what is missing and the fastest signal that would settle it. **That refusal is the skill working.** It is the whole point of the library, and the same discipline runs through every skill: `prd-to-ia` won't draft without a goal and a pain, `user-journey-mapping` won't map without evidence, `prototype-to-spec` won't spec without a validation signal. The gates are what you're installing.
