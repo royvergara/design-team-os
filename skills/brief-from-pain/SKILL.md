@@ -21,6 +21,8 @@ Include: the pain and its evidence, who it is for, what is being built, the scop
 
 The pre-registered, measurable success criteria, each tied to a signal the team can actually read, marked team-ratified not proposed. This is the section `brief-to-prompt`'s gate demands and `prototype-to-spec`'s Validation Record later scores against.
 
+If a `design-os.work/<slug>.yaml` ledger is present, record the brief path and these ratified criteria to `decision.bar` — the criteria verbatim, never a `brief: done` — so triage and the readout later score against the same bar you set here (see [templates/work-ledger.schema.md](../../templates/work-ledger.schema.md)). No ledger changes nothing about the brief above.
+
 ## Quality bar
 
 Every criterion is measurable and set before generating. If "what good looks like" is vague, the brief is not done, no matter how clean the rest is.

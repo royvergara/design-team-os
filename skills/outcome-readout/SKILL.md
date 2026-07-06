@@ -23,6 +23,8 @@ State the pre-registered bar, the measured value and where it came from, and the
 
 The next problem worth starting, framed as a Gate-1 prompt for `prd-to-ia` or `user-journey-mapping`, or an explicit "stop investing here, because." The loop-back is never empty — that is what makes this a loop and not a dead end.
 
+If a `design-os.work/<slug>.yaml` ledger is present, record the measured value and its source, the verdict against the pre-registered bar, and this next-Intent line to `value.outcome` — the number and where it came from, never a bare `won` — closing this work's ledger and seeding the next (see [templates/work-ledger.schema.md](../../templates/work-ledger.schema.md)).
+
 ## Quality bar
 
 The verdict cites a pre-registered bar and a measured number, never one without the other. If you claimed success without the number, you faked the gate.

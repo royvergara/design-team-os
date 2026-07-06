@@ -19,6 +19,8 @@ For every criterion in the brief, mark it MET (demonstrably present in the proto
 
 PASS only if every criterion is met and the required states exist — then it has earned human review, and goes to `design-system-enforcement` and `critique-synthesis`. Otherwise FAIL: return the specific gaps as a punch list written back to `brief-to-prompt`, and the prototype regenerates before a human spends a minute on it. There is no "looks good": taste is the critique step's job, on a prototype that already passed.
 
+If a `design-os.work/<slug>.yaml` ledger is present, record this verdict to `decision.triage` with the prototype it judged and, on FAIL, the punch list — the criteria result itself, never a bare PASS — so a resumed session sees why review was or wasn't earned (see [templates/work-ledger.schema.md](../../templates/work-ledger.schema.md)).
+
 ## Quality bar
 
 Every brief criterion appears in the ledger, and the verdict matches it — no PASS sitting above a MISSING row. If you wrote a compliment, you left the skill's job.

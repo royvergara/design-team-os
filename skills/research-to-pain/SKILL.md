@@ -30,6 +30,8 @@ Return a small set, three to five, not an exhaustive inventory. For each pain:
 
 Rank by signal strength, never by how loud or how senior the source was. The strongest pain is the one the most independent evidence agrees on, even if no executive named it. End by stating which pain in the set is weakest and exactly what it would take to validate it, so the team knows where the floor is before anyone builds on top of it.
 
+If a `design-os.work/<slug>.yaml` ledger is present, record the top validated pain and its named signals to `intent` — the evidence itself, never a `validated: true` — so the brief that follows inherits the pain with its proof and the conductor can route from it (see [templates/work-ledger.schema.md](../../templates/work-ledger.schema.md)). No ledger changes nothing about the ranking above.
+
 ## Quality bar
 
 Every pain traces to a source someone can point to. If a pain cannot name its signal, it does not belong in the set, no matter how plausible it sounds or how badly the team wants it to be true. A confident set built on thin evidence is the exact failure this skill exists to prevent.
