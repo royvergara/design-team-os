@@ -1,8 +1,8 @@
 # Design Team OS
 
-**An open source Claude skill library for product design teams running on AI.**
+**The open source operating system for design teams running on AI — from mandate to proof.**
 
-Most AI skill libraries are built for a single designer trying to move faster. This one is built for the whole team. It is the operating layer that connects a company's AI mandate to what its design team actually ships, so every fast, cheap prototype stays tied to something that matters.
+Most AI skill libraries are built for a single designer trying to move faster. This is an operating system for the whole team: three gates that keep speed intentional, skills that enforce them and refuse when the inputs aren't earned, a ledger that carries the evidence from pain to shipped outcome, and a conductor that always knows what can run next. It connects a company's AI mandate to what its design team actually ships, so every fast, cheap prototype stays tied to something that matters.
 
 ---
 
@@ -28,12 +28,23 @@ The skills are not random utilities. They map to three decision gates. The gates
 
 Speed without these gates is fifty prototypes and no way to choose. Speed with them is a team that learns faster and can show the learning paid off.
 
+## The machine
+
+The gates take judgment; the routing between them never should have. Two pieces carry the routing so nobody has to hold the sequence in their head — and neither ever makes a judgment call:
+
+**The work ledger** (`design-os.work/<slug>.yaml`, schema in [templates/work-ledger.schema.md](templates/work-ledger.schema.md)) is one file per piece of work that carries its state across sessions, people, and weeks: which gates are proven, with the evidence itself embedded. Its one rule: **artifacts, never checkmarks.** There is no `done: true` in the schema, deliberately — an entry is the evidence, the pre-registered bar, the quoted validation signal, or the gate is open. Skills write their own artifacts; humans see the work's state change as a diff in a PR.
+
+**The conductor** (`skills/conductor/`) reads that state — or, with no ledger, whatever artifacts you describe — and reports which gates are proven, which are open, and what can run right now. Resume after two weeks out, hand work to a teammate, or walk in mid-stream with a PM's prototype that never saw Gate 1: ask "where are we?" and it answers with the state set and the runnable moves, several at once when several apply. **It routes; it never judges.** It will not certify a gate, and it refuses to carry a checkmark forward — a `validated: true` with no evidence behind it reads as an open gate, and it says so.
+
+None of this is required. Every skill still gates its own inputs and works alone in a chat with nothing else installed; the machine is what makes the loop resumable and shared. Work is a state set, not an assembly line — cycles are normal, parallel work items are normal, and entering anywhere is normal, because the gates themselves route wrong-order entry back to what's missing.
+
 ## Skills
 
-Thirteen skills are live under `skills/`: the original eight (v0.1, June 12, 2026), three loop-closing skills (v0.2) that wire the gates into a full Intent → Decision → Value → Intent loop, the most upstream skill in the library (v0.3) that produces the validated pain everything else assumes, and `team-ai-baseline` (v0.4), which sits above the gates and tells a team whether it is actually running them.
+Fourteen skills are live under `skills/` — **every one gate-tested by a runnable harness** ([TESTING.md](TESTING.md)): the original eight (v0.1, June 12, 2026), three loop-closing skills (v0.2) that wire the gates into a full Intent → Decision → Value → Intent loop, the most upstream skill in the library (v0.3) that produces the validated pain everything else assumes, `team-ai-baseline` (v0.4), which sits above the gates and tells a team whether it is actually running them, and the `conductor` (v0.5), the machine's routing layer.
 
 | Skill | Gate | What it does | Status |
 | --- | --- | --- | --- |
+| conductor | Routing | Reads a work ledger and reports which gates are proven, which are open, and what can run now | v0.5 |
 | team-ai-baseline | All gates | Places a team honestly on the AI maturity curve and names the one gate holding it back | v0.4 |
 | research-to-pain | Intent | Turns raw research into a small set of ranked, evidence-backed customer pains | v0.3 |
 | brief-from-pain | Intent → Decision | Turns a validated pain into a brief with a measurable bar set up front | v0.2 |
@@ -50,11 +61,13 @@ Thirteen skills are live under `skills/`: the original eight (v0.1, June 12, 202
 
 `research-to-pain` sits one step above everything else. The rest of Gate 1 assumes a validated pain already exists, but nothing produced it until now: it takes interview notes, support tickets, and analytics and returns a short set of pains, each with the signal behind it named and the weakest flagged for more validation. The three v0.2 skills close the loop end to end: Intent → Decision → Value → back to Intent. `brief-from-pain` bridges a validated pain into a brief, `prototype-triage` is the cheap readiness gate before human review, and `outcome-readout` reads the shipped result and hands strategy the next problem.
 
-Each skill enforces its gate in practice, not just on paper. It refuses or flags when the inputs are not there: `research-to-pain` will not crown a pain as validated on stakeholder opinion or a single source, `prd-to-ia` will not draft without both a stated business goal and a customer pain, `user-journey-mapping` will not map without real evidence behind the pain, `prototype-to-spec` will not write a spec without a validation signal, `design-system-enforcement` will not audit against a system it had to imagine, `brief-from-pain` will not write a brief until success is defined in advance, `prototype-triage` will not pass a prototype that misses its brief, `outcome-readout` will not call a launch a win without the pre-registered number, and `team-ai-baseline` will not count a mandate or tools bought as adoption or place a team above what its actual practice supports. That refusal behavior is the point of each skill, and it is what the tests in [TESTING.md](TESTING.md) verify.
+Each skill enforces its gate in practice, not just on paper. It refuses or flags when the inputs are not there: `research-to-pain` will not crown a pain as validated on stakeholder opinion or a single source, `prd-to-ia` will not draft without both a stated business goal and a customer pain, `user-journey-mapping` will not map without real evidence behind the pain, `prototype-to-spec` will not write a spec without a validation signal, `design-system-enforcement` will not audit against a system it had to imagine, `brief-from-pain` will not write a brief until success is defined in advance, `prototype-triage` will not pass a prototype that misses its brief, `outcome-readout` will not call a launch a win without the pre-registered number, `team-ai-baseline` will not count a mandate or tools bought as adoption or place a team above what its actual practice supports, and the `conductor` will not treat a checkmark as a passed gate or route work into a skill whose own gate would refuse it. That refusal behavior is the point of each skill, and it is what the tests in [TESTING.md](TESTING.md) verify.
 
 ## Suggested workflow
 
 The skills work ad hoc, but they were built to run in order, following the three gates. Used in sequence, each one's output is the next one's input, and the gates keep speed intentional from PRD to handoff. [EXAMPLES.md](EXAMPLES.md) walks one real feature through this whole sequence, gates and refusals included.
+
+You don't have to memorize any of it: with the `conductor` installed, "where are we?" returns the work's gate state and the runnable next moves. The sequence below is the map; the conductor is the guide. Treat the numbered order as the common path, not a requirement — work enters anywhere, and the gates route wrong-order entry back to what's missing.
 
 **Gate 1, Intent.**
 
@@ -93,7 +106,7 @@ Install `research-to-pain`, then hand it a pile of raw research: *"Here are our 
 
 Now hand it research that is really just opinion, three execs who agree and a board mandate. It won't crown a validated pain. It names what is missing and the fastest signal that would settle it. **That refusal is the skill working.** It is the whole point of the library, and the same discipline runs through every skill: `prd-to-ia` won't draft without a goal and a pain, `user-journey-mapping` won't map without evidence, `prototype-to-spec` won't spec without a validation signal. The gates are what you're installing.
 
-For the fastest sense of how the pieces fit, read **[EXAMPLES.md](EXAMPLES.md)**, one feature walked through all the skills, plus a trigger cheat sheet for what to say to set each one off. From there, follow the [Suggested workflow](#suggested-workflow) to run the skills in sequence, drop a [`design-os.profile.yaml`](templates/project-profile.schema.md) at your repo root so skills read your design system and event names instead of re-asking, and see [IMPLEMENTATION.md](IMPLEMENTATION.md) for project-vs-user install, reference-as-is vs. fork-and-tune, and the verification checklist. The tests in [TESTING.md](TESTING.md) show, and let you re-run, the gate behavior of every skill.
+For the fastest sense of how the pieces fit, read **[EXAMPLES.md](EXAMPLES.md)**, one feature walked through all the skills, plus a trigger cheat sheet for what to say to set each one off. From there, follow the [Suggested workflow](#suggested-workflow) to run the skills in sequence, drop a [`design-os.profile.yaml`](templates/project-profile.schema.md) at your repo root so skills read your design system and event names instead of re-asking, and let [work ledgers](templates/work-ledger.schema.md) carry each feature's gate state so "where are we?" always has an answer. See [IMPLEMENTATION.md](IMPLEMENTATION.md) for project-vs-user install, reference-as-is vs. fork-and-tune, and the verification checklist. The tests in [TESTING.md](TESTING.md) show, and let you re-run, the gate behavior of every skill.
 
 ## This is the open layer
 
@@ -111,4 +124,4 @@ MIT. See [LICENSE](LICENSE). Use it, fork it, ship it.
 
 ## Status
 
-v0.4. Thirteen skills are live: the eight v0.1 skills, the three loop-closing v0.2 additions (`brief-from-pain`, `prototype-triage`, `outcome-readout`), the upstream `research-to-pain` (v0.3), and `team-ai-baseline` (v0.4), each tested against its gate by a runnable harness (see [TESTING.md](TESTING.md)), and ready to use. New skills drop every Friday.
+v0.5 — the release where the OS in the name becomes literal. Fourteen skills are live: the eight v0.1 skills, the three loop-closing v0.2 additions (`brief-from-pain`, `prototype-triage`, `outcome-readout`), the upstream `research-to-pain` (v0.3), `team-ai-baseline` (v0.4), and the `conductor` plus the work-ledger schema (v0.5) — the machine that routes the loop without ever judging a gate. Each skill is tested against its gate by a runnable harness (see [TESTING.md](TESTING.md)) and ready to use. New skills drop every Friday.

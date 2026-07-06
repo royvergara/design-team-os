@@ -21,9 +21,13 @@ Claude the input below and the skill takes over.
 | `critique-synthesis` | Decision | feedback from 2+ reviewers + "synthesize this into a direction" |
 | `prototype-to-spec` | Value | a chosen prototype + its validation signal + "write the spec" |
 | `outcome-readout` | Value | a shipped feature + its spec + live numbers + "did it work?" |
+| `team-ai-baseline` | All gates | how your team actually works with AI + "where are we on the maturity curve?" |
+| `conductor` | Routing | a work ledger, or whatever artifacts exist + "where are we / what's next?" |
 
 Each skill also gates its own inputs, so a single skill is useful on its own. The sequence
-below is where the full "PRD to validated, shipped, measured" path lives.
+below is where the full "PRD to validated, shipped, measured" path lives — and with the
+`conductor` and a [work ledger](templates/work-ledger.schema.md), you never have to hold
+that sequence in your head: ask "where are we?" and get the open gates and runnable moves.
 
 ---
 
@@ -118,3 +122,9 @@ And the loop closes: that next-Intent line is where the cycle starts again.
   criteria became the triage ledger; the pre-registered bar became the readout's yardstick.
 - **You can drop in anywhere.** Every skill gates its own inputs, so use one alone — but run
   them in sequence and you get the connective tissue: PRD to validated, shipped, measured.
+- **The state survives the chat.** Run with a [work ledger](templates/work-ledger.schema.md)
+  and every artifact above — the pain's evidence, the 38%→55% bar, the triage verdict, the
+  Validation Record — lives in one file in the repo. Six weeks later, a teammate who never
+  saw this conversation asks "where are we on the checklist?" and the `conductor` answers
+  from the ledger: which gates are proven (with the artifacts), which are open, what runs
+  next. That is the difference between a sequence you remember and a machine you resume.

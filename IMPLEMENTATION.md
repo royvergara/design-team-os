@@ -22,6 +22,23 @@ A skill is a folder with one `SKILL.md`. Three homes:
 A skill isn't "called" — it triggers on its `description`. Give it the situation the
 description names (a PRD, a chosen prototype, generated UI) and it activates.
 
+## The two state files
+
+Two YAML files in your product repo carry everything the skills would otherwise re-ask or
+lose between sessions — one stable, one per-work:
+
+| File | Holds | Schema |
+| --- | --- | --- |
+| `design-os.profile.yaml` (one per repo) | **Stable context** — design-system reference, analytics event names, spec paths. Set once. | [project-profile.schema.md](templates/project-profile.schema.md) |
+| `design-os.work/<slug>.yaml` (one per work item) | **Per-work state** — which gates are proven, with the evidence embedded. Written by skills as work progresses; read by the `conductor` to answer "where are we?" | [work-ledger.schema.md](templates/work-ledger.schema.md) |
+
+The shared rule: **neither file ever satisfies a gate.** The profile supplies context, never
+judgment; the ledger carries artifacts, never checkmarks — a skill re-judges what it reads,
+and a `validated: true` with no evidence behind it is an open gate. Both files are committed,
+so a ledger diff in a PR is the work's state changing in team view, and a teammate resumes
+the loop with no chat history at all. In a Claude Project (no filesystem), both degrade to
+pasted blocks in the Project knowledge — same structure, same rules.
+
 ## Reference-as-is vs. fork-and-tune
 
 Decide by **what you want to change**, not by how custom your product feels.

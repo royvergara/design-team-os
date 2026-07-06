@@ -1,0 +1,29 @@
+# Example work ledger — mid-flight on purpose: Intent proven, Decision cycling, Value open.
+# Schema: work-ledger.schema.md. A missing key is an open gate; an entry is always the
+# artifact itself, never a status flag.
+
+work: activation-checklist
+updated: 2026-07-06
+
+intent:
+  pain: >
+    New workspaces stall at the second setup step and never reach first value.
+  evidence:
+    - "PostHog funnel: 38% of new workspaces never complete setup step 2, stable 3 months"
+    - "Support: 140 tickets tagged integration-setup this quarter, silent OAuth failure theme"
+    - "Interviews: 6 of 8 new admins named the integrations step as where they gave up"
+  goal: "Lift activation (setup complete within 7 days) — company OKR 2.3"
+
+decision:
+  brief: briefs/activation-checklist.md
+  bar:
+    - "Activation rate 38% -> 55% within 6 weeks of ship"
+  triage:
+    verdict: FAIL
+    prototype: v0.dev/xyz123
+    punch_list:
+      - "empty/return state MISSING — no view for a user resuming a half-done checklist"
+      - "skip-for-now path MISSING — brief criterion 4"
+
+# value: absent — the gate is open. No validation signal exists yet, so prototype-to-spec
+# will refuse, and the conductor will say so.

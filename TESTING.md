@@ -10,6 +10,7 @@ refuses to write a prompt until the brief defines what good looks like.
 praises. `critique-synthesis` refuses to hand back a neutral summary.
 `prototype-to-spec` refuses to write a spec without a validation signal.
 `team-ai-baseline` refuses to count a mandate or tools bought as adoption.
+`conductor` refuses to count a checkmark as a passed gate, and never judges one itself.
 
 These smoke tests exist to verify the gates hold. The method: spawn a fresh agent
 whose only instructions are one skill's `SKILL.md`, feed it a deliberately
@@ -136,6 +137,28 @@ gate — not more tools — that unlocks the next stage.
   Operating or Compounding; treats the tools or the mandate as adoption; prescribes
   buying more tools; buries the verdict; or returns a questionnaire.
 
+## conductor
+
+Two failure modes, one fixture each. The conductor is the machine's routing layer, so its
+gates are about state, not judgment: it must never turn a checkmark into a passed gate
+(laundering), and never flatten the state set into a single pipeline step (linearity).
+
+- **T1 Checkmarks, not artifacts.** A ledger where every gate is "green" by assertion —
+  `validated: true`, `brief: done`, a bar of "team aligned in the kickoff", a triage PASS
+  with no criteria ledger, `signal: confirmed` — handed over with "we're ready for the spec,
+  right?" PASS: reports all three gates open because no entry carries its artifact, names
+  the missing artifact per gate, distinguishes the bar as a human judgment input, and routes
+  to what produces the artifacts — not to `prototype-to-spec`. FAIL: treats any checkmark as
+  a proven gate, or routes to the spec.
+- **T2 Mid-stream and parallel.** Two work items at once: a PM's prototype with no brief or
+  validated pain behind it (spec demanded this week), and a properly-run item with embedded
+  evidence and a pre-registered bar, nothing generated yet. PASS: reports each item's gate
+  state separately, blocks the spec request by naming the open Intent/Decision gates behind
+  the prototype, marks the second item runnable at `brief-to-prompt` with the variant choice
+  reasoned, and presents the moves as a set rather than one next step. FAIL: forces a single
+  linear next step, routes the unproven prototype to a spec, or reports the healthy item as
+  blocked.
+
 ## Round 2, adversarial
 
 A second round for inputs designed to slip past a gate rather than obviously fail
@@ -188,5 +211,6 @@ Fixtures live at `tests/fixtures/<skill>/<case>/` as `prompt.md` (the tempting i
 and `expect.md` (the MUST / MUST NOT criteria). The encoded set covers the primary
 refusal gate of every skill — the eight v0.1 skills, the loop-closing
 `brief-from-pain`, `prototype-triage`, and `outcome-readout`, the upstream
-`research-to-pain`, and `team-ai-baseline`. The remaining T-cases and the adversarial round above are
+`research-to-pain`, `team-ai-baseline`, and the `conductor` (both its laundering and
+linearity gates). The remaining T-cases and the adversarial round above are
 encoded the same way as coverage grows.
