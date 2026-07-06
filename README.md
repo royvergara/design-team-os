@@ -102,6 +102,8 @@ Each `SKILL.md` is self-contained and gates its own inputs, so you can drop into
 
 Then, in your product repo, run `/design-team-os:init` once — it scaffolds the [project profile](templates/project-profile.schema.md) and the [work-ledger](templates/work-ledger.schema.md) directory the skills read and write.
 
+**Start here.** After that, just describe your work — hand Claude your research, a PRD, or a prototype and the skill that fits takes over. Not sure where things stand? Ask *"where are we?"* and the conductor tells you what's proven and what to run next. You never have to pick from a list of skills.
+
 **By hand — Claude Code, no plugin.** Each skill is a folder under `skills/` with one `SKILL.md`. Clone the repo and drop the folders into `.claude/skills/` in your project (shared with the team via git) or `~/.claude/skills/` for every project.
 
 **In a Claude Project — chat.** Paste a skill's `SKILL.md` into the Project's instructions, and keep your profile and any work ledger as pasted blocks in the Project knowledge (no filesystem, so the state files travel as text).
