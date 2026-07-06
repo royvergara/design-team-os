@@ -1,6 +1,6 @@
 ---
 name: conductor
-description: Use when someone needs to know where a piece of work stands and what can run next — resuming after a gap, handing work to someone else, entering mid-stream with artifacts already in hand, or asking "where are we" / "what's next" on design work. Reads state from a design-os.work ledger or from whatever is described in hand. Routes only — it never judges a gate itself, and it refuses to count a bare checkmark or a verbal "that's done" as a passed gate: only the artifact carries state.
+description: Use when someone needs to know where a piece of work stands and what can run next — resuming after a gap, handing work to someone else, entering mid-stream with artifacts already in hand, or asking "where are we" / "what's next" on design work. Reads state from a design-os.work ledger or from whatever is described in hand. Routes only — it never judges a gate itself, and it refuses to count a bare checkmark or a verbal "that's done" as a passed gate, because only the artifact carries state.
 ---
 
 # conductor

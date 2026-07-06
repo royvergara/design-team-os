@@ -93,12 +93,20 @@ Each `SKILL.md` is self-contained and gates its own inputs, so you can drop into
 
 ## Install
 
-Each skill is a folder under `skills/` containing a `SKILL.md`.
+**As a plugin — recommended, for Claude Code.** One command adds the marketplace, one installs everything: all fourteen skills, the `conductor`, and a `/design-team-os:init` setup command. Updates come through `/plugin`, no re-copying.
 
-1. Clone or download this repo.
-2. Drop the skill folder into your Claude Code skills directory, either `.claude/skills/` in a project (shared with the team) or `~/.claude/skills/` for every project, or paste its `SKILL.md` into a Claude Project's instructions.
+```
+/plugin marketplace add royvergara/design-team-os
+/plugin install design-team-os@fluent-by-design
+```
 
-You don't invoke a skill by name. It triggers on the situation its `description` names, so give Claude that input and the skill activates.
+Then, in your product repo, run `/design-team-os:init` once — it scaffolds the [project profile](templates/project-profile.schema.md) and the [work-ledger](templates/work-ledger.schema.md) directory the skills read and write.
+
+**By hand — Claude Code, no plugin.** Each skill is a folder under `skills/` with one `SKILL.md`. Clone the repo and drop the folders into `.claude/skills/` in your project (shared with the team via git) or `~/.claude/skills/` for every project.
+
+**In a Claude Project — chat.** Paste a skill's `SKILL.md` into the Project's instructions, and keep your profile and any work ledger as pasted blocks in the Project knowledge (no filesystem, so the state files travel as text).
+
+You don't invoke a skill by name — it triggers on the situation its `description` names. Give Claude that input and the skill activates.
 
 ## Quickstart
 

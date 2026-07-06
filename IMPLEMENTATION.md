@@ -8,8 +8,9 @@ behavior, never just to feed it your paths.**
 
 ## Where skills live
 
-A skill is a folder with one `SKILL.md`. Three homes:
+A skill is a folder with one `SKILL.md`. Four homes:
 
+- **Claude Code, as a plugin (recommended)** — `/plugin marketplace add royvergara/design-team-os` then `/plugin install design-team-os@fluent-by-design`. Installs every skill, the `conductor`, and the `/design-team-os:init` command in one step; updates arrive through `/plugin` instead of re-copying folders. Run `/design-team-os:init` once in your product repo to scaffold the profile and the `design-os.work/` ledger directory.
 - **Claude Code, project level** — `.claude/skills/<skill>/` in the repo you work in.
   Versioned with the project, shared with the team, and next to the
   `design-os.profile.yaml` it can read. Best for skills your team relies on or tunes.

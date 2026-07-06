@@ -1,0 +1,16 @@
+{
+  "name": "fluent-by-design",
+  "owner": {
+    "name": "Roy Vergara"
+  },
+  "metadata": {
+    "description": "The Fluent by Design marketplace — home of Design Team OS, the operating system for design teams running on AI."
+  },
+  "plugins": [
+    {
+      "name": "design-team-os",
+      "source": "./",
+      "description": "Design Team OS — gates, skills, the work ledger, and the conductor, as one installable plugin."
+    }
+  ]
+}
