@@ -1,23 +1,44 @@
-# Active CI workflow (activated in 99547f0). Requires an ANTHROPIC_API_KEY repo
-# secret (Settings → Secrets → Actions).
+# CI for Design Team OS. Two jobs:
+#
+#   structure — static checks, no API cost, runs on every push and PR:
+#     * `claude plugin validate --strict` on both manifests (also parses every
+#       skill's frontmatter — this is what would have caught the conductor's
+#       broken YAML), and
+#     * tests/check-references.sh (no SKILL.md names a skill that doesn't exist).
+#
+#   gates — the LLM smoke tests (tests/run.sh). These spawn real agents and cost
+#     tokens, so they do NOT run on every push: trigger manually
+#     (workflow_dispatch) or by adding the `run-gates` label to a PR. Requires an
+#     ANTHROPIC_API_KEY repo secret. tests/run.sh is non-deterministic — if a gate
+#     flakes, re-run before treating it as a real failure.
 
 name: skill-gates
 
-# Runs the skill smoke tests (tests/run.sh) against the live Claude CLI.
-# These spawn real agents and cost a little per run, so this does NOT run on
-# every push. Trigger it manually (workflow_dispatch) or by adding the
-# `run-gates` label to a PR.
-#
-# Note: tests/run.sh is non-deterministic (a borderline gate can red on a
-# single run). If a gate flakes, re-run the job before treating it as a real
-# failure — or extend run.sh to run each fixture N times and pass on majority.
-
 on:
-  workflow_dispatch:
+  push:
+    branches: [main]
   pull_request:
-    types: [labeled, synchronize]
+  workflow_dispatch:
 
 jobs:
+  structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Claude CLI
+        run: |
+          curl -fsSL https://claude.ai/install.sh | bash
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: Validate plugin + marketplace manifests (and all skill frontmatter)
+        run: |
+          claude plugin validate . --strict
+          claude plugin validate .claude-plugin/plugin.json --strict
+
+      - name: Check skill cross-references resolve
+        run: bash tests/check-references.sh
+
   gates:
     if: github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.labels.*.name, 'run-gates')
     runs-on: ubuntu-latest
