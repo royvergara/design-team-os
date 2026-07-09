@@ -1,7 +1,8 @@
 # Changelog
 
-All notable changes to Design Team OS. Versions follow the repo's `v0.x` drops;
-the plugin manifest (`.claude-plugin/plugin.json`) carries the matching version.
+All notable changes to Design Team OS. Each `v0.x` release extends the machine or
+sharpens a capability it already has; the plugin manifest
+(`.claude-plugin/plugin.json`) carries the matching version.
 
 The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every skill
 listed enforces a gate — it refuses when its inputs aren't earned — and every one

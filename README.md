@@ -14,7 +14,7 @@ You have the AI tools. Your team is experimenting in private. Quality is all ove
 
 ## What it is
 
-A set of Claude skills that takes a design team from raw research to a shipped, measured outcome in days instead of weeks. Each skill is a small, focused unit of judgment you can drop into Claude Code or a Claude Project. MIT licensed. New skills drop regularly — the version history is in [CHANGELOG.md](CHANGELOG.md).
+A set of Claude skills that takes a design team from raw research to a shipped, measured outcome in days instead of weeks. Each skill is a small, focused unit of judgment you can drop into Claude Code or a Claude Project. MIT licensed. It grows by release: each version either extends the machine — a new gate skill, the work ledger, the `conductor` — or sharpens a capability it already has ([CHANGELOG.md](CHANGELOG.md) has the history).
 
 ## The spine
 
