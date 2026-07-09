@@ -7,6 +7,35 @@ The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every ski
 listed enforces a gate — it refuses when its inputs aren't earned — and every one
 is covered by a runnable fixture in [TESTING.md](TESTING.md).
 
+## v0.5.1 — 2026-07-09
+
+Coherence pass: one story across every doc, no behavior changes to any gate.
+
+### Changed
+- `skills/README.md` rewritten — it still described the eight-skill v0.1 drop; now
+  points at the 14-skill table, leads with the plugin install, and states the
+  standalone rule (ledger, profile, and `conductor` are optional, never prerequisites).
+- README sweep: v0.1-era scope ("from a PRD to a code ready prototype") updated to
+  the full loop ("raw research to a shipped, measured outcome"), conductor no longer
+  double-counted next to "all fourteen skills," Quickstart now installs the plugin
+  rather than a single skill, and the Friday-cadence claim softened to match the
+  actual release history.
+- TESTING.md: prose test definitions added for `brief-from-pain`, `prototype-triage`,
+  and `outcome-readout` (their fixtures existed but were undocumented); intro now
+  names every skill's gate and leads with the runnable harness; new "In CI" section
+  documents `gates.yml`, the `run-gates` label, and the static checks.
+- EXAMPLES.md: `research-to-pain` added to the trigger cheat sheet (it was the one
+  missing skill).
+- CONTRIBUTING.md / `gates.yml` comments: the two `claude plugin validate` commands
+  are now correctly attributed — only the `plugin.json` invocation parses skill
+  frontmatter.
+- Spine-skill ledger paragraphs made consistent: all five now carry the explicit
+  "No ledger changes nothing" sentence; `brief-from-pain` records the brief path to
+  `decision.brief` (not `decision.bar`) per the schema; `outcome-readout`'s
+  forbidden bare verdict now matches the schema vocabulary (`solved`);
+  `prototype-triage`'s per-criterion output is a "criteria table" everywhere,
+  ending the collision with the work-ledger sense of "ledger."
+
 ## v0.5 — 2026-07-06
 
 The release where the "OS" in the name becomes literal: the machine that routes the

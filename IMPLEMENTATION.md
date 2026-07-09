@@ -10,7 +10,7 @@ behavior, never just to feed it your paths.**
 
 A skill is a folder with one `SKILL.md`. Four homes:
 
-- **Claude Code, as a plugin (recommended)** — `/plugin marketplace add royvergara/design-team-os` then `/plugin install design-team-os@fluent-by-design`. Installs every skill, the `conductor`, and the `/design-team-os:init` command in one step; updates arrive through `/plugin` instead of re-copying folders. Run `/design-team-os:init` once in your product repo to scaffold the profile and the `design-os.work/` ledger directory.
+- **Claude Code, as a plugin (recommended)** — `/plugin marketplace add royvergara/design-team-os` then `/plugin install design-team-os@fluent-by-design`. Installs all fourteen skills (the `conductor` among them) and the `/design-team-os:init` command in one step; updates arrive through `/plugin` instead of re-copying folders. Run `/design-team-os:init` once in your product repo to scaffold the profile and the `design-os.work/` ledger directory.
 - **Claude Code, project level** — `.claude/skills/<skill>/` in the repo you work in.
   Versioned with the project, shared with the team, and next to the
   `design-os.profile.yaml` it can read. Best for skills your team relies on or tunes.
@@ -46,7 +46,7 @@ Decide by **what you want to change**, not by how custom your product feels.
 
 | You want to change… | Do this | Why |
 | --- | --- | --- |
-| The **context** a skill uses (design-system reference, event names, spec path) | **Reference as-is** + a [project profile](templates/project-profile.schema.md) | The profile exists so you don't fork to hard-code context. You stay on the upstream skill and get Friday's updates for free. |
+| The **context** a skill uses (design-system reference, event names, spec path) | **Reference as-is** + a [project profile](templates/project-profile.schema.md) | The profile exists so you don't fork to hard-code context. You stay on the upstream skill and get every update for free. |
 | A skill's **behavior** — its steps, output, or the strictness of a gate | **Fork and tune** | A behavior change is a real edit. Own it deliberately. |
 
 **Forking just to feed a skill your paths and tokens is the adoption tax the profile
@@ -72,7 +72,7 @@ Drop this at the top of a forked `SKILL.md` body so its provenance and freshness
 
 ```markdown
 <!--
-FORK OF: prototype-to-spec (upstream v0.1)
+FORK OF: prototype-to-spec (upstream v0.5)
 CHANGED: <one line — what behavior you altered and why>
 VERIFIED: <date> against <repo>@<commit-sha>
 -->

@@ -10,6 +10,7 @@ Claude the input below and the skill takes over.
 
 | Skill | Gate | Give Claude… |
 | --- | --- | --- |
+| `research-to-pain` | Intent | raw research (interview notes, tickets, analytics) + "what's the real pain here?" |
 | `prd-to-ia` | Intent | a PRD + "turn this into an information architecture" |
 | `user-journey-mapping` | Intent | a named pain with evidence + "map the user journey" |
 | `brief-from-pain` | Intent → Decision | a validated pain + "write the brief / what should we build" |
@@ -72,7 +73,7 @@ plus a **Discernment checklist** of what to inspect in the output.
 **5. `prototype-triage`** — *in:* the generated prototype + the brief. **It fails the first
 pass:**
 
-> FAIL — not ready for review. Criteria ledger: progress indicator MET; one-screen flow MET;
+> FAIL — not ready for review. Criteria table: progress indicator MET; one-screen flow MET;
 > **empty/return state MISSING** (no view for a user coming back to a half-done checklist);
 > **skip-for-now path MISSING** (brief criterion 4). Punch list back to `brief-to-prompt`:
 > add the returning-user state and a always-available skip.
@@ -119,7 +120,7 @@ And the loop closes: that next-Intent line is where the cycle starts again.
   `prototype-triage` caught an incomplete prototype before a human spent time on it;
   `outcome-readout` reported "partial" honestly instead of laundering a miss into a win.
 - **Each output is the next input.** The IA's exclusions became the brief's scope; the brief's
-  criteria became the triage ledger; the pre-registered bar became the readout's yardstick.
+  criteria became the triage table; the pre-registered bar became the readout's yardstick.
 - **You can drop in anywhere.** Every skill gates its own inputs, so use one alone — but run
   them in sequence and you get the connective tissue: PRD to validated, shipped, measured.
 - **The state survives the chat.** Run with a [work ledger](templates/work-ledger.schema.md)

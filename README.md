@@ -14,7 +14,7 @@ You have the AI tools. Your team is experimenting in private. Quality is all ove
 
 ## What it is
 
-A growing set of Claude skills that take a design team from a PRD to a validated, code ready prototype in days instead of weeks. Each skill is a small, focused unit of judgment you can drop into Claude Code or a Claude Project. MIT licensed. New skills drop every Friday.
+A set of Claude skills that takes a design team from raw research to a shipped, measured outcome in days instead of weeks. Each skill is a small, focused unit of judgment you can drop into Claude Code or a Claude Project. MIT licensed. New skills drop regularly — the version history is in [CHANGELOG.md](CHANGELOG.md).
 
 ## The spine
 
@@ -89,11 +89,11 @@ You don't have to memorize any of it: with the `conductor` installed, "where are
 10. `prototype-to-spec`: turn the chosen, validated prototype into a buildable spec. It refuses without a validation signal, which loops back to the evidence discipline from Gate 1.
 11. `outcome-readout`: after the build ships, read the analytics against the brief's pre-registered bar, render the did-it-work verdict, and hand strategy the next problem worth starting. This is the loop back to Intent.
 
-Each `SKILL.md` is self-contained and gates its own inputs, so you can drop into any single skill on its own. The sequence is where the "PRD to validated, code ready prototype" path actually lives; ad hoc use gives you the unit of judgment without the connective tissue.
+Each `SKILL.md` is self-contained and gates its own inputs, so you can drop into any single skill on its own. The sequence is where the full "PRD to validated, shipped, measured" path actually lives; ad hoc use gives you the unit of judgment without the connective tissue.
 
 ## Install
 
-**As a plugin — recommended, for Claude Code.** One command adds the marketplace, one installs everything: all fourteen skills, the `conductor`, and a `/design-team-os:init` setup command. Updates come through `/plugin`, no re-copying.
+**As a plugin — recommended, for Claude Code.** One command adds the marketplace, one installs everything: all fourteen skills, the `conductor` among them, and a `/design-team-os:init` setup command. Updates come through `/plugin`, no re-copying.
 
 ```
 /plugin marketplace add royvergara/design-team-os
@@ -112,11 +112,11 @@ You don't invoke a skill by name — it triggers on the situation its `descripti
 
 ## Quickstart
 
-Install `research-to-pain`, then hand it a pile of raw research: *"Here are our interview notes, support tickets, and the activation funnel. What's the real pain?"* You get a short set of pains, each with the signal named, ranked by how much independent evidence agrees, the weakest one flagged with the cheapest test to firm it up.
+Install the plugin, then hand Claude a pile of raw research: *"Here are our interview notes, support tickets, and the activation funnel. What's the real pain?"* — `research-to-pain` takes over. You get a short set of pains, each with the signal named, ranked by how much independent evidence agrees, the weakest one flagged with the cheapest test to firm it up.
 
 Now hand it research that is really just opinion, three execs who agree and a board mandate. It won't crown a validated pain. It names what is missing and the fastest signal that would settle it. **That refusal is the skill working.** It is the whole point of the library, and the same discipline runs through every skill: `prd-to-ia` won't draft without a goal and a pain, `user-journey-mapping` won't map without evidence, `prototype-to-spec` won't spec without a validation signal. The gates are what you're installing.
 
-For the fastest sense of how the pieces fit, read **[EXAMPLES.md](EXAMPLES.md)**, one feature walked through all the skills, plus a trigger cheat sheet for what to say to set each one off. From there, follow the [Suggested workflow](#suggested-workflow) to run the skills in sequence, drop a [`design-os.profile.yaml`](templates/project-profile.schema.md) at your repo root so skills read your design system and event names instead of re-asking, and let [work ledgers](templates/work-ledger.schema.md) carry each feature's gate state so "where are we?" always has an answer. See [IMPLEMENTATION.md](IMPLEMENTATION.md) for project-vs-user install, reference-as-is vs. fork-and-tune, and the verification checklist. The tests in [TESTING.md](TESTING.md) show, and let you re-run, the gate behavior of every skill.
+For the fastest sense of how the pieces fit, read **[EXAMPLES.md](EXAMPLES.md)**, one feature walked through the core loop, plus a trigger cheat sheet for what to say to set each skill off. From there, follow the [Suggested workflow](#suggested-workflow) to run the skills in sequence, drop a [`design-os.profile.yaml`](templates/project-profile.schema.md) at your repo root so skills read your design system and event names instead of re-asking, and let [work ledgers](templates/work-ledger.schema.md) carry each feature's gate state so "where are we?" always has an answer. See [IMPLEMENTATION.md](IMPLEMENTATION.md) for project-vs-user install, reference-as-is vs. fork-and-tune, and the verification checklist. The tests in [TESTING.md](TESTING.md) show, and let you re-run, the gate behavior of every skill.
 
 ## This is the open layer
 
@@ -134,4 +134,4 @@ MIT. See [LICENSE](LICENSE). Use it, fork it, ship it.
 
 ## Status
 
-v0.5 — the release where the OS in the name becomes literal. Fourteen skills are live: the eight v0.1 skills, the three loop-closing v0.2 additions (`brief-from-pain`, `prototype-triage`, `outcome-readout`), the upstream `research-to-pain` (v0.3), `team-ai-baseline` (v0.4), and the `conductor` plus the work-ledger schema (v0.5) — the machine that routes the loop without ever judging a gate. Each skill is tested against its gate by a runnable harness (see [TESTING.md](TESTING.md)) and ready to use. Full version history in [CHANGELOG.md](CHANGELOG.md). New skills drop every Friday.
+v0.5 — the release where the OS in the name becomes literal. Fourteen skills are live: the eight v0.1 skills, the three loop-closing v0.2 additions (`brief-from-pain`, `prototype-triage`, `outcome-readout`), the upstream `research-to-pain` (v0.3), `team-ai-baseline` (v0.4), and the `conductor` plus the work-ledger schema (v0.5) — the machine that routes the loop without ever judging a gate. Each skill is tested against its gate by a runnable harness (see [TESTING.md](TESTING.md)) and ready to use. Full version history in [CHANGELOG.md](CHANGELOG.md).

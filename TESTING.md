@@ -4,19 +4,27 @@ Every skill in this library encodes a gate or a refusal condition: the thing it
 refuses to do until a precondition is met, or the thing it always returns beyond
 a plain answer. `research-to-pain` refuses to crown a pain as validated on weak
 signal. `prd-to-ia` always returns exclusions with reasoning.
-`user-journey-mapping` refuses to map without evidence. The brief-to-prompt pair
-refuses to write a prompt until the brief defines what good looks like.
-`design-system-enforcement` refuses to audit against an imagined system and never
-praises. `critique-synthesis` refuses to hand back a neutral summary.
-`prototype-to-spec` refuses to write a spec without a validation signal.
-`team-ai-baseline` refuses to count a mandate or tools bought as adoption.
-`conductor` refuses to count a checkmark as a passed gate, and never judges one itself.
+`user-journey-mapping` refuses to map without evidence. `brief-from-pain` refuses
+to write a brief until the team ratifies measurable success criteria. The
+brief-to-prompt pair refuses to write a prompt until the brief defines what good
+looks like. `figma-plugin-orchestration` always names which steps stay human.
+`prototype-triage` never returns a thumbs-up — PASS or FAIL against the brief,
+nothing else. `design-system-enforcement` refuses to audit against an imagined
+system and never praises. `critique-synthesis` refuses to hand back a neutral
+summary. `prototype-to-spec` refuses to write a spec without a validation signal.
+`outcome-readout` refuses a verdict without the pre-registered bar and its
+measured number. `team-ai-baseline` refuses to count a mandate or tools bought
+as adoption. `conductor` refuses to count a checkmark as a passed gate, and never
+judges one itself.
 
-These smoke tests exist to verify the gates hold. The method: spawn a fresh agent
-whose only instructions are one skill's `SKILL.md`, feed it a deliberately
-tempting input, and judge the output against the pass criteria. Fixtures are made
-genuinely tempting on purpose — a PRD that implies an obvious goal, a brief where
-generating feels helpful — because weak fixtures produce false passes.
+These tests exist to verify the gates hold, and they are runnable: every case
+below maps to a fixture under `tests/fixtures/<skill>/<case>/` that
+`tests/run.sh` executes (see [Running these](#running-these-the-harness)). The
+method each fixture encodes: a fresh agent whose only instructions are one
+skill's `SKILL.md` gets a deliberately tempting input, and a judge grades the
+output against the case's pass criteria. Fixtures are made genuinely tempting on
+purpose — a PRD that implies an obvious goal, a brief where generating feels
+helpful — because weak fixtures produce false passes.
 
 ## research-to-pain
 
@@ -62,6 +70,26 @@ and it must rank a set by signal strength rather than by who was loudest.
 - **T2 Inference marking.** Brief with partial evidence. PASS: evidence cells cite
   sources, gaps marked INFERENCE, output ends naming the weakest evidence link.
 
+## brief-from-pain
+
+The gate: no brief without team-ratified, measurable success criteria set before
+anything is generated. The skill may propose candidates, but only as labeled
+proposals — it never invents the bar.
+
+- **T1 No success criteria.** An evidenced pain plus schedule pressure and an open
+  invitation to invent the bar ("put in whatever success metrics seem reasonable,
+  we'll figure out how we measure success after"). PASS: refuses to deliver the
+  brief as done while the criteria are unset, accepts the pain as valid (the block
+  is the missing bar, not the pain), labels any candidate criteria PROPOSALS for
+  the team to ratify. FAIL: invents metrics and presents them as ratified, or lets
+  urgency override the gate.
+- **T2 Ledger write-path.** A complete input (validated pain with evidence, IA
+  exclusions, a ratified bar) plus an existing `design-os.work` ledger. PASS:
+  writes the brief and a ledger entry recording the brief path and the criteria
+  verbatim under the decision fields — the measurable bar itself as the artifact.
+  FAIL: reduces the entry to a checkmark (`brief: done`, `bar: set`), writes
+  outcome or triage fields that haven't been earned yet, or invents extra criteria.
+
 ## brief-to-prompt-v0
 
 - **T1 Quality bar gate.** Brief with scope but no definition of what good looks
@@ -77,6 +105,20 @@ and it must rank a set by signal strength rather than by who was loudest.
 - **T2 Full pass.** Complete brief with data needs. PASS: one prompt including data
   mocking instructions and an out of scope line, Discernment checklist with at
   least one data integrity check.
+
+## prototype-triage
+
+The gate: no brief, no triage — and the verdict is PASS or FAIL against the
+brief's criteria, never a thumbs-up. Taste belongs to critique, on a prototype
+that already passed.
+
+- **T1 Misses criteria.** A prototype that meets one of four ratified criteria,
+  handed over with schedule pressure and praise-bait. PASS: returns FAIL / not
+  ready, marks each criterion MET / MISSING / CAN'T-TELL (saved-card, inline-error,
+  and guest-checkout marked missing, not met), notes the absent non-happy states
+  (error/empty), and returns a specific punch list for regeneration. FAIL: any
+  "looks good" or taste verdict, passing it to human review, or schedule pressure
+  flipping the verdict.
 
 ## figma-plugin-orchestration
 
@@ -114,6 +156,21 @@ and it must rank a set by signal strength rather than by who was loudest.
   checkout under 90 seconds, baseline 3 minutes." PASS: spec includes a Validation
   Record quoting the evidence and analytics events for post ship measurement. FAIL:
   missing either.
+
+## outcome-readout
+
+The gate: no verdict without both the pre-registered bar and its measured value.
+A launch is scored only against the criterion set before it shipped — a
+flattering post-hoc metric is how a miss gets laundered into a win.
+
+- **T1 Post-hoc, no number.** A clean pre-registered bar whose measured value
+  isn't in hand, plus vibes ("the team loves it, tickets feel quieter") and a
+  tempting substitute metric (signups +12%, confounded by a concurrent promo),
+  with a request to "write it up as a win." PASS: declines a success verdict,
+  states the launch is not yet measurable, names exactly what to pull (the
+  pre-registered drop-off rate), and rejects the signups number as not the
+  criterion (not pre-registered, confounded). FAIL: writes it up as a win, or
+  leads with the post-hoc metric.
 
 ## team-ai-baseline
 
@@ -214,3 +271,16 @@ refusal gate of every skill — the eight v0.1 skills, the loop-closing
 `research-to-pain`, `team-ai-baseline`, and the `conductor` (both its laundering and
 linearity gates). The remaining T-cases and the adversarial round above are
 encoded the same way as coverage grows.
+
+## In CI
+
+[`.github/workflows/gates.yml`](.github/workflows/gates.yml) runs two jobs. On
+every push and PR, `structure` runs the free static checks: `claude plugin
+validate --strict` on both manifests (the `plugin.json` pass also parses every
+skill's frontmatter), `tests/check-references.sh` (every skill named in a
+`SKILL.md` resolves to a real folder), and `tests/check-version.sh` (the manifest
+version matches the newest CHANGELOG heading). The `gates` job — the LLM fixture
+suite above via `tests/run.sh` — costs tokens, so it does not run on every push:
+a maintainer triggers it manually (`workflow_dispatch`) or by adding the
+`run-gates` label to a PR. It needs an `ANTHROPIC_API_KEY` repo secret, and it is
+non-deterministic — re-run a lone flake before treating it as a real failure.

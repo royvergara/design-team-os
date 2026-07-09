@@ -1,9 +1,10 @@
 # CI for Design Team OS. Two jobs:
 #
 #   structure — static checks, no API cost, runs on every push and PR:
-#     * `claude plugin validate --strict` on both manifests (also parses every
-#       skill's frontmatter — this is what would have caught the conductor's
-#       broken YAML), and
+#     * `claude plugin validate --strict` on both manifests — the plugin.json
+#       invocation is the one that also parses every skill's frontmatter (it is
+#       what would have caught the conductor's broken YAML; the marketplace
+#       invocation checks only the marketplace manifest), and
 #     * tests/check-references.sh (no SKILL.md names a skill that doesn't exist).
 #
 #   gates — the LLM smoke tests (tests/run.sh). These spawn real agents and cost

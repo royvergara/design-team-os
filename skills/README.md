@@ -1,6 +1,8 @@
 # Skills
 
-Each skill lives in its own folder here and contains a single `SKILL.md`. That file is the whole skill. Drop the folder into your Claude Code skills directory, or paste the `SKILL.md` contents into a Claude Project.
+Each skill lives in its own folder here and contains a single `SKILL.md`. That file is the whole skill.
+
+Fourteen skills are live — the full table, with the gate each one serves, is in the [root README](../README.md#skills). The recommended install is the plugin (`/plugin marketplace add royvergara/design-team-os`, then `/plugin install design-team-os@fluent-by-design`), which brings in every skill plus the `/design-team-os:init` command in one step. To use a single skill without the plugin, drop its folder into `.claude/skills/` in your project (or `~/.claude/skills/` for every project), or paste its `SKILL.md` into a Claude Project's instructions. Every skill gates its own inputs and works alone — the ledger, profile, and `conductor` are optional connective tissue, never prerequisites.
 
 ## File convention
 
@@ -23,17 +25,4 @@ The `description` is how Claude decides when to reach for the skill, so it names
 
 One skill does one thing. If a skill is trying to cover two jobs, it is two skills.
 
-## What lands in v0.1
-
-Eight starter skills shipped June 12, 2026, one folder each:
-
-- `prd-to-ia`
-- `design-system-enforcement`
-- `critique-synthesis`
-- `user-journey-mapping`
-- `prototype-to-spec`
-- `brief-to-prompt-v0`
-- `brief-to-prompt-bolt`
-- `figma-plugin-orchestration`
-
-After that, new skills drop every Friday.
+And one rule that makes it this library: **every skill enforces a gate.** It refuses or flags when its inputs aren't earned, and that refusal ships with a runnable test under [`tests/fixtures/`](../tests) (see [TESTING.md](../TESTING.md)). A skill that always produces output no matter what it's handed doesn't belong here — [CONTRIBUTING.md](../CONTRIBUTING.md) has the full bar for proposing one.
