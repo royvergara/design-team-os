@@ -73,7 +73,7 @@ Drop this at the top of a forked `SKILL.md` body so its provenance and freshness
 
 ```markdown
 <!--
-FORK OF: prototype-to-spec (upstream v0.5)
+FORK OF: prototype-to-spec (upstream <version you forked from, e.g. v0.6 — see CHANGELOG.md>)
 CHANGED: <one line — what behavior you altered and why>
 VERIFIED: <date> against <repo>@<commit-sha>
 -->

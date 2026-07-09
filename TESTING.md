@@ -8,10 +8,13 @@ signal. `prd-to-ia` always returns exclusions with reasoning.
 to write a brief until the team ratifies measurable success criteria. The
 brief-to-prompt pair refuses to write a prompt until the brief defines what good
 looks like. `figma-plugin-orchestration` always names which steps stay human.
-`prototype-triage` never returns a thumbs-up — PASS or FAIL against the brief,
-nothing else. `design-system-enforcement` refuses to audit against an imagined
+`prototype-triage` never returns a thumbs-up — a review candidate gets PASS or
+FAIL against the brief, and divergent exploration gets left alone.
+`design-system-enforcement` refuses to audit against an imagined
 system and never praises. `critique-synthesis` refuses to hand back a neutral
-summary. `prototype-to-spec` refuses to write a spec without a validation signal.
+summary. `prototype-to-spec` refuses to write a spec without a validation signal —
+the one exception is an explicit owned bet, which earns a Bet Record, never a
+Validation Record.
 `outcome-readout` refuses a verdict without the pre-registered bar and its
 measured number. `team-ai-baseline` refuses to count a mandate or tools bought
 as adoption. `conductor` refuses to count a checkmark as a passed gate, and never

@@ -8,6 +8,20 @@ The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every ski
 listed enforces a gate — it refuses when its inputs aren't earned — and every one
 is covered by a runnable fixture in [TESTING.md](TESTING.md).
 
+## v0.6.1 — 2026-07-09
+
+Post-v0.6 reconciliation sweep: three stale spots the release left behind.
+
+### Fixed
+- `/design-team-os:init` — the scaffolded `design-os.work/README.md` now explains the
+  owned bet alongside the artifacts-never-checkmarks rule, so a team using bets finds
+  them documented in their own ledger directory.
+- TESTING.md intro — the gate litany now matches its own v0.6 T-cases: triage's
+  exploration carve-out and the spec's Bet Record exception.
+- IMPLEMENTATION.md — the fork-header example pinned "upstream v0.5" (its second
+  staleness this month); the version is now a fill-in placeholder so it cannot rot
+  again.
+
 ## v0.6 — 2026-07-09
 
 The release where the gates learn to bend without breaking. Driven by fresh-persona
