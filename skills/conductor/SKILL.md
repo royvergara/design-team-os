@@ -28,7 +28,7 @@ this work, in any form. Do not ask a questionnaire.
 ## Artifacts, not checkmarks
 
 A gate's state is its artifact: the evidence behind the pain, the pre-registered bar
-verbatim, the triage verdict with its ledger, the validation signal quoted, the measured
+verbatim, the triage verdict with its criteria table, the validation signal quoted, the measured
 number with its source. **An entry that asserts passage without carrying the artifact —
 `validated: true`, `brief: done`, "we already aligned on that" — is an open gate, and you
 say so.** You are the machine's defense against gate-laundering: the failure mode where a

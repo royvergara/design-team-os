@@ -23,7 +23,7 @@ If a `design-os.profile.yaml` is present, take the design-system reference and a
 
 Quote the evidence that earned the build: what was tested, with whom, what was found. The proof travels with the work. Six months from now, when someone asks why this was built, the spec answers.
 
-If a `design-os.work/<slug>.yaml` ledger is present, record the validation signal and a pointer to this Validation Record under `value.validation` — the quoted evidence, never a `signal: confirmed` — so the readout reads the same proof after ship (see [templates/work-ledger.schema.md](../../templates/work-ledger.schema.md)).
+If a `design-os.work/<slug>.yaml` ledger is present, record the validation signal and a pointer to this Validation Record under `value.validation` — the quoted evidence, never a `signal: confirmed` — so the readout reads the same proof after ship (see [templates/work-ledger.schema.md](../../templates/work-ledger.schema.md)). No ledger changes nothing about the spec above.
 
 ## Quality bar
 

@@ -21,11 +21,15 @@ skills.
 ## Before you open a PR
 
 ```bash
-bash tests/check-references.sh      # every skill reference resolves
-bash tests/check-version.sh         # manifest version matches CHANGELOG
-claude plugin validate . --strict   # manifests + all frontmatter parse
-tests/run.sh <your-skill>           # your gate holds (needs the claude CLI; costs tokens)
+bash tests/check-references.sh                               # every skill reference resolves
+bash tests/check-version.sh                                  # manifest version matches CHANGELOG
+claude plugin validate . --strict                            # marketplace manifest
+claude plugin validate .claude-plugin/plugin.json --strict   # plugin manifest + every skill's frontmatter
+tests/run.sh <your-skill>                                    # your gate holds (needs the claude CLI; costs tokens)
 ```
+
+Run both `validate` commands — only the `plugin.json` one descends into `skills/`
+and parses frontmatter, so it is the one that catches a broken `description`.
 
 Add a CHANGELOG entry, and bump the version in `.claude-plugin/plugin.json` if your PR
 should reach installed plugin users. CI runs the static checks on every PR; a maintainer
