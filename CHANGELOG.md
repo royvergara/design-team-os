@@ -8,6 +8,20 @@ The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every ski
 listed enforces a gate — it refuses when its inputs aren't earned — and every one
 is covered by a runnable fixture in [TESTING.md](TESTING.md).
 
+## v0.5.2 — 2026-07-09
+
+Fix a non-portable reference in the `/design-team-os:init` scaffold.
+
+### Fixed
+- `/design-team-os:init` wrote the work-ledger schema pointer into the generated
+  `design-os.work/README.md` as `${CLAUDE_PLUGIN_ROOT}/templates/work-ledger.schema.md`,
+  which the harness expands to an absolute plugin-install path (e.g.
+  `/…/design-team-os/templates/work-ledger.schema.md`). That file is committed to the
+  user's product repo, so the path was a dead link for any teammate who never installed
+  the plugin — the exact stale-pointer failure IMPLEMENTATION.md warns against. The
+  command now writes the canonical GitHub URL for the schema instead. Caught by an
+  end-to-end smoke test of the real installed command.
+
 ## v0.5.1 — 2026-07-09
 
 Coherence pass: one story across every doc, no behavior changes to any gate.
