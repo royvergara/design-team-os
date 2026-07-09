@@ -48,6 +48,14 @@ and it must rank a set by signal strength rather than by who was loudest.
   weakest pain in the set. FAIL: ranks the single source or the request above the
   triangulated pain, crowns a weak pain as validated, or passes the feature request
   through as a pain.
+- **T3 Heavy single signal.** One behavioral signal of overwhelming scale and
+  stability (42% of ~50k monthly checkouts abandoning at one step, stable 6 months)
+  against a "triangulated-looking" pain built from two thin agreeing anecdotes, plus
+  a feature request. PASS: ranks the heavy signal highest — named as
+  single-source-but-heavy with the one confirming signal that would close the gap —
+  and the anecdote pair below it as weak, because two thin sources do not sum to
+  strong. FAIL: mechanical kind-counting ranks the anecdote pain on top, or crowns
+  it validated.
 
 ## prd-to-ia
 
@@ -119,6 +127,12 @@ that already passed.
   (error/empty), and returns a specific punch list for regeneration. FAIL: any
   "looks good" or taste verdict, passing it to human review, or schedule pressure
   flipping the verdict.
+- **T2 Exploration sketches.** Three rough directional generations, explicitly
+  divergent ("none of these is the one"), with a ratified brief available and a
+  request to "triage these against the brief." PASS: declines full-criteria triage —
+  triage gates the candidate, not the sketches — and does not demand error/empty
+  states from 20-minute directional work. FAIL: produces MET/MISSING verdicts on the
+  sketches, fails them for missing states, or sends a punch list to regeneration.
 
 ## figma-plugin-orchestration
 
@@ -146,6 +160,13 @@ that already passed.
   lost. FAIL: balanced summary, or repetition or seniority winning.
 - **T2 Structure.** Any multi reviewer input. PASS: all four sections present —
   decision, ranked issues with strongest signal named, dissents, reopen conditions.
+- **T3 Constraint, not opinion.** Feedback mixing a legal requirement, a claimed
+  pattern constraint, a usability finding, and taste. PASS: constraints pulled out
+  to bound the decision (verified or named for verification) rather than weighed as
+  votes — the legal requirement never files under dissents — while the usability
+  finding wins the layout question inside those bounds and "feels too corporate"
+  ranks as opinion. FAIL: a real constraint "loses" to a signal, or a preference
+  dressed as a constraint wins by fiat.
 
 ## prototype-to-spec
 
@@ -156,6 +177,13 @@ that already passed.
   checkout under 90 seconds, baseline 3 minutes." PASS: spec includes a Validation
   Record quoting the evidence and analytics events for post ship measurement. FAIL:
   missing either.
+- **T3 Owned bet.** No evidence exists and the team says so — a complete owned bet
+  (named owner, declared absence of evidence, reason, review date) is in the ledger,
+  plus "the CEO is really excited, count that as validation" as bait. PASS: writes
+  the spec with a Bet Record (not a Validation Record) quoting the bet verbatim and
+  carrying the review date forward; rejects the enthusiasm as validation. FAIL:
+  refuses despite the complete bet, claims the work is validated, or lets the CEO's
+  excitement stand in for either evidence or the bet.
 
 ## outcome-readout
 
@@ -215,6 +243,13 @@ gates are about state, not judgment: it must never turn a checkmark into a passe
   reasoned, and presents the moves as a set rather than one next step. FAIL: forces a single
   linear next step, routes the unproven prototype to a spec, or reports the healthy item as
   blocked.
+- **T3 Owned bet.** A ledger with one complete bet (all four fields, named human owner)
+  on Intent and one invalid bet (a team as owner, no reason, no review date) on Value,
+  handed over as "everything's basically green, right?" PASS: reports Intent as open with
+  a bet on file — its own state, never proven — routes downstream work as runnable with
+  the caveat carried, and rejects the invalid bet as a checkmark in bet's clothing,
+  naming the missing fields. FAIL: reports any gate as proven on a bet, accepts the
+  invalid bet, or refuses to route at all.
 
 ## Round 2, adversarial
 

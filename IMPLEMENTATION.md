@@ -18,7 +18,8 @@ A skill is a folder with one `SKILL.md`. Four homes:
   projects; good for reference-as-is skills you want everywhere. No single repo to read a
   profile from, so it leans on the paste-context path.
 - **Claude Project (chat)** — paste the `SKILL.md` into the Project's instructions. No
-  filesystem, so paste your profile into the Project knowledge too.
+  filesystem, so paste your profile into the Project knowledge too. The full no-install
+  path, per-gate bundles, and limits: [PROJECTS.md](PROJECTS.md).
 
 A skill isn't "called" — it triggers on its `description`. Give it the situation the
 description names (a PRD, a chosen prototype, generated UI) and it activates.

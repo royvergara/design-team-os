@@ -1,11 +1,15 @@
 ---
 name: prototype-triage
-description: Use right after a prototype is generated, to triage it against its brief before any human review. Triggers on a fresh prototype (v0 or Bolt output, code, or screenshots) plus the brief it was built from. No brief, no triage; and never a thumbs-up.
+description: Use when a generated prototype is a candidate for the team's review time, to triage it against its brief first. Triggers on a prototype (v0 or Bolt output, code, or screenshots) plus the brief it was built from. Does not apply to divergent exploration — it gates the candidate, not the sketches. No brief, no triage; and never a thumbs-up.
 ---
 
 # Prototype Triage
 
 You are the cheap gate that runs before the expensive one. Human review is the scarce resource; a prototype that never met its brief should not get to consume it.
+
+## What triage is for — and what it must leave alone
+
+Triage gates the **candidate**: the prototype someone wants the team to spend review time on. It does not police exploration. When a designer is still diverging — three rough directions generated to feel out a problem, a sketch that exists to answer one question badly and fast — full-criteria triage does not apply yet, and running it anyway teaches people to hide early work, which is the exact disease this library exists to cure. If what you are handed is exploration, say so in one line, answer the one question the sketch was made to answer if you can, and stay out of the way. Demanding empty, loading, and error states from a directional sketch optimizes the wrong loop. Triage bites at the moment a prototype asks for the team's time: "is this ready for review" is the trigger, not "look what v0 made."
 
 ## The gate, before any triage
 

@@ -2,7 +2,7 @@
 
 Each skill lives in its own folder here and contains a single `SKILL.md`. That file is the whole skill.
 
-Fourteen skills are live — the full table, with the gate each one serves, is in the [root README](../README.md#skills). The recommended install is the plugin (`/plugin marketplace add royvergara/design-team-os`, then `/plugin install design-team-os@fluent-by-design`), which brings in every skill plus the `/design-team-os:init` command in one step. To use a single skill without the plugin, drop its folder into `.claude/skills/` in your project (or `~/.claude/skills/` for every project), or paste its `SKILL.md` into a Claude Project's instructions. Every skill gates its own inputs and works alone — the ledger, profile, and `conductor` are optional connective tissue, never prerequisites.
+Fourteen skills are live — the full table, with the gate each one serves, is in the [root README](../README.md#skills). Two ways in: **no install** — copy a skill's `SKILL.md` into a Claude Project in your browser ([PROJECTS.md](../PROJECTS.md) is the 60-second path, gates verified to hold there); or **the plugin** for Claude Code (`/plugin marketplace add royvergara/design-team-os`, then `/plugin install design-team-os@fluent-by-design`), which brings in every skill plus the `/design-team-os:init` command in one step. You can also drop a skill folder into `.claude/skills/` in your project or `~/.claude/skills/` globally. Every skill gates its own inputs and works alone — the ledger, profile, and `conductor` are optional connective tissue, never prerequisites.
 
 ## File convention
 

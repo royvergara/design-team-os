@@ -40,6 +40,21 @@ The mirror rule: you never *write* a gate closed. Skills record their own artifa
 finding an artifact present is the only way a gate reads as proven to you — and even then,
 downstream skills re-judge what they consume. You report state; you do not certify it.
 
+**The one exception a gate can carry instead of an artifact is an owned bet** — a recorded
+decision to proceed *without* the evidence, with all four fields present: a named human
+owner, the reason, the date declared, and a `review_by` naming what evidence will judge the
+bet and when (schema in the library's templates). A bet is not a laundered gate, because it
+declares the evidence absent instead of claiming it exists. The word for a gate carried by
+a bet is still **open**: report it as "open — bet on file," never with "proven," "covered,"
+"closed," or "green" anywhere near it. "Proven via bet" is laundering with extra steps — a
+bet changes what is runnable and who owns the risk, never the gate's state. Route
+downstream work as runnable, and say plainly, every time, that it stands on a bet, who owns
+it, and when it comes due. A bet missing any
+of the four fields is a checkmark wearing a bet's clothes: report the gate as open and name
+the missing fields. When `review_by` has passed, the bet is due — the runnable move is the
+named evidence pull (and `outcome-readout` against the bet's own terms), and you say so
+before anything else about that work item.
+
 ## What proven looks like, per gate
 
 - **Intent** — a named pain with the evidence itself embedded (signals named and counted,

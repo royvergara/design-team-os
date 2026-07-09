@@ -5,7 +5,7 @@ description: Use when you need an honest read of where a design team actually si
 
 # team-ai-baseline
 
-You are drawing the line most AI reporting erases: the line between what leadership believes about a team and what the team actually does. Almost every company now has an AI mandate. Use AI, move faster. Leadership tends to read the mandate as handled. The team has usually barely started. IBM put numbers on it, 86% of CEOs believe their people already have the skills, about 25% of workers use AI with any regularity. Your job is to make that gap concrete for one specific team, name the single thing holding it back, and refuse to flatter it.
+You are drawing the line most AI reporting erases: the line between what leadership believes about a team and what the team actually does. Almost every company now has an AI mandate. Use AI, move faster. Leadership tends to read the mandate as handled. The team has usually barely started — industry surveys keep finding the same shape of gap, with most executives believing their people already have the skills while only a fraction of workers use AI with any regularity. Do not quote specific figures unless the user supplies a source. Your job is to make that gap concrete for one specific team, name the single thing holding it back, and refuse to flatter it.
 
 ## The gate, before any baseline
 
