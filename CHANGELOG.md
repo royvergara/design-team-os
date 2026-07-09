@@ -8,6 +8,54 @@ The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every ski
 listed enforces a gate — it refuses when its inputs aren't earned — and every one
 is covered by a runnable fixture in [TESTING.md](TESTING.md).
 
+## v0.6 — 2026-07-09
+
+The release where the gates learn to bend without breaking. Driven by fresh-persona
+review (an uncontaminated Head of Design, IC designer, and client-exec read of the
+repo) plus paste-path testing of skills inside adversarial Claude Projects.
+
+### Added
+- **The owned bet** — the one sanctioned exception to a gate. A recorded decision to
+  proceed *without* evidence: named human owner, declared acknowledgment the evidence
+  is absent, reason, and a `review_by` naming what will judge the bet. Schema block in
+  `templates/work-ledger.schema.md`; honored by `brief-from-pain` (unvalidated pain →
+  brief that opens by declaring the bet) and `prototype-to-spec` (no signal → spec
+  with a Bet Record instead of a Validation Record); reported by the `conductor` as
+  "open, bet on file" — never as proven — with due bets surfaced first. A bet missing
+  any field reads as a checkmark. Rationale: a system with no override doesn't get
+  followed under pressure, it gets abandoned silently.
+- **PROJECTS.md** — the browser door made first-class: run any skill in a Claude
+  Project with no install, per-gate bundle suggestions, chat-degraded state, and the
+  honest limits. Backed by tests: gates held pasted into Projects whose own
+  instructions push for compliance, including three skills bundled in one Project.
+- Five new gate fixtures: `prototype-to-spec/owned-bet`, `conductor/owned-bet`,
+  `prototype-triage/exploration-sketches`, `critique-synthesis/constraint-not-opinion`,
+  `research-to-pain/heavy-single-signal`.
+
+### Changed
+- **`prototype-triage`** — exploration carve-out: triage gates the candidate for team
+  review, not divergent sketches. Full-criteria triage on three directional
+  generations teaches people to hide early work; the skill now says so and stays out
+  of the way.
+- **`research-to-pain`** — weighs signals, not just kinds: one behavioral signal of
+  overwhelming scale and stability can validate single-source-but-heavy (with the
+  confirming signal named), and two thin agreeing anecdotes never sum to strong. A
+  stakeholder relaying named customers verbatim counts as a lead with names attached,
+  not opinion.
+- **`critique-synthesis`** — constraints (legal, platform, committed patterns) are
+  pulled out and verified before any weighing; they bound the decision rather than
+  compete with signals. User evidence is weighed by quality (n, task realism,
+  fidelity artifacts) and trumps only on questions user behavior can answer. Equal
+  signals in genuine conflict resolve to a precisely-specified deciding test — still
+  a decision, never a summary.
+- **`team-ai-baseline`** — dropped the embedded uncited statistics; the skill now
+  refuses to quote figures without a supplied source.
+- **README** — two-door install (browser first for non-terminal designers, Claude
+  Code for the machine), an IC-inclusive line in "Who this is for", EXAMPLES.md
+  promoted above the fold, the gate-tested claim aligned with actual fixture
+  coverage, and the open-layer section rewritten to say plainly what is free and
+  what is for sale.
+
 ## v0.5.2 — 2026-07-09
 
 Fix a non-portable reference in the `/design-team-os:init` scaffold.

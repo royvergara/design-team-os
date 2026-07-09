@@ -12,6 +12,10 @@ Heads of Design, VPs of Design, and Design Directors at product led companies, u
 
 You have the AI tools. Your team is experimenting in private. Quality is all over the place, engineering is racing ahead, and you do not yet have a shared way of working that turns all that motion into proof. That gap is what this library closes.
 
+And if you're the designer on that team, not the one leading it: the skills work for you alone, in a browser, today — copy one file into a Claude Project and go ([60-second path](PROJECTS.md)). The system is built for the team; every piece of it is useful solo.
+
+Want to see it work before reading another word? [EXAMPLES.md](EXAMPLES.md) walks one feature through the whole loop — including the moments the skills refuse, which is the point.
+
 ## What it is
 
 A set of Claude skills that takes a design team from raw research to a shipped, measured outcome in days instead of weeks. Each skill is a small, focused unit of judgment you can drop into Claude Code or a Claude Project. MIT licensed. It grows by release: each version either extends the machine — a new gate skill, the work ledger, the `conductor` — or sharpens a capability it already has ([CHANGELOG.md](CHANGELOG.md) has the history).
@@ -36,11 +40,13 @@ The gates take judgment; the routing between them never should have. Two pieces 
 
 **The conductor** (`skills/conductor/`) reads that state — or, with no ledger, whatever artifacts you describe — and reports which gates are proven, which are open, and what can run right now. Resume after two weeks out, hand work to a teammate, or walk in mid-stream with a PM's prototype that never saw Gate 1: ask "where are we?" and it answers with the state set and the runnable moves, several at once when several apply. **It routes; it never judges.** It will not certify a gate, and it refuses to carry a checkmark forward — a `validated: true` with no evidence behind it reads as an open gate, and it says so.
 
+And because real organizations sometimes proceed without evidence on purpose — a contract commitment, a compliance deadline, a strategic call — a gate can carry an **owned bet** instead of its artifact: a named owner, a declared acknowledgment that the evidence is absent, the reason, and a review date that will judge the bet ([schema](templates/work-ledger.schema.md)). A bet never reads as proven and never excuses the bar; it makes the exception loud and owned instead of silent. What separates a bet from a laundered gate: laundering claims the evidence exists, a bet declares it absent and signs for it.
+
 None of this is required. Every skill still gates its own inputs and works alone in a chat with nothing else installed; the machine is what makes the loop resumable and shared. Work is a state set, not an assembly line — cycles are normal, parallel work items are normal, and entering anywhere is normal, because the gates themselves route wrong-order entry back to what's missing.
 
 ## Skills
 
-Fourteen skills are live under `skills/` — **every one gate-tested by a runnable harness** ([TESTING.md](TESTING.md)): the original eight (v0.1, June 12, 2026), three loop-closing skills (v0.2) that wire the gates into a full Intent → Decision → Value → Intent loop, the most upstream skill in the library (v0.3) that produces the validated pain everything else assumes, `team-ai-baseline` (v0.4), which sits above the gates and tells a team whether it is actually running them, and the `conductor` (v0.5), the machine's routing layer.
+Fourteen skills are live under `skills/` — every skill's primary refusal is encoded as a runnable fixture, with adversarial coverage growing release by release ([TESTING.md](TESTING.md)): the original eight (v0.1, June 12, 2026), three loop-closing skills (v0.2) that wire the gates into a full Intent → Decision → Value → Intent loop, the most upstream skill in the library (v0.3) that produces the validated pain everything else assumes, `team-ai-baseline` (v0.4), which sits above the gates and tells a team whether it is actually running them, and the `conductor` (v0.5), the machine's routing layer.
 
 | Skill | Gate | What it does | Status |
 | --- | --- | --- | --- |
@@ -61,7 +67,7 @@ Fourteen skills are live under `skills/` — **every one gate-tested by a runnab
 
 `research-to-pain` sits one step above everything else. The rest of Gate 1 assumes a validated pain already exists, but nothing produced it until now: it takes interview notes, support tickets, and analytics and returns a short set of pains, each with the signal behind it named and the weakest flagged for more validation. The three v0.2 skills close the loop end to end: Intent → Decision → Value → back to Intent. `brief-from-pain` bridges a validated pain into a brief, `prototype-triage` is the cheap readiness gate before human review, and `outcome-readout` reads the shipped result and hands strategy the next problem.
 
-Each skill enforces its gate in practice, not just on paper. It refuses or flags when the inputs are not there: `research-to-pain` will not crown a pain as validated on stakeholder opinion or a single source, `prd-to-ia` will not draft without both a stated business goal and a customer pain, `user-journey-mapping` will not map without real evidence behind the pain, `prototype-to-spec` will not write a spec without a validation signal, `design-system-enforcement` will not audit against a system it had to imagine, `brief-from-pain` will not write a brief until success is defined in advance, `prototype-triage` will not pass a prototype that misses its brief, `outcome-readout` will not call a launch a win without the pre-registered number, `team-ai-baseline` will not count a mandate or tools bought as adoption or place a team above what its actual practice supports, and the `conductor` will not treat a checkmark as a passed gate or route work into a skill whose own gate would refuse it. That refusal behavior is the point of each skill, and it is what the tests in [TESTING.md](TESTING.md) verify.
+Each skill enforces its gate in practice, not just on paper. It refuses or flags when the inputs are not there: `research-to-pain` will not crown a pain as validated on stakeholder opinion or thin, untriangulated signal, `prd-to-ia` will not draft without both a stated business goal and a customer pain, `user-journey-mapping` will not map without real evidence behind the pain, `prototype-to-spec` will not write a spec without a validation signal, `design-system-enforcement` will not audit against a system it had to imagine, `brief-from-pain` will not write a brief until success is defined in advance, `prototype-triage` will not pass a review candidate that misses its brief (and leaves divergent exploration alone), `outcome-readout` will not call a launch a win without the pre-registered number, `team-ai-baseline` will not count a mandate or tools bought as adoption or place a team above what its actual practice supports, and the `conductor` will not treat a checkmark as a passed gate or route work into a skill whose own gate would refuse it. The one sanctioned exception is the [owned bet](templates/work-ledger.schema.md) — proceeding without evidence, on the record, with a named owner and a review date. That refusal behavior is the point of each skill, and it is what the tests in [TESTING.md](TESTING.md) verify.
 
 ## Suggested workflow
 
@@ -91,28 +97,28 @@ You don't have to memorize any of it: with the `conductor` installed, "where are
 
 Each `SKILL.md` is self-contained and gates its own inputs, so you can drop into any single skill on its own. The sequence is where the full "PRD to validated, shipped, measured" path actually lives; ad hoc use gives you the unit of judgment without the connective tissue.
 
-## Install
+## Install — two doors
 
-**As a plugin — recommended, for Claude Code.** One command adds the marketplace, one installs everything: all fourteen skills, the `conductor` among them, and a `/design-team-os:init` setup command. Updates come through `/plugin`, no re-copying.
+**Door one: your browser, 60 seconds, no install.** For designers (and anyone) who live in claude.ai, not a terminal. Pick a skill from the table above, copy its `SKILL.md`, paste it into a Claude Project's instructions, hand it your input. The gates hold there — tested, including several skills pasted into one Project. The full path, per-gate bundles, and the honest limits are in **[PROJECTS.md](PROJECTS.md)**.
+
+**Door two: Claude Code — the full machine.** One command adds the marketplace, one installs everything: all fourteen skills, the `conductor` among them, and a `/design-team-os:init` setup command. Updates come through `/plugin`, no re-copying.
 
 ```
 /plugin marketplace add royvergara/design-team-os
 /plugin install design-team-os@fluent-by-design
 ```
 
-Then, in your product repo, run `/design-team-os:init` once — it scaffolds the [project profile](templates/project-profile.schema.md) and the [work-ledger](templates/work-ledger.schema.md) directory the skills read and write.
+Then, in your product repo, run `/design-team-os:init` once — it scaffolds the [project profile](templates/project-profile.schema.md) and the [work-ledger](templates/work-ledger.schema.md) directory the skills read and write. After that, just describe your work — hand Claude your research, a PRD, or a prototype and the skill that fits takes over. Not sure where things stand? Ask *"where are we?"* and the conductor tells you what's proven and what to run next. You never have to pick from a list of skills.
 
-**Start here.** After that, just describe your work — hand Claude your research, a PRD, or a prototype and the skill that fits takes over. Not sure where things stand? Ask *"where are we?"* and the conductor tells you what's proven and what to run next. You never have to pick from a list of skills.
+**Also fine: by hand.** Each skill is a folder under `skills/` with one `SKILL.md`. Clone the repo and drop folders into `.claude/skills/` in your project (shared with the team via git) or `~/.claude/skills/` for every project.
 
-**By hand — Claude Code, no plugin.** Each skill is a folder under `skills/` with one `SKILL.md`. Clone the repo and drop the folders into `.claude/skills/` in your project (shared with the team via git) or `~/.claude/skills/` for every project.
+Whichever door: you don't invoke a skill by name — it triggers on the situation its `description` names. Give Claude that input and the skill activates.
 
-**In a Claude Project — chat.** Paste a skill's `SKILL.md` into the Project's instructions, and keep your profile and any work ledger as pasted blocks in the Project knowledge (no filesystem, so the state files travel as text).
-
-You don't invoke a skill by name — it triggers on the situation its `description` names. Give Claude that input and the skill activates.
+The same skill files serve both doors, unchanged. The machine — ledger, conductor, init — is what makes the loop resumable and shared across a team; the skills alone are what make one person's next hour better. Start wherever you are.
 
 ## Quickstart
 
-Install the plugin, then hand Claude a pile of raw research: *"Here are our interview notes, support tickets, and the activation funnel. What's the real pain?"* — `research-to-pain` takes over. You get a short set of pains, each with the signal named, ranked by how much independent evidence agrees, the weakest one flagged with the cheapest test to firm it up.
+Through either door, hand Claude a pile of raw research: *"Here are our interview notes, support tickets, and the activation funnel. What's the real pain?"* — `research-to-pain` takes over. You get a short set of pains, each with the signal named, ranked by how much independent evidence agrees, the weakest one flagged with the cheapest test to firm it up.
 
 Now hand it research that is really just opinion, three execs who agree and a board mandate. It won't crown a validated pain. It names what is missing and the fastest signal that would settle it. **That refusal is the skill working.** It is the whole point of the library, and the same discipline runs through every skill: `prd-to-ia` won't draft without a goal and a pain, `user-journey-mapping` won't map without evidence, `prototype-to-spec` won't spec without a validation signal. The gates are what you're installing.
 
@@ -120,7 +126,7 @@ For the fastest sense of how the pieces fit, read **[EXAMPLES.md](EXAMPLES.md)**
 
 ## This is the open layer
 
-The skills are free and stay free. They are the open core of a larger system, Design Team OS, which installs the three gates into your team's actual workflow, trains the team, and proves the result with an outcomes scorecard. If that is interesting, the writing lives in the newsletter below and the door is open from there. No pitch in the repo.
+The skills are free and stay free, MIT, no strings. They are also the open core of a paid practice — Design Team OS as a service: installing the three gates into a team's actual workflow, training the team, and proving the result with an outcomes scorecard. That's the honest shape of this repo: everything a team needs to run the system itself is here; what's for sale is someone who has run it before doing the installation and holding the line. If that's interesting, the writing lives in the newsletter below.
 
 ## Who made this
 
@@ -134,4 +140,4 @@ MIT. See [LICENSE](LICENSE). Use it, fork it, ship it.
 
 ## Status
 
-v0.5 — the release where the OS in the name becomes literal. Fourteen skills are live: the eight v0.1 skills, the three loop-closing v0.2 additions (`brief-from-pain`, `prototype-triage`, `outcome-readout`), the upstream `research-to-pain` (v0.3), `team-ai-baseline` (v0.4), and the `conductor` plus the work-ledger schema (v0.5) — the machine that routes the loop without ever judging a gate. Each skill is tested against its gate by a runnable harness (see [TESTING.md](TESTING.md)) and ready to use. Full version history in [CHANGELOG.md](CHANGELOG.md).
+v0.6 — the release where the gates learn to bend without breaking. Fourteen skills are live, now with the **owned bet**: a recorded, named, review-dated way to proceed without evidence on purpose, so the exception is loud instead of silent. Judgment tuned where fresh review found it too absolute (signal weight in `research-to-pain`, constraints and evidence quality in `critique-synthesis`, an exploration carve-out in `prototype-triage`), and a first-class browser path in [PROJECTS.md](PROJECTS.md). Every skill's primary refusal is encoded as a runnable fixture ([TESTING.md](TESTING.md)). Full version history in [CHANGELOG.md](CHANGELOG.md).

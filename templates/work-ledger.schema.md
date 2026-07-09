@@ -66,6 +66,34 @@ value:
     next_intent: "drop-off moved to the integration step — new Gate 1 input"
 ```
 
+## The owned bet — the one legitimate exception
+
+Real organizations sometimes proceed without the artifact on purpose: a contract commitment,
+a compliance deadline, a strategic bet on a new market. A system with no way to record that
+doesn't get followed under pressure — it gets abandoned silently, which is worse than a
+logged exception. So a gate can carry an **owned bet** instead of its artifact:
+
+```yaml
+intent:
+  bet:                            # a conscious decision to proceed WITHOUT the artifact
+    owner: "Dana K, VP Product"   # a named human with the authority to own it
+    reason: "Northwind contract commits this for Q3; pain is assumed, not validated"
+    declared: 2026-07-10
+    review_by: "4 weeks post-ship: funnel + support themes decide if the bet held"
+```
+
+What separates a bet from a laundered gate: **a bet declares the evidence is absent and
+names who owns proceeding anyway; laundering claims the evidence exists.** Four fields, all
+required — `owner` (a person, not a team), `reason`, `declared`, `review_by` (the evidence
+and date that will judge the bet). A bet missing any of them reads as a checkmark, and every
+skill treats it as one.
+
+A bet never closes a gate. The gate stays **open — bet on file**: the `conductor` reports it
+as exactly that (never as proven), downstream skills proceed but say plainly they are
+building on an unproven gate, and `outcome-readout` scores the bet at `review_by` like any
+other bar. Enthusiasm is not a bet — "the VP loved it" claims merit; a bet says "we know we
+have no evidence, and here is who owns that."
+
 ## Who writes it, who reads it
 
 Skills append their own artifact when they complete (`research-to-pain` writes `intent`,
