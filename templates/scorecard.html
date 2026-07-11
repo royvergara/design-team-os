@@ -8,13 +8,13 @@
   :root{
     --bg:#fbfaf8; --ink:#1c1a17; --muted:#6b655c; --line:#e7e2d9;
     --card:#ffffff; --outcome:#0f7b57; --leverage:#8a8377; --amber:#b0700a;
-    --amber-bg:#fdf4e3; --red:#a3341f; --red-bg:#fbeae6; --accent:#1c1a17;
+    --amber-bg:#fdf4e3; --red:#a3341f; --red-bg:#fbeae6;
   }
   @media (prefers-color-scheme: dark){
     :root{
       --bg:#171614; --ink:#efe9df; --muted:#a29a8c; --line:#332f2a;
       --card:#201e1b; --outcome:#4bbd8f; --leverage:#8f887b;
-      --amber:#e0a94a; --amber-bg:#2a2114; --red:#e08a72; --red-bg:#2a1815; --accent:#efe9df;
+      --amber:#e0a94a; --amber-bg:#2a2114; --red:#e08a72; --red-bg:#2a1815;
     }
   }
   *{box-sizing:border-box}
@@ -78,7 +78,7 @@
   <p class="meta"><strong>{{EFFORT_NAME}}</strong> · {{OWNER}} · {{GENERATED_DATE}}</p>
 
   <p class="headline">{{HEADLINE}}</p>
-  <span class="pill outcome">{{HEADLINE_STATE_LABEL}}</span>
+  <span class="pill {{HEADLINE_STATE_CLASS}}">{{HEADLINE_STATE_LABEL}}</span>
 
   <dl class="frame">
     <dt>The pain</dt><dd>{{PAIN}}</dd>
