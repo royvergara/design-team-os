@@ -8,6 +8,26 @@ The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every ski
 listed enforces a gate — it refuses when its inputs aren't earned — and every one
 is covered by a runnable fixture in [TESTING.md](TESTING.md).
 
+## v0.7 — 2026-07-10
+
+The proof layer gets its artifact. The machine already produced per feature verdicts;
+this is the sheet they roll up into, and the one a Head of Design carries upward.
+
+### Added
+- **AI Outcomes Scorecard** (`templates/ai-outcomes-scorecard.md`) — the program level
+  companion to `outcome-readout`. Two layers, Leverage (is the work faster and cheaper)
+  and Outcome (did the speed produce value), a baseline gate that refuses a scorecard
+  built from memory, and a headline sentence that only fills in when both halves are
+  real. Every Layer 1 metric must name the Layer 2 signal it serves, so activity cannot
+  be reported as a result. Owned bets get their own section with the review date that
+  will judge them, never blended into an outcome.
+- **Templates section in the README**, listing the three files under `templates/`: the
+  work ledger, the project profile, and the scorecard.
+
+### Changed
+- `outcome-readout` now names the scorecard as its program level rollup, and states that
+  a leverage number never substitutes for a verdict the skill has not earned.
+
 ## v0.6.1 — 2026-07-09
 
 Post-v0.6 reconciliation sweep: three stale spots the release left behind.

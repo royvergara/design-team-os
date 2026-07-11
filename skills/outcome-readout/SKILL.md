@@ -28,3 +28,5 @@ If a `design-os.work/<slug>.yaml` ledger is present, record the measured value a
 ## Quality bar
 
 The verdict cites a pre-registered bar and a measured number, never one without the other. If you claimed success without the number, you faked the gate.
+
+This skill scores one feature. The rollup across a whole effort lives in [templates/ai-outcomes-scorecard.md](../../templates/ai-outcomes-scorecard.md), which reads from these verdicts. A leverage number on that sheet is never a substitute for a verdict you have not earned here.

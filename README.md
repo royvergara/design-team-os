@@ -69,6 +69,18 @@ Fourteen skills are live under `skills/` — every skill's primary refusal is en
 
 Each skill enforces its gate in practice, not just on paper. It refuses or flags when the inputs are not there: `research-to-pain` will not crown a pain as validated on stakeholder opinion or thin, untriangulated signal, `prd-to-ia` will not draft without both a stated business goal and a customer pain, `user-journey-mapping` will not map without real evidence behind the pain, `prototype-to-spec` will not write a spec without a validation signal, `design-system-enforcement` will not audit against a system it had to imagine, `brief-from-pain` will not write a brief until success is defined in advance, `prototype-triage` will not pass a review candidate that misses its brief (and leaves divergent exploration alone), `outcome-readout` will not call a launch a win without the pre-registered number, `team-ai-baseline` will not count a mandate or tools bought as adoption or place a team above what its actual practice supports, and the `conductor` will not treat a checkmark as a passed gate or route work into a skill whose own gate would refuse it. The one sanctioned exception is the [owned bet](templates/work-ledger.schema.md) — proceeding without evidence, on the record, with a named owner and a review date. That refusal behavior is the point of each skill, and it is what the tests in [TESTING.md](TESTING.md) verify.
 
+## Templates
+
+Three files under `templates/` carry the state the skills read and write, plus the one artifact you take upward.
+
+| Template | What it is |
+| --- | --- |
+| [`work-ledger.schema.md`](templates/work-ledger.schema.md) | One `design-os.work/<slug>.yaml` per feature. Gate state as artifacts, never checkmarks, plus the owned bet. What the conductor reads. |
+| [`project-profile.schema.md`](templates/project-profile.schema.md) | The stable answers, once: design system, event names, repo conventions. So skills stop re-asking. |
+| [`ai-outcomes-scorecard.md`](templates/ai-outcomes-scorecard.md) | The program level scorecard. `outcome-readout` scores one shipped feature; this rolls the whole effort up and refuses to call activity a result. |
+
+The scorecard is the layer a Head of Design actually reports on. Two layers, Leverage and Outcome, and one headline sentence that only fills in when both halves are real: the work got faster, and the speed moved a number. It reads from the verdicts the ledgers already hold, lists every owned bet in its own section with the date that will judge it, and gives a leverage report no way to pass itself off as a result.
+
 ## Suggested workflow
 
 The skills work ad hoc, but they were built to run in order, following the three gates. Used in sequence, each one's output is the next one's input, and the gates keep speed intentional from PRD to handoff. [EXAMPLES.md](EXAMPLES.md) walks one real feature through this whole sequence, gates and refusals included.
