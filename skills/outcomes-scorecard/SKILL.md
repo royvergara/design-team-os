@@ -27,9 +27,9 @@ You invent no verdict to fill a blank cell. A missing number stays missing and v
 
 Read [templates/scorecard.html](../../templates/scorecard.html) and fill its slots from the reconciled inputs:
 
-- Replace every `{{TOKEN}}` with its value. The headline pill has two tokens: set `{{HEADLINE_STATE_CLASS}}` to `outcome` and `{{HEADLINE_STATE_LABEL}}` to `Outcome moved` when the headline's outcome half is measured; when it is leverage-only, set `{{HEADLINE_STATE_CLASS}}` to "leverage-only" and `{{HEADLINE_STATE_LABEL}}` to `Leverage only — outcome reads <date>`.
+- Replace every `{{TOKEN}}` with its value. The headline pill's two tokens, `{{HEADLINE_STATE_CLASS}}` and `{{HEADLINE_STATE_LABEL}}`, are set together to one of three states: (a) the outcome was measured and MET its bar → `outcome` / `Outcome moved`; (b) the outcome was measured but MISSED its bar → `miss` / `Outcome measured — bar missed` (a measured miss is an honest result, never a green win); (c) the outcome half is not yet measured → "leverage-only" / `Leverage only — outcome reads <date>`. Measured is not moved — reserve `outcome` for a bar that was met.
 - For each `<!-- repeat:NAME -->` block, duplicate the inner `<tr>` once per item and fill its tokens; remove the block if it has no items.
-- Keep the `<!-- state:bets -->` block only if at least one owned bet exists; otherwise delete it. Add `class="is-overdue"` to any bet `<tr>` whose review date has passed with an empty finding, and put the flag word in its finding cell.
+- Keep the `<!-- state:bets -->` block only if at least one owned bet exists; otherwise delete it. Add `class="is-overdue"` to any bet `<tr>` whose review date has passed with an empty finding, and put the flag word, wrapped in `<span class="flag">…</span>`, in its finding cell.
 - Remove every `<!-- ... -->` guide comment from the final file.
 
 Write the result to a file beside the source markdown, same basename, `.md` → `.html` (`ai-outcomes-scorecard.md` → `ai-outcomes-scorecard.html`). The file must stay self-contained — never add an external URL, font, or script.
