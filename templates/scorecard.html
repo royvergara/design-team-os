@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{EFFORT_NAME}} — AI Outcomes Scorecard</title>
+<style>
+  :root{
+    --bg:#fbfaf8; --ink:#1c1a17; --muted:#6b655c; --line:#e7e2d9;
+    --card:#ffffff; --outcome:#0f7b57; --leverage:#8a8377; --amber:#b0700a;
+    --amber-bg:#fdf4e3; --red:#a3341f; --red-bg:#fbeae6;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#171614; --ink:#efe9df; --muted:#a29a8c; --line:#332f2a;
+      --card:#201e1b; --outcome:#4bbd8f; --leverage:#8f887b;
+      --amber:#e0a94a; --amber-bg:#2a2114; --red:#e08a72; --red-bg:#2a1815;
+    }
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  .page{max-width:760px; margin:0 auto; padding:56px 28px 80px}
+  .eyebrow{
+    font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--muted); margin:0 0 6px
+  }
+  .meta{font-size:14px; color:var(--muted); margin:0 0 40px}
+  .meta strong{color:var(--ink); font-weight:600}
+  .pill{
+    display:inline-block; font-size:12px; font-weight:600; letter-spacing:.02em;
+    padding:4px 11px; border-radius:999px; vertical-align:middle
+  }
+  .pill.outcome{color:var(--outcome); background:color-mix(in srgb,var(--outcome) 12%,transparent)}
+  .pill.leverage-only{color:var(--amber); background:var(--amber-bg)}
+  .pill.miss{color:var(--red); background:var(--red-bg)}
+  .headline{
+    font-family:Georgia,"Times New Roman",serif; font-weight:400;
+    font-size:30px; line-height:1.32; letter-spacing:-.01em; margin:0 0 14px
+  }
+  .frame{
+    margin:0 0 52px; padding:16px 0 0; border-top:1px solid var(--line);
+    display:grid; grid-template-columns:88px 1fr; gap:6px 18px; font-size:15px
+  }
+  .frame dt{color:var(--muted)} .frame dd{margin:0}
+  section{margin:0 0 44px}
+  h2{
+    font-size:13px; letter-spacing:.12em; text-transform:uppercase; margin:0 0 4px
+  }
+  h2.outcome{color:var(--outcome)}
+  h2.leverage{color:var(--leverage)}
+  .sub{font-size:13px; color:var(--muted); margin:0 0 16px}
+  table{width:100%; border-collapse:collapse; font-size:14px}
+  th,td{text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top}
+  th{font-size:12px; letter-spacing:.03em; text-transform:uppercase; color:var(--muted); font-weight:600}
+  .leverage table{color:var(--muted)}
+  .leverage td:first-child{color:var(--ink)}
+  .bets{border:1px solid var(--line); border-radius:10px; padding:20px; background:var(--card)}
+  .bets h2{color:var(--muted)}
+  tr.is-overdue td{background:var(--red-bg)}
+  .flag{color:var(--red); font-weight:600}
+  footer{margin-top:56px; padding-top:16px; border-top:1px solid var(--line); font-size:12px; color:var(--muted)}
+  @media print{
+    :root{--bg:#fff; --card:#fff}
+    body{font-size:12pt} .page{padding:0; max-width:none}
+    section{page-break-inside:avoid}
+  }
+  @media (max-width:520px){
+    .headline{font-size:24px} .frame{grid-template-columns:1fr; gap:2px 0}
+    .frame dt{margin-top:8px}
+  }
+</style>
+</head>
+<body>
+<main class="page">
+  <p class="eyebrow">AI Outcomes Scorecard</p>
+  <p class="meta"><strong>{{EFFORT_NAME}}</strong> · {{OWNER}} · {{GENERATED_DATE}}</p>
+
+  <p class="headline">{{HEADLINE}}</p>
+  <span class="pill {{HEADLINE_STATE_CLASS}}">{{HEADLINE_STATE_LABEL}}</span>
+
+  <dl class="frame">
+    <dt>The pain</dt><dd>{{PAIN}}</dd>
+    <dt>The goal</dt><dd>{{GOAL}}</dd>
+  </dl>
+
+  <section>
+    <h2 class="outcome">Outcome — did the speed produce value?</h2>
+    <p class="sub">The result. Read this first.</p>
+    <table>
+      <thead><tr><th>Signal</th><th>When read</th><th>Result</th></tr></thead>
+      <tbody>
+        <!-- repeat:layer2 -->
+        <tr><td>{{L2_SIGNAL}}</td><td>{{L2_WHEN}}</td><td>{{L2_RESULT}}</td></tr>
+        <!-- /repeat:layer2 -->
+      </tbody>
+    </table>
+  </section>
+
+  <section class="leverage">
+    <h2 class="leverage">Leverage — supporting activity</h2>
+    <p class="sub">Faster and cheaper. Activity, not a result — every row serves an Outcome signal above.</p>
+    <table>
+      <thead><tr><th>Metric</th><th>Baseline</th><th>Current</th><th>Target</th><th>Serves</th></tr></thead>
+      <tbody>
+        <!-- repeat:layer1 -->
+        <tr><td>{{L1_METRIC}}</td><td>{{L1_BASE}}</td><td>{{L1_CURRENT}}</td><td>{{L1_TARGET}}</td><td>{{L1_SERVES}}</td></tr>
+        <!-- /repeat:layer1 -->
+      </tbody>
+    </table>
+  </section>
+
+  <!-- state:bets -->
+  <section>
+    <div class="bets">
+      <h2>Work carried by an owned bet</h2>
+      <p class="sub">Proceeded without evidence, on the record. A bet never reads as proven.</p>
+      <table>
+        <thead><tr><th>Work</th><th>Owner</th><th>Review by</th><th>What the review found</th></tr></thead>
+        <tbody>
+          <!-- repeat:bet -->
+          <tr><td>{{BET_WORK}}</td><td>{{BET_OWNER}}</td><td>{{BET_REVIEW_BY}}</td><td>{{BET_FINDING}}</td></tr>
+          <!-- /repeat:bet -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <!-- /state:bets -->
+
+  <section>
+    <h2>Baseline</h2>
+    <p class="sub">What the loop looked like before the change. Captured {{BASELINE_DATE}}.</p>
+    <table>
+      <tbody>
+        <!-- repeat:baseline -->
+        <tr><td>{{BASE_QUESTION}}</td><td>{{BASE_BEFORE}}</td></tr>
+        <!-- /repeat:baseline -->
+      </tbody>
+    </table>
+  </section>
+
+  <footer>Rendered from {{SOURCE_FILENAME}} by Design Team OS · outcomes-scorecard</footer>
+</main>
+</body>
+</html>

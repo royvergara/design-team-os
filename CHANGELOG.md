@@ -8,6 +8,25 @@ The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every ski
 listed enforces a gate — it refuses when its inputs aren't earned — and every one
 is covered by a runnable fixture in [TESTING.md](TESTING.md).
 
+## v0.8 — 2026-07-10
+
+The proof layer becomes shareable. v0.7 gave the scorecard its template; this makes it
+a page a Head of Design can view, print, and send.
+
+### Added
+- **`outcomes-scorecard` skill** (`skills/outcomes-scorecard/`) — renders a filled AI
+  Outcomes Scorecard into a self-contained, theme-aware, print-clean HTML page written
+  beside its source (`ai-outcomes-scorecard.md` → `ai-outcomes-scorecard.html`), then
+  offers to publish it as a shareable Artifact link. The engine's first producer skill,
+  and still a gate: it renders earned state only. No baseline, no render; a leverage-only
+  headline renders labeled as such with its read date; an owned bet past its review date
+  with an empty finding renders as the finding, never as a win. It never judges a feature
+  (`outcome-readout`) and never routes (`conductor`). Three adversarial fixtures cover the
+  refusals.
+- **`templates/scorecard.html`** — the self-contained render template (inlined CSS, no
+  JS, no external assets) that carries the visual language, versioned so every render
+  looks like one system.
+
 ## v0.7 — 2026-07-10
 
 The proof layer gets its artifact. The machine already produced per feature verdicts;
