@@ -5,17 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{EFFORT_NAME}} — AI Outcomes Scorecard</title>
 <style>
+  /* Light — warm paper. Neutrals carry a faint warm bias, not pure grey. */
   :root{
     --bg:#fbfaf8; --ink:#1c1a17; --muted:#6b655c; --line:#e7e2d9;
     --card:#ffffff; --outcome:#0f7b57; --leverage:#8a8377; --amber:#b0700a;
     --amber-bg:#fdf4e3; --red:#a3341f; --red-bg:#fbeae6;
   }
+  /* Dark tokens, applied when the OS asks for dark AND the viewer hasn't
+     explicitly chosen light. */
   @media (prefers-color-scheme: dark){
-    :root{
+    :root:not([data-theme="light"]){
       --bg:#171614; --ink:#efe9df; --muted:#a29a8c; --line:#332f2a;
       --card:#201e1b; --outcome:#4bbd8f; --leverage:#8f887b;
       --amber:#e0a94a; --amber-bg:#2a2114; --red:#e08a72; --red-bg:#2a1815;
     }
+  }
+  /* An explicit dark toggle wins regardless of OS. Light needs no explicit
+     block — the base :root already carries it, and the media query above
+     bows out whenever data-theme="light". */
+  :root[data-theme="dark"]{
+    --bg:#171614; --ink:#efe9df; --muted:#a29a8c; --line:#332f2a;
+    --card:#201e1b; --outcome:#4bbd8f; --leverage:#8f887b;
+    --amber:#e0a94a; --amber-bg:#2a2114; --red:#e08a72; --red-bg:#2a1815;
   }
   *{box-sizing:border-box}
   body{
@@ -27,8 +38,18 @@
     font-size:12px; letter-spacing:.14em; text-transform:uppercase;
     color:var(--muted); margin:0 0 6px
   }
-  .meta{font-size:14px; color:var(--muted); margin:0 0 40px}
+  .meta{font-size:14px; color:var(--muted); margin:0 0 22px}
   .meta strong{color:var(--ink); font-weight:600}
+  .lede{
+    font-size:15px; line-height:1.6; color:var(--muted);
+    max-width:62ch; margin:0 0 40px; padding:0 0 0 14px;
+    border-left:2px solid var(--line)
+  }
+  .headline{
+    font-family:Georgia,"Times New Roman",serif; font-weight:400;
+    font-size:30px; line-height:1.32; letter-spacing:-.01em; margin:0 0 16px;
+    text-wrap:balance
+  }
   .pill{
     display:inline-block; font-size:12px; font-weight:600; letter-spacing:.02em;
     padding:4px 11px; border-radius:999px; vertical-align:middle
@@ -36,24 +57,46 @@
   .pill.outcome{color:var(--outcome); background:color-mix(in srgb,var(--outcome) 12%,transparent)}
   .pill.leverage-only{color:var(--amber); background:var(--amber-bg)}
   .pill.miss{color:var(--red); background:var(--red-bg)}
-  .headline{
-    font-family:Georgia,"Times New Roman",serif; font-weight:400;
-    font-size:30px; line-height:1.32; letter-spacing:-.01em; margin:0 0 14px
-  }
+  .legend{display:flex; flex-wrap:wrap; gap:8px 16px; margin:12px 0 0; font-size:11px; color:var(--muted)}
+  .legend i.dot{display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; vertical-align:middle}
+  .legend .dot.outcome{background:var(--outcome)}
+  .legend .dot.miss{background:var(--red)}
+  .legend .dot.lev{background:var(--amber)}
   .frame{
-    margin:0 0 52px; padding:16px 0 0; border-top:1px solid var(--line);
+    margin:34px 0 44px; padding:16px 0 0; border-top:1px solid var(--line);
     display:grid; grid-template-columns:88px 1fr; gap:6px 18px; font-size:15px
   }
   .frame dt{color:var(--muted)} .frame dd{margin:0}
+  .glance-wrap{margin:0 0 48px}
+  .glance{display:flex; flex-wrap:wrap; gap:12px}
+  .tile{
+    flex:1 1 180px; background:var(--card); border:1px solid var(--line);
+    border-radius:10px; padding:15px 18px
+  }
+  .tile-label{font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin:0 0 9px}
+  .tile-move{
+    display:flex; align-items:baseline; flex-wrap:wrap; gap:8px;
+    margin:0 0 7px; font-variant-numeric:tabular-nums
+  }
+  .tile-move .was{font-size:15px; color:var(--muted)}
+  .tile-move .arrow{color:var(--muted)}
+  .tile-move .now{font-size:20px; font-weight:600; color:var(--ink)}
+  .tile-move .now.met{color:var(--outcome)}
+  .tile-move .now.miss{color:var(--red)}
+  .tile-note{font-size:11px; color:var(--muted); margin:0}
   section{margin:0 0 44px}
   h2{
-    font-size:13px; letter-spacing:.12em; text-transform:uppercase; margin:0 0 4px
+    font-size:13px; letter-spacing:.12em; text-transform:uppercase; margin:0 0 4px;
+    text-wrap:balance
   }
   h2.outcome{color:var(--outcome)}
   h2.leverage{color:var(--leverage)}
   .sub{font-size:13px; color:var(--muted); margin:0 0 16px}
   table{width:100%; border-collapse:collapse; font-size:14px}
-  th,td{text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top}
+  th,td{
+    text-align:left; padding:10px 12px; border-bottom:1px solid var(--line);
+    vertical-align:top; font-variant-numeric:tabular-nums
+  }
   th{font-size:12px; letter-spacing:.03em; text-transform:uppercase; color:var(--muted); font-weight:600}
   .leverage table{color:var(--muted)}
   .leverage td:first-child{color:var(--ink)}
@@ -61,11 +104,11 @@
   .bets h2{color:var(--muted)}
   tr.is-overdue td{background:var(--red-bg)}
   .flag{color:var(--red); font-weight:600}
-  footer{margin-top:56px; padding-top:16px; border-top:1px solid var(--line); font-size:12px; color:var(--muted)}
+  footer{margin-top:56px; padding-top:16px; border-top:1px solid var(--line); font-size:12px; line-height:1.6; color:var(--muted)}
   @media print{
     :root{--bg:#fff; --card:#fff}
     body{font-size:12pt} .page{padding:0; max-width:none}
-    section{page-break-inside:avoid}
+    section,.glance-wrap{page-break-inside:avoid}
   }
   @media (max-width:520px){
     .headline{font-size:24px} .frame{grid-template-columns:1fr; gap:2px 0}
@@ -78,13 +121,33 @@
   <p class="eyebrow">AI Outcomes Scorecard</p>
   <p class="meta"><strong>{{EFFORT_NAME}}</strong> · {{OWNER}} · {{GENERATED_DATE}}</p>
 
+  <p class="lede">The purpose of this document is to assess one specific AI-assisted design effort: did the work get faster, and did that speed move a real outcome? Read it top-down — the headline is the verdict, and the sections below are the evidence.</p>
+
   <p class="headline">{{HEADLINE}}</p>
   <span class="pill {{HEADLINE_STATE_CLASS}}">{{HEADLINE_STATE_LABEL}}</span>
+  <div class="legend">
+    <span><i class="dot outcome"></i>Met the bar</span>
+    <span><i class="dot miss"></i>Measured, missed</span>
+    <span><i class="dot lev"></i>Leverage only — not yet measured</span>
+  </div>
 
   <dl class="frame">
     <dt>The pain</dt><dd>{{PAIN}}</dd>
     <dt>The goal</dt><dd>{{GOAL}}</dd>
   </dl>
+
+  <section class="glance-wrap">
+    <p class="eyebrow">At a glance</p>
+    <div class="glance">
+      <!-- repeat:highlight -->
+      <div class="tile">
+        <p class="tile-label">{{H_LABEL}}</p>
+        <p class="tile-move"><span class="was">{{H_BEFORE}}</span><span class="arrow">→</span><span class="now {{H_AFTER_CLASS}}">{{H_AFTER}}</span></p>
+        <p class="tile-note">{{H_NOTE}}</p>
+      </div>
+      <!-- /repeat:highlight -->
+    </div>
+  </section>
 
   <section>
     <h2 class="outcome">Outcome — did the speed produce value?</h2>
@@ -141,7 +204,7 @@
     </table>
   </section>
 
-  <footer>Rendered from {{SOURCE_FILENAME}} by Design Team OS · outcomes-scorecard</footer>
+  <footer>Program-level rollup — each Outcome verdict traces to a per-feature readout from the outcome-readout skill. Rendered from {{SOURCE_FILENAME}} by Design Team OS · outcomes-scorecard.</footer>
 </main>
 </body>
 </html>
