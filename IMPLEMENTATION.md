@@ -24,6 +24,14 @@ A skill is a folder with one `SKILL.md`. Four homes:
 A skill isn't "called" — it triggers on its `description`. Give it the situation the
 description names (a PRD, a chosen prototype, generated UI) and it activates.
 
+**Beyond Claude Code and Projects.** A `SKILL.md` is portable markdown, so a gate can be
+adapted onto any capable agent — a Cursor rule, a ChatGPT Custom GPT or Project, a Gemini
+gem — where it still gates its own inputs. Only Claude Code runs the *machine*, though: the
+`conductor`, the `design-os.work/` ledger, and `/design-team-os:init` have no equivalent
+elsewhere, so off Claude you route by hand and carry state yourself. Treat those adaptations
+as fork-and-tune work (below), proven per stack — that per-team adaptation is the paid
+enablement practice, not an out-of-the-box guarantee.
+
 ## The two state files
 
 Two YAML files in your product repo carry everything the skills would otherwise re-ask or

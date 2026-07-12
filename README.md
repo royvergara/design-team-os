@@ -129,6 +129,8 @@ Whichever door: you don't invoke a skill by name — it triggers on the situatio
 
 The same skill files serve both doors, unchanged. The machine — ledger, conductor, init — is what makes the loop resumable and shared across a team; the skills alone are what make one person's next hour better. Start wherever you are.
 
+**Beyond Claude, by hand.** A `SKILL.md` is plain instructions, so a gate travels: paste one into a Cursor rule, a ChatGPT Custom GPT or Project, or a Gemini gem, and it still refuses when the inputs aren't earned. What doesn't travel is the machine — the `conductor`, the work ledger, and `/design-team-os:init` are Claude Code, so anywhere else you route by hand: pick the skill, carry the state yourself. Adapting and proving the gates on a team's own stack is the enablement side of the paid practice, not a promise they run there untouched.
+
 ## Quickstart
 
 Through either door, hand Claude a pile of raw research: *"Here are our interview notes, support tickets, and the activation funnel. What's the real pain?"* — `research-to-pain` takes over. You get a short set of pains, each with the signal named, ranked by how much independent evidence agrees, the weakest one flagged with the cheapest test to firm it up.
