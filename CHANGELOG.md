@@ -8,6 +8,17 @@ The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every ski
 listed enforces a gate — it refuses when its inputs aren't earned — and every one
 is covered by a runnable fixture in [TESTING.md](TESTING.md).
 
+## v0.8.2 — 2026-07-12
+
+Pixel-exact type parity for the scorecard render.
+
+### Changed
+- **`templates/scorecard.html`** now embeds the Gloock display face as a base64 woff2
+  data-URI (~17.5KB, latin subset, OFL) rather than relying on the Georgia fallback, so a
+  rendered scorecard's headline matches the marketing site's didone serif exactly. The
+  file stays fully self-contained — the font is inline, no external fetch — and Georgia
+  remains the per-glyph fallback. No behavior or contract change.
+
 ## v0.8.1 — 2026-07-12
 
 The scorecard render adopts the house visual system. Cohesion pass, no behavior change.
