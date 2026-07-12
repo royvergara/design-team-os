@@ -8,6 +8,21 @@ The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every ski
 listed enforces a gate — it refuses when its inputs aren't earned — and every one
 is covered by a runnable fixture in [TESTING.md](TESTING.md).
 
+## v0.8.1 — 2026-07-12
+
+The scorecard render adopts the house visual system. Cohesion pass, no behavior change.
+
+### Changed
+- **`templates/scorecard.html`** re-themed to the Fluent by Design expressive system
+  (deep-teal instrument palette, scarce turquoise as the machine glow, mist-white ink,
+  hairline dividers, the Gloock→Georgia didone display stack) so a rendered scorecard
+  matches the marketing site and the baseline pages. The reserved status set (met /
+  measured-miss / leverage-only) rides the brand's two-voice tension — turquoise for the
+  machine's good glow, warm coral and amber for the honest miss and the pending state —
+  and stays confined to the Outcome; Leverage numbers remain neutral ink. Single dark
+  theme like the live site; print inverts to a mist band for board decks. The token
+  contract and the skill's gate are unchanged.
+
 ## v0.8 — 2026-07-10
 
 The proof layer becomes shareable. v0.7 gave the scorecard its template; this makes it
