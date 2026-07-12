@@ -5,113 +5,129 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{EFFORT_NAME}} — AI Outcomes Scorecard</title>
 <style>
-  /* Light — warm paper. Neutrals carry a faint warm bias, not pure grey. */
+  /* Fluent by Design — the expressive system (DESIGN-DNA.md). A dark teal
+     instrument readout: the machine speaks in turquoise, the judgment in a
+     didone serif. Single dark theme, like the marketing and baseline pages;
+     print inverts to a mist band for board decks. */
   :root{
-    --bg:#fbfaf8; --ink:#1c1a17; --muted:#6b655c; --line:#e7e2d9;
-    --card:#ffffff; --outcome:#0f7b57; --leverage:#8a8377; --amber:#b0700a;
-    --amber-bg:#fdf4e3; --red:#a3341f; --red-bg:#fbeae6;
-  }
-  /* Dark tokens, applied when the OS asks for dark AND the viewer hasn't
-     explicitly chosen light. */
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#171614; --ink:#efe9df; --muted:#a29a8c; --line:#332f2a;
-      --card:#201e1b; --outcome:#4bbd8f; --leverage:#8f887b;
-      --amber:#e0a94a; --amber-bg:#2a2114; --red:#e08a72; --red-bg:#2a1815;
-    }
-  }
-  /* An explicit dark toggle wins regardless of OS. Light needs no explicit
-     block — the base :root already carries it, and the media query above
-     bows out whenever data-theme="light". */
-  :root[data-theme="dark"]{
-    --bg:#171614; --ink:#efe9df; --muted:#a29a8c; --line:#332f2a;
-    --card:#201e1b; --outcome:#4bbd8f; --leverage:#8f887b;
-    --amber:#e0a94a; --amber-bg:#2a2114; --red:#e08a72; --red-bg:#2a1815;
+    --bg:#042f2e;            /* deep teal near-black, the room */
+    --surface-1:#133b3b;     /* elevated panel */
+    --surface-2:#264b4a;     /* higher elevation */
+    --ink:#e3eded;           /* primary text, mist white with teal cast */
+    --muted:#9bacab;         /* secondary text, sea glass gray */
+    --pop:#40e0d0;           /* turquoise, the machine glow — scarce */
+    --pop-dim:rgba(64,224,208,.35);
+    --pop-bg:rgba(64,224,208,.13);
+    --line:rgba(227,237,237,.12); /* 1px hairline dividers */
+    --on-pop:#042f2e;
+    /* reserved status set — distinct from the accent, only on the verdict */
+    --miss:#ff8a73; --miss-bg:rgba(255,138,115,.13);
+    --warn:#e9b949; --warn-bg:rgba(233,185,73,.13);
+    --font-display:'Gloock',Georgia,'Times New Roman',serif;
+    --font-body:'Source Sans 3',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
   }
   *{box-sizing:border-box}
   body{
     margin:0; background:var(--bg); color:var(--ink);
-    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font:16px/1.62 var(--font-body); -webkit-font-smoothing:antialiased;
   }
-  .page{max-width:760px; margin:0 auto; padding:56px 28px 80px}
+  .page{max-width:720px; margin:0 auto; padding:60px 28px 88px}
   .eyebrow{
-    font-size:12px; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--muted); margin:0 0 6px
+    font-size:12px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--pop); margin:0 0 14px
   }
-  .meta{font-size:14px; color:var(--muted); margin:0 0 22px}
+  .eyebrow::after{
+    content:""; display:block; width:26px; height:2px; margin-top:9px;
+    background:var(--pop); border-radius:2px; opacity:.85
+  }
+  .meta{font-size:14px; color:var(--muted); margin:0 0 24px}
   .meta strong{color:var(--ink); font-weight:600}
   .lede{
-    font-size:15px; line-height:1.6; color:var(--muted);
-    max-width:62ch; margin:0 0 40px; padding:0 0 0 14px;
-    border-left:2px solid var(--line)
+    font-size:15px; line-height:1.62; color:var(--muted);
+    max-width:60ch; margin:0 0 42px; padding:2px 0 2px 16px;
+    border-left:2px solid var(--pop-dim)
   }
   .headline{
-    font-family:Georgia,"Times New Roman",serif; font-weight:400;
-    font-size:30px; line-height:1.32; letter-spacing:-.01em; margin:0 0 16px;
+    font-family:var(--font-display); font-weight:400; color:var(--ink);
+    font-size:33px; line-height:1.28; letter-spacing:-.005em; margin:0 0 18px;
     text-wrap:balance
   }
   .pill{
-    display:inline-block; font-size:12px; font-weight:600; letter-spacing:.02em;
-    padding:4px 11px; border-radius:999px; vertical-align:middle
+    display:inline-block; font-size:11.5px; font-weight:600; letter-spacing:.03em;
+    text-transform:uppercase; padding:5px 13px; border-radius:999px;
+    border:1px solid transparent
   }
-  .pill.outcome{color:var(--outcome); background:color-mix(in srgb,var(--outcome) 12%,transparent)}
-  .pill.leverage-only{color:var(--amber); background:var(--amber-bg)}
-  .pill.miss{color:var(--red); background:var(--red-bg)}
-  .legend{display:flex; flex-wrap:wrap; gap:8px 16px; margin:12px 0 0; font-size:11px; color:var(--muted)}
+  .pill.outcome{color:var(--pop); background:var(--pop-bg); border-color:var(--pop-dim); text-shadow:0 0 18px var(--pop-dim)}
+  .pill.leverage-only{color:var(--warn); background:var(--warn-bg); border-color:rgba(233,185,73,.3)}
+  .pill.miss{color:var(--miss); background:var(--miss-bg); border-color:rgba(255,138,115,.32)}
+  .legend{display:flex; flex-wrap:wrap; gap:8px 18px; margin:14px 0 0; font-size:11px; color:var(--muted)}
   .legend i.dot{display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; vertical-align:middle}
-  .legend .dot.outcome{background:var(--outcome)}
-  .legend .dot.miss{background:var(--red)}
-  .legend .dot.lev{background:var(--amber)}
+  .legend .dot.outcome{background:var(--pop); box-shadow:0 0 8px var(--pop-dim)}
+  .legend .dot.miss{background:var(--miss)}
+  .legend .dot.lev{background:var(--warn)}
   .frame{
-    margin:34px 0 44px; padding:16px 0 0; border-top:1px solid var(--line);
-    display:grid; grid-template-columns:88px 1fr; gap:6px 18px; font-size:15px
+    margin:36px 0 46px; padding:18px 0 0; border-top:1px solid var(--line);
+    display:grid; grid-template-columns:88px 1fr; gap:8px 18px; font-size:15px
   }
-  .frame dt{color:var(--muted)} .frame dd{margin:0}
-  .glance-wrap{margin:0 0 48px}
+  .frame dt{color:var(--muted)} .frame dd{margin:0; color:var(--ink)}
+  .glance-wrap{margin:0 0 50px}
   .glance{display:flex; flex-wrap:wrap; gap:12px}
   .tile{
-    flex:1 1 180px; background:var(--card); border:1px solid var(--line);
-    border-radius:10px; padding:15px 18px
+    flex:1 1 180px; background:var(--surface-1); border:1px solid var(--line);
+    border-radius:12px; padding:16px 18px
   }
-  .tile-label{font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin:0 0 9px}
+  .tile-label{font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin:0 0 10px}
   .tile-move{
     display:flex; align-items:baseline; flex-wrap:wrap; gap:8px;
-    margin:0 0 7px; font-variant-numeric:tabular-nums
+    margin:0 0 8px; font-variant-numeric:tabular-nums
   }
   .tile-move .was{font-size:15px; color:var(--muted)}
   .tile-move .arrow{color:var(--muted)}
-  .tile-move .now{font-size:20px; font-weight:600; color:var(--ink)}
-  .tile-move .now.met{color:var(--outcome)}
-  .tile-move .now.miss{color:var(--red)}
+  .tile-move .now{font-size:21px; font-weight:600; color:var(--ink)}
+  .tile-move .now.met{color:var(--pop); text-shadow:0 0 18px var(--pop-dim)}
+  .tile-move .now.miss{color:var(--miss)}
   .tile-note{font-size:11px; color:var(--muted); margin:0}
-  section{margin:0 0 44px}
+  section{margin:0 0 46px}
   h2{
-    font-size:13px; letter-spacing:.12em; text-transform:uppercase; margin:0 0 4px;
-    text-wrap:balance
+    font-size:12px; letter-spacing:.14em; text-transform:uppercase; margin:0 0 5px;
+    color:var(--muted); text-wrap:balance
   }
-  h2.outcome{color:var(--outcome)}
-  h2.leverage{color:var(--leverage)}
-  .sub{font-size:13px; color:var(--muted); margin:0 0 16px}
+  h2.outcome{color:var(--ink)}
+  h2.outcome::before{
+    content:""; display:inline-block; width:14px; height:2px; margin:0 9px 4px 0;
+    background:var(--pop); vertical-align:middle; box-shadow:0 0 8px var(--pop-dim)
+  }
+  h2.leverage{color:var(--muted)}
+  .sub{font-size:13px; color:var(--muted); margin:0 0 18px}
   table{width:100%; border-collapse:collapse; font-size:14px}
   th,td{
-    text-align:left; padding:10px 12px; border-bottom:1px solid var(--line);
+    text-align:left; padding:11px 12px; border-bottom:1px solid var(--line);
     vertical-align:top; font-variant-numeric:tabular-nums
   }
-  th{font-size:12px; letter-spacing:.03em; text-transform:uppercase; color:var(--muted); font-weight:600}
+  th{font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); font-weight:600}
   .leverage table{color:var(--muted)}
   .leverage td:first-child{color:var(--ink)}
-  .bets{border:1px solid var(--line); border-radius:10px; padding:20px; background:var(--card)}
+  .bets{border:1px solid var(--line); border-radius:14px; padding:22px 24px; background:var(--surface-1)}
   .bets h2{color:var(--muted)}
-  tr.is-overdue td{background:var(--red-bg)}
-  .flag{color:var(--red); font-weight:600}
-  footer{margin-top:56px; padding-top:16px; border-top:1px solid var(--line); font-size:12px; line-height:1.6; color:var(--muted)}
+  tr.is-overdue td{background:var(--miss-bg)}
+  .flag{color:var(--miss); font-weight:600}
+  footer{margin-top:60px; padding-top:18px; border-top:1px solid var(--line); font-size:12px; line-height:1.6; color:var(--muted)}
   @media print{
-    :root{--bg:#fff; --card:#fff}
-    body{font-size:12pt} .page{padding:0; max-width:none}
+    /* the DNA's inverted mist band, applied to the whole page for paper */
+    :root{
+      --bg:#ffffff; --surface-1:#f5f7f6; --surface-2:#eef1f0;
+      --ink:#0e2a29; --muted:#5a6d6c; --pop:#0a8f82; --pop-dim:rgba(10,143,130,.3);
+      --pop-bg:rgba(10,143,130,.08); --line:rgba(14,42,41,.16);
+      --miss:#c23b22; --miss-bg:rgba(194,59,34,.08); --warn:#9a6b00; --warn-bg:rgba(154,107,0,.08);
+    }
+    body{font-size:12pt}
+    .page{padding:0; max-width:none}
+    .pill.outcome,.tile-move .now.met{text-shadow:none}
+    .legend .dot.outcome{box-shadow:none}
     section,.glance-wrap{page-break-inside:avoid}
   }
   @media (max-width:520px){
-    .headline{font-size:24px} .frame{grid-template-columns:1fr; gap:2px 0}
+    .headline{font-size:26px} .frame{grid-template-columns:1fr; gap:2px 0}
     .frame dt{margin-top:8px}
   }
 </style>
