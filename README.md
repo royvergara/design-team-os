@@ -174,8 +174,6 @@ The fifteen skills are free and MIT, forever — clone the repo and run the whol
 
 Roy Vergara. Ten-plus years in product design leadership. The library exists because the trust gap is real: far fewer designers trust AI output than developers do, and closing it takes deep design judgment plus AI fluency, not another dev-flavored tool drop.
 
-[![Star History Chart](https://api.star-history.com/svg?repos=royvergara/design-team-os&type=Date&theme=dark)](https://star-history.com/#royvergara/design-team-os&Date)
-
 ## Running Design Team OS?
 
 Add the badge to your repo or design-ops docs:
