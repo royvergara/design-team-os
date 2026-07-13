@@ -1,5 +1,4 @@
-<!-- HERO: assets/hero-dark.png is a typographic placeholder in the house style.
-     Replace with the generated instrument art (see the shot-list / image prompts).
+<!-- HERO: generated instrument art in the Fluent by Design system.
      A single dark teal banner reads well on both GitHub themes, so no <picture> swap needed. -->
 <p align="center">
   <a href="https://fluentxdesign.com/?utm_source=github&utm_medium=readme">
@@ -53,6 +52,12 @@ Want to see it work before reading another word? [EXAMPLES.md](EXAMPLES.md) walk
 ## The spine
 
 The skills are not random utilities. They map to three decision gates. The gates are the point. They are what keep speed intentional once anyone can generate a prototype in an afternoon.
+
+<p align="center">
+  <img alt="The three gates — Intent, Decision, Value" src="assets/gates.png" width="820">
+  <br>
+  <em>Raw activity enters on the left and leaves as refined proof — through three gates every piece of work must pass.</em>
+</p>
 
 **Gate 1, Intent.** Does this map to a business goal and a real customer pain? Governs which work is worth starting.
 
