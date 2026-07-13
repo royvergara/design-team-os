@@ -19,7 +19,7 @@
 
 <p align="center">
   <a href="https://baseline.fluentxdesign.com/?utm_source=github&utm_medium=readme"><b>Run the baseline</b></a> ·
-  <a href="https://fluentxdesign.com/?utm_source=github&utm_medium=readme"><b>The install</b></a> ·
+  <a href="https://fluentxdesign.com/?utm_source=github&utm_medium=readme"><b>fluentxdesign.com</b></a> ·
   <a href="https://fluentxdesign.substack.com"><b>Newsletter</b></a> ·
   <a href="IMPLEMENTATION.md"><b>Docs</b></a> ·
   <a href="EXAMPLES.md"><b>See it work</b></a>
