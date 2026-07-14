@@ -28,7 +28,7 @@ Check whether a `design-os.work/` directory exists at the repo root.
 Check whether a `design-os.reviews/` directory exists at the repo root.
 
 - **If it exists:** leave every file in it untouched — those are live review artifacts.
-- **If it does not exist:** create it, and add a `design-os.reviews/README.md` that explains: this is where the evidence a ledger entry points to lives — a `design-system-enforcement` violation list, a `critique-synthesis` ranking, an audit, named however the team likes and referenced from the ledger's pointer fields (e.g. `decision.craft`'s `detail`); the same one rule applies here as in the ledger — artifacts, never checkmarks. Do not create any actual review file — those are born when a skill produces one. Full schema at `https://github.com/royvergara/design-team-os/blob/main/templates/work-ledger.schema.md`, same literal-URL rule as above.
+- **If it does not exist:** create it, and add a `design-os.reviews/README.md` that explains: this is where the evidence a ledger entry points to lives — a `design-system-enforcement` violation list, a `critique-synthesis` ranking, an audit, named however the team likes and referenced from the ledger's pointer fields (e.g. `decision.craft`'s `detail`) — and also where the `period-review` skill's frozen outputs live, the rendered `<period>.html` scorecard plus the dated `<period>.intent.md` strategy declaration written at period start; the same one rule applies here as in the ledger — artifacts, never checkmarks. Do not create any actual review file — those are born when a skill produces one. Full schema at `https://github.com/royvergara/design-team-os/blob/main/templates/work-ledger.schema.md`, same literal-URL rule as above.
 
 ## 4. Report
 

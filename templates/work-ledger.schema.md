@@ -76,7 +76,7 @@ decision:
                             # recorded here — kills are decisions, not discards.
   craft:                    # written by design-system-enforcement when it audits
     violations: 3           # count at the audit date
-    detail: "audits/onboarding-2026-05.md"   # pointer to the violation list
+    detail: "design-os.reviews/onboarding-craft-2026-05.md"   # pointer to the violation list
     date: 2026-05-20
 
 value:
