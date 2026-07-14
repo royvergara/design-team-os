@@ -28,7 +28,7 @@ Return a small set, three to five, not an exhaustive inventory. For each pain:
 - **The pain**, stated as what breaks for whom in their terms, not the feature that would fix it.
 - **The signal behind it**, named and sourced. Which tickets, which interviews, which metric, and how many. A reader should be able to go check it.
 - **A strength rating grounded in that evidence.** Strong when independent signals triangulate. Weak when it rests on one source or one kind of source.
-- **For every weak pain, the single cheapest test** that would move it to strong.
+- **For every weak pain, the single cheapest test** that would move it to strong — hand it to `validation-plan` to design.
 
 Rank by signal strength, never by how loud or how senior the source was. The strongest pain is the one the most independent evidence agrees on, even if no executive named it. End by stating which pain in the set is weakest and exactly what it would take to validate it, so the team knows where the floor is before anyone builds on top of it.
 

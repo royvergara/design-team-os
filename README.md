@@ -12,7 +12,7 @@
 <p align="center">
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-40e0d0.svg"></a>
   <a href="CHANGELOG.md"><img alt="Version" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Froyvergara%2Fdesign-team-os%2Fmain%2F.claude-plugin%2Fplugin.json&query=%24.version&prefix=v&label=version&color=40e0d0"></a>
-  <img alt="15 skills" src="https://img.shields.io/badge/skills-15-40e0d0">
+  <img alt="16 skills" src="https://img.shields.io/badge/skills-16-40e0d0">
   <a href=".github/workflows/gates.yml"><img alt="Gate tests" src="https://img.shields.io/github/actions/workflow/status/royvergara/design-team-os/gates.yml?branch=main&label=gates&color=40e0d0"></a>
   <a href="https://fluentxdesign.substack.com"><img alt="Newsletter: Fluent by Design" src="https://img.shields.io/badge/newsletter-Fluent%20by%20Design-133b3b"></a>
 </p>
@@ -81,7 +81,7 @@ None of this is required. Every skill still gates its own inputs and works alone
 
 ## Skills
 
-Fifteen skills are live under `skills/` — every skill's primary refusal is encoded as a runnable fixture, with adversarial coverage growing release by release ([TESTING.md](TESTING.md)): the original eight (v0.1, June 12, 2026), three loop-closing skills (v0.2) that wire the gates into a full Intent → Decision → Value → Intent loop, the most upstream skill in the library (v0.3) that produces the validated pain everything else assumes, `team-ai-baseline` (v0.4), which sits above the gates and tells a team whether it is actually running them, the `conductor` (v0.5), the machine's routing layer, `outcomes-scorecard` (v0.8), which renders the program-level scorecard into a shareable page and refuses to let activity read as a result, and `period-review` (v0.9), which rolls a period's closed ledgers into a frozen review and refuses to chart a trend it hasn't earned.
+Sixteen skills are live under `skills/` — every skill's primary refusal is encoded as a runnable fixture, with adversarial coverage growing release by release ([TESTING.md](TESTING.md)): the original eight (v0.1, June 12, 2026), three loop-closing skills (v0.2) that wire the gates into a full Intent → Decision → Value → Intent loop, the most upstream skill in the library (v0.3) that produces the validated pain everything else assumes, `team-ai-baseline` (v0.4), which sits above the gates and tells a team whether it is actually running them, the `conductor` (v0.5), the machine's routing layer, `outcomes-scorecard` (v0.8), which renders the program-level scorecard into a shareable page and refuses to let activity read as a result, and `period-review` (v0.9), which rolls a period's closed ledgers into a frozen review and refuses to chart a trend it hasn't earned.
 
 | Skill | Gate | What it does | Status |
 | --- | --- | --- | --- |
@@ -89,6 +89,7 @@ Fifteen skills are live under `skills/` — every skill's primary refusal is enc
 | period-review | Program | Rolls closed ledgers into a frozen period review — trends, calibration, kills, coverage — and refuses trends it has not earned | v0.9 |
 | outcomes-scorecard | Value | Renders the program-level scorecard into a shareable page and refuses to let activity read as a result | v0.8 |
 | team-ai-baseline | All gates | Places a team honestly on the AI maturity curve and names the one gate holding it back | v0.4 |
+| validation-plan | All gates | Designs the smallest test that would settle a decision — validate a pain, earn a signal, design the read | v0.11 |
 | research-to-pain | Intent | Turns raw research into a small set of ranked, evidence-backed customer pains | v0.3 |
 | brief-from-pain | Intent → Decision | Turns a validated pain into a brief with a measurable bar set up front | v0.2 |
 | prototype-triage | Decision | Triages a generated prototype against the brief before human review | v0.2 |
@@ -119,7 +120,7 @@ Three files under `templates/` carry the state the skills read and write, plus t
 
 **Door one: your browser, 60 seconds, no install.** For designers (and anyone) who live in claude.ai, not a terminal. Pick a skill from the table above, copy its `SKILL.md`, paste it into a Claude Project's instructions, hand it your input. The gates hold there — tested, including several skills pasted into one Project. The full path, per-gate bundles, and the honest limits are in **[PROJECTS.md](PROJECTS.md)**.
 
-**Door two: Claude Code — the full machine.** One command adds the marketplace, one installs everything: all fifteen skills, the `conductor` among them, and a `/design-team-os:init` setup command. Updates come through `/plugin`, no re-copying.
+**Door two: Claude Code — the full machine.** One command adds the marketplace, one installs everything: all sixteen skills, the `conductor` among them, and a `/design-team-os:init` setup command. Updates come through `/plugin`, no re-copying.
 
 ```
 /plugin marketplace add royvergara/design-team-os
@@ -158,12 +159,14 @@ The skills work ad hoc, but they were built to run in order, following the three
 10. `prototype-to-spec`: turn the chosen, validated prototype into a buildable spec (refuses without a validation signal).
 11. `outcome-readout`: after ship, read the analytics against the pre-registered bar, render the did-it-work verdict, and hand strategy the next problem. The loop back to Intent.
 
+Across every gate, `validation-plan` designs the smallest test that would settle a decision — the signal `research-to-pain`, `prototype-to-spec`, and `outcome-readout` each demand but hand off. It refuses to design a test with no decision behind it.
+
 [EXAMPLES.md](EXAMPLES.md) walks one real feature through this whole sequence, gates and refusals included. See [IMPLEMENTATION.md](IMPLEMENTATION.md) for project-vs-user install and the verification checklist.
 </details>
 
 ## Run it yourself, or have it installed
 
-The fifteen skills are free and MIT, forever — clone the repo and run the whole system today. What's for sale is someone who has run it before doing the installation and holding the line: **[Fluent by Design](https://fluentxdesign.com/?utm_source=github&utm_medium=readme)** installs the three gates into your team's real workflow, trains the team, and proves the result on an outcomes scorecard. Everything a team needs to run the system itself is here; the paid layer is the enablement, not a locked door.
+The sixteen skills are free and MIT, forever — clone the repo and run the whole system today. What's for sale is someone who has run it before doing the installation and holding the line: **[Fluent by Design](https://fluentxdesign.com/?utm_source=github&utm_medium=readme)** installs the three gates into your team's real workflow, trains the team, and proves the result on an outcomes scorecard. Everything a team needs to run the system itself is here; the paid layer is the enablement, not a locked door.
 
 - **See where your team stands** — [run the 60-second baseline](https://baseline.fluentxdesign.com/?utm_source=github&utm_medium=readme). A real diagnostic, no signup, not a lead magnet.
 - **The weekly build-in-public** — [the newsletter](https://fluentxdesign.substack.com): *AI made production cheap, judgment got expensive*, worked through for design teams, with a new gate-tested skill most Fridays.
@@ -190,7 +193,7 @@ MIT. See [LICENSE](LICENSE). Use it, fork it, ship it.
 
 ## Status
 
-**v0.10** — the prototype-prompt skills become honestly tool-agnostic. `brief-to-prompt-v0` and `brief-to-prompt-bolt` merge into one `brief-to-prompt` that writes a clean, gated prompt for any AI builder — v0, Bolt, Lovable, Claude Artifacts, Framer — with thin per-tool adapters (a screen generator scopes to one surface; a full-app builder adds mock-data instructions and a scope guard). The library no longer ships a skill per vendor; the judgment is vendor-neutral and only the output boundary adapts. Fifteen skills are live, every one's primary refusal still fixture-tested. Builds on **v0.9.1**, which reworked the outcomes scorecard into a legible editorial instrument — a featured *verdict* lead, a document-metadata header, an at-a-glance card with status chips, circular chapter badges — and **v0.9**, where the machine learned to measure judgment: the work ledger carries intent class, stated confidence, and kill records, and `period-review` rolls closed ledgers into a frozen review. It builds on v0.8's shareable scorecard and the **owned bet** (v0.6). Every skill's primary refusal is encoded as a runnable fixture ([TESTING.md](TESTING.md)). Full history in [CHANGELOG.md](CHANGELOG.md).
+**v0.11** — the loop gets the step it kept pointing at. A new `validation-plan` skill designs the *smallest test that would settle a decision* — the signal `research-to-pain`, `prototype-to-spec`, and `outcome-readout` each demand but hand off. Its gate refuses to design a test with no decision behind it (name what result would change what you'd do, or there is nothing to test), and it holds to the smallest test that changes the call over the most rigorous study nobody runs. Sixteen skills are live, every one's primary refusal fixture-tested. Builds on **v0.10**, which made the prototype-prompt skills tool-agnostic (`brief-to-prompt-v0` + `-bolt` merged into one `brief-to-prompt` with per-tool adapters), and **v0.9.1**'s editorial rework of the outcomes scorecard. It builds on v0.8's shareable scorecard and the **owned bet** (v0.6). Every skill's primary refusal is encoded as a runnable fixture ([TESTING.md](TESTING.md)). Full history in [CHANGELOG.md](CHANGELOG.md).
 
 ---
 

@@ -8,6 +8,27 @@ The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every ski
 listed enforces a gate — it refuses when its inputs aren't earned — and every one
 is covered by a runnable fixture in [TESTING.md](TESTING.md).
 
+## v0.11 — 2026-07-14
+
+The loop gets the step it kept pointing at.
+
+### Added
+- **`validation-plan`** (sixteenth skill) — designs the smallest test that would settle a
+  decision, the counterpart to the four skills that demand a signal but hand off when one is
+  missing. Its gate refuses to design a test with no decision behind it: name what result
+  would change what you'd do, or there is nothing to test (a vanity metric that can only
+  confirm is the same failure). It holds to the smallest test that changes the call over the
+  most rigorous study nobody runs, and it designs the test rather than re-litigating the
+  caller's gate. No ledger write — a planned test isn't evidence; the signal comes from
+  running it, recorded by the consuming skill.
+- **Wired into the four callers** (`research-to-pain`, `brief-from-pain`, `prototype-to-spec`,
+  `outcome-readout`) and the `conductor` routing, each with a single clause — "the smallest
+  test" now hands to `validation-plan`.
+- **Sixteen skills** are live; the new skill's decision-first refusal is fixture-tested.
+
+Second phase of the skills-audit follow-up (v0.10 consolidated the tool-specific prompt
+skills; this adds the validation step the loop kept deferring).
+
 ## v0.10 — 2026-07-14
 
 The prototype-prompt skills become tool-agnostic.
