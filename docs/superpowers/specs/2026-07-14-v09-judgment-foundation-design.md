@@ -118,9 +118,10 @@ design's markup.**
 **Composition (from the design, kept):** document folio (doc title left, classification
 · period right, double rule); masthead with serif title and class chip; lede; hero as a
 two-column verdict — distilled two-sentence headline left, the **giant Gloock verdict
-figure** right (~122px current value; the ghosted baseline stacked directly above it,
-flush to the same right edge, so the column reads *from → to* — never floating at an
-arbitrary offset; delta line beneath); full-width progress bar to the bar; pill + legend; number-led glance band
+figure** right (~122px, a single monolithic figure — no ghost or paired numeral, which
+read as layered clutter or a ragged silhouette in earlier passes; the baseline folds
+into the stacked small-caps caption beneath: "+13 pts from 34%" / "below a 50% bar",
+right-aligned so the column stays a clean rectangle); full-width progress bar to the bar; pill + legend; number-led glance band
 (hairline-divided, no cards); **left margin rail** with Gloock chapter numerals
 (01–05); slider rows for leverage; the kills card with number-led avoided/spent bars;
 the trajectory card; the dated timeline with waffle dots; serif judgment lines closing
