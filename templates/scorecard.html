@@ -43,6 +43,10 @@
   .glance-delta.miss{color:var(--miss);background:rgba(var(--miss-rgb),.10);}
   .glance-delta.met{color:var(--accent);background:rgba(var(--accent-rgb),.10);}
   .glance-delta.leverage-only{color:var(--amber);background:rgba(var(--amber-rgb),.10);}
+  /* --- chapter badge (circular, in-column) + section standfirst --- */
+  .chapnum{display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(var(--accent-rgb),.4);background:rgba(var(--accent-rgb),.06);font-family:'Gloock',serif;font-size:18px;color:var(--accent);line-height:1;margin-bottom:18px;}
+  .chapnum a.chap{color:var(--accent);}
+  .sec-lead{font-size:15px;line-height:1.6;color:var(--muted);margin:14px 0 32px;}
   /* --- outcome pill states (all registers) --- */
   .pill{border:1px solid transparent;}
   .pill.met{background:rgba(var(--accent-rgb),.09);border-color:rgba(var(--accent-rgb),.3);color:var(--accent);}
@@ -105,50 +109,65 @@
 </style>
 <div id="progress"></div>
 <div style="background:var(--paper);min-height:100vh;font-family:'Source Sans 3',sans-serif;color:var(--ink);padding:64px 24px 96px;">
-<main style="max-width:812px;margin:0 auto;padding-left:76px;position:relative;">
+<main style="max-width:760px;margin:0 auto;position:relative;">
 
   <!-- ========== FOLIO ========== -->
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-left:-76px;font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted-2);padding-bottom:9px;border-bottom:1px solid rgba(var(--ink-rgb),.2);">
+  <div style="display:flex;justify-content:space-between;align-items:center;font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted-2);padding-bottom:9px;border-bottom:1px solid rgba(var(--ink-rgb),.2);">
     <span>Design Team OS — Outcomes Scorecard</span>
     <span style="color:var(--amber);">{{FOLIO_CLASSIFICATION}} · {{FOLIO_PERIOD}}</span>
   </div>
-  <div style="margin-left:-76px;height:3px;border-top:1px solid rgba(var(--ink-rgb),.2);margin-top:2px;margin-bottom:40px;"></div>
+  <div style="height:3px;border-top:1px solid rgba(var(--ink-rgb),.2);margin-top:2px;margin-bottom:40px;"></div>
 
-  <noscript><p style="font-size:12px;color:#5c6f6e;border:1px solid rgba(14,42,41,.13);border-radius:8px;padding:10px 14px;">Charts on this page draw with JavaScript. The record does not depend on them: the headline, deck, glance band, tables, and judgment lines carry every measured number.</p></noscript>
+  <noscript><p style="font-size:12px;color:var(--muted);border:1px solid rgba(var(--ink-rgb),.13);border-radius:8px;padding:10px 14px;">Charts on this page draw with JavaScript. The record does not depend on them: the headline, deck, glance band, tables, and judgment lines carry every measured number.</p></noscript>
 
   <!-- ========== MASTHEAD ========== -->
   <div class="rise" style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);">AI Outcomes Scorecard</div>
   <div class="rise" style="width:26px;height:2px;background:var(--accent);border-radius:2px;margin:9px 0 22px;"></div>
   <h1 class="rise" style="font-family:'Gloock',serif;font-weight:400;font-size:38px;line-height:1.14;letter-spacing:-0.01em;margin:0 0 16px;">{{EFFORT_NAME}}</h1>
-  <div class="rise" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--muted);margin-bottom:26px;">
-    <span>{{OWNER}}</span><span style="color:var(--faint);">·</span><span class="num">rendered {{GENERATED_DATE}}</span>
-    <span style="color:var(--amber);background:rgba(var(--amber-rgb),.09);border:1px solid rgba(var(--amber-rgb),.3);padding:4px 12px;border-radius:999px;font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;">{{CLASS_CHIP}}</span>
+  <div class="rise" style="display:flex;gap:44px;flex-wrap:wrap;margin-bottom:30px;padding-bottom:22px;border-bottom:1px solid rgba(var(--ink-rgb),.1);">
+    <div>
+      <div style="font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted-2);margin-bottom:5px;">Prepared by</div>
+      <div style="font-size:14px;color:var(--ink);">{{OWNER}}</div>
+    </div>
+    <div>
+      <div style="font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted-2);margin-bottom:5px;">Rendered</div>
+      <div class="num" style="font-size:14px;color:var(--ink);">{{GENERATED_DATE}}</div>
+    </div>
+    <div>
+      <div style="font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted-2);margin-bottom:5px;">Class</div>
+      <div style="font-size:14px;color:var(--amber);font-weight:600;">{{CLASS_CHIP}}</div>
+    </div>
   </div>
-  <p class="rise" style="font-size:15px;line-height:1.66;color:var(--muted);max-width:60ch;margin:0 0 56px;padding-left:16px;border-left:2px solid rgba(var(--accent-rgb),.3);">The record of one AI-assisted design effort: what we believed, what we built and killed, and what the numbers said. Read top-down — the headline is the verdict, the sections below are the evidence.</p>
+  <p class="rise" style="font-size:15px;line-height:1.66;color:var(--muted);margin:0 0 48px;padding-left:16px;border-left:2px solid rgba(var(--accent-rgb),.3);">The record of one AI-assisted design effort: what we believed, what we built and killed, and what the numbers said. Read top-down — the headline is the verdict, the sections below are the evidence.</p>
 
-  <!-- ========== HERO — BIG FIGURE ========== -->
-  <div style="display:grid;grid-template-columns:1fr auto;gap:44px;align-items:center;margin-bottom:40px;">
-    <h2 class="rise" style="font-family:'Gloock',serif;font-weight:400;font-size:41px;line-height:1.16;letter-spacing:-0.01em;margin:0;text-wrap:balance;">{{HEADLINE_MAIN}}<br><span style="color:var(--miss);margin-left:-0.62em;">{{HEADLINE_MISS_PHRASE}}</span></h2>
-    <div style="border-left:1px solid rgba(var(--ink-rgb),.13);padding-left:40px;text-align:right;position:relative;">
-      <div class="num rise" style="font-family:'Gloock',serif;font-size:122px;line-height:0.82;color:var(--miss);letter-spacing:-0.02em;">{{HERO_VALUE}}<span style="font-size:0.3em;vertical-align:0.98em;">%</span></div>
-      <div class="rise" style="position:relative;font-size:11px;line-height:1.75;letter-spacing:0.14em;text-transform:uppercase;color:var(--miss);font-weight:600;margin-top:14px;">
-        <span style="display:inline-flex;align-items:center;gap:6px;"><svg width="12" height="12" viewBox="0 0 12 12" style="display:block;"><path d="M2 9 L7 4 M7 4 L7 8 M7 4 L3 4" stroke="var(--miss)" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>{{HERO_CAPTION_1}}</span><br>
-        <span>{{HERO_CAPTION_2}}</span>
+  <!-- ========== HERO — FEATURED LEAD ========== -->
+  <div style="background:var(--panel);border:1px solid rgba(var(--ink-rgb),.1);border-radius:6px;box-shadow:0 2px 6px rgba(var(--ink-rgb),.05),0 22px 50px rgba(var(--ink-rgb),.07);padding:40px 44px 34px;margin-bottom:64px;">
+    <div class="rise" style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:600;">The verdict</div>
+    <div class="rise" style="width:26px;height:2px;background:var(--accent);border-radius:2px;margin:8px 0 22px;"></div>
+    <h2 class="rise" style="font-family:'Gloock',serif;font-weight:400;font-size:52px;line-height:1.08;letter-spacing:-0.02em;margin:0 0 28px;text-wrap:balance;">{{HEADLINE_MAIN}} <span style="color:var(--miss);">{{HEADLINE_MISS_PHRASE}}</span></h2>
+    <div style="border-top:1px solid rgba(var(--ink-rgb),.12);padding-top:28px;">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:52px;align-items:center;margin-bottom:32px;">
+        <p style="font-size:16px;line-height:1.66;color:var(--muted);margin:0;">{{DECK}}</p>
+        <div style="text-align:center;">
+          <div class="rise" style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted-2);margin-bottom:10px;">{{HERO_LABEL}}</div>
+          <div class="num rise" style="font-family:'Gloock',serif;font-size:106px;line-height:0.82;color:var(--miss);letter-spacing:-0.02em;">{{HERO_VALUE}}<span style="font-size:0.3em;vertical-align:0.98em;">%</span></div>
+          <div class="rise" style="display:inline-flex;flex-direction:column;align-items:center;gap:3px;font-size:10.5px;line-height:1.5;letter-spacing:0.13em;text-transform:uppercase;color:var(--miss);font-weight:600;margin-top:14px;">
+            <span style="display:inline-flex;align-items:center;gap:6px;"><svg width="12" height="12" viewBox="0 0 12 12" style="display:block;"><path d="M2 9 L7 4 M7 4 L7 8 M7 4 L3 4" stroke="var(--miss)" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>{{HERO_CAPTION_1}}</span>
+            <span>{{HERO_CAPTION_2}}</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <p style="font-size:16px;line-height:1.66;color:var(--muted);max-width:64ch;margin:0 0 48px;">{{DECK}}</p>
-
-  <!-- progress viz -->
-  <div id="hero-strip" class="num" style="margin-bottom:22px;"></div>
-  <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:46px;">
-    <div id="outcome-pill" class="pill miss" style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:6px 13px;border-radius:999px;">
-      <span class="pill-dot" style="width:6px;height:6px;border-radius:50%;"></span><span class="pill-label">Outcome measured — bar missed</span>
-    </div>
-    <div style="display:flex;gap:18px;font-size:11px;color:var(--muted-2);flex-wrap:wrap;">
-      <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--accent);"></span>Met the bar</span>
-      <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--miss);"></span>Measured, missed</span>
-      <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--amber);"></span>Leverage only — not yet measured</span>
+      <div id="hero-strip" class="num" style="margin-bottom:20px;"></div>
+      <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+        <div id="outcome-pill" class="pill miss" style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:6px 13px;border-radius:999px;">
+          <span class="pill-dot" style="width:6px;height:6px;border-radius:50%;"></span><span class="pill-label">Outcome measured — bar missed</span>
+        </div>
+        <div style="display:flex;gap:18px;font-size:11px;color:var(--muted-2);flex-wrap:wrap;">
+          <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--accent);"></span>Met the bar</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--miss);"></span>Measured, missed</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--amber);"></span>Leverage only — not yet measured</span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -174,11 +193,11 @@
   </div>
 
   <!-- ========== 01 · THE BET ========== -->
-  <section id="c1" class="reveal" style="position:relative;margin-bottom:72px;">
-    <div style="position:absolute;left:-76px;top:0;bottom:-32px;width:1px;background:rgba(var(--ink-rgb),.14);"></div>
-    <div style="position:absolute;left:-76px;top:-4px;font-family:'Gloock',serif;font-size:34px;color:var(--accent);line-height:1;"><a class="chap" href="#c1">01</a></div>
+  <section id="c1" class="reveal" style="margin-bottom:72px;">
+    <div class="chapnum"><a class="chap" href="#c1">01</a></div>
     <div style="font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">The Bet · Gate 1 — Intent</div>
-    <h3 style="font-family:'Gloock',serif;font-weight:400;font-size:27px;line-height:1.24;letter-spacing:-0.005em;margin:0 0 28px;">What we believed, and how sure we were</h3>
+    <h3 style="font-family:'Gloock',serif;font-weight:400;font-size:27px;line-height:1.24;letter-spacing:-0.005em;margin:0 0 8px;">What we believed, and how sure we were</h3>
+    <p class="sec-lead">{{LEAD_1}}</p>
 
     <div class="card" style="padding:0;margin:0 0 40px;overflow:hidden;">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 28px;border-bottom:1px dashed rgba(var(--ink-rgb),.16);">
@@ -207,11 +226,11 @@
   </section>
 
   <!-- ========== 02 · THE WORK ========== -->
-  <section id="c2" class="reveal" style="position:relative;margin-bottom:72px;">
-    <div style="position:absolute;left:-76px;top:0;bottom:-32px;width:1px;background:rgba(var(--ink-rgb),.14);"></div>
-    <div style="position:absolute;left:-76px;top:-4px;font-family:'Gloock',serif;font-size:34px;color:var(--accent);line-height:1;"><a class="chap" href="#c2">02</a></div>
+  <section id="c2" class="reveal" style="margin-bottom:72px;">
+    <div class="chapnum"><a class="chap" href="#c2">02</a></div>
     <div style="font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">The Work · Gate 2 — Decision</div>
-    <h3 style="font-family:'Gloock',serif;font-weight:400;font-size:27px;line-height:1.24;letter-spacing:-0.005em;margin:0 0 22px;">What speed bought, and what discipline killed</h3>
+    <h3 style="font-family:'Gloock',serif;font-weight:400;font-size:27px;line-height:1.24;letter-spacing:-0.005em;margin:0 0 8px;">What speed bought, and what discipline killed</h3>
+    <p class="sec-lead">{{LEAD_2}}</p>
 
     <!-- shared slider legend -->
     <div style="display:flex;gap:22px;align-items:center;font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted-2);margin-bottom:4px;padding-bottom:14px;">
@@ -256,11 +275,11 @@
   </section>
 
   <!-- ========== 03 · THE READS ========== -->
-  <section id="c3" class="reveal" style="position:relative;margin-bottom:72px;">
-    <div style="position:absolute;left:-76px;top:0;bottom:-32px;width:1px;background:rgba(var(--ink-rgb),.14);"></div>
-    <div style="position:absolute;left:-76px;top:-4px;font-family:'Gloock',serif;font-size:34px;color:var(--accent);line-height:1;"><a class="chap" href="#c3">03</a></div>
+  <section id="c3" class="reveal" style="margin-bottom:72px;">
+    <div class="chapnum"><a class="chap" href="#c3">03</a></div>
     <div style="font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">The Reads · Gate 3 — Value</div>
-    <h3 style="font-family:'Gloock',serif;font-weight:400;font-size:27px;line-height:1.24;letter-spacing:-0.005em;margin:0 0 28px;">What the numbers said, in order</h3>
+    <h3 style="font-family:'Gloock',serif;font-weight:400;font-size:27px;line-height:1.24;letter-spacing:-0.005em;margin:0 0 8px;">What the numbers said, in order</h3>
+    <p class="sec-lead">{{LEAD_3}}</p>
 
     <div id="trajectory"></div>
 
@@ -285,9 +304,8 @@
 
   <!-- ========== 04 · ON THE RECORD ========== -->
   <!-- state:bets -->
-  <section id="c4" class="reveal" style="position:relative;margin-bottom:72px;">
-    <div style="position:absolute;left:-76px;top:0;bottom:-32px;width:1px;background:rgba(var(--ink-rgb),.14);"></div>
-    <div style="position:absolute;left:-76px;top:-4px;font-family:'Gloock',serif;font-size:34px;color:var(--accent);line-height:1;"><a class="chap" href="#c4">04</a></div>
+  <section id="c4" class="reveal" style="margin-bottom:72px;">
+    <div class="chapnum"><a class="chap" href="#c4">04</a></div>
     <div style="font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">On the record · The owned bet</div>
     <h3 style="font-family:'Gloock',serif;font-weight:400;font-size:27px;line-height:1.24;letter-spacing:-0.005em;margin:0 0 22px;">Work carried by an owned bet</h3>
     <div class="card" style="padding:26px 32px;">
@@ -315,12 +333,11 @@
   <!-- /state:bets -->
 
   <!-- ========== 05 · WHERE IT STANDS ========== -->
-  <section id="c5" class="reveal" style="position:relative;margin-bottom:64px;">
-    <div style="position:absolute;left:-76px;top:0;bottom:0;width:1px;background:rgba(var(--ink-rgb),.14);"></div>
-    <div style="position:absolute;left:-76px;top:-4px;font-family:'Gloock',serif;font-size:34px;color:var(--accent);line-height:1;"><a class="chap" href="#c5">05</a></div>
+  <section id="c5" class="reveal" style="margin-bottom:64px;">
+    <div class="chapnum"><a class="chap" href="#c5">05</a></div>
     <div style="font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Where it stands</div>
     <h3 style="font-family:'Gloock',serif;font-weight:400;font-size:27px;line-height:1.24;letter-spacing:-0.005em;margin:0 0 18px;">The next read</h3>
-    <p style="font-size:15px;line-height:1.68;max-width:58ch;margin:0 0 34px;">{{PROSE_NEXT_READ}}</p>
+    <p style="font-size:15px;line-height:1.68;margin:0 0 34px;">{{PROSE_NEXT_READ}}</p>
     <div style="display:flex;gap:20px;">
       <div style="flex:0 0 30px;height:2px;background:var(--accent);margin-top:17px;border-radius:2px;"></div>
       <p style="font-family:'Gloock',serif;font-weight:400;font-size:23px;line-height:1.42;margin:0;max-width:44ch;">{{VERDICT_5}}</p>
@@ -328,7 +345,7 @@
   </section>
 
   <!-- ========== COLOPHON ========== -->
-  <footer data-source="{{SOURCE_FILENAME}}" style="margin-left:-76px;border-top:1px solid rgba(var(--ink-rgb),.2);padding-top:16px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;">
+  <footer data-source="{{SOURCE_FILENAME}}" style="border-top:1px solid rgba(var(--ink-rgb),.2);padding-top:16px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;">
     <!-- rendered from {{SOURCE_FILENAME}} -->
     <div style="display:flex;align-items:center;gap:12px;">
       <div style="width:26px;height:26px;border-radius:6px;background:var(--badge-bg);color:var(--badge-fg);font-family:'Gloock',serif;font-size:14px;display:flex;align-items:center;justify-content:center;">D</div>

@@ -14,6 +14,15 @@ Polish pass on the scorecard's presentation layer — same data, same gates, a m
 legible instrument.
 
 ### Changed
+- **An editorial lead.** The opening is now a featured, framed "The verdict" block: a
+  full-bleed headline that flows and wraps on its own, the deck and the big outcome figure
+  (now labeled) in a split row, and the baseline graph and status grouped inside one
+  elevated frame. The byline became a document-metadata header (Prepared by / Rendered /
+  Class). New `{{HERO_LABEL}}` token; the headline no longer needs manual line breaks.
+- **The margin rail is gone.** Chapter numbers moved out of the gutter into the column as
+  circular badges, and every section — masthead, standfirsts, closing prose — now spans the
+  full container width instead of an indented measure. Each gate section opens with a
+  one-line standfirst of its main takeaway (`{{LEAD_1}}` / `{{LEAD_2}}` / `{{LEAD_3}}`).
 - **One card system.** The glance band, the bet ticket, the kills table, the trajectory
   chart, and the owned-bet table now share a single elevated card token (soft border,
   radius, lift shadow) instead of four slightly different surfaces. Collapsed a latent
