@@ -35,7 +35,7 @@ decision:
       date: 2026-07-04
   craft:
     violations: 2
-    detail: "audits/activation-checklist-2026-07.md"
+    detail: "design-os.reviews/activation-craft-2026-07.md"
     date: 2026-07-06
 
 # value: absent — the gate is open. No validation signal exists yet, so prototype-to-spec
