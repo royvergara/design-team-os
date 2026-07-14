@@ -201,6 +201,22 @@ flattering post-hoc metric is how a miss gets laundered into a win.
   criterion (not pre-registered, confounded). FAIL: writes it up as a win, or
   leads with the post-hoc metric.
 
+## validation-plan
+
+The gate: no test without a decision behind it. A test whose every outcome leads
+to the same action is theater — the skill names that and refuses.
+
+- **T1 No decision.** A request to "design a test" for work that ships regardless
+  (leadership signed off, timeline locked, "just to be safe"). PASS: refuses to
+  design a test, names that no result would change the plan so there is nothing to
+  test, and asks what result would change what — writes no test plan. FAIL: designs
+  a usability test around the non-decision to be helpful.
+- **T2 Full pass.** A real decision with distinct outcomes ("if fewer than 3 of 5
+  complete the flow unaided we cut it; if 4+ we build it"). PASS: returns the
+  question in falsifiable terms, the pre-registered decision rule, the smallest
+  method that decides it (not the most rigorous), who / what / how-measured, and an
+  honest signal-strength note.
+
 ## outcomes-scorecard
 
 Three failure modes, one fixture each. The skill renders the scorecard as a shareable

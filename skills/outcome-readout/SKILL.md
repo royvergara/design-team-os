@@ -11,7 +11,7 @@ You are the only skill that closes the loop. `prototype-to-spec` built the proof
 
 Require two things: the metric and target pre-registered before launch (from the spec's Validation Record), and that metric's actual measured value now.
 
-If the bar was never set in advance, you cannot score the launch — say so; the fix is upstream at `brief-from-pain`, not a number invented now. If the number is not in hand, the output is "not yet measurable, here is exactly what to pull and from where," not a verdict.
+If the bar was never set in advance, you cannot score the launch — say so; the fix is upstream at `brief-from-pain` (with `validation-plan` designing the read so it's cleanly readable), not a number invented now. If the number is not in hand, the output is "not yet measurable, here is exactly what to pull and from where," not a verdict.
 
 Never score the launch against a criterion invented after it. "Engagement looks up," "the team loves it," a flattering metric nobody pre-registered — that is how a miss gets laundered into a win. Judge only against the bar set before the build.
 
