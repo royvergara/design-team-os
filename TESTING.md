@@ -367,9 +367,18 @@ encoded the same way as coverage grows.
 every push and PR, `structure` runs the free static checks: `claude plugin
 validate --strict` on both manifests (the `plugin.json` pass also parses every
 skill's frontmatter), `tests/check-references.sh` (every skill named in a
-`SKILL.md` resolves to a real folder), and `tests/check-version.sh` (the manifest
-version matches the newest CHANGELOG heading). The `gates` job — the LLM fixture
-suite above via `tests/run.sh` — costs tokens, so it does not run on every push:
-a maintainer triggers it manually (`workflow_dispatch`) or by adding the
+`SKILL.md` resolves to a real folder, no living doc names a retired skill, and
+every fixture directory binds to a skill), and `tests/check-version.sh` (the
+manifest version matches the newest CHANGELOG heading). The `gates` job — the LLM
+fixture suite above via `tests/run.sh` — costs tokens, so it does not run on every
+push: a maintainer triggers it manually (`workflow_dispatch`) or by adding the
 `run-gates` label to a PR. It needs an `ANTHROPIC_API_KEY` repo secret, and it is
-non-deterministic — re-run a lone flake before treating it as a real failure.
+non-deterministic — the harness retries a failing case once automatically (a lone
+flake passes "on retry"; a case that fails twice in a row is a finding, not a flake).
+
+One more reproducibility tool lives beside the checks: `scripts/regen-example.py`
+regenerates `templates/ai-outcomes-scorecard.example.html` from the live template
+(fills the tokens with the canonical reference data, renders the chart runtime in
+headless Chrome, freezes the DOM to the static-example convention). Run it whenever
+`templates/scorecard.html` changes; `--check` exits non-zero if the committed
+example is stale.
