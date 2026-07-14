@@ -23,6 +23,8 @@ For each violation: the location, the rule broken with a reference to the system
 
 Say exactly: no violations found against the provided system. Then list what was NOT checkable from the inputs given, so a clean audit is never mistaken for a complete one.
 
+If a `design-os.work/<slug>.yaml` ledger is present, record this audit to decision.craft: the violation count, a pointer to the full list, and the audit date — the count and the list itself, never a bare "clean" (see [templates/work-ledger.schema.md](../../templates/work-ledger.schema.md)). No ledger changes nothing about the audit above.
+
 ## Quality bar
 
 Every violation must cite the system source it violates. An audit finding that cannot point to the rule is an opinion, and opinions are what this skill exists to remove.

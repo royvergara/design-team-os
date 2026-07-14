@@ -23,7 +23,7 @@ Include: the pain and its evidence, who it is for, what is being built, the scop
 
 The pre-registered, measurable success criteria, each tied to a signal the team can actually read, marked team-ratified not proposed. This is the section `brief-to-prompt`'s gate demands and `prototype-to-spec`'s Validation Record later scores against.
 
-If a `design-os.work/<slug>.yaml` ledger is present, record the brief path to `decision.brief` and these ratified criteria to `decision.bar` — the criteria verbatim, never a `brief: done` — so triage and the readout later score against the same bar you set here (see [templates/work-ledger.schema.md](../../templates/work-ledger.schema.md)). No ledger changes nothing about the brief above.
+If a `design-os.work/<slug>.yaml` ledger is present, record the brief path to `decision.brief` and these ratified criteria to `decision.bar` — the criteria verbatim, never a `brief: done` — so triage and the readout later score against the same bar you set here. Ask the team once, at the same moment, for their stated confidence (0-100) that the work clears this bar, and record it to decision.bar.confidence; if they decline or don't know, leave it out and note the call enters the record unrated — never refuse the brief over a missing number (see [templates/work-ledger.schema.md](../../templates/work-ledger.schema.md)). No ledger changes nothing about the brief above.
 
 ## Quality bar
 

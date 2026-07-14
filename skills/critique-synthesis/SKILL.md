@@ -29,6 +29,8 @@ Explicitly do not weight: volume, repetition by one person, seniority on issues 
 
 **4. Reopen conditions.** For each major call, the evidence that would legitimately reopen it. This is what makes the decision a decision instead of a mood.
 
+If a `design-os.work/<slug>.yaml` ledger is present, record the decision to decision.reviews.critique, and record each direction that lost as an entry in decision.kills[] — died_at: critique-not-selected, the reason it lost from the ranking, never a bare "not chosen," and a cost estimate if one is in hand (see [templates/work-ledger.schema.md](../../templates/work-ledger.schema.md)). No ledger changes nothing about the synthesis above.
+
 ## Quality bar
 
 A reader who disagrees with the decision should still be able to see exactly which signal beat their position, and exactly what evidence would change the outcome.
