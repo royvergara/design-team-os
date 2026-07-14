@@ -164,6 +164,16 @@ the design's exact look. Honesty rules live in the runtime where they cannot be 
 - New slots beyond v0.8: class chip, confidence, kills block, folio classification +
   period (optional), dated appended reads (never overwrite), hero figure tokens.
 
+**Craft pass (applied to the reference artifact, part of the template):** scroll-
+orchestrated reveal — chapters and their bars/line-draws animate on entering the
+viewport, not on load — JS-gated so a JS-dead context hides nothing, disabled under
+print and `prefers-reduced-motion`; a 2px reading-progress hairline (live only,
+print-hidden); the margin-rail numerals are anchors with visible focus states; the
+redundancy diet (the hero figure and the trajectory own "47%" — the progress strip is
+pure geometry; a key number appears at most four times per page); optical hang on the
+headline's em-dash (line-start hangs only — never mid-sentence); `text-wrap: pretty`
+on prose; native `<title>` tooltips on chart data points.
+
 The existing three `outcomes-scorecard` fixtures must still pass unchanged; the render
 instructions in `skills/outcomes-scorecard/SKILL.md` are updated for the `DATA` block
 and the new slots, with the gate section untouched.
