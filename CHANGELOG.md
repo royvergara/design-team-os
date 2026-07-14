@@ -8,6 +8,33 @@ The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every ski
 listed enforces a gate — it refuses when its inputs aren't earned — and every one
 is covered by a runnable fixture in [TESTING.md](TESTING.md).
 
+## v0.9 — 2026-07-14
+
+The machine learns to measure judgment, and the proof layer becomes an instrument.
+
+### Added
+- **Judgment fields in the work ledger** — intent class (core / exploration / obligation),
+  stated confidence beside the pre-registered bar (absent = unrated, never guessed), and
+  kill records carrying evidence and cost for directions dead at a decision point.
+  `brief-from-pain` asks for confidence; `critique-synthesis` and
+  `design-system-enforcement` gain the ledger lines the other skills already carry.
+- **`period-review`** (sixteenth skill) — rolls a period's closed ledgers into a frozen
+  review page: outcomes, calibration, kill economics, bet mix, coverage. Six refusals,
+  fixture-tested: no trend from a single period, counts below n=10, the coverage
+  denominator always shown, strategy declared at period start or the mix is observation
+  only, stale reads flagged, unrated calls excluded and disclosed.
+- **The scorecard as an instrument** — `templates/scorecard.html` rebuilt on the
+  reconciled Claude Design composition (folio, margin-rail chapters, the verdict figure,
+  serif judgment lines) in the established palette (terracotta miss, both registers),
+  charts drawn by an embedded runtime from a data block the skill fills — geometry is
+  never computed by the model, and no projection is ever drawn. Reference render
+  committed as templates/ai-outcomes-scorecard.example.html.
+
+### Changed
+- `outcomes-scorecard` fills the new contract (class chip, confidence, kills, dated
+  appended reads, five data-written judgment lines); its gate is unchanged.
+- `/design-team-os:init` also scaffolds `design-os.reviews/`.
+
 ## v0.8.3 — 2026-07-13
 
 The scorecard renders as a document, not a screen.
