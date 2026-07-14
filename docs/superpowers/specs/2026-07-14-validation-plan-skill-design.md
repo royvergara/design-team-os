@@ -23,25 +23,36 @@ only the subject changes:
 3. **A post-ship read** — designing the measurement the bar will be scored against
    (`brief-from-pain` sets the bar; `outcome-readout` reads it).
 
-## The gate (primary refusal): decision-first
+## The gate (one refusal): decision-first
 
 It refuses to design a test with **no decision behind it.** The requester must name the
 question **and what result would change what they do**. If every plausible outcome leads to
 the same next action, there is nothing to test — that is theater, and the skill says so and
-stops. This mirrors the library's pre-registration discipline: pre-register what result means
-what, *before* running.
-
-Two secondary refusals:
-
-- **No inflating the test.** The smallest test that changes the call beats the most rigorous
-  study nobody runs. If a 5-person test settles it, it refuses to spec a 40-person study.
-  Over-testing wastes the loop as much as under-testing.
-- **No vanity measure.** The metric must be able to come back negative. A measure that can
-  only confirm is not a test; name it and ask for one that can fail.
+stops. A vanity measure is the same failure wearing a metric: a number that can only confirm
+and never come back negative cannot change the call — name it and ask for one that can fail.
+This mirrors the library's pre-registration discipline: pre-register what result means what,
+*before* running.
 
 If the request has a question but no decision rule, the skill returns the one thing missing —
 "what would you do differently if it comes back negative?" — and does not design a test around
 the gap.
+
+## The craft, once the gate passes: smallest that decides
+
+The smallest test that changes the call beats the most rigorous study nobody runs. If a
+5-person test settles it, the skill refuses to spec a 40-person study — over-testing wastes
+the loop as much as under-testing. It designs the cheapest test whose result is decisive for
+*this* decision and says why that is sufficient. This is a craft discipline, not a second
+gate: it shapes the plan the skill returns, it is not another reason to refuse.
+
+## The boundary: it designs, it does not re-litigate
+
+`validation-plan` assumes the decision to validate is already made — the caller's gate has
+already fired (a pain flagged weak, a prototype with no signal, a bar with no read). It
+designs the test; it does not re-argue whether validation is needed, and it does not re-open
+the caller's own gate. The caller refuses and points here; this skill takes it from there.
+That keeps test-design in one place instead of two, and is the reason it is worth a skill
+rather than a strengthened clause duplicated across four callers.
 
 ## What it produces (when the gate passes)
 
