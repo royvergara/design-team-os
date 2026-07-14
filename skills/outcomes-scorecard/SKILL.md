@@ -35,6 +35,8 @@ Read [templates/scorecard.html](../../templates/scorecard.html) and fill its slo
 
 Write the result to a file beside the source markdown, same basename, `.md` → `.html` (`ai-outcomes-scorecard.md` → `ai-outcomes-scorecard.html`). The file must stay self-contained — never add an external URL, font, or script.
 
+**Register.** The template renders in the light *document* register by default — a formal report on warm mist, built to be read, printed, forwarded, and pasted into a deck. That is the right default for any artifact that leaves the room. The dark *instrument* register (the brand's turquoise-on-teal machine voice) is an opt-in presentation skin: add `data-theme="dark"` to the `<html>` tag. The rule for every rendered output in this system: **if it gets forwarded, printed, or embedded, it defaults to light; the dark skin is for surfaces you frame yourself.** Print is always light, either way.
+
 Then offer to publish it as a shareable Artifact and return the link. The file is the durable, owned thing; the link is a convenience.
 
 ## Quality bar

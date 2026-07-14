@@ -8,6 +8,22 @@ The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every ski
 listed enforces a gate — it refuses when its inputs aren't earned — and every one
 is covered by a runnable fixture in [TESTING.md](TESTING.md).
 
+## v0.8.3 — 2026-07-13
+
+The scorecard renders as a document, not a screen.
+
+### Changed
+- **`templates/scorecard.html`** now defaults to a light "document" register — a formal
+  report on warm mist with deep-teal ink and scarce turquoise — built to be read, printed,
+  forwarded, and pasted into a deck. The dark "instrument" skin (turquoise-on-teal, glows)
+  is preserved as an opt-in presentation register via `<html data-theme="dark">`; print is
+  always light. Same palette family, Gloock serif, and status logic — only the ground flips.
+- **`outcomes-scorecard` SKILL.md** records the two-register rule: one visual system, two
+  grounds, chosen by the artifact's job — anything that leaves the room defaults to light;
+  the dark skin is for surfaces you frame yourself. Guidance for every future rendered output.
+- README scorecard showcase swapped to the light render (a deliberate mist band inside the
+  dark page, and honest to the actual default output).
+
 ## v0.8.2 — 2026-07-12
 
 Pixel-exact type parity for the scorecard render.
