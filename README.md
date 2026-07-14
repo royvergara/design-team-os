@@ -34,9 +34,9 @@ Most AI skill libraries are built for a single designer trying to move faster. T
 A set of Claude skills that takes a design team from raw research to a shipped, measured outcome in days instead of weeks. Each skill is a small, focused unit of judgment you can drop into Claude Code or a Claude Project. MIT licensed. It grows by release: each version either extends the machine — a new gate skill, the work ledger, the `conductor` — or sharpens a capability it already has ([CHANGELOG.md](CHANGELOG.md) has the history).
 
 <p align="center">
-  <img alt="The AI Outcomes Scorecard, rendered from a work ledger" src="assets/scorecard-example.png" width="620">
+  <img alt="The AI Outcomes Scorecard, rendered from a work ledger" src="assets/scorecard-preview.png" width="620">
   <br>
-  <em>What it produces: the <a href="templates/ai-outcomes-scorecard.md">AI Outcomes Scorecard</a> — the one page a Head of Design carries upward, refusing to let activity read as a result.</em>
+  <em>What it produces: the <a href="templates/ai-outcomes-scorecard.md">AI Outcomes Scorecard</a> — the one page a Head of Design carries upward, refusing to let activity read as a result. <a href="assets/scorecard-example.png">See the full render&nbsp;→</a></em>
 </p>
 
 ## Who this is for
