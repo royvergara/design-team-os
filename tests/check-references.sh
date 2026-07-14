@@ -12,9 +12,9 @@ set -uo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
-# Family shorthands that intentionally name a set, not one folder. brief-to-prompt
-# stands for both brief-to-prompt-v0 and brief-to-prompt-bolt.
-WHITELIST=" brief-to-prompt "
+# Family shorthands that intentionally name a set, not one folder. (None at present —
+# brief-to-prompt is now a real consolidated skill, so it resolves on its own.)
+WHITELIST=" "
 
 fail=0
 tokens="$(grep -rhoE '`[a-z][a-z0-9]+(-[a-z0-9]+)+`' skills/*/SKILL.md | tr -d '`' | sort -u)"

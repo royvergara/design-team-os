@@ -14,8 +14,7 @@ Claude the input below and the skill takes over.
 | `prd-to-ia` | Intent | a PRD + "turn this into an information architecture" |
 | `user-journey-mapping` | Intent | a named pain with evidence + "map the user journey" |
 | `brief-from-pain` | Intent → Decision | a validated pain + "write the brief / what should we build" |
-| `brief-to-prompt-v0` | Decision | a brief + "write a v0 prompt to prototype this" |
-| `brief-to-prompt-bolt` | Decision | a brief + "write a Bolt prompt for this app" |
+| `brief-to-prompt` | Decision | a brief + "write a prompt to prototype this in v0 / Bolt / Lovable / …" |
 | `figma-plugin-orchestration` | Decision | a multi-plugin Figma task + "sequence this into one run" |
 | `prototype-triage` | Decision | a generated prototype + its brief + "is this ready for review?" |
 | `design-system-enforcement` | Decision | UI + your design system + "audit this against our system" |
@@ -68,7 +67,7 @@ looks like."
 
 ### Gate 2 — Decision
 
-**4. `brief-to-prompt-v0`** — *in:* the brief. *out:* one clean v0 prompt (context, scope
+**4. `brief-to-prompt`** — *in:* the brief (target: v0). *out:* one clean v0 prompt (context, scope
 with an explicit out-of-scope line, the design-system constraints, the must-have behaviors)
 plus a **Discernment checklist** of what to inspect in the output.
 
