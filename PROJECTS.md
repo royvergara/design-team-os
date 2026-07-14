@@ -31,7 +31,7 @@ your input — and makes sense per gate:
 - **An intent Project:** `research-to-pain` + `user-journey-mapping` + `brief-from-pain`
 - **A prompt Project:** `brief-to-prompt-v0` + `brief-to-prompt-bolt`
 
-Keep bundles small and per-gate. Fifteen skills in one Project is untested territory.
+Keep bundles small and per-gate. Sixteen skills in one Project is untested territory.
 
 ## What about the machine — ledger, profile, conductor?
 
@@ -49,6 +49,9 @@ The machine is optional everywhere, and in a Project it degrades to text:
   brief"), and ask "where are we?" — it routes from the description.
 - **The profile** becomes a pasted block of your stable context (design-system reference,
   event names) in Project knowledge, same as the ledger.
+- **`period-review` has nothing to paste into a Project.** It reads a period's closed
+  ledgers and prior frozen reviews — filesystem state a chat doesn't have — so, like the
+  conductor, it stays machine-side: Claude Code only.
 
 ## Two honest limits
 

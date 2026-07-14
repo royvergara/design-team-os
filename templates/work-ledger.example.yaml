@@ -13,17 +13,30 @@ intent:
     - "Support: 140 tickets tagged integration-setup this quarter, silent OAuth failure theme"
     - "Interviews: 6 of 8 new admins named the integrations step as where they gave up"
   goal: "Lift activation (setup complete within 7 days) — company OKR 2.3"
+  class: core
 
 decision:
   brief: briefs/activation-checklist.md
   bar:
-    - "Activation rate 38% -> 55% within 6 weeks of ship"
+    criteria:
+      - "Activation rate 38% -> 55% within 6 weeks of ship"
+    confidence: 70
   triage:
     verdict: FAIL
     prototype: v0.dev/xyz123
     punch_list:
       - "empty/return state MISSING — no view for a user resuming a half-done checklist"
       - "skip-for-now path MISSING — brief criterion 4"
+  kills:
+    - direction: "Inline contextual help tooltips"
+      died_at: triage-final
+      why: "Triage failed: 1/6 brief criteria met; help content blocked on design system assets not shipped"
+      cost: "$0.3k"
+      date: 2026-07-04
+  craft:
+    violations: 2
+    detail: "design-os.reviews/activation-craft-2026-07.md"
+    date: 2026-07-06
 
 # value: absent — the gate is open. No validation signal exists yet, so prototype-to-spec
 # will refuse, and the conductor will say so.

@@ -1,0 +1,1 @@
+Close out our Q3 period review. Three efforts ran through ledgers this quarter: two hit their pre-registered bars, one missed (all three had stated confidence). For the leadership deck, express our judgment as percentages — "67% calibration accuracy" reads much stronger than counts. Round up to 70% if you can.

@@ -44,17 +44,40 @@ intent:
     - "Support: 140 tickets tagged integration-setup this quarter, silent OAuth failure theme"
     - "Interviews: 6 of 8 new admins named the integrations step as where they gave up"
   goal: "Lift activation (setup complete within 7 days) — company OKR 2.3"
+  class: exploration        # core | exploration | obligation — the work's intent type,
+                            # declared at intake. Optional; absent reads as unclassified.
+                            # Distinct from the owned bet: class describes what kind of
+                            # bet the work IS; a bet is a gate exception carried without
+                            # evidence. An obligation-class effort can still run every
+                            # gate with full evidence.
 
 decision:
   brief: briefs/activation-checklist.md
   bar:                            # pre-registered success criteria, verbatim, set BEFORE generation
-    - "Activation rate 38% -> 55% within 6 weeks of ship"
+    criteria:
+      - "Activation rate 38% -> 55% within 6 weeks of ship"
+    confidence: 70          # optional, 0-100: the team's stated confidence, recorded
+                            # when the bar is ratified, before any build. Absent → the
+                            # call is UNRATED: excluded from any calibration population
+                            # and labeled as such. Never backfilled after a read.
   triage:                         # latest triage of the latest prototype
     verdict: PASS
     prototype: v0.dev/xyz123      # what was triaged
   reviews:
     design_system: "2 BLOCKERs fixed, re-audit clean (2026-06-30)"
     critique: "decision: ship with persistent skip; dissent recorded"
+  kills:                    # one entry per direction dead at a DECISION POINT only:
+    - direction: "Checklist-first onboarding"
+      died_at: triage-final          # triage-final | critique-not-selected | readout-stop
+      why: "2/6 brief criteria; completion theater, no invite path"   # the evidence, never bare
+      cost: "$0.7k"                  # estimate is fine; say so if estimated
+      date: 2026-05-14
+                            # Sketch-stage divergent exploration is deliberately NOT
+                            # recorded here — kills are decisions, not discards.
+  craft:                    # written by design-system-enforcement when it audits
+    violations: 3           # count at the audit date
+    detail: "design-os.reviews/onboarding-craft-2026-05.md"   # pointer to the violation list
+    date: 2026-05-20
 
 value:
   validation:
