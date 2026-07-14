@@ -22,6 +22,8 @@ Claude the input below and the skill takes over.
 | `critique-synthesis` | Decision | feedback from 2+ reviewers + "synthesize this into a direction" |
 | `prototype-to-spec` | Value | a chosen prototype + its validation signal + "write the spec" |
 | `outcome-readout` | Value | a shipped feature + its spec + live numbers + "did it work?" |
+| `outcomes-scorecard` | Value / Program | a filled scorecard + its ledgers + "render the scorecard as a shareable page" |
+| `period-review` | Program | a quarter's closed ledgers + "run the period review / close out the quarter" |
 | `team-ai-baseline` | All gates | how your team actually works with AI + "where are we on the maturity curve?" |
 | `conductor` | Routing | a work ledger, or whatever artifacts exist + "where are we / what's next?" |
 
