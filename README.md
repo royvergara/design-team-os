@@ -12,7 +12,7 @@
 <p align="center">
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-40e0d0.svg"></a>
   <a href="CHANGELOG.md"><img alt="Version" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Froyvergara%2Fdesign-team-os%2Fmain%2F.claude-plugin%2Fplugin.json&query=%24.version&prefix=v&label=version&color=40e0d0"></a>
-  <img alt="16 skills" src="https://img.shields.io/badge/skills-16-40e0d0">
+  <img alt="15 skills" src="https://img.shields.io/badge/skills-15-40e0d0">
   <a href=".github/workflows/gates.yml"><img alt="Gate tests" src="https://img.shields.io/github/actions/workflow/status/royvergara/design-team-os/gates.yml?branch=main&label=gates&color=40e0d0"></a>
   <a href="https://fluentxdesign.substack.com"><img alt="Newsletter: Fluent by Design" src="https://img.shields.io/badge/newsletter-Fluent%20by%20Design-133b3b"></a>
 </p>
@@ -81,7 +81,7 @@ None of this is required. Every skill still gates its own inputs and works alone
 
 ## Skills
 
-Sixteen skills are live under `skills/` — every skill's primary refusal is encoded as a runnable fixture, with adversarial coverage growing release by release ([TESTING.md](TESTING.md)): the original eight (v0.1, June 12, 2026), three loop-closing skills (v0.2) that wire the gates into a full Intent → Decision → Value → Intent loop, the most upstream skill in the library (v0.3) that produces the validated pain everything else assumes, `team-ai-baseline` (v0.4), which sits above the gates and tells a team whether it is actually running them, the `conductor` (v0.5), the machine's routing layer, `outcomes-scorecard` (v0.8), which renders the program-level scorecard into a shareable page and refuses to let activity read as a result, and `period-review` (v0.9), which rolls a period's closed ledgers into a frozen review and refuses to chart a trend it hasn't earned.
+Fifteen skills are live under `skills/` — every skill's primary refusal is encoded as a runnable fixture, with adversarial coverage growing release by release ([TESTING.md](TESTING.md)): the original eight (v0.1, June 12, 2026), three loop-closing skills (v0.2) that wire the gates into a full Intent → Decision → Value → Intent loop, the most upstream skill in the library (v0.3) that produces the validated pain everything else assumes, `team-ai-baseline` (v0.4), which sits above the gates and tells a team whether it is actually running them, the `conductor` (v0.5), the machine's routing layer, `outcomes-scorecard` (v0.8), which renders the program-level scorecard into a shareable page and refuses to let activity read as a result, and `period-review` (v0.9), which rolls a period's closed ledgers into a frozen review and refuses to chart a trend it hasn't earned.
 
 | Skill | Gate | What it does | Status |
 | --- | --- | --- | --- |
@@ -98,11 +98,10 @@ Sixteen skills are live under `skills/` — every skill's primary refusal is enc
 | critique-synthesis | Decision | Synthesizes scattered critique into clear direction | v0.1 |
 | user-journey-mapping | Intent | Drafts a journey map from a brief and known signals | v0.1 |
 | prototype-to-spec | Value | Turns a chosen prototype into a buildable spec | v0.1 |
-| brief-to-prompt-v0 | Decision | Converts a brief into a clean v0 by Vercel prompt | v0.1 |
-| brief-to-prompt-bolt | Decision | Converts a brief into a clean Bolt.new prompt | v0.1 |
+| brief-to-prompt | Decision | Converts a brief into a clean prompt for any AI builder — v0, Bolt, Lovable, Claude Artifacts — with per-tool adapters | v0.10 |
 | figma-plugin-orchestration | Decision | Coordinates Figma plugin steps from one instruction | v0.1 |
 
-**On tools.** The judgment is vendor-neutral — the three gates, the work ledger, and the `conductor` don't care what you prototype with. Only the *producer* skills touch a specific tool at the output boundary: `brief-to-prompt-v0` and `brief-to-prompt-bolt` write prompts for those generators, and `figma-plugin-orchestration` sequences Figma plugin runs. Those three are thin adapters over the same discipline the rest of the library enforces; everything else is tool-agnostic by design.
+**On tools.** The judgment is vendor-neutral — the three gates, the work ledger, and the `conductor` don't care what you prototype with. Only the *producer* skills touch a specific tool at the output boundary: `brief-to-prompt` writes a gated prompt for whatever builder you name (v0, Bolt, Lovable, Claude Artifacts) through thin per-tool adapters, and `figma-plugin-orchestration` sequences Figma plugin runs. Those adapters ride over the same discipline the rest of the library enforces; everything else is tool-agnostic by design.
 
 Each skill enforces its gate in practice, not just on paper. It refuses or flags when the inputs are not there: `research-to-pain` will not crown a pain as validated on stakeholder opinion or thin, untriangulated signal, `prd-to-ia` will not draft without both a stated business goal and a customer pain, `prototype-to-spec` will not write a spec without a validation signal, `outcome-readout` will not call a launch a win without the pre-registered number, the `conductor` will not treat a checkmark as a passed gate, and `outcomes-scorecard` will not render a scorecard with no baseline, nor let a leverage number or an unjudged bet read as a proven result, and `period-review` will not chart a trend from a single period, render a percentage on a handful of calls, or hide the efforts that bypassed the ledgers. The one sanctioned exception is the [owned bet](templates/work-ledger.schema.md). That refusal behavior is the point of each skill, and it is what the tests in [TESTING.md](TESTING.md) verify.
 
@@ -120,7 +119,7 @@ Three files under `templates/` carry the state the skills read and write, plus t
 
 **Door one: your browser, 60 seconds, no install.** For designers (and anyone) who live in claude.ai, not a terminal. Pick a skill from the table above, copy its `SKILL.md`, paste it into a Claude Project's instructions, hand it your input. The gates hold there — tested, including several skills pasted into one Project. The full path, per-gate bundles, and the honest limits are in **[PROJECTS.md](PROJECTS.md)**.
 
-**Door two: Claude Code — the full machine.** One command adds the marketplace, one installs everything: all sixteen skills, the `conductor` among them, and a `/design-team-os:init` setup command. Updates come through `/plugin`, no re-copying.
+**Door two: Claude Code — the full machine.** One command adds the marketplace, one installs everything: all fifteen skills, the `conductor` among them, and a `/design-team-os:init` setup command. Updates come through `/plugin`, no re-copying.
 
 ```
 /plugin marketplace add royvergara/design-team-os
@@ -149,7 +148,7 @@ The skills work ad hoc, but they were built to run in order, following the three
 4. `brief-from-pain`: turn that pain into a brief with scope and, before anything is generated, a measurable definition of what good looks like.
 
 **Gate 2, Decision.**
-5. `brief-to-prompt-v0` / `brief-to-prompt-bolt`: convert the brief into a generation prompt (v0 for a screen/component, Bolt for a full app/flow).
+5. `brief-to-prompt`: convert the brief into a generation prompt, naming the target builder (a screen generator like v0 for a screen/component, a full-app builder like Bolt for an app/flow).
 6. `figma-plugin-orchestration`: when production work spans multiple Figma plugins.
 7. `prototype-triage`: triage the generated prototype against the brief before it earns human review.
 8. `design-system-enforcement`: audit what passed triage against your system.
@@ -164,7 +163,7 @@ The skills work ad hoc, but they were built to run in order, following the three
 
 ## Run it yourself, or have it installed
 
-The sixteen skills are free and MIT, forever — clone the repo and run the whole system today. What's for sale is someone who has run it before doing the installation and holding the line: **[Fluent by Design](https://fluentxdesign.com/?utm_source=github&utm_medium=readme)** installs the three gates into your team's real workflow, trains the team, and proves the result on an outcomes scorecard. Everything a team needs to run the system itself is here; the paid layer is the enablement, not a locked door.
+The fifteen skills are free and MIT, forever — clone the repo and run the whole system today. What's for sale is someone who has run it before doing the installation and holding the line: **[Fluent by Design](https://fluentxdesign.com/?utm_source=github&utm_medium=readme)** installs the three gates into your team's real workflow, trains the team, and proves the result on an outcomes scorecard. Everything a team needs to run the system itself is here; the paid layer is the enablement, not a locked door.
 
 - **See where your team stands** — [run the 60-second baseline](https://baseline.fluentxdesign.com/?utm_source=github&utm_medium=readme). A real diagnostic, no signup, not a lead magnet.
 - **The weekly build-in-public** — [the newsletter](https://fluentxdesign.substack.com): *AI made production cheap, judgment got expensive*, worked through for design teams, with a new gate-tested skill most Fridays.
@@ -191,7 +190,7 @@ MIT. See [LICENSE](LICENSE). Use it, fork it, ship it.
 
 ## Status
 
-**v0.9.1** — the scorecard's presentation layer becomes a legible editorial instrument. The opening reads as a featured *The verdict* lead: a full-bleed headline over a document-metadata header, the outcome figure and deck in a split row, and the baseline graph grouped in one framed block. Below it — one shared card system (a stamped registration-bet ticket, an at-a-glance card with a color key and status chips, chip-and-tabular tables), full-width two-lane leverage sliders that never collide, circular in-column chapter badges with a one-line standfirst per gate, and a warmer palette carried through the template's CSS custom properties (the dark skin re-colors from the same tokens). Same data, same gates. Builds on **v0.9** — the machine learns to measure judgment, and the proof layer becomes an instrument. Sixteen skills are live; the newest, `period-review`, rolls a period's closed ledgers into a frozen review page — outcomes, calibration, kill economics, bet mix, coverage — and refuses six ways to launder the read, each refusal fixture-tested. The work ledger now carries judgment fields (intent class, stated confidence beside the pre-registered bar, kill records with evidence and cost), and `templates/scorecard.html` is a tokenized instrument with a committed reference render at [`templates/ai-outcomes-scorecard.example.html`](templates/ai-outcomes-scorecard.example.html). It builds on v0.8's shareable scorecard and the **owned bet** (v0.6). Every skill's primary refusal is encoded as a runnable fixture ([TESTING.md](TESTING.md)). Full history in [CHANGELOG.md](CHANGELOG.md).
+**v0.10** — the prototype-prompt skills become honestly tool-agnostic. `brief-to-prompt-v0` and `brief-to-prompt-bolt` merge into one `brief-to-prompt` that writes a clean, gated prompt for any AI builder — v0, Bolt, Lovable, Claude Artifacts, Framer — with thin per-tool adapters (a screen generator scopes to one surface; a full-app builder adds mock-data instructions and a scope guard). The library no longer ships a skill per vendor; the judgment is vendor-neutral and only the output boundary adapts. Fifteen skills are live, every one's primary refusal still fixture-tested. Builds on **v0.9.1**, which reworked the outcomes scorecard into a legible editorial instrument — a featured *verdict* lead, a document-metadata header, an at-a-glance card with status chips, circular chapter badges — and **v0.9**, where the machine learned to measure judgment: the work ledger carries intent class, stated confidence, and kill records, and `period-review` rolls closed ledgers into a frozen review. It builds on v0.8's shareable scorecard and the **owned bet** (v0.6). Every skill's primary refusal is encoded as a runnable fixture ([TESTING.md](TESTING.md)). Full history in [CHANGELOG.md](CHANGELOG.md).
 
 ---
 

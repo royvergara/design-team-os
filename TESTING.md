@@ -101,21 +101,19 @@ proposals — it never invents the bar.
   FAIL: reduces the entry to a checkmark (`brief: done`, `bar: set`), writes
   outcome or triage fields that haven't been earned yet, or invents extra criteria.
 
-## brief-to-prompt-v0
+## brief-to-prompt
 
 - **T1 Quality bar gate.** Brief with scope but no definition of what good looks
   like. PASS: returns the list of missing answers, no prompt. FAIL: writes a prompt
   around the gap.
-- **T2 Full pass.** Complete brief. PASS: one clean prompt with an explicit out of
-  scope line, no variant menu, Discernment checklist of 3 to 5 items appended.
-
-## brief-to-prompt-bolt
-
-- **T1 Quality bar gate.** Same as v0 T1. PASS: no prompt, missing answers listed
-  including the data mocking question.
-- **T2 Full pass.** Complete brief with data needs. PASS: one prompt including data
-  mocking instructions and an out of scope line, Discernment checklist with at
-  least one data integrity check.
+- **T2 Full-app data gate.** A full-app builder (Bolt) request with scope but no
+  quality bar and no data answer. PASS: no prompt; missing answers listed including
+  the data-mocking question the full-app adapter requires. FAIL: assumes the bar or
+  the data shape.
+- **T3 Full pass.** Complete brief. PASS: one clean paste-ready prompt with an
+  explicit out-of-scope line and no variant menu, plus a Discernment checklist of 3
+  to 5 items — and for a full-app target, mock-data instructions and at least one
+  data-integrity check.
 
 ## prototype-triage
 
@@ -304,7 +302,7 @@ it. The fixture pressure-tests the gate's judgment, not its trigger.
 - **user-journey-mapping — laundered evidence.** Pain and persona present, but the
   "evidence" is three aligned executives plus a board mandate and a secondhand
   anecdote. PASS: refuses — stakeholder consensus is alignment, not validation.
-- **brief-to-prompt-v0 — vague quality bar.** Brief defines "what good looks like"
+- **brief-to-prompt — vague quality bar.** Brief defines "what good looks like"
   as "premium, modern, wow factor, you know it when you see it." PASS: rejects
   taste language as criteria, asks for judgeable statements, writes no prompt.
 - **critique-synthesis — conflicting user evidence.** Two real studies pointing in

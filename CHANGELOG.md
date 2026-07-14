@@ -8,6 +8,25 @@ The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every ski
 listed enforces a gate — it refuses when its inputs aren't earned — and every one
 is covered by a runnable fixture in [TESTING.md](TESTING.md).
 
+## v0.10 — 2026-07-14
+
+The prototype-prompt skills become tool-agnostic.
+
+### Changed
+- **`brief-to-prompt-v0` + `brief-to-prompt-bolt` → one `brief-to-prompt`.** A single skill
+  now writes the gated prompt for any AI builder — v0, Bolt.new, Lovable, Replit, Claude
+  Artifacts, Framer — with thin per-tool adapters instead of a skill per vendor. The gate
+  (won't write a prompt until the brief defines what good looks like), the prompt structure,
+  and the Discernment checklist are unchanged and vendor-neutral; the target only tunes a few
+  lines — a screen generator scopes to one surface; a full-app builder adds mock-data
+  instructions and a scope guard, and refuses until the data question is answered.
+- **`conductor` routing** now names `brief-to-prompt` with a variant note, not two skills.
+- **Fifteen skills** are live (was sixteen); every one's primary refusal stays fixture-tested,
+  including the merged skill's quality-bar and full-app data gates.
+
+First step of a skills-audit follow-up: the library is now honestly agnostic — judgment is
+vendor-neutral, and only the output boundary adapts (see the "On tools" note in the README).
+
 ## v0.9.1 — 2026-07-14
 
 Polish pass on the scorecard's presentation layer — same data, same gates, a more

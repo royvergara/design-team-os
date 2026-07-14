@@ -29,9 +29,9 @@ your input — and makes sense per gate:
 
 - **A review Project:** `prototype-triage` + `design-system-enforcement` + `critique-synthesis`
 - **An intent Project:** `research-to-pain` + `user-journey-mapping` + `brief-from-pain`
-- **A prompt Project:** `brief-to-prompt-v0` + `brief-to-prompt-bolt`
+- **A prompt Project:** `brief-to-prompt` (one skill, adapts to the builder)
 
-Keep bundles small and per-gate. Sixteen skills in one Project is untested territory.
+Keep bundles small and per-gate. Fifteen skills in one Project is untested territory.
 
 ## What about the machine — ledger, profile, conductor?
 

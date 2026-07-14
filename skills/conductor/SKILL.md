@@ -79,8 +79,9 @@ Routing into a refusal wastes the turn the machine exists to save.
 - **Nothing proven, raw research in hand** → `research-to-pain`. **A PRD in hand** →
   `prd-to-ia`. Both true → both are runnable now, in parallel.
 - **Pain validated, no brief** → `brief-from-pain`. The ledger's evidence rides along.
-- **Brief with a real bar, no prototype** → `brief-to-prompt-v0` for a screen or component,
-  `brief-to-prompt-bolt` for a full app or flow with data. Name which and why.
+- **Brief with a real bar, no prototype** → `brief-to-prompt`, naming the target builder: a
+  screen or component leans a screen generator (v0); a full app or flow with data leans a
+  full-app builder (Bolt, Lovable). Name which and why.
 - **Prototype exists, triage FAIL** → back to the same `brief-to-prompt` skill with the
   punch list; the brief itself does not reopen unless the punch list contradicts it.
 - **Prototype exists, never triaged** → `prototype-triage` before any human review.
