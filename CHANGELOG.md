@@ -8,6 +8,34 @@ The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every ski
 listed enforces a gate — it refuses when its inputs aren't earned — and every one
 is covered by a runnable fixture in [TESTING.md](TESTING.md).
 
+## v0.9.1 — 2026-07-14
+
+Polish pass on the scorecard's presentation layer — same data, same gates, a more
+legible instrument.
+
+### Changed
+- **One card system.** The glance band, the bet ticket, the kills table, the trajectory
+  chart, and the owned-bet table now share a single elevated card token (soft border,
+  radius, lift shadow) instead of four slightly different surfaces. Collapsed a latent
+  double-card around the trajectory chart.
+- **The registered bet reads as a ticket.** Section 01's pain / metric / bar sit in a
+  framed card with a gold "Locked … · pre-build" stamp and a perforation rule — the
+  pre-registration that makes the scorecard honest now looks the part. New `{{BAR_STAMP}}`
+  token; `{{GOAL}}` is the metric and `{{BAR_LINE}}` the numeric bar.
+- **At-a-glance is a proper card** — a header with an Outcome/Leverage color key, three
+  evenly-split columns, and each metric's verdict as a status chip ("Below bar",
+  "7× faster"). `{{G_DELTA}}` drops the "Outcome ·"/"Leverage ·" prefix the key now carries.
+- **Leverage sliders** move to a full-width, two-lane layout — values ride above the
+  track, the target below, with edge-anchored labels — so a value and its target never
+  collide even when their marks nearly coincide.
+- **Tables** gain gate chips on "Died at", right-aligned tabular cost, and a quiet row hover.
+- **Harmonized palette** — the electric teal and cool greys warm toward the marketing
+  site's register; misses stay honestly clay. Ported through the template's CSS custom
+  properties, so the dark presentation skin re-colors from the same tokens.
+
+The reference render at [`templates/ai-outcomes-scorecard.example.html`](templates/ai-outcomes-scorecard.example.html)
+is regenerated from the updated template.
+
 ## v0.9 — 2026-07-14
 
 The machine learns to measure judgment, and the proof layer becomes an instrument.
