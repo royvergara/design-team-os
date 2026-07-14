@@ -1,6 +1,6 @@
 {
   "name": "design-team-os",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "The operating system for design teams running on AI — three decision gates (Intent, Decision, Value), skills that enforce them and refuse when the inputs aren't earned, a work ledger that carries the evidence from pain to shipped outcome, and a conductor that routes the loop without ever judging a gate.",
   "author": {
     "name": "Roy Vergara"
