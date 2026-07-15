@@ -8,6 +8,39 @@ The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every ski
 listed enforces a gate — it refuses when its inputs aren't earned — and every one
 is covered by a runnable fixture in [TESTING.md](TESTING.md).
 
+## v0.13 — 2026-07-14
+
+The machine gets a heartbeat and a ramp.
+
+### Added
+- **Rituals as contracts** ([templates/rituals.md](templates/rituals.md)) — a ritual is
+  cadence + inputs read + artifact produced + decisions written back + a named owner,
+  runnable as a live meeting or an async digest. Three ship: the weekly gate review, the
+  monthly scorecard pulse (reads, never writes), and the quarterly close (`period-review`,
+  the pattern's existing instance). The layer's law: rituals orchestrate existing judgment
+  at a cadence; they never add a new judge.
+- **`weekly-review`** (seventeenth skill) — preps the weekly agenda from the open ledgers:
+  what moved (artifact deltas, triage fractions trending), what stalled (computable
+  against the declared cadence, never euphemized; an overdue bet leads its line), the
+  decisions needed (each routed to the skill or human that produces it), and what's
+  runnable now. Its gate: it surfaces and routes, it never judges — a triage FAIL
+  discussed warmly in standup is still a FAIL until the artifact changes, and with no
+  state to read it refuses to fabricate a review. Fixture-tested against exactly that
+  temptation.
+- **The on-ramp.** [ADOPTION.md](ADOPTION.md) — the team-level runbook: start at
+  `team-ai-baseline`, pilot pod over big-bang, week one day by day, role lanes,
+  `period-review`'s coverage line named as the adoption number, a glossary, and the
+  ways-this-dies catalog (gate-laundering, triaging exploration, scorecard theater,
+  config-as-progress, the review that judges). Plus the fluency thesis, finally written
+  down: enablement through structure — the expertise lives in the skills, humans get
+  judgment reps inside real work — with a short, attributed mapping to the 4Ds.
+- **The practice kit** ([practice/](practice/)) — the EXAMPLES walkthrough as runnable
+  inputs: Acme research (with the consensus trap and the feature request to refuse), a
+  PRD that passes with cruft for the exclusions list, a first prototype that FAILs triage
+  into a gap report, and week-8 numbers that read *partial* against the bar. The refusals
+  are the curriculum; every gate bites where it costs nothing.
+- The profile's `rituals:` block graduates from reserved to live.
+
 ## v0.12 — 2026-07-14
 
 The machine learns the team, and distance-to-pass becomes a standard.

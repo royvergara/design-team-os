@@ -23,7 +23,7 @@ Check whether `design-os.profile.yaml` already exists at the repo root.
   2. **The current period and its close date** → `calendar.current_period` + `calendar.period_close`.
   3. **Who ratifies bars, and who can own a bet** → `people.bar_ratifiers` + `people.bet_authority` (and `people.scorecard_owner` if named).
   4. **The default AI builder** (v0, Bolt, Lovable, …) → `tools.builder` (plus `tools.state` if they say where ledgers will live).
-  5. **The weekly review day and owner** → `rituals.weekly_review` (reserved block; consumed by the rituals layer when it ships).
+  5. **The weekly review day and owner** → `rituals.weekly_review` (read by `weekly-review` and the ritual definitions in `${CLAUDE_PLUGIN_ROOT}/templates/rituals.md`).
 
 **Tier 3 — everything else grows by use.** Do not ask about `metrics:`, `research:`, `standards:`, `artifacts:`, or `reporting:` at init. Each profile-reading skill names its block when it first needs it; the profile accretes from real work, and a block no skill ever asked for should not exist.
 

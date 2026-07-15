@@ -12,7 +12,7 @@
 <p align="center">
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-40e0d0.svg"></a>
   <a href="CHANGELOG.md"><img alt="Version" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Froyvergara%2Fdesign-team-os%2Fmain%2F.claude-plugin%2Fplugin.json&query=%24.version&prefix=v&label=version&color=40e0d0"></a>
-  <img alt="16 skills" src="https://img.shields.io/badge/skills-16-40e0d0">
+  <img alt="17 skills" src="https://img.shields.io/badge/skills-17-40e0d0">
   <a href=".github/workflows/gates.yml"><img alt="Gate tests" src="https://img.shields.io/github/actions/workflow/status/royvergara/design-team-os/gates.yml?branch=main&label=gates&color=40e0d0"></a>
   <a href="https://fluentxdesign.substack.com"><img alt="Newsletter: Fluent by Design" src="https://img.shields.io/badge/newsletter-Fluent%20by%20Design-133b3b"></a>
 </p>
@@ -47,7 +47,7 @@ You have the AI tools. Your team is experimenting in private. Quality is all ove
 
 And if you're the designer on that team, not the one leading it: the skills work for you alone, in a browser, today — copy one file into a Claude Project and go ([60-second path](PROJECTS.md)). The system is built for the team; every piece of it is useful solo.
 
-Want to see it work before reading another word? [EXAMPLES.md](EXAMPLES.md) walks one feature through the whole loop — including the moments the skills refuse, which is the point.
+Want to see it work before reading another word? [EXAMPLES.md](EXAMPLES.md) walks one feature through the whole loop — including the moments the skills refuse, which is the point. Ready to run it? [practice/](practice/) is that same loop as a hands-on lab on fictional inputs, and [ADOPTION.md](ADOPTION.md) is the team on-ramp: the pilot pod, week one, and the coverage number that measures adoption honestly.
 
 ## The spine
 
@@ -81,11 +81,12 @@ None of this is required. Every skill still gates its own inputs and works alone
 
 ## Skills
 
-Sixteen skills are live under `skills/` — every skill's primary refusal is encoded as a runnable fixture, with adversarial coverage growing release by release ([TESTING.md](TESTING.md)): the original eight (v0.1, June 12, 2026), three loop-closing skills (v0.2) that wire the gates into a full Intent → Decision → Value → Intent loop, the most upstream skill in the library (v0.3) that produces the validated pain everything else assumes, `team-ai-baseline` (v0.4), which sits above the gates and tells a team whether it is actually running them, the `conductor` (v0.5), the machine's routing layer, `outcomes-scorecard` (v0.8), which renders the program-level scorecard into a shareable page and refuses to let activity read as a result, and `period-review` (v0.9), which rolls a period's closed ledgers into a frozen review and refuses to chart a trend it hasn't earned.
+Seventeen skills are live under `skills/` — every skill's primary refusal is encoded as a runnable fixture, with adversarial coverage growing release by release ([TESTING.md](TESTING.md)): the original eight (v0.1, June 12, 2026), three loop-closing skills (v0.2) that wire the gates into a full Intent → Decision → Value → Intent loop, the most upstream skill in the library (v0.3) that produces the validated pain everything else assumes, `team-ai-baseline` (v0.4), which sits above the gates and tells a team whether it is actually running them, the `conductor` (v0.5), the machine's routing layer, `outcomes-scorecard` (v0.8), which renders the program-level scorecard into a shareable page and refuses to let activity read as a result, and `period-review` (v0.9), which rolls a period's closed ledgers into a frozen review and refuses to chart a trend it hasn't earned — plus `validation-plan` (v0.11), which designs the smallest test that would settle a decision, and `weekly-review` (v0.13), which preps the weekly ritual and refuses to judge a gate from a meeting.
 
 | Skill | Gate | What it does | Status |
 | --- | --- | --- | --- |
 | conductor | Routing | Reads a work ledger and reports which gates are proven, which are open, and what can run now | v0.5 |
+| weekly-review | Ritual | Preps the weekly gate review — moved, stalled, decisions needed, runnable now — and refuses to judge a gate from a meeting | v0.13 |
 | period-review | Program | Rolls closed ledgers into a frozen period review — trends, calibration, kills, coverage — and refuses trends it has not earned | v0.9 |
 | outcomes-scorecard | Value | Renders the program-level scorecard into a shareable page and refuses to let activity read as a result | v0.8 |
 | team-ai-baseline | All gates | Places a team honestly on the AI maturity curve and names the one gate holding it back | v0.4 |
@@ -120,7 +121,7 @@ Three files under `templates/` carry the state the skills read and write, plus t
 
 **Door one: your browser, 60 seconds, no install.** For designers (and anyone) who live in claude.ai, not a terminal. Pick a skill from the table above, copy its `SKILL.md`, paste it into a Claude Project's instructions, hand it your input. The gates hold there — tested, including several skills pasted into one Project. The full path, per-gate bundles, and the honest limits are in **[PROJECTS.md](PROJECTS.md)**.
 
-**Door two: Claude Code — the full machine.** One command adds the marketplace, one installs everything: all sixteen skills, the `conductor` among them, and a `/design-team-os:init` setup command. Updates come through `/plugin`, no re-copying.
+**Door two: Claude Code — the full machine.** One command adds the marketplace, one installs everything: all seventeen skills, the `conductor` among them, and a `/design-team-os:init` setup command. Updates come through `/plugin`, no re-copying.
 
 ```
 /plugin marketplace add royvergara/design-team-os
@@ -166,7 +167,7 @@ Across every gate, `validation-plan` designs the smallest test that would settle
 
 ## Run it yourself, or have it installed
 
-The sixteen skills are free and MIT, forever — clone the repo and run the whole system today. What's for sale is someone who has run it before doing the installation and holding the line: **[Fluent by Design](https://fluentxdesign.com/?utm_source=github&utm_medium=readme)** installs the three gates into your team's real workflow, trains the team, and proves the result on an outcomes scorecard. Everything a team needs to run the system itself is here; the paid layer is the enablement, not a locked door.
+The seventeen skills are free and MIT, forever — clone the repo and run the whole system today. What's for sale is someone who has run it before doing the installation and holding the line: **[Fluent by Design](https://fluentxdesign.com/?utm_source=github&utm_medium=readme)** installs the three gates into your team's real workflow, trains the team, and proves the result on an outcomes scorecard. Everything a team needs to run the system itself is here; the paid layer is the enablement, not a locked door.
 
 - **See where your team stands** — [run the 60-second baseline](https://baseline.fluentxdesign.com/?utm_source=github&utm_medium=readme). A real diagnostic, no signup, not a lead magnet.
 - **The weekly build-in-public** — [the newsletter](https://fluentxdesign.substack.com): *AI made production cheap, judgment got expensive*, worked through for design teams, with a new gate-tested skill most Fridays.
@@ -193,7 +194,7 @@ MIT. See [LICENSE](LICENSE). Use it, fork it, ship it.
 
 ## Status
 
-**v0.12** — the machine learns the team. The project profile graduates to a team profile: this period's goals (Gate 1 finally has the list a stated goal gets checked against), a KPI dictionary that settles what a metric means before a bar is registered against it, decision rights (who *may* ratify a bar or own a bet — never that they did), the period calendar, and the tool switchboard — declared once, read by eleven skills, asked for by `/design-team-os:init` in five questions. Failed gates now report distance the compiler way — a criteria fraction ("4 of 6 MET"), the gap to close first, and a ranked punch list — never a readiness score, and the release's rule is fixture-enforced: the profile got bigger, the gates didn't get smaller. Builds on **v0.11** — the loop gets the step it kept pointing at. A new `validation-plan` skill designs the *smallest test that would settle a decision* — the signal `research-to-pain`, `prototype-to-spec`, and `outcome-readout` each demand but hand off. Its gate refuses to design a test with no decision behind it (name what result would change what you'd do, or there is nothing to test), and it holds to the smallest test that changes the call over the most rigorous study nobody runs. Sixteen skills are live, every one's primary refusal fixture-tested. Builds on **v0.10**, which made the prototype-prompt skills tool-agnostic (*brief-to-prompt-v0* + *-bolt* merged into one `brief-to-prompt` with per-tool adapters), and **v0.9.1**'s editorial rework of the outcomes scorecard. It builds on v0.8's shareable scorecard and the **owned bet** (v0.6). Every skill's primary refusal is encoded as a runnable fixture ([TESTING.md](TESTING.md)). Full history in [CHANGELOG.md](CHANGELOG.md).
+**v0.13** — the machine gets a heartbeat and a ramp. Rituals become contracts ([templates/rituals.md](templates/rituals.md)) — weekly gate review, monthly scorecard pulse, quarterly close — that orchestrate existing judgment at a cadence and never add a new judge; the new `weekly-review` skill preps the agenda (moved, stalled, decisions needed, runnable now) and refuses to certify a gate from a meeting. Adoption gets its on-ramp: [ADOPTION.md](ADOPTION.md) (pilot pod, week one, role lanes, coverage as the adoption number, the ways-this-dies catalog) and a runnable [practice kit](practice/) where the refusals are the curriculum. Builds on **v0.12** — the machine learns the team. The project profile graduates to a team profile: this period's goals (Gate 1 finally has the list a stated goal gets checked against), a KPI dictionary that settles what a metric means before a bar is registered against it, decision rights (who *may* ratify a bar or own a bet — never that they did), the period calendar, and the tool switchboard — declared once, read by eleven skills, asked for by `/design-team-os:init` in five questions. Failed gates now report distance the compiler way — a criteria fraction ("4 of 6 MET"), the gap to close first, and a ranked punch list — never a readiness score, and the release's rule is fixture-enforced: the profile got bigger, the gates didn't get smaller. Builds on **v0.11** — the loop gets the step it kept pointing at. A new `validation-plan` skill designs the *smallest test that would settle a decision* — the signal `research-to-pain`, `prototype-to-spec`, and `outcome-readout` each demand but hand off. Its gate refuses to design a test with no decision behind it (name what result would change what you'd do, or there is nothing to test), and it holds to the smallest test that changes the call over the most rigorous study nobody runs. Sixteen skills are live, every one's primary refusal fixture-tested. Builds on **v0.10**, which made the prototype-prompt skills tool-agnostic (*brief-to-prompt-v0* + *-bolt* merged into one `brief-to-prompt` with per-tool adapters), and **v0.9.1**'s editorial rework of the outcomes scorecard. It builds on v0.8's shareable scorecard and the **owned bet** (v0.6). Every skill's primary refusal is encoded as a runnable fixture ([TESTING.md](TESTING.md)). Full history in [CHANGELOG.md](CHANGELOG.md).
 
 ---
 

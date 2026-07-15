@@ -84,7 +84,7 @@ one sentence in its own SKILL.md; anything not listed there is convention a fork
 | `standards.accessibility`, `standards.support` | The stated bar (e.g. WCAG 2.2 AA; browser/device matrix). Read by `design-system-enforcement` and `prototype-to-spec`. |
 | `artifacts.*` | Homes for written outputs (`specs`, `briefs`, …). Generalizes `spec_output`. |
 | `reporting.classification` | The folio default (e.g. `Confidential`). Read by `outcomes-scorecard`. |
-| `rituals.*` | **Reserved** — cadence declarations (e.g. `weekly_review: {day, owner}`); consumed by the rituals layer when it ships. Declaring it early is harmless. |
+| `rituals.*` | Cadence declarations (e.g. `weekly_review: {day, owner}`). Read by `weekly-review` and the ritual definitions in [templates/rituals.md](rituals.md). |
 
 **Freshness:** repo facts go stale by commit (`verified_against_commit`); team declarations
 go stale by calendar. When `calendar.period_close` has passed, a re-run of
