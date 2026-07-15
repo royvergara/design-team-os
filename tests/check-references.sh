@@ -41,6 +41,29 @@ for t in $doc_tokens; do
   grep -l "\`$t\`" $DOCS | sed 's/^/    /'
 done
 
+# --- skill-count guard: every stated count must equal the number of skill folders.
+# Catches the badge and both digit ("17 skills") and spelled ("seventeen skills") prose.
+N="$(find skills -mindepth 1 -maxdepth 1 -type d | wc -l | tr -d ' ')"
+words="eight:8 nine:9 ten:10 eleven:11 twelve:12 thirteen:13 fourteen:14 fifteen:15 sixteen:16 seventeen:17 eighteen:18 nineteen:19 twenty:20"
+badge="$(grep -hoE 'skills-[0-9]+' README.md 2>/dev/null | head -1 | cut -d- -f2)"
+if [ -n "$badge" ] && [ "$badge" != "$N" ]; then
+  fail=1; echo "STALE count: README badge says skills-$badge but skills/ has $N folders"
+fi
+for doc in README.md EXAMPLES.md TESTING.md PROJECTS.md IMPLEMENTATION.md CONTRIBUTING.md ADOPTION.md skills/README.md; do
+  [ -f "$doc" ] || continue
+  hits="$(grep -ioE '(^|[ "(])(eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|[0-9]+) skills\b' "$doc" | sed 's/^[ "(]//' | sort -u)"
+  [ -n "$hits" ] || continue
+  while IFS= read -r h; do
+    num="$(printf '%s' "$h" | awk '{print tolower($1)}')"
+    case "$num" in *[!0-9]*) for w in $words; do [ "${w%%:*}" = "$num" ] && num="${w##*:}"; done ;; esac
+    if [ "$num" != "$N" ]; then
+      fail=1; echo "STALE count: \"$h\" in $doc, but skills/ has $N folders"
+    fi
+  done <<EOF
+$hits
+EOF
+done
+
 # --- fixture bind: every fixture dir must have a skill, or run.sh silently skips it.
 for d in tests/fixtures/*/; do
   sk="$(basename "$d")"
