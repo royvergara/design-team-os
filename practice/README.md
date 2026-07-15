@@ -17,7 +17,7 @@ inputs — the traps are the lesson. If you're using ledgers, let the skills wri
 | 4 | the brief | "Write a v0 prompt for this" | `brief-to-prompt` emits one prompt + a **Discernment checklist**. Read the checklist before anything else — it's what you inspect, not admire. |
 | 5 | [acme-prototype.md](acme-prototype.md) + the brief | "Is this ready for review?" | `prototype-triage` **FAILs it with a gap report**: the criteria fraction, the gap to close first, the ranked punch list. No human review spent. Regenerate the prompt with the punch list; describe the fixed prototype; re-triage → PASS. |
 | 6 | the passing prototype + a test result you invent honestly (e.g. 5 of 6 completed setup, baseline 2 of 6) | "Write the spec" | `prototype-to-spec` writes the spec **with a Validation Record** — try it once *without* the test result and watch it refuse and hand you the smallest test instead (that's `validation-plan`'s territory). |
-| 7 | [acme-analytics.md](acme-analytics.md) + the spec | "Did it work?" | `outcome-readout` renders **partial** — 49% against a 55% bar, real movement honestly short — and hands you the next Intent input. The loop closes. |
+| 7 | [acme-analytics.md](acme-analytics.md) + the spec | "Did it work?" | `outcome-readout` renders **partial** — 49% against a 55% bar, real movement honestly short — **and reads the guardrail beside it** (invite acceptance 54% vs the ≥62% it was ratified to hold: broken, and it says so). Then it hands you the next Intent input. The loop closes. |
 
 **What you just practiced** (the 4Ds, if you use that frame): *delegation* in what each
 skill took off you, *description* in the brief and prompt, *discernment* in the checklist

@@ -60,6 +60,9 @@ decision:
                             # when the bar is ratified, before any build. Absent → the
                             # call is UNRATED: excluded from any calibration population
                             # and labeled as such. Never backfilled after a read.
+    guardrails:             # optional: what must NOT degrade — ratified WITH the bar,
+                            # at the same moment, never invented later. Absent is legal.
+      - "invite acceptance rate holds >= 62% baseline"
   triage:                         # latest triage of the latest prototype
     verdict: PASS
     prototype: v0.dev/xyz123      # what was triaged
@@ -88,6 +91,8 @@ value:
   outcome:                        # written by outcome-readout after ship + measurement window
     measured: "49% at 6 weeks (PostHog, activation-v2 dashboard)"
     verdict: partial              # solved | partial | didn't — with the bar it was judged against
+    guardrails:                   # one read per pre-registered guardrail: held | broken | unread
+      - "invite acceptance 64% vs >=62% — held"
     next_intent: "drop-off moved to the integration step — new Gate 1 input"
 ```
 
