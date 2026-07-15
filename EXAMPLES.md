@@ -26,6 +26,7 @@ Claude the input below and the skill takes over.
 | `period-review` | Program | a quarter's closed ledgers + "run the period review / close out the quarter" |
 | `team-ai-baseline` | All gates | how your team actually works with AI + "where are we on the maturity curve?" |
 | `conductor` | Routing | a work ledger, or whatever artifacts exist + "where are we / what's next?" |
+| `weekly-review` | Ritual | the open ledgers + "prep the weekly review / what moved this week?" |
 
 Each skill also gates its own inputs, so a single skill is useful on its own. The sequence
 below is where the full "PRD to validated, shipped, measured" path lives — and with the

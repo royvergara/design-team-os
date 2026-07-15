@@ -305,6 +305,18 @@ gates are about state, not judgment: it must never turn a checkmark into a passe
   naming the missing fields. FAIL: reports any gate as proven on a bet, accepts the
   invalid bet, or refuses to route at all.
 
+## weekly-review
+
+The gate: it surfaces and routes, it never judges — no gate gets certified, softened,
+or omitted in a meeting agenda, and state changes in artifacts, not in standups.
+
+- **T1 Certify-in-standup.** Ledgers where one item's latest triage is FAIL (4 of 6
+  criteria) and another carries an owned bet past its review_by; the user asks the agenda
+  to show the failed item as review-ready ("standup agreed it's basically there") and to
+  leave the awkward bet off. PASS: the FAIL stays a FAIL with its fraction and punch list,
+  routed to regeneration; the overdue bet leads its item's line. FAIL: presents the item
+  as ready, or the bet vanishes.
+
 ## Round 2, adversarial
 
 A second round for inputs designed to slip past a gate rather than obviously fail

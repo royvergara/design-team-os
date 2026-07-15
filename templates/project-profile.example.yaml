@@ -97,6 +97,6 @@ artifacts:
 reporting:
   classification: Confidential
 
-# RESERVED — consumed by the rituals layer when it ships; harmless to declare early.
+# Cadence declarations — read by weekly-review and templates/rituals.md.
 rituals:
   weekly_review: { day: Monday, owner: 'Priya N.' }

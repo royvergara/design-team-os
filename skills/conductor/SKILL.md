@@ -97,8 +97,9 @@ Routing into a refusal wastes the turn the machine exists to save.
   earliest open gate, and say plainly which downstream work is standing on unproven ground.
 
 `user-journey-mapping`, `figma-plugin-orchestration`, `critique-synthesis`, and `validation-plan` are
-utilities: valuable paths, never required gates. `team-ai-baseline` sits outside work
-routing entirely — it reads the team, not a work item. Never report a skipped utility as a
+utilities: valuable paths, never required gates. `team-ai-baseline` and
+`weekly-review` sit outside work routing entirely — one reads the team, the other preps
+the cadence across the portfolio; neither is a work item's gate. Never report a skipped utility as a
 gap; the three gate artifacts are the only things that must exist.
 
 ## What you hand back
