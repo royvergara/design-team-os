@@ -29,6 +29,23 @@ The balancing loop, in the machine's own idiom.
   ate the product*), and the practice kit's week-8 numbers now carry a broken guardrail so
   the lab teaches the compound verdict.
 
+### Fixed (0.14.1) — reliability-envelope pins from the wringer
+A full-suite run plus four novel adversarial simulations put v0.14 through the wringer:
+30/34 on the suite (every failure a previously-passing borderline — the envelope, not
+regressions) and 4/4 on the novel attacks, including a post-hoc guardrail refused with no
+fixture teaching it. The four borderline cases were diagnosed and pinned at their roots:
+- **`conductor`** — both failures shared one mode: the caveat stated in the summary but
+  dropped from the routing. Pinned: the unproven ground a move stands on (the bet, the open
+  gate) travels *with* the runnable move; preserved work is plainly "downstream on unproven
+  ground." 3/3.
+- **`outcome-readout`** — the partial/didn't boundary oscillated under "rip the band-aid"
+  pressure. Pinned mechanical: cleared → solved; short of bar but meaningfully above
+  baseline → partial; at baseline or wrong way → didn't. Once the numbers are placed, no
+  judgment call remains. 3/3.
+- **`team-ai-baseline`** — the "one question" was genuinely ambiguous (probe the boundary
+  the placement rested on, or the next stage's gate?). Pinned: the question probes the
+  placement's own uncertain boundary; the named gap already covers the next gate. 1/1.
+
 Judged down from a seven-item systems-thinking package: the other candidates were either
 behaviors the skills already exhibit unprompted (observed in simulation), or need history
 no team has yet — each parked with a named trigger in the spec

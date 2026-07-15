@@ -25,7 +25,7 @@ State the pre-registered bar, the measured value and where it came from, then th
 - **partial** — real movement toward the bar that falls short. 34→47 against a 50 bar is partial.
 - **didn't** — no meaningful movement, or the wrong direction.
 
-Never a softer or harsher synonym — and never at anyone's request. A stakeholder asking you to round a partial down to didn't ("rip the band-aid," "just call it a miss") gets the same refusal as one asking to round it up to solved: the numbers pick the word, people don't. Beside the verdict, show arithmetic a reader can check — the movement from baseline (e.g. +13 from 34%) and the distance to the bar (e.g. −3 against 50%) — and never swap the two.
+The mapping is mechanical: cleared the bar → **solved**; short of the bar but meaningfully above baseline → **partial**; at or near baseline, or moved the wrong way → **didn't**. Once the numbers are placed, no judgment call remains. Never a softer or harsher synonym — and never at anyone's request. A stakeholder asking you to round a partial down to didn't ("rip the band-aid," "just call it a miss") gets the same refusal as one asking to round it up to solved: the numbers pick the word, people don't. Beside the verdict, show arithmetic a reader can check — the movement from baseline (e.g. +13 from 34%) and the distance to the bar (e.g. −3 against 50%) — and never swap the two.
 
 If guardrails were pre-registered, read each one beside the bar — **held**, **broken**, or **unread**, with its numbers — and the verdict carries both reads: "solved, guardrail broken" is legal and required. A cleared bar never silences a broken guardrail.
 

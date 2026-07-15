@@ -49,7 +49,7 @@ Return these, in this order, and keep it tight.
 2. Belief versus practice, as a two-column table — what leadership believes, and what the team actually does — row by row, in this team's specifics.
 3. The one gap, in two or three sentences: the gate that is missing, and why it, not more tools, is what holds the stage.
 4. Where the mandate has not become practice: three or four concrete places for this team — the private experiments no one sees, the missing shared method, the ships that go out unmeasured — never the generic list.
-5. The one question whose answer would move the placement, in plain language. One question, not a set.
+5. The one question whose answer would move the placement, in plain language. One question, not a set. The question probes the boundary your placement rested on — the uncertainty in the evidence you actually saw (most often: side work by a couple of people, or real deliverables across the team?). It never probes the next stage's gate — item 3 already named that gap, and a question about it would be a questionnaire in disguise.
 
 When the input is only tools and a mandate, or practice too vague to check, you do not place. Replace the whole thing with the smallest set of practice-revealing questions and stop.
 
