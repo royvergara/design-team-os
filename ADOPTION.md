@@ -111,6 +111,13 @@ already refuse, appearing in team-sized form:
 - **The review that judges.** The weekly ritual starts "approving" gates in the room.
   Rituals orchestrate judgment; they never become a judge — state changes in artifacts,
   not meetings.
+- **The symptomatic fix.** The same complaint gets patched release after release — a
+  macro, a banner, a tooltip — while the pain that generates it never gets briefed. If a
+  theme keeps re-entering Intent, the fixes are symptomatic; trace it to what breaks.
+- **The metric that ate the product.** The bar becomes the target and the target gets
+  gamed — activation "hit" by prompting invites nobody accepts — or an adjacent metric
+  quietly breaks while the bar climbs. Guardrails, ratified with the bar, are the
+  antidote; a win that broke its guardrail says so.
 
 ## When to bring help
 

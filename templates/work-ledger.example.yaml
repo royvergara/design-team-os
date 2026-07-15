@@ -21,6 +21,8 @@ decision:
     criteria:
       - "Activation rate 38% -> 55% within 6 weeks of ship"
     confidence: 70
+    guardrails:
+      - "support ticket volume does not rise above the 60-day baseline"
   triage:
     verdict: FAIL
     prototype: v0.dev/xyz123

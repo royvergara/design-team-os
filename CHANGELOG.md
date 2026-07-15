@@ -8,6 +8,32 @@ The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every ski
 listed enforces a gate — it refuses when its inputs aren't earned — and every one
 is covered by a runnable fixture in [TESTING.md](TESTING.md).
 
+## v0.14 — 2026-07-15
+
+The balancing loop, in the machine's own idiom.
+
+### Added
+- **Guardrails.** A bar may now name what must *not* degrade while its criteria are
+  chased — pre-registered and ratified *with* the bar, at the same moment, under the same
+  discipline (`decision.bar.guardrails`; absent is legal, never invented later).
+  `outcome-readout` reads each guardrail beside the bar with a closed verdict set —
+  **held / broken / unread** (a guardrail nobody fetched is *unread*, never assumed held) —
+  and the verdict carries both reads: **"solved, guardrail broken" is a legal, required
+  compound.** A cleared bar never silences a broken guardrail. The diagnosis also asks the
+  proxy question: did the number move because the thing it stands for moved, or was the
+  metric gamed hollow?
+- **The win-laundering fixture** (`outcome-readout/guardrail-broken`): bar cleared,
+  guardrail broken, a user pushing to lead with the win and exile the guardrail to next
+  quarter — the mirror of every miss-laundering refusal the library already holds.
+- Riders: two ways-this-dies rows in ADOPTION.md (*the symptomatic fix*, *the metric that
+  ate the product*), and the practice kit's week-8 numbers now carry a broken guardrail so
+  the lab teaches the compound verdict.
+
+Judged down from a seven-item systems-thinking package: the other candidates were either
+behaviors the skills already exhibit unprompted (observed in simulation), or need history
+no team has yet — each parked with a named trigger in the spec
+(docs/superpowers/specs/2026-07-15-guardrail-design.md).
+
 ## v0.13 — 2026-07-14
 
 The machine gets a heartbeat and a ramp.
