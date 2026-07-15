@@ -41,6 +41,21 @@ The machine gets a heartbeat and a ramp.
   are the curriculum; every gate bites where it costs nothing.
 - The profile's `rituals:` block graduates from reserved to live.
 
+### Fixed (0.13.1)
+Two boundary pins from the first full-suite smoke + practice-kit simulation:
+- **`prd-to-ia`** — the new profile-goals-no-pain fixture failed twice (a finding, not a
+  flake): the skill stopped correctly but quoted the *profile's* goals on the stop block's
+  `Stated goal:` line. Pinned — in the stop-block template itself, where the model writes,
+  not just the wiring prose: `Stated goal:` quotes the PRD and only the PRD; a goal that
+  lives in the profile but not the document is still `missing`, with profile goals allowed
+  only on a separate for-mapping line below the block.
+- **`outcome-readout`** — simulation showed verdict-label wobble on the borderline (a
+  49% read against a 55% bar headlined "Did Not" while the diagnosis said "partial win").
+  Pinned the closed set's boundary: *solved* clears the bar; *partial* is real movement
+  short of it; *didn't* is no meaningful movement or the wrong direction — the word from
+  the set, once, never a softer or harsher synonym. New borderline fixture
+  (`partial-boundary`) holds it from the round-down side.
+
 ## v0.12 — 2026-07-14
 
 The machine learns the team, and distance-to-pass becomes a standard.

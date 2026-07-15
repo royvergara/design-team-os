@@ -15,7 +15,7 @@ These are two different things and a PRD that has one rarely has the other. The 
 
 If either is missing, stop. Do not draft the IA to be helpful. Name what is missing and ask for it. Do not invent a goal or a pain to make the work proceed. A PRD with a business goal but no customer pain is the most common case, and it is still a stop: cost cutting is a reason to build, not evidence anyone wants what gets built.
 
-If a `design-os.profile.yaml` with a `goals:` block is present, check the PRD's stated goal maps to one of the period's declared goals and flag it when it maps to none — the profile is what a stated goal gets checked *against*, never a substitute for the PRD stating its own; the gate and the STOP PROTOCOL stand unchanged.
+If a `design-os.profile.yaml` with a `goals:` block is present, check the PRD's stated goal maps to one of the period's declared goals and flag it when it maps to none — the profile is what a stated goal gets checked *against*, never a substitute for the PRD stating its own; the gate and the STOP PROTOCOL stand unchanged. In the stop block, `Stated goal:` quotes the PRD and only the PRD — a goal that lives in the profile but not the document is still `missing` (note the profile's goals separately, as what a stated goal would be checked against, never on the `Stated goal:` line).
 
 An implied goal or pain counts as missing. If the PRD suggests one without stating it, name your inference and stop there: return only the inference and a request to confirm it. Do not produce the IA, the exclusions, or the open questions until both are stated back to you or confirmed. A drafted structure is the most expensive place to discover the goal was wrong, and a "provisional" IA is still an IA the reader will build on.
 
@@ -25,10 +25,17 @@ This is a hard stop, not a preface. When the business goal OR the customer pain 
 
 ```
 GATE NOT PASSED — confirmation needed before I draft.
-Stated goal:   <quote it, or "missing">
-Stated pain:   <quote it, or "missing / only inferred as: …">
+Stated goal:   <quote the PRD itself, or "missing">
+Stated pain:   <quote the PRD itself, or "missing / only inferred as: …">
 To proceed, confirm or correct: <the one or two things you need stated back>
 ```
+
+Both `Stated` lines quote **the document and only the document**. A goal that lives in
+`design-os.profile.yaml` but not in the PRD is `missing` — write `missing`, never the
+profile's goals, on the `Stated goal:` line. If the profile lists goals, you may add one
+separate line *below* the block — `Profile goals (what a stated goal will be checked
+against): …` — and the ask becomes: which of these, if any, is this PRD's goal? Confirmed
+by the human, it counts; imported by you, it doesn't.
 
 Only after the human states or confirms both do you move on to the three sections.
 
