@@ -13,6 +13,8 @@ Require two things: the metric and target pre-registered before launch (from the
 
 If the bar was never set in advance, you cannot score the launch — say so; the fix is upstream at `brief-from-pain` (with `validation-plan` designing the read so it's cleanly readable), not a number invented now. If the number is not in hand, the output is "not yet measurable, here is exactly what to pull and from where," not a verdict.
 
+If a `design-os.profile.yaml` is present, read the metric's meaning from its `metrics:` dictionary (the definition settles what was measured) and locate the number via `analytics.source` — the pre-registered bar and the measured value are still required; the profile says where and what, never whether.
+
 Never score the launch against a criterion invented after it. "Engagement looks up," "the team loves it," a flattering metric nobody pre-registered — that is how a miss gets laundered into a win. Judge only against the bar set before the build.
 
 ## When the gate passes, render the readout

@@ -17,7 +17,9 @@ gate skill's call, and your move is to route the work there.
 State comes from one of two places, and you work with either:
 
 - **A ledger** (`design-os.work/<slug>.yaml`, schema in the library's templates) — read it.
-  In a chat Project the same YAML arrives as a pasted block; treat it identically.
+  In a chat Project the same YAML arrives as a pasted block; treat it identically. A
+  `design-os.profile.yaml`'s `tools.state` names where a team keeps its ledgers — read
+  state wherever it points; the profile locates state, it never carries any.
 - **What's in hand** — no ledger, just a description: "we have a PRD and a prototype the PM
   built." Infer the state from the artifacts described. The machine is sugar, never a
   requirement; work that has never touched a ledger still gets routed.

@@ -44,3 +44,59 @@ spec_output: 'docs/specs/YYYY-MM-DD-<slug>.md'
 # Stack-specific gotchas that should change a skill's output.
 constraints:
   - 'PostgREST caps responses at 1000 rows; paginate large reads'
+
+# ---- Team declarations (human-set; go stale by calendar, not by commit) ----
+
+# The stack switchboard — product NAMES only, never credentials or connection config.
+tools:
+  builder: v0                # brief-to-prompt's default adapter target
+  state: git                 # git | notion — where work ledgers live
+  analytics: posthog
+  design: figma
+
+# This period's business goals, verbatim — what Gate 1 checks a stated goal against.
+goals:
+  period: Q3 FY26
+  list:
+    - 'Lift day-7 activation from 34% to 50%'
+    - 'Cut onboarding-related support contacts 20%'
+
+# The KPI dictionary. A definition here settles what the metric MEANS before a bar
+# is registered against it.
+metrics:
+  - name: day-7 activation
+    definition: workspace created + at least 1 teammate invited, within 7 days of signup
+    source: 'PostHog dashboard "Activation"'
+
+# Decision RIGHTS — who MAY act. Never a record that something WAS ratified or owned.
+people:
+  scorecard_owner: 'Priya N., Head of Design'
+  bar_ratifiers: ['Priya N.', 'product trio leads']
+  bet_authority: ['Priya N.', 'VP Product']
+
+calendar:
+  current_period: Q3 FY26
+  period_close: 2026-09-30   # the staleness signal for every team block above
+
+# Recruiting reality, so validation-plan's "runnable this week" is honest.
+research:
+  participant_access: 'customer panel via Dovetail'
+  lead_time: '~5 business days to recruit'
+  constraints: ['GDPR consent required', 'no PII in prototypes']
+
+# The stated bar the audit checks against, when the design system itself doesn't state it.
+standards:
+  accessibility: 'WCAG 2.2 AA'
+  support: ['last 2 Chrome/Safari/Firefox/Edge', 'iOS 16+', 'Android 13+']
+
+# Homes for written outputs (generalizes spec_output).
+artifacts:
+  specs: 'docs/specs/YYYY-MM-DD-<slug>.md'
+  briefs: 'docs/briefs/'
+
+reporting:
+  classification: Confidential
+
+# RESERVED — consumed by the rituals layer when it ships; harmless to declare early.
+rituals:
+  weekly_review: { day: Monday, owner: 'Priya N.' }

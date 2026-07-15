@@ -57,7 +57,7 @@ Render `design-os.reviews/<period>.html` in the scorecard's visual system — th
 registers, the same honesty runtime rules, no projection geometry ever drawn into a trend.
 Read [templates/scorecard.html](../../templates/scorecard.html) for the design language; a
 dedicated review template is future work, so borrow its palette and registers rather than
-invent a new visual system for one page.
+invent a new visual system for one page. If a `design-os.profile.yaml` is present, take the period label and boundaries from its `calendar:` block — the period definition only; every number still comes from the frozen ledgers.
 
 **Frozen: a prior period's file is never edited.** The trend is the sequence of frozen
 files, not a running total — a new period adds a new file; it never rewrites the one before

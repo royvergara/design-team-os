@@ -19,7 +19,7 @@ If there is no signal, stop. Do not write the spec. Instead, return the smallest
 
 Include: flows and screens, all states (empty, loading, error, edge), components mapped to the design system by name, content and data requirements, and the analytics events that must ship with the build so the team can answer Gate 3 after launch: did it solve the pain and move the needle.
 
-If a `design-os.profile.yaml` is present, take the design-system reference and analytics event names from it instead of re-asking (see [templates/project-profile.schema.md](../../templates/project-profile.schema.md)). The validation signal is never a profile field, so the gate above still stands.
+If a `design-os.profile.yaml` is present, take the design-system reference and analytics event names from it instead of re-asking (see [templates/project-profile.schema.md](../../templates/project-profile.schema.md)). The validation signal is never a profile field, so the gate above still stands. Take the stated accessibility and support bars from `standards:` for the spec's states and components, when present.
 
 ## Always include a Validation Record section
 

@@ -375,6 +375,11 @@ push: a maintainer triggers it manually (`workflow_dispatch`) or by adding the
 `run-gates` label to a PR. It needs an `ANTHROPIC_API_KEY` repo secret, and it is
 non-deterministic — the harness retries a failing case once automatically (a lone
 flake passes "on retry"; a case that fails twice in a row is a finding, not a flake).
+Read the "(on retry)" lines as the suite's flake-rate signal: a fixture that retries
+often is a boundary worth sharpening. And on any model change — the CLI's default model
+moving, or CLAUDE_TEST_MODEL pointing somewhere new — re-run the full suite before
+trusting it: the gates are held by model judgment, and a model change is a re-baseline
+event, not a routine run.
 
 One more reproducibility tool lives beside the checks: `scripts/regen-example.py`
 regenerates `templates/ai-outcomes-scorecard.example.html` from the live template

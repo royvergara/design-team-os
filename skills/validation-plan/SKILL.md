@@ -27,6 +27,8 @@ The decision to validate is already made: a caller's gate has fired — a pain f
 - **Who, what, how measured** — concrete and runnable this week: who to put it in front of, the task or the metric, the threshold that counts.
 - **Signal strength, stated honestly** — decisive or only directional, and what this test cannot tell you, so the team carries the real confidence forward.
 
+If a `design-os.profile.yaml` is present, ground who-and-when in its `research:` block — participant access, recruiting lead time, consent constraints — so "runnable this week" reflects this team's actual reach; if the block is absent, name it as worth adding. Recruiting reality shapes the plan; it never substitutes for the decision behind the test.
+
 ## Quality bar
 
 Every plan names the decision its result would change. A test whose outcome changes nothing is not a smaller test — it is not a test, and returning one is the exact failure this skill exists to prevent.

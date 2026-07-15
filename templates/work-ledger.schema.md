@@ -63,6 +63,8 @@ decision:
   triage:                         # latest triage of the latest prototype
     verdict: PASS
     prototype: v0.dev/xyz123      # what was triaged
+    criteria: "6 of 6 MET"        # the honest distance gauge — a fraction of binary rows, never a score
+    attempt: 2                     # how many triages this work has taken (trajectory; history lives in git)
   reviews:
     design_system: "2 BLOCKERs fixed, re-audit clean (2026-06-30)"
     critique: "decision: ship with persistent skip; dissent recorded"

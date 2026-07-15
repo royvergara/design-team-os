@@ -8,13 +8,24 @@ Set up Design Team OS in the current repository. This is safe to run more than o
 
 Check whether `design-os.profile.yaml` already exists at the repo root.
 
-- **If it exists:** do not touch it. Report that it is already present and move on.
-- **If it does not exist:** create it from the template at `${CLAUDE_PLUGIN_ROOT}/templates/project-profile.example.yaml`, then improve it by deriving this repo's real values in place — do not leave placeholders:
-  - Find where the design system / tokens live and set `design_system.reference` (and `component_catalog` if there is a separate component library).
+- **If it exists:** do not overwrite any value in it. If `calendar.period_close` has passed, offer to re-declare `goals:` and the new period (tier 2 below, questions 1–2 only); if the team blocks are absent entirely, offer tier 2 in full. Otherwise report it present and move on.
+- **If it does not exist:** build it in three tiers.
+
+**Tier 1 — derive the repo facts** (never invent; a stale pointer is worse than a missing one — see the schema at `${CLAUDE_PLUGIN_ROOT}/templates/project-profile.schema.md`):
+  - Find where the design system / tokens live and set `design_system.reference` (and `component_catalog` if there is a separate component library; `design_system.enforcement` if guard tests exist).
   - Find the analytics tool and real event names (e.g. grep for `posthog.capture(`, `analytics.track(`, or the equivalent) and fill `analytics.tool`, `analytics.events`, and `analytics.source`.
   - Set `spec_output` to wherever specs are written, if there is a convention.
   - Set `verified_against_commit` to the current HEAD SHA.
-  - For anything you genuinely cannot determine from the repo, leave the field out and tell the user which ones need a human value. Do not invent paths or event names — a stale pointer is worse than a missing one (see the profile schema at `${CLAUDE_PLUGIN_ROOT}/templates/project-profile.schema.md`).
+  - For anything you genuinely cannot determine from the repo, leave the field out.
+
+**Tier 2 — ask exactly five human questions** (the team declarations no grep can find). Ask them as one compact list, not an interview; any question the user skips leaves its block out — never fill a value the human didn't give:
+  1. **This period's business goals**, verbatim → `goals.period` + `goals.list`.
+  2. **The current period and its close date** → `calendar.current_period` + `calendar.period_close`.
+  3. **Who ratifies bars, and who can own a bet** → `people.bar_ratifiers` + `people.bet_authority` (and `people.scorecard_owner` if named).
+  4. **The default AI builder** (v0, Bolt, Lovable, …) → `tools.builder` (plus `tools.state` if they say where ledgers will live).
+  5. **The weekly review day and owner** → `rituals.weekly_review` (reserved block; consumed by the rituals layer when it ships).
+
+**Tier 3 — everything else grows by use.** Do not ask about `metrics:`, `research:`, `standards:`, `artifacts:`, or `reporting:` at init. Each profile-reading skill names its block when it first needs it; the profile accretes from real work, and a block no skill ever asked for should not exist.
 
 ## 2. The work-ledger directory — `design-os.work/`
 
@@ -32,4 +43,4 @@ Check whether a `design-os.reviews/` directory exists at the repo root.
 
 ## 4. Report
 
-Summarize what you created versus what already existed, list any profile fields that still need a human value, and state the next move plainly: start a piece of work by handing research or a PRD to the relevant skill (it will begin writing a ledger), or ask the `conductor` "where are we?" once a ledger exists. Remind the user that none of these files ever satisfies a gate — the profile supplies context, the ledger carries evidence, the reviews directory holds what the evidence points to, and the skills still judge.
+Summarize what you created versus what already existed, list any profile fields that still need a human value (including any of the five questions the user skipped), note that the remaining team blocks (`metrics:`, `research:`, `standards:`, …) get added the first time a skill asks for them, and state the next move plainly: start a piece of work by handing research or a PRD to the relevant skill (it will begin writing a ledger), or ask the `conductor` "where are we?" once a ledger exists. Remind the user that none of these files ever satisfies a gate — the profile supplies context, the ledger carries evidence, the reviews directory holds what the evidence points to, and the skills still judge.
