@@ -24,6 +24,8 @@ decision:
   triage:
     verdict: FAIL
     prototype: v0.dev/xyz123
+    criteria: "4 of 6 MET"       # the honest distance gauge — never a score
+    attempt: 1
     punch_list:
       - "empty/return state MISSING — no view for a user resuming a half-done checklist"
       - "skip-for-now path MISSING — brief criterion 4"

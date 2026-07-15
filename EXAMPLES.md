@@ -1,7 +1,7 @@
 # Examples
 
 Two things here: a **trigger cheat sheet** (what to say to set each skill off), and a
-**worked walkthrough** of one real feature traveling the whole loop, gates and all.
+**worked walkthrough** of one real feature traveling the whole loop, gates and all. Want to *run* the walkthrough instead of reading it? [practice/](practice/) is the same loop as hands-on inputs.
 
 ## Trigger cheat sheet
 
@@ -76,10 +76,11 @@ plus a **Discernment checklist** of what to inspect in the output.
 **5. `prototype-triage`** — *in:* the generated prototype + the brief. **It fails the first
 pass:**
 
-> FAIL — not ready for review. Criteria table: progress indicator MET; one-screen flow MET;
-> **empty/return state MISSING** (no view for a user coming back to a half-done checklist);
-> **skip-for-now path MISSING** (brief criterion 4). Punch list back to `brief-to-prompt`:
-> add the returning-user state and a always-available skip.
+> FAIL — not ready for review. **Criteria: 2 of 4 MET.** Progress indicator MET; one-screen
+> flow MET; **empty/return state MISSING** (no view for a user coming back to a half-done
+> checklist); **skip-for-now path MISSING** (brief criterion 4). Close first: the return
+> state — it's the validated pain itself. Punch list, ranked, back to `brief-to-prompt`;
+> regenerate and re-triage before a human spends a minute on it.
 
 The prompt is regenerated with the gaps; the second prototype **passes** triage — so no human
 review cycle was spent on the incomplete version.
