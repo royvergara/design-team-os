@@ -19,7 +19,7 @@ Never score the launch against a criterion invented after it. "Engagement looks 
 
 ## When the gate passes, render the readout
 
-State the pre-registered bar, the measured value and where it came from, and the verdict: solved, partial, or didn't — tied to the number, not the impression. Then diagnose briefly: did it address the pain, or move a different thing.
+State the pre-registered bar, the measured value and where it came from, and the verdict: solved, partial, or didn't — tied to the number, not the impression. The boundary is fixed, not vibes: **solved** clears the bar; **partial** is real, measurable movement toward the bar that falls short (34→47 against a 50 bar is partial, and the shortfall is stated beside it); **didn't** is no meaningful movement, or movement the wrong way. Use the word from this set, once, as the verdict — never a softer or harsher synonym. Then diagnose briefly: did it address the pain, or move a different thing.
 
 ## Always end with the next Intent input
 
