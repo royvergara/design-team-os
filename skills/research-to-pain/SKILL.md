@@ -34,6 +34,8 @@ Rank by signal strength, never by how loud or how senior the source was. The str
 
 If a `design-os.work/<slug>.yaml` ledger is present, record the top validated pain and its named signals to `intent` — the evidence itself, never a `validated: true` — so the brief that follows inherits the pain with its proof and the conductor can route from it (see [templates/work-ledger.schema.md](../../templates/work-ledger.schema.md)). No ledger changes nothing about the ranking above.
 
+If a `design-os.profile.yaml` is present, start the hunt at its `evidence_sources` — where this team's signal actually lives — and name any listed source you could not reach. The profile points at evidence; it never counts as evidence.
+
 ## Quality bar
 
 Every pain traces to a source someone can point to. If a pain cannot name its signal, it does not belong in the set, no matter how plausible it sounds or how badly the team wants it to be true. A confident set built on thin evidence is the exact failure this skill exists to prevent.

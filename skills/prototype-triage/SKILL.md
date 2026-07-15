@@ -21,9 +21,9 @@ For every criterion in the brief, mark it MET (demonstrably present in the proto
 
 ## The verdict has two outcomes, not three
 
-PASS only if every criterion is met and the required states exist — then it has earned human review, and goes to `design-system-enforcement` and `critique-synthesis`. Otherwise FAIL: return the specific gaps as a punch list written back to `brief-to-prompt`, and the prototype regenerates before a human spends a minute on it. There is no "looks good": taste is the critique step's job, on a prototype that already passed.
+PASS only if every criterion is met and the required states exist — then it has earned human review, and goes to `design-system-enforcement` and `critique-synthesis`. Otherwise FAIL, delivered as a gap report, never a score: the verdict, the criteria fraction ("4 of 6 MET" — a fraction of binary rows is honest; "78% ready" is banned), the one gap to close first, the punch list ranked by cost to close (each gap naming what's missing and whether a regeneration or a human input produces it), and the smallest next action — usually: regenerate via `brief-to-prompt` with this list, then re-triage, before a human spends a minute on it. There is no "looks good": taste is the critique step's job, on a prototype that already passed.
 
-If a `design-os.work/<slug>.yaml` ledger is present, record this verdict to `decision.triage` with the prototype it judged and, on FAIL, the punch list — the criteria result itself, never a bare PASS — so a resumed session sees why review was or wasn't earned (see [templates/work-ledger.schema.md](../../templates/work-ledger.schema.md)). No ledger changes nothing about the triage above.
+If a `design-os.work/<slug>.yaml` ledger is present, record this verdict to `decision.triage` with the prototype it judged, the criteria fraction (`criteria: "4 of 6 MET"`), the attempt number (`attempt: 2` — how many triages this work has taken), and, on FAIL, the punch list — the criteria result itself, never a bare PASS — so a resumed session sees why review was or wasn't earned (see [templates/work-ledger.schema.md](../../templates/work-ledger.schema.md)). The entry still replaces the last one — history lives in git — but the fraction and attempt count make distance and trajectory readable at a glance. No ledger changes nothing about the triage above.
 
 ## Quality bar
 

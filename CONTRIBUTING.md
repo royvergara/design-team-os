@@ -11,6 +11,28 @@ however useful.
 `tests/fixtures/<skill>/<case>/` — `prompt.md` (a deliberately tempting input) and
 `expect.md` (MUST / MUST NOT criteria). See [TESTING.md](TESTING.md).
 
+**Verdicts are binary; distance is a gap report.** When a gate fails or refuses, it never
+softens the verdict and never emits a readiness score ("78% ready" is banned — a scalar
+invites negotiation and false precision, which is how a miss starts bargaining). Distance
+gets communicated the way a compiler does it, and a FAIL/refusal carries all five parts:
+
+1. **The verdict**, from the skill's closed set (PASS/FAIL, MET/MISSING/CAN'T-TELL,
+   solved/partial/didn't, …) — prose explains, it never decides.
+2. **The criteria fraction** where criteria exist — "4 of 6 MET." Fractions of binary,
+   evidence-backed rows are honest; a weighted score is not.
+3. **Close-first** — the one blocking gap, named.
+4. **The ranked punch list** — each gap with what's missing and who or what produces it
+   (a skill, or a human input), ordered by cost to close.
+5. **Next** — the smallest action that would change the verdict, and where to take it.
+
+`prototype-triage` is the reference implementation.
+
+**The determinism boundary.** Anything that must be identical on every run belongs in
+code, schema, or templates — never in a prompt. Prompts hold the judgment; the judgment's
+*shape* (the verdict vocabulary, the output sections, the gap report) is fixed structure a
+fixture can test. On any model change, re-run the full gate suite before trusting it
+(see TESTING.md).
+
 ## Proposing a skill
 
 Open an issue first, with three things: the **trigger** (the real moment a design team

@@ -8,6 +8,46 @@ The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every ski
 listed enforces a gate — it refuses when its inputs aren't earned — and every one
 is covered by a runnable fixture in [TESTING.md](TESTING.md).
 
+## v0.12 — 2026-07-14
+
+The machine learns the team, and distance-to-pass becomes a standard.
+
+### Added
+- **The team profile.** `design-os.profile.yaml` graduates from repo facts to team
+  declarations: `goals:` (the period's business goals — Gate 1 finally has the list a
+  stated goal gets checked against), `metrics:` (the KPI dictionary; definitions settle
+  what a number means before a bar is registered against it), `people:` (decision *rights*
+  — who may ratify a bar or own a bet; never that they did), `calendar:` (the period and
+  its close date, which doubles as the freshness signal for every team block), `tools:`
+  (the stack switchboard — names only, never credentials), and `research:` (recruiting
+  reality, so `validation-plan`'s "runnable this week" is honest). `standards:`,
+  `artifacts:`, and `reporting:` ship documented; `rituals:` is reserved for the rituals
+  layer.
+- **Three-tier init.** `/design-team-os:init` derives the repo facts (unchanged), asks
+  exactly five human questions (goals; period + close; ratifiers/bet authority; default
+  builder; weekly-review day), and leaves the rest to grow by use — each profile-reading
+  skill names its block when it first needs it. Re-running after `period_close` prompts
+  re-declaring goals.
+- **Eleven skills wired to the profile**, one sentence each — including three fixes for
+  fields that already existed unread (`brief-to-prompt` ← builder + design system,
+  `research-to-pain` ← evidence sources, `outcome-readout` ← metric definition + number
+  source).
+- **The gap report contract** (CONTRIBUTING): a failed gate never softens its verdict and
+  never emits a readiness score — it reports distance the way a compiler does: the closed-
+  set verdict, the criteria fraction ("4 of 6 MET"), the one gap to close first, the punch
+  list ranked by cost, and the smallest action that would change the verdict.
+  `prototype-triage` is the reference implementation, and the ledger's `decision.triage`
+  gains `criteria` + `attempt` (replace-semantics preserved — history lives in git).
+- **The reliability rules, written down**: the determinism boundary (what must be identical
+  lives in code/schema/templates; prompts hold judgment; verdicts are closed sets) and the
+  model re-baseline ritual (a model change re-runs the full suite before being trusted).
+
+### The honesty rule this release must not break
+A richer profile invites gate-laundering by config, so two fixtures guard it: a profile
+`goals:` block never substitutes for a PRD stating its own goal (`prd-to-ia` still stops),
+and a `bar_ratifiers` listing is a right, never a ratification performed (`brief-from-pain`
+still refuses). The profile got bigger; the gates didn't get smaller.
+
 ## v0.11 — 2026-07-14
 
 The loop gets the step it kept pointing at.

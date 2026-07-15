@@ -26,7 +26,7 @@ One prompt, clean enough to paste. No prompt menus, no variants — choosing the
 
 ## Tool adapters
 
-Read the target from the request and adapt these lines. This is a selection, not a menu — you emit one prompt for the tool named, never a set to choose from.
+Read the target from the request and adapt these lines. If a `design-os.profile.yaml` is present, take the design-system constraints from its `design_system.*` fields instead of re-asking, and when the request names no tool, use `tools.builder` as the target — the quality-bar gate stands either way, and if neither the request nor the profile names a builder, ask. This is a selection, not a menu — you emit one prompt for the tool named, never a set to choose from.
 
 - **Screen / component generators (v0)** — scope the prompt to the one screen or component. Keep it tight to that surface; don't let it reach for a whole app.
 - **Full-app builders (Bolt.new, Lovable, Replit)** — add a **data** section: what to mock and the shape of the mock data, so the prototype feels real. And because these scaffold more than a screen, the prompt must say what NOT to build — scope creep here becomes a week of generated code nobody asked for.
