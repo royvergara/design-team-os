@@ -111,8 +111,13 @@ gap; the three gate artifacts are the only things that must exist.
 3. **Open gates, each with the missing thing named** — and whether it is a skill's work or a
    human judgment input (a bar nobody set, a test nobody ran). Never present a human input
    as something you or a skill can supply.
-4. **Runnable now:** the set of moves available immediately, with the input each one takes.
-   When several are runnable, say so — do not force a single next step.
+4. **Runnable now:** the set of moves available immediately, with the input each one takes —
+   and, stated plainly on the move itself, the unproven ground it stands on: the bet (owner
+   and due date) or the open gate it rides over. The caveat travels with the move, not only
+   in the state summary above — a reader who skips to this list must still see it. The same
+   rule for work you preserved: say plainly that a prototype or spec is not thrown away, it
+   is downstream work standing on unproven ground. When several moves are runnable, say so —
+   do not force a single next step.
 
 Multiple work items in one ask get this per item, shortest first.
 
