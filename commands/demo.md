@@ -74,6 +74,13 @@ Confirm once, delete `design-os.demo/` entirely, then show the repo's git status
 the closing beat is that nothing real was touched. If renders were not exported and the
 user wants them, export before deleting; deletion is not undoable.
 
+**Permission-proof the delete** (learned in the first dry run — a harness permission mode
+denied `rm -rf` mid-demo): try the delete; if denied, **move** the sandbox out of the repo
+instead (a session temp directory works — same effect on the repo, no destructive
+permission needed); if that is also denied, print the exact one-line delete for the user to
+run themselves and say why. Never retry a denied command verbatim, and never let the demo's
+closing beat become a permission prompt in front of the room.
+
 ## What `run` never does
 
 Never writes outside the sandbox. Never counts an inferred value as proven — the conductor
