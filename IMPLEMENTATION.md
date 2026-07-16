@@ -10,7 +10,7 @@ behavior, never just to feed it your paths.**
 
 A skill is a folder with one `SKILL.md`. Four homes:
 
-- **Claude Code, as a plugin (recommended)** — `/plugin marketplace add royvergara/design-team-os` then `/plugin install design-team-os@fluent-by-design`. Installs all seventeen skills (the `conductor` among them) and the `/design-team-os:init` command in one step; updates arrive through `/plugin` instead of re-copying folders. Run `/design-team-os:init` once in your product repo to scaffold the profile and the `design-os.work/` ledger directory.
+- **Claude Code, as a plugin (recommended)** — `/plugin marketplace add royvergara/design-team-os`, then `/plugin install design-team-os@fluent-by-design`, then `/reload-plugins` to make it live. Installs all seventeen skills (the `conductor` among them) and the `/design-team-os:init` command in one step; updates arrive through `/plugin` instead of re-copying folders. Run `/design-team-os:init` once in your product repo to scaffold the profile and the `design-os.work/` ledger directory.
 - **Claude Code, project level** — `.claude/skills/<skill>/` in the repo you work in.
   Versioned with the project, shared with the team, and next to the
   `design-os.profile.yaml` it can read. Best for skills your team relies on or tunes.
@@ -31,6 +31,27 @@ gem — where it still gates its own inputs. Only Claude Code runs the *machine*
 elsewhere, so off Claude you route by hand and carry state yourself. Treat those adaptations
 as fork-and-tune work (below), proven per stack — that per-team adaptation is the paid
 enablement practice, not an out-of-the-box guarantee.
+
+## Onboard a team on clone
+
+By default `/plugin install` is user-scoped — it lives in each person's `~/.claude/`, so
+every teammate bootstraps by hand. To make the plugin travel *with the product repo*, commit
+its marketplace to the repo's `.claude/settings.json`:
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "fluent-by-design": {
+      "source": { "source": "github", "repo": "royvergara/design-team-os" }
+    }
+  }
+}
+```
+
+Now anyone who clones the repo and trusts it is prompted by Claude Code to install the
+marketplace's enabled plugins — no one has to know the three commands. The system onboards
+with the checkout, the same way the `design-os.profile.yaml` and `design-os.work/` ledger
+already do. Set it once; the team is covered on clone.
 
 ## The two state files
 
