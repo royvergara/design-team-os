@@ -106,10 +106,34 @@
   @media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; transform: none; transition: none; } }
   @media print { * { animation: none !important; } }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+
+  /* --- demo strip: quiet, full-width, sticky; pushes content instead of overlapping --- */
+  .demo-strip{position:sticky;top:0;z-index:98;text-align:center;font-family:'Source Sans 3',sans-serif;font-size:9.5px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#f0ebf7;background:#5d4685;padding:7px 14px;border-bottom:1px solid rgba(255,255,255,.18);}
+  @media print{.demo-strip{position:static;}}
+  /* --- small screens: collapse inline grids, stack the kills table, tame display sizes --- */
+  @media (max-width:680px){
+    div[style*="grid-template-columns"]{grid-template-columns:1fr !important;}
+    body>div[style*="padding:64px"]{padding:36px 16px 72px !important;}
+    .feature{padding:26px 20px 24px !important;}
+    .feature h2{font-size:31px !important;line-height:1.14 !important;overflow-wrap:break-word;}
+    h1{font-size:29px !important;}
+    .card{padding:20px 18px 22px !important;}
+    div[style*="font-size:106px"]{font-size:72px !important;}
+    div[style*="margin:0 -30px"]{margin:0 !important;}
+    .glance-cell{padding:18px 0 !important;border-left:0 !important;border-top:1px solid rgba(var(--ink-rgb),.09);}
+    .glance-cell:first-child{border-top:0;padding-top:4px !important;}
+    .kills-table thead{display:none;}
+    .kills-table,.kills-table tbody,.kills-table tr,.kills-table td{display:block;}
+    .kill-row{padding:14px 0;}
+    .kill-row td{padding:3px 0 !important;text-align:left !important;border-bottom:none !important;}
+    .kill-row td:last-child{padding-top:6px !important;}
+    .kills-table .kill-row{border-bottom:1px solid rgba(var(--ink-rgb),.1);}
+    .kills-table tr:last-child{border-bottom:none;}
+  }
 </style>
 <div id="progress"></div>
 <!-- state:demo -->
-<div style="position:fixed;top:26px;right:-46px;z-index:99;transform:rotate(45deg);background:#6e5498;color:#fff;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:6px 52px;box-shadow:0 2px 8px rgba(0,0,0,.25);font-family:'Source Sans 3',sans-serif;">Demo · inferred data</div>
+<div class="demo-strip">Demo &mdash; contains inferred data</div>
 <!-- /state:demo -->
 <div style="background:var(--paper);min-height:100vh;font-family:'Source Sans 3',sans-serif;color:var(--ink);padding:64px 24px 96px;">
 <main style="max-width:760px;margin:0 auto;position:relative;">

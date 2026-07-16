@@ -88,7 +88,7 @@
     --open: #d3a54a;
     --open-bg: rgba(211, 165, 74, 0.15);
     --fail: #e0776a;
-    --fail-bg: rgba(224, 144, 106, 0.15);
+    --fail-bg: rgba(224, 119, 106, 0.15);
     --synth: #a98fd1;
     --synth-bg: rgba(169, 143, 209, 0.15);
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.35);
@@ -211,9 +211,9 @@
     background:
       repeating-linear-gradient(
         45deg,
-        var(--synth-bg),
-        var(--synth-bg) 3px,
-        transparent 3px,
+        color-mix(in srgb, var(--synth) 18%, transparent),
+        color-mix(in srgb, var(--synth) 18%, transparent) 2px,
+        transparent 2px,
         transparent 6px
       ),
       var(--panel);
@@ -283,10 +283,10 @@
     background:
       repeating-linear-gradient(
         45deg,
-        var(--synth-bg),
-        var(--synth-bg) 4px,
-        transparent 4px,
-        transparent 9px
+        color-mix(in srgb, var(--synth) 6%, transparent),
+        color-mix(in srgb, var(--synth) 6%, transparent) 2px,
+        transparent 2px,
+        transparent 13px
       ),
       var(--panel);
     border-left-color: var(--synth);
@@ -565,29 +565,19 @@
     gap: 12px;
     flex-wrap: wrap;
   }
+
+  .demo-strip {
+    position: sticky; top: 0; z-index: 98; text-align: center;
+    font-family: var(--mono); font-size: 9.5px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: #f0ebf7; background: #5d4685; padding: 7px 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  @media print { .demo-strip { position: static; } }
 </style>
 
 <!-- state:demo -->
-<div
-  style="
-    position: fixed;
-    top: 26px;
-    right: -46px;
-    z-index: 99;
-    transform: rotate(45deg);
-    background: var(--synth);
-    color: #fff;
-    font-family: var(--mono);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    padding: 6px 52px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  "
->
-  Demo · inferred data
-</div>
+<div class="demo-strip">Demo &mdash; contains inferred data</div>
 <!-- /state:demo -->
 
 <div class="wrap">
