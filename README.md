@@ -12,12 +12,13 @@
 <p align="center">
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-40e0d0.svg"></a>
   <a href="CHANGELOG.md"><img alt="Version" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Froyvergara%2Fdesign-team-os%2Fmain%2F.claude-plugin%2Fplugin.json&query=%24.version&prefix=v&label=version&color=40e0d0"></a>
-  <img alt="17 skills" src="https://img.shields.io/badge/skills-17-40e0d0">
+  <a href="#skills"><img alt="skills" src="https://img.shields.io/github/directory-file-count/royvergara/design-team-os/skills?type=dir&label=skills&color=40e0d0"></a>
   <a href=".github/workflows/gates.yml"><img alt="Gate tests" src="https://img.shields.io/github/actions/workflow/status/royvergara/design-team-os/gates.yml?branch=main&label=gates&color=40e0d0"></a>
   <a href="https://fluentxdesign.substack.com"><img alt="Newsletter: Fluent by Design" src="https://img.shields.io/badge/newsletter-Fluent%20by%20Design-133b3b"></a>
 </p>
 
 <p align="center">
+  <a href="#quickstart-install"><b>Get started</b></a> ·
   <a href="https://baseline.fluentxdesign.com/?utm_source=github&utm_medium=readme"><b>Run the baseline</b></a> ·
   <a href="https://fluentxdesign.com/?utm_source=github&utm_medium=readme"><b>fluentxdesign.com</b></a> ·
   <a href="https://fluentxdesign.substack.com"><b>Newsletter</b></a> ·
@@ -26,6 +27,21 @@
 </p>
 
 ---
+
+<a name="quickstart-install"></a>
+<p align="center"><b>Get started in 60 seconds.</b></p>
+
+<p align="center"><b>Designer, no terminal?</b> Copy a skill's <code>SKILL.md</code> into a Claude Project → <a href="PROJECTS.md">the 60-second path</a></p>
+
+**In Claude Code** — add the marketplace, install, then reload to make it live:
+
+```
+/plugin marketplace add royvergara/design-team-os
+/plugin install design-team-os@fluent-by-design
+/reload-plugins
+```
+
+<sub>More detail, per-gate bundles, and the install-by-hand path → <a href="#install--two-doors">Install ↓</a></sub>
 
 Most AI skill libraries are built for a single designer trying to move faster. This is an operating system for the whole team: three gates that keep speed intentional, skills that enforce them and refuse when the inputs aren't earned, a ledger that carries the evidence from pain to shipped outcome, and a conductor that always knows what can run next. It connects a company's AI mandate to what its design team actually ships, so every fast, cheap prototype stays tied to something that matters.
 
@@ -45,7 +61,7 @@ Heads of Design, VPs of Design, and Design Directors at product led companies, u
 
 You have the AI tools. Your team is experimenting in private. Quality is all over the place, engineering is racing ahead, and you do not yet have a shared way of working that turns all that motion into proof. That gap is what this library closes.
 
-And if you're the designer on that team, not the one leading it: the skills work for you alone, in a browser, today — copy one file into a Claude Project and go ([60-second path](PROJECTS.md)). The system is built for the team; every piece of it is useful solo.
+And if you're the designer on that team, not the one leading it: the skills work for you alone, in claude.ai, today — copy one file into a Claude Project and go ([60-second path](PROJECTS.md)). The system is built for the team; every piece of it is useful solo.
 
 Want to see it work before reading another word? [EXAMPLES.md](EXAMPLES.md) walks one feature through the whole loop — including the moments the skills refuse, which is the point. Ready to run it? [practice/](practice/) is that same loop as a hands-on lab on fictional inputs, and [ADOPTION.md](ADOPTION.md) is the team on-ramp: the pilot pod, week one, and the coverage number that measures adoption honestly.
 
@@ -109,24 +125,20 @@ Each skill enforces its gate in practice, not just on paper. It refuses or flags
 
 ## Templates
 
-Three files under `templates/` carry the state the skills read and write, plus the one artifact you take upward.
+Four files under `templates/`: the state the skills read and write, the cadence they run on, and the one artifact you take upward.
 
 | Template | What it is |
 | --- | --- |
 | [`work-ledger.schema.md`](templates/work-ledger.schema.md) | One `design-os.work/<slug>.yaml` per feature. Gate state as artifacts, never checkmarks, plus the owned bet. What the conductor reads. |
 | [`project-profile.schema.md`](templates/project-profile.schema.md) | The stable answers, once: design system, event names, repo conventions. So skills stop re-asking. |
+| [`rituals.md`](templates/rituals.md) | The cadence contracts — weekly gate review, monthly scorecard pulse, quarterly close. What `weekly-review` and the period rituals run on; they orchestrate existing judgment, never add a new judge. |
 | [`ai-outcomes-scorecard.md`](templates/ai-outcomes-scorecard.md) | The program level scorecard (pictured up top), rendered by `outcomes-scorecard` as an instrument — a featured editorial *verdict* lead, an at-a-glance card, in-column chapter badges, and serif judgment lines. Reference render: [`templates/ai-outcomes-scorecard.example.html`](templates/ai-outcomes-scorecard.example.html). `outcome-readout` scores one shipped feature; this rolls the whole effort up and refuses to call activity a result. |
 
 ## Install — two doors
 
-**Door one: your browser, 60 seconds, no install.** For designers (and anyone) who live in claude.ai, not a terminal. Pick a skill from the table above, copy its `SKILL.md`, paste it into a Claude Project's instructions, hand it your input. The gates hold there — tested, including several skills pasted into one Project. The full path, per-gate bundles, and the honest limits are in **[PROJECTS.md](PROJECTS.md)**.
+**Door one: claude.ai, 60 seconds, no install.** For designers (and anyone) who live in claude.ai — in the browser or the Mac/Windows desktop app — not a terminal. Pick a skill from the table above, copy its `SKILL.md`, paste it into a Claude Project's instructions, hand it your input. The gates hold there — tested, including several skills pasted into one Project. The full path, per-gate bundles, and the honest limits are in **[PROJECTS.md](PROJECTS.md)**.
 
-**Door two: Claude Code — the full machine.** One command adds the marketplace, one installs everything: all seventeen skills, the `conductor` among them, and a `/design-team-os:init` setup command. Updates come through `/plugin`, no re-copying.
-
-```
-/plugin marketplace add royvergara/design-team-os
-/plugin install design-team-os@fluent-by-design
-```
+**Door two: Claude Code — the full machine.** Runs wherever Claude Code does — terminal, the desktop app, or an IDE extension. The three install commands are in the [quick-start up top](#quickstart-install): add the marketplace, install everything — all seventeen skills, the `conductor` among them, and a `/design-team-os:init` setup command — then reload to make it live. Updates come through `/plugin`, no re-copying. To onboard the whole team on clone rather than one machine at a time, commit the marketplace to your repo's `.claude/settings.json` — [how, in IMPLEMENTATION.md](IMPLEMENTATION.md#onboard-a-team-on-clone).
 
 Then, in your product repo, run `/design-team-os:init` once — it scaffolds the [project profile](templates/project-profile.schema.md) and the [work-ledger](templates/work-ledger.schema.md) directory the skills read and write. After that, just describe your work — hand Claude your research, a PRD, or a prototype and the skill that fits takes over. Not sure where things stand? Ask *"where are we?"* and the conductor tells you what's proven and what to run next. You never have to pick from a list of skills.
 
@@ -194,7 +206,7 @@ MIT. See [LICENSE](LICENSE). Use it, fork it, ship it.
 
 ## Status
 
-**v0.14** — the balancing loop, in the machine's own idiom. A bar may now name **guardrails** — what must *not* degrade while its criteria are chased — ratified with the bar under the same pre-registration discipline, and read beside it at the readout with a closed verdict set (held / broken / unread). "Solved, guardrail broken" is a legal, required compound: a cleared bar never silences a broken guardrail, and the diagnosis asks whether the number moved because the thing it stands for moved or was gamed hollow. Fixture-held from the win-laundering side, the mirror of every miss-laundering refusal already in the library. Builds on **v0.13** — the machine gets a heartbeat and a ramp. Rituals become contracts ([templates/rituals.md](templates/rituals.md)) — weekly gate review, monthly scorecard pulse, quarterly close — that orchestrate existing judgment at a cadence and never add a new judge; the new `weekly-review` skill preps the agenda (moved, stalled, decisions needed, runnable now) and refuses to certify a gate from a meeting. Adoption gets its on-ramp: [ADOPTION.md](ADOPTION.md) (pilot pod, week one, role lanes, coverage as the adoption number, the ways-this-dies catalog) and a runnable [practice kit](practice/) where the refusals are the curriculum. Builds on **v0.12** — the machine learns the team. The project profile graduates to a team profile: this period's goals (Gate 1 finally has the list a stated goal gets checked against), a KPI dictionary that settles what a metric means before a bar is registered against it, decision rights (who *may* ratify a bar or own a bet — never that they did), the period calendar, and the tool switchboard — declared once, wired into eleven readers, asked for by `/design-team-os:init` in five questions. Failed gates now report distance the compiler way — a criteria fraction ("4 of 6 MET"), the gap to close first, and a ranked punch list — never a readiness score, and the release's rule is fixture-enforced: the profile got bigger, the gates didn't get smaller. Builds on **v0.11** — the loop gets the step it kept pointing at. A new `validation-plan` skill designs the *smallest test that would settle a decision* — the signal `research-to-pain`, `prototype-to-spec`, and `outcome-readout` each demand but hand off. Its gate refuses to design a test with no decision behind it (name what result would change what you'd do, or there is nothing to test), and it holds to the smallest test that changes the call over the most rigorous study nobody runs. Every skill's primary refusal stays fixture-tested. Builds on **v0.10**, which made the prototype-prompt skills tool-agnostic (*brief-to-prompt-v0* + *-bolt* merged into one `brief-to-prompt` with per-tool adapters), and **v0.9.1**'s editorial rework of the outcomes scorecard. It builds on v0.8's shareable scorecard and the **owned bet** (v0.6). Every skill's primary refusal is encoded as a runnable fixture ([TESTING.md](TESTING.md)). Full history in [CHANGELOG.md](CHANGELOG.md).
+**v0.14.1** — reliability-envelope pins: a full-suite run plus four novel adversarial simulations put v0.14 through the wringer, and four borderline cases were diagnosed and pinned at their roots. It hardens **v0.14 — the balancing loop, in the machine's own idiom.** A bar may now name **guardrails** — what must *not* degrade while its criteria are chased — ratified with the bar under the same pre-registration discipline, and read beside it at the readout with a closed verdict set (held / broken / unread). "Solved, guardrail broken" is a legal, required compound: a cleared bar never silences a broken guardrail, and the diagnosis asks whether the number moved because the thing it stands for moved or was gamed hollow. Fixture-held from the win-laundering side, the mirror of every miss-laundering refusal already in the library. Builds on **v0.13** — the machine gets a heartbeat and a ramp. Rituals become contracts ([templates/rituals.md](templates/rituals.md)) — weekly gate review, monthly scorecard pulse, quarterly close — that orchestrate existing judgment at a cadence and never add a new judge; the new `weekly-review` skill preps the agenda (moved, stalled, decisions needed, runnable now) and refuses to certify a gate from a meeting. Adoption gets its on-ramp: [ADOPTION.md](ADOPTION.md) (pilot pod, week one, role lanes, coverage as the adoption number, the ways-this-dies catalog) and a runnable [practice kit](practice/) where the refusals are the curriculum. Builds on **v0.12** — the machine learns the team. The project profile graduates to a team profile: this period's goals (Gate 1 finally has the list a stated goal gets checked against), a KPI dictionary that settles what a metric means before a bar is registered against it, decision rights (who *may* ratify a bar or own a bet — never that they did), the period calendar, and the tool switchboard — declared once, wired into eleven readers, asked for by `/design-team-os:init` in five questions. Failed gates now report distance the compiler way — a criteria fraction ("4 of 6 MET"), the gap to close first, and a ranked punch list — never a readiness score, and the release's rule is fixture-enforced: the profile got bigger, the gates didn't get smaller. Builds on **v0.11** — the loop gets the step it kept pointing at. A new `validation-plan` skill designs the *smallest test that would settle a decision* — the signal `research-to-pain`, `prototype-to-spec`, and `outcome-readout` each demand but hand off. Its gate refuses to design a test with no decision behind it (name what result would change what you'd do, or there is nothing to test), and it holds to the smallest test that changes the call over the most rigorous study nobody runs. Every skill's primary refusal stays fixture-tested. Builds on **v0.10**, which made the prototype-prompt skills tool-agnostic (*brief-to-prompt-v0* + *-bolt* merged into one `brief-to-prompt` with per-tool adapters), and **v0.9.1**'s editorial rework of the outcomes scorecard. It builds on v0.8's shareable scorecard and the **owned bet** (v0.6). Every skill's primary refusal is encoded as a runnable fixture ([TESTING.md](TESTING.md)). Full history in [CHANGELOG.md](CHANGELOG.md).
 
 ---
 
