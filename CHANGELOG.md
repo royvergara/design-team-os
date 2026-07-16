@@ -44,6 +44,13 @@ see docs/retros/) said was missing around the judgment layer. No gate changed; t
   demo, mark every fabricated value synthetic _in the artifacts_, synthetic never counts as
   proven, gates fire as demonstrations rather than being suspended, and the demo ends with
   the reset named. The dogfood improvised exactly this; now it's the convention.
+- **The client test drive.** commands/demo.md (`/design-team-os:demo`) — run a client's
+  _real_ artifacts through the gates for real judgment (refusals included — they're the
+  most convincing thirty seconds), continue past their evidence on flagged inference to a
+  final readout and scorecard, and clean up by deleting one gitignored `design-os.demo/`
+  sandbox. The **evidence boundary** — where their artifacts stop carrying the work — is
+  recorded in the ledger and visible on the renders: real gates solid, inferred hatched,
+  plus a fixed demo ribbon both templates now carry behind a `state:demo` guard.
 
 ## v0.14 — 2026-07-15
 

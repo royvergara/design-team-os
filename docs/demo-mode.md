@@ -36,6 +36,18 @@ write it as state, exactly as in real work; then, if they want to proceed as a d
 fabricated signal goes in **labeled**. The demo teaches the discipline by exercising it,
 never by suspending it.
 
+## The sandboxed test drive — for a client or an audience
+
+The conventions above govern any declared demo, including an ad-hoc one inside a real
+session. For a **client-facing run** — feed their real artifacts, let the gates judge for
+real, continue past their evidence on flagged inference to a final readout and scorecard,
+then clean up with one delete — use the `demo` command (commands/demo.md). It adds the
+structural guarantees an audience demo needs: everything writes inside a gitignored
+`design-os.demo/` sandbox (real ledgers and profile untouchable), the **evidence boundary**
+is recorded in the ledger and visible on the renders (real gates solid, inferred ones
+hatched, demo ribbon on the page), and cleanup is the deletion of one directory — with the
+untouched git status as the demo's closing beat.
+
 ## Marking conventions
 
 - YAML ledger entries: a `# ⚠️ SYNTHETIC DEMO` comment on the block, plus `⚠️ synthetic`
