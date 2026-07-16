@@ -8,6 +8,22 @@ The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every ski
 listed enforces a gate — it refuses when its inputs aren't earned — and every one
 is covered by a runnable fixture in [TESTING.md](TESTING.md).
 
+## v0.15.1 — 2026-07-16
+
+Mobile + readability polish on the render templates, from phone-screenshot review of the
+first rendered artifacts.
+
+### Fixed
+- **The demo ribbon is now a strip.** The rotated corner banner cropped its own label on
+  phones and overlapped the conductor masthead; both templates now render a quiet sticky
+  strip — full text, pushes content instead of covering it, static in print.
+- **Scorecard is responsive.** Inline grids collapse to one column under 680px, the kills
+  table restacks as cards (it wrapped one word per line and cropped off-screen), display
+  sizes clamp, and the glance band stacks with separators instead of overflowing.
+- **Synthetic hatching subdued.** The conductor's inferred-gate stripes were loud enough to
+  fight the text; now a 2px whisper at ~6% tint every 13px — the dashed violet left border
+  carries the signal. Legend swatch matched; a stray dark-theme --fail-bg value unified.
+
 ## v0.15 — 2026-07-16
 
 The dogfood release: everything a real end-to-end run (Live Music Memoirs, 2026-07-15 —
