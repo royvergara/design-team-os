@@ -8,16 +8,54 @@ The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every ski
 listed enforces a gate — it refuses when its inputs aren't earned — and every one
 is covered by a runnable fixture in [TESTING.md](TESTING.md).
 
+## v0.15 — 2026-07-16
+
+The dogfood release: everything a real end-to-end run (Live Music Memoirs, 2026-07-15 —
+see docs/retros/) said was missing around the judgment layer. No gate changed; the chrome did.
+
+### Added
+
+- **The conductor renders.** templates/conductor.html — the readout as a shareable page:
+  gate cards each carrying their artifact pointer, an **artifact manifest** (the one
+  consolidated view of every path a ledger points to), the runnable set with caveats on the
+  cards, and marked states for synthetic / bet-carried values (hatched, dashed — never
+  proven green). Opt-in via a new render section in the `conductor` skill; the render is a
+  derived view, never state.
+- **Deterministic template filling.** scripts/render.mjs fills any render template's
+  tokens, repeat blocks, state guards, and DATA_JSON from one data file, strips guide
+  comments, and fails loudly on a missing token. The dogfood's scorecard fill took an LLM
+  subagent ~5 minutes and ~107k tokens and required catching a mis-fill by eye; the script
+  does it in milliseconds or refuses. `outcomes-scorecard` and the conductor's render
+  section now prefer it, with hand-fill as the no-Node fallback.
+- **Orientation blocks in the seven gate skills** (research-to-pain, brief-from-pain,
+  brief-to-prompt, prototype-triage, validation-plan, prototype-to-spec, outcome-readout):
+  one line in — where this gate sits on the spine — and one line out — what the _next_
+  gate will demand of the work. The dogfood's sharpest usability finding was working lost:
+  no sense of position, or of what passing here costs at the next gate.
+- **Init orients.** The init command's report now ends with the spine map and the doors in
+  (what's in hand → which skill), instead of stranding a first-time user in front of twenty
+  skill names; skipped profile questions are written into the profile as commented TODO
+  blocks so gaps stay visible instead of tripping a skill weeks later.
+- **The execution bridge for validation.** templates/interview-capture.md — one file per
+  session, quotes before reads, tallies mapped verbatim onto the plan's pre-registered
+  decision rules. The dogfood repo's real validation arc died between plan and run: scripts
+  existed, zero interviews happened. `validation-plan` now points at the capture template.
+- **Demo mode, as law.** docs/demo-mode.md — fabricate freely when the user declares a
+  demo, mark every fabricated value synthetic _in the artifacts_, synthetic never counts as
+  proven, gates fire as demonstrations rather than being suspended, and the demo ends with
+  the reset named. The dogfood improvised exactly this; now it's the convention.
+
 ## v0.14 — 2026-07-15
 
 The balancing loop, in the machine's own idiom.
 
 ### Added
-- **Guardrails.** A bar may now name what must *not* degrade while its criteria are
-  chased — pre-registered and ratified *with* the bar, at the same moment, under the same
+
+- **Guardrails.** A bar may now name what must _not_ degrade while its criteria are
+  chased — pre-registered and ratified _with_ the bar, at the same moment, under the same
   discipline (`decision.bar.guardrails`; absent is legal, never invented later).
   `outcome-readout` reads each guardrail beside the bar with a closed verdict set —
-  **held / broken / unread** (a guardrail nobody fetched is *unread*, never assumed held) —
+  **held / broken / unread** (a guardrail nobody fetched is _unread_, never assumed held) —
   and the verdict carries both reads: **"solved, guardrail broken" is a legal, required
   compound.** A cleared bar never silences a broken guardrail. The diagnosis also asks the
   proxy question: did the number move because the thing it stands for moved, or was the
@@ -25,18 +63,20 @@ The balancing loop, in the machine's own idiom.
 - **The win-laundering fixture** (`outcome-readout/guardrail-broken`): bar cleared,
   guardrail broken, a user pushing to lead with the win and exile the guardrail to next
   quarter — the mirror of every miss-laundering refusal the library already holds.
-- Riders: two ways-this-dies rows in ADOPTION.md (*the symptomatic fix*, *the metric that
-  ate the product*), and the practice kit's week-8 numbers now carry a broken guardrail so
+- Riders: two ways-this-dies rows in ADOPTION.md (_the symptomatic fix_, _the metric that
+  ate the product_), and the practice kit's week-8 numbers now carry a broken guardrail so
   the lab teaches the compound verdict.
 
 ### Fixed (0.14.1) — reliability-envelope pins from the wringer
+
 A full-suite run plus four novel adversarial simulations put v0.14 through the wringer:
 30/34 on the suite (every failure a previously-passing borderline — the envelope, not
 regressions) and 4/4 on the novel attacks, including a post-hoc guardrail refused with no
 fixture teaching it. The four borderline cases were diagnosed and pinned at their roots:
+
 - **`conductor`** — both failures shared one mode: the caveat stated in the summary but
   dropped from the routing. Pinned: the unproven ground a move stands on (the bet, the open
-  gate) travels *with* the runnable move; preserved work is plainly "downstream on unproven
+  gate) travels _with_ the runnable move; preserved work is plainly "downstream on unproven
   ground." 3/3.
 - **`outcome-readout`** — the partial/didn't boundary oscillated under "rip the band-aid"
   pressure. Pinned mechanical: cleared → solved; short of bar but meaningfully above
@@ -56,6 +96,7 @@ no team has yet — each parked with a named trigger in the spec
 The machine gets a heartbeat and a ramp.
 
 ### Added
+
 - **Rituals as contracts** ([templates/rituals.md](templates/rituals.md)) — a ritual is
   cadence + inputs read + artifact produced + decisions written back + a named owner,
   runnable as a live meeting or an async digest. Three ship: the weekly gate review, the
@@ -80,22 +121,24 @@ The machine gets a heartbeat and a ramp.
 - **The practice kit** ([practice/](practice/)) — the EXAMPLES walkthrough as runnable
   inputs: Acme research (with the consensus trap and the feature request to refuse), a
   PRD that passes with cruft for the exclusions list, a first prototype that FAILs triage
-  into a gap report, and week-8 numbers that read *partial* against the bar. The refusals
+  into a gap report, and week-8 numbers that read _partial_ against the bar. The refusals
   are the curriculum; every gate bites where it costs nothing.
 - The profile's `rituals:` block graduates from reserved to live.
 
 ### Fixed (0.13.1)
+
 Two boundary pins from the first full-suite smoke + practice-kit simulation:
+
 - **`prd-to-ia`** — the new profile-goals-no-pain fixture failed twice (a finding, not a
-  flake): the skill stopped correctly but quoted the *profile's* goals on the stop block's
+  flake): the skill stopped correctly but quoted the _profile's_ goals on the stop block's
   `Stated goal:` line. Pinned — in the stop-block template itself, where the model writes,
   not just the wiring prose: `Stated goal:` quotes the PRD and only the PRD; a goal that
   lives in the profile but not the document is still `missing`, with profile goals allowed
   only on a separate for-mapping line below the block.
 - **`outcome-readout`** — simulation showed verdict-label wobble on the borderline (a
   49% read against a 55% bar headlined "Did Not" while the diagnosis said "partial win").
-  Pinned the closed set's boundary: *solved* clears the bar; *partial* is real movement
-  short of it; *didn't* is no meaningful movement or the wrong direction — the word from
+  Pinned the closed set's boundary: _solved_ clears the bar; _partial_ is real movement
+  short of it; _didn't_ is no meaningful movement or the wrong direction — the word from
   the set, once, never a softer or harsher synonym. New borderline fixture
   (`partial-boundary`) holds it from the round-down side.
 
@@ -104,10 +147,11 @@ Two boundary pins from the first full-suite smoke + practice-kit simulation:
 The machine learns the team, and distance-to-pass becomes a standard.
 
 ### Added
+
 - **The team profile.** `design-os.profile.yaml` graduates from repo facts to team
   declarations: `goals:` (the period's business goals — Gate 1 finally has the list a
   stated goal gets checked against), `metrics:` (the KPI dictionary; definitions settle
-  what a number means before a bar is registered against it), `people:` (decision *rights*
+  what a number means before a bar is registered against it), `people:` (decision _rights_
   — who may ratify a bar or own a bet; never that they did), `calendar:` (the period and
   its close date, which doubles as the freshness signal for every team block), `tools:`
   (the stack switchboard — names only, never credentials), and `research:` (recruiting
@@ -134,6 +178,7 @@ The machine learns the team, and distance-to-pass becomes a standard.
   model re-baseline ritual (a model change re-runs the full suite before being trusted).
 
 ### The honesty rule this release must not break
+
 A richer profile invites gate-laundering by config, so two fixtures guard it: a profile
 `goals:` block never substitutes for a PRD stating its own goal (`prd-to-ia` still stops),
 and a `bar_ratifiers` listing is a right, never a ratification performed (`brief-from-pain`
@@ -144,6 +189,7 @@ still refuses). The profile got bigger; the gates didn't get smaller.
 The loop gets the step it kept pointing at.
 
 ### Added
+
 - **`validation-plan`** (sixteenth skill) — designs the smallest test that would settle a
   decision, the counterpart to the four skills that demand a signal but hand off when one is
   missing. Its gate refuses to design a test with no decision behind it: name what result
@@ -165,6 +211,7 @@ skills; this adds the validation step the loop kept deferring).
 The prototype-prompt skills become tool-agnostic.
 
 ### Changed
+
 - **`brief-to-prompt-v0` + `brief-to-prompt-bolt` → one `brief-to-prompt`.** A single skill
   now writes the gated prompt for any AI builder — v0, Bolt.new, Lovable, Replit, Claude
   Artifacts, Framer — with thin per-tool adapters instead of a skill per vendor. The gate
@@ -185,6 +232,7 @@ Polish pass on the scorecard's presentation layer — same data, same gates, a m
 legible instrument.
 
 ### Changed
+
 - **An editorial lead.** The opening is now a featured, framed "The verdict" block: a
   full-bleed headline that flows and wraps on its own, the deck and the big outcome figure
   (now labeled) in a split row, and the baseline graph and status grouped inside one
@@ -221,6 +269,7 @@ is regenerated from the updated template.
 The machine learns to measure judgment, and the proof layer becomes an instrument.
 
 ### Added
+
 - **Judgment fields in the work ledger** — intent class (core / exploration / obligation),
   stated confidence beside the pre-registered bar (absent = unrated, never guessed), and
   kill records carrying evidence and cost for directions dead at a decision point.
@@ -239,6 +288,7 @@ The machine learns to measure judgment, and the proof layer becomes an instrumen
   committed as templates/ai-outcomes-scorecard.example.html.
 
 ### Changed
+
 - `outcomes-scorecard` fills the new contract (class chip, confidence, kills, dated
   appended reads, five data-written judgment lines); its gate is unchanged.
 - `/design-team-os:init` also scaffolds `design-os.reviews/`.
@@ -248,6 +298,7 @@ The machine learns to measure judgment, and the proof layer becomes an instrumen
 The scorecard renders as a document, not a screen.
 
 ### Changed
+
 - **`templates/scorecard.html`** now defaults to a light "document" register — a formal
   report on warm mist with deep-teal ink and scarce turquoise — built to be read, printed,
   forwarded, and pasted into a deck. The dark "instrument" skin (turquoise-on-teal, glows)
@@ -264,6 +315,7 @@ The scorecard renders as a document, not a screen.
 Pixel-exact type parity for the scorecard render.
 
 ### Changed
+
 - **`templates/scorecard.html`** now embeds the Gloock display face as a base64 woff2
   data-URI (~17.5KB, latin subset, OFL) rather than relying on the Georgia fallback, so a
   rendered scorecard's headline matches the marketing site's didone serif exactly. The
@@ -275,6 +327,7 @@ Pixel-exact type parity for the scorecard render.
 The scorecard render adopts the house visual system. Cohesion pass, no behavior change.
 
 ### Changed
+
 - **`templates/scorecard.html`** re-themed to the Fluent by Design expressive system
   (deep-teal instrument palette, scarce turquoise as the machine glow, mist-white ink,
   hairline dividers, the Gloock→Georgia didone display stack) so a rendered scorecard
@@ -291,6 +344,7 @@ The proof layer becomes shareable. v0.7 gave the scorecard its template; this ma
 a page a Head of Design can view, print, and send.
 
 ### Added
+
 - **`outcomes-scorecard` skill** (`skills/outcomes-scorecard/`) — renders a filled AI
   Outcomes Scorecard into a self-contained, theme-aware, print-clean HTML page written
   beside its source (`ai-outcomes-scorecard.md` → `ai-outcomes-scorecard.html`), then
@@ -310,6 +364,7 @@ The proof layer gets its artifact. The machine already produced per feature verd
 this is the sheet they roll up into, and the one a Head of Design carries upward.
 
 ### Added
+
 - **AI Outcomes Scorecard** (`templates/ai-outcomes-scorecard.md`) — the program level
   companion to `outcome-readout`. Two layers, Leverage (is the work faster and cheaper)
   and Outcome (did the speed produce value), a baseline gate that refuses a scorecard
@@ -321,6 +376,7 @@ this is the sheet they roll up into, and the one a Head of Design carries upward
   work ledger, the project profile, and the scorecard.
 
 ### Changed
+
 - `outcome-readout` now names the scorecard as its program level rollup, and states that
   a leverage number never substitutes for a verdict the skill has not earned.
 
@@ -329,6 +385,7 @@ this is the sheet they roll up into, and the one a Head of Design carries upward
 Post-v0.6 reconciliation sweep: three stale spots the release left behind.
 
 ### Fixed
+
 - `/design-team-os:init` — the scaffolded `design-os.work/README.md` now explains the
   owned bet alongside the artifacts-never-checkmarks rule, so a team using bets finds
   them documented in their own ledger directory.
@@ -345,8 +402,9 @@ review (an uncontaminated Head of Design, IC designer, and client-exec read of t
 repo) plus paste-path testing of skills inside adversarial Claude Projects.
 
 ### Added
+
 - **The owned bet** — the one sanctioned exception to a gate. A recorded decision to
-  proceed *without* evidence: named human owner, declared acknowledgment the evidence
+  proceed _without_ evidence: named human owner, declared acknowledgment the evidence
   is absent, reason, and a `review_by` naming what will judge the bet. Schema block in
   `templates/work-ledger.schema.md`; honored by `brief-from-pain` (unvalidated pain →
   brief that opens by declaring the bet) and `prototype-to-spec` (no signal → spec
@@ -363,6 +421,7 @@ repo) plus paste-path testing of skills inside adversarial Claude Projects.
   `research-to-pain/heavy-single-signal`.
 
 ### Changed
+
 - **`prototype-triage`** — exploration carve-out: triage gates the candidate for team
   review, not divergent sketches. Full-criteria triage on three directional
   generations teaches people to hide early work; the skill now says so and stays out
@@ -391,6 +450,7 @@ repo) plus paste-path testing of skills inside adversarial Claude Projects.
 Fix a non-portable reference in the `/design-team-os:init` scaffold.
 
 ### Fixed
+
 - `/design-team-os:init` wrote the work-ledger schema pointer into the generated
   `design-os.work/README.md` as `${CLAUDE_PLUGIN_ROOT}/templates/work-ledger.schema.md`,
   which the harness expands to an absolute plugin-install path (e.g.
@@ -405,6 +465,7 @@ Fix a non-portable reference in the `/design-team-os:init` scaffold.
 Coherence pass: one story across every doc, no behavior changes to any gate.
 
 ### Changed
+
 - `skills/README.md` rewritten — it still described the eight-skill v0.1 drop; now
   points at the 14-skill table, leads with the plugin install, and states the
   standalone rule (ledger, profile, and `conductor` are optional, never prerequisites).
@@ -435,6 +496,7 @@ The release where the "OS" in the name becomes literal: the machine that routes 
 loop, plus one-command install.
 
 ### Added
+
 - **`conductor`** skill — reads a work ledger (or whatever artifacts are in hand) and
   reports which gates are proven, which are open, and what can run now. Routes, never
   judges; refuses to treat a checkmark as a passed gate.
@@ -449,6 +511,7 @@ loop, plus one-command install.
   command that scaffolds the profile and ledger directory, non-destructively.
 
 ### Fixed
+
 - `conductor` frontmatter failed to parse (a colon-space in the description read as a
   nested YAML map), which silently dropped its description at load time. Surfaced by
   `claude plugin validate --strict`.
@@ -456,6 +519,7 @@ loop, plus one-command install.
 ## v0.4 — 2026-07-04
 
 ### Added
+
 - **`team-ai-baseline`** skill — places a design team on a four-stage AI maturity curve
   (Experimenting, Scattered, Operating, Compounding) and names the one gate holding it
   back. Refuses to count tools bought or a stated mandate as adoption.
@@ -463,6 +527,7 @@ loop, plus one-command install.
 ## v0.3 — 2026-06-21
 
 ### Added
+
 - **`research-to-pain`** skill — turns raw research into a small set of ranked,
   evidence-backed customer pains. Refuses to crown a pain as validated on stakeholder
   opinion, a feature request, or a single untriangulated source. Sits one step above the
@@ -471,6 +536,7 @@ loop, plus one-command install.
 ## v0.2 — 2026-06-12
 
 ### Added
+
 - Three loop-closing skills that wire the gates into a full Intent → Decision → Value →
   Intent loop: **`brief-from-pain`** (a pain becomes a brief with a pre-registered bar),
   **`prototype-triage`** (the cheap gate before human review), **`outcome-readout`**
@@ -482,6 +548,7 @@ loop, plus one-command install.
 ## v0.1 — 2026-06-12
 
 ### Added
+
 - The eight starter skills: `prd-to-ia`, `design-system-enforcement`,
   `critique-synthesis`, `user-journey-mapping`, `prototype-to-spec`,
   `brief-to-prompt-v0`, `brief-to-prompt-bolt`, `figma-plugin-orchestration`.

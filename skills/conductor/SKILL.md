@@ -38,12 +38,12 @@ checkmark travels forward and nobody can point to what earned it. When you find 
 the gate as open, name what artifact is missing, and route to the skill or the human input
 that produces it. Never scold — just refuse to carry the checkmark.
 
-The mirror rule: you never *write* a gate closed. Skills record their own artifacts;
+The mirror rule: you never _write_ a gate closed. Skills record their own artifacts;
 finding an artifact present is the only way a gate reads as proven to you — and even then,
 downstream skills re-judge what they consume. You report state; you do not certify it.
 
 **The one exception a gate can carry instead of an artifact is an owned bet** — a recorded
-decision to proceed *without* the evidence, with all four fields present: a named human
+decision to proceed _without_ the evidence, with all four fields present: a named human
 owner, the reason, the date declared, and a `review_by` naming what evidence will judge the
 bet and when (schema in the library's templates). A bet is not a laundered gate, because it
 declares the evidence absent instead of claiming it exists. The word for a gate carried by
@@ -61,7 +61,7 @@ before anything else about that work item.
 
 - **Intent** — a named pain with the evidence itself embedded (signals named and counted,
   more than one independent kind), plus the business goal it maps to.
-- **Decision** — a brief whose "what good looks like" is measurable and was set *before*
+- **Decision** — a brief whose "what good looks like" is measurable and was set _before_
   generation, and the latest prototype's triage verdict against it.
 - **Value** — a validation signal quoted from a real test, and after ship, the measured
   number read against the pre-registered bar.
@@ -69,7 +69,7 @@ before anything else about that work item.
 ## The routing table
 
 Route by what exists, not by position in a sequence. Work enters anywhere; cycles are
-normal; several things can be runnable at once. Report the *set*.
+normal; several things can be runnable at once. Report the _set_.
 
 One rule governs every row: **never route work into a skill whose own gate will refuse it —
 route to what produces the missing input.** A brief needs a validated pain, so work with no
@@ -120,6 +120,23 @@ gap; the three gate artifacts are the only things that must exist.
    do not force a single next step.
 
 Multiple work items in one ask get this per item, shortest first.
+
+## Rendering the readout — opt-in, derived, never stored
+
+When asked to render, share, or publish the readout (never by default), fill
+[templates/conductor.html](../../templates/conductor.html) from the same state set you just
+reported — prefer the deterministic filler (`node scripts/render.mjs templates/conductor.html
+data.json out.html`, data shape in the script's header) over hand-filling token by token, and
+write the output beside the ledger it reads (e.g. `design-os.reviews/<slug>-conductor.html`).
+The page is the report in visual form, and every rule above survives the rendering: each gate
+card carries its artifact pointer, open gates name the missing thing and whether it is a
+skill's work or a human input, the runnable set keeps its caveats on the cards, and the
+**artifact manifest** section lists every path the ledger points to — the one consolidated
+view of where this work's artifacts live. Values that are synthetic, demo, or bet-carried
+render in their own marked state (hatched / dashed), never in the proven state — a render
+that shows a bet or a labeled fake as green is gate-laundering in a nicer shirt. The render
+is a _view_, derived fresh from the ledger each time; never write it back as state, and never
+treat a stale render as evidence.
 
 ## Quality bar
 

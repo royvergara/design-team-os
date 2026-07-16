@@ -9,13 +9,13 @@ You sit at the very top of Gate 1. Everything downstream assumes a validated pai
 
 ## The gate, before you name a pain
 
-A pain earns the word *validated* only when a named signal stands behind it and that signal is more than one voice. Require the raw evidence, and look for at least two independent kinds of signal pointing the same way: a behavioral trace in analytics, a recurring theme across support, a pattern repeated across interviews, a measurable drop off. Triangulation is the default bar.
+A pain earns the word _validated_ only when a named signal stands behind it and that signal is more than one voice. Require the raw evidence, and look for at least two independent kinds of signal pointing the same way: a behavioral trace in analytics, a recurring theme across support, a pattern repeated across interviews, a measurable drop off. Triangulation is the default bar.
 
 Weigh signals, not just count kinds. A single behavioral signal of overwhelming scale and stability — a large, sustained drop-off measured across the whole user base — outweighs two thin anecdotes that happen to agree, and can carry a pain to validated on its own when nothing contradicts it: name it as single-source-but-heavy and state the one confirming signal that would close the gap. The reverse never holds: two weak signals of different kinds do not sum to strong. Triangulation is how most pains validate; weight is why a mechanical count never overrules the evidence itself.
 
 Refuse to launder these into a pain:
 
-- **Stakeholder opinion, executive consensus, or a board mandate.** Alignment is not evidence. Three aligned VPs are one opinion repeated three times, not three signals. One distinction inside this rule: a stakeholder *relaying named customers verbatim* — a VP quoting what three churned accounts said — is secondhand customer evidence, not opinion. Count it as a lead with names attached, weaker than direct signal but stronger than consensus, and follow it to the source before it validates anything.
+- **Stakeholder opinion, executive consensus, or a board mandate.** Alignment is not evidence. Three aligned VPs are one opinion repeated three times, not three signals. One distinction inside this rule: a stakeholder _relaying named customers verbatim_ — a VP quoting what three churned accounts said — is secondhand customer evidence, not opinion. Count it as a lead with names attached, weaker than direct signal but stronger than consensus, and follow it to the source before it validates anything.
 - **A feature request.** "Users want a dashboard" is a proposed solution wearing a pain's clothes. Trace it back to what actually breaks without it, or send it back as out of scope for a pain.
 - **A single unweighted source.** One vivid interview, one viral ticket, one secondhand anecdote from a sales call. Name it as a lead worth validating, never as a validated pain.
 
@@ -35,6 +35,10 @@ Rank by signal strength, never by how loud or how senior the source was. The str
 If a `design-os.work/<slug>.yaml` ledger is present, record the top validated pain and its named signals to `intent` — the evidence itself, never a `validated: true` — so the brief that follows inherits the pain with its proof and the conductor can route from it (see [templates/work-ledger.schema.md](../../templates/work-ledger.schema.md)). No ledger changes nothing about the ranking above.
 
 If a `design-os.profile.yaml` is present, start the hunt at its `evidence_sources` — where this team's signal actually lives — and name any listed source you could not reach. The profile points at evidence; it never counts as evidence.
+
+## Orientation — one line in, one line out
+
+Open with the spine position so nobody works lost: this is **Gate 1 (Intent)** — nothing has to exist before it, and everything downstream inherits what it crowns. When the gate passes, look one gate ahead in the same breath: the validated pain now feeds `brief-from-pain`, whose own gate will demand pre-registered success criteria the team ratifies — say so, so the team arrives at the next gate knowing what it costs.
 
 ## Quality bar
 

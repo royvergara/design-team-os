@@ -27,6 +27,10 @@ Quote the evidence that earned the build: what was tested, with whom, what was f
 
 If a `design-os.work/<slug>.yaml` ledger is present, record the validation signal and a pointer to this Validation Record under `value.validation` — the quoted evidence, never a `signal: confirmed` — so the readout reads the same proof after ship (see [templates/work-ledger.schema.md](../../templates/work-ledger.schema.md)). No ledger changes nothing about the spec above.
 
+## Orientation — one line in, one line out
+
+Open with the spine position: this is the **entry of Gate 3 (Value)** — behind it a triaged prototype and a validation signal (or an owned bet), ahead of it the build and the ship. When the spec is handed over, look one gate ahead: after ship plus a measurement window, `outcome-readout` will score the launch against the Validation Record's pre-registered numbers and nothing else — say so, so the team ships knowing the exact read that is coming.
+
 ## Quality bar
 
 A spec without analytics events is incomplete, because it builds the feature and forgets to build the proof.

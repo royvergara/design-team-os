@@ -37,6 +37,10 @@ The next problem worth starting, framed as a Gate-1 prompt for `prd-to-ia` or `u
 
 If a `design-os.work/<slug>.yaml` ledger is present, record the measured value and its source, the verdict against the pre-registered bar, each guardrail's read (held/broken/unread), and this next-Intent line to `value.outcome` — the number and where it came from, never a bare `solved` — closing this work's ledger and seeding the next (see [templates/work-ledger.schema.md](../../templates/work-ledger.schema.md)). No ledger changes nothing about the readout above.
 
+## Orientation — one line in, one line out
+
+Open with the spine position: this is the **exit of Gate 3 (Value)** — the last gate, behind it a shipped feature and its pre-registered bar, ahead of it only the next loop. The look-ahead is the next-Intent line the readout already requires: name it as Gate-1 input explicitly, so the verdict lands as the start of the next piece of work and never as a report that files itself.
+
 ## Quality bar
 
 The verdict cites a pre-registered bar and a measured number, never one without the other. If you claimed success without the number, you faked the gate.

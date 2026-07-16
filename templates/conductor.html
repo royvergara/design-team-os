@@ -1,0 +1,654 @@
+<title>Conductor — {{WORK_SLUG}}</title>
+<style>
+  :root {
+    --ground: #f4f0e7;
+    --panel: #fbf9f3;
+    --panel-2: #efeadd;
+    --ink: #1c1912;
+    --ink-2: #5b5445;
+    --ink-3: #8a8271;
+    --hair: #ded7c7;
+    --hair-strong: #cbc2ad;
+    --accent: #1e8f87;
+    --accent-soft: rgba(30, 143, 135, 0.12);
+    --proven: #3c7f5b;
+    --proven-bg: rgba(60, 127, 91, 0.12);
+    --open: #a9781f;
+    --open-bg: rgba(169, 120, 31, 0.14);
+    --fail: #b44a3d;
+    --fail-bg: rgba(180, 74, 61, 0.12);
+    --synth: #6e5498;
+    --synth-bg: rgba(110, 84, 152, 0.12);
+    --shadow:
+      0 1px 2px rgba(28, 25, 18, 0.05), 0 8px 24px rgba(28, 25, 18, 0.06);
+    --mono:
+      ui-monospace, "SF Mono", "SFMono-Regular", "Menlo", "Consolas", monospace;
+    --sans:
+      -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial,
+      sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #16140f;
+      --panel: #211e17;
+      --panel-2: #2a261d;
+      --ink: #f3eee2;
+      --ink-2: #b4ac98;
+      --ink-3: #7e7663;
+      --hair: #322d22;
+      --hair-strong: #423c2d;
+      --accent: #35c1b7;
+      --accent-soft: rgba(53, 193, 183, 0.14);
+      --proven: #5fb585;
+      --proven-bg: rgba(95, 181, 133, 0.14);
+      --open: #d3a54a;
+      --open-bg: rgba(211, 165, 74, 0.15);
+      --fail: #e0776a;
+      --fail-bg: rgba(224, 119, 106, 0.15);
+      --synth: #a98fd1;
+      --synth-bg: rgba(169, 143, 209, 0.15);
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+  }
+  :root[data-theme="light"] {
+    --ground: #f4f0e7;
+    --panel: #fbf9f3;
+    --panel-2: #efeadd;
+    --ink: #1c1912;
+    --ink-2: #5b5445;
+    --ink-3: #8a8271;
+    --hair: #ded7c7;
+    --hair-strong: #cbc2ad;
+    --accent: #1e8f87;
+    --accent-soft: rgba(30, 143, 135, 0.12);
+    --proven: #3c7f5b;
+    --proven-bg: rgba(60, 127, 91, 0.12);
+    --open: #a9781f;
+    --open-bg: rgba(169, 120, 31, 0.14);
+    --fail: #b44a3d;
+    --fail-bg: rgba(180, 74, 61, 0.12);
+    --synth: #6e5498;
+    --synth-bg: rgba(110, 84, 152, 0.12);
+    --shadow:
+      0 1px 2px rgba(28, 25, 18, 0.05), 0 8px 24px rgba(28, 25, 18, 0.06);
+  }
+  :root[data-theme="dark"] {
+    --ground: #16140f;
+    --panel: #211e17;
+    --panel-2: #2a261d;
+    --ink: #f3eee2;
+    --ink-2: #b4ac98;
+    --ink-3: #7e7663;
+    --hair: #322d22;
+    --hair-strong: #423c2d;
+    --accent: #35c1b7;
+    --accent-soft: rgba(53, 193, 183, 0.14);
+    --proven: #5fb585;
+    --proven-bg: rgba(95, 181, 133, 0.14);
+    --open: #d3a54a;
+    --open-bg: rgba(211, 165, 74, 0.15);
+    --fail: #e0776a;
+    --fail-bg: rgba(224, 144, 106, 0.15);
+    --synth: #a98fd1;
+    --synth-bg: rgba(169, 143, 209, 0.15);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.35);
+  }
+  @media print {
+    :root[data-theme="dark"] {
+      --ground: #f4f0e7;
+      --panel: #fbf9f3;
+      --panel-2: #efeadd;
+      --ink: #1c1912;
+      --ink-2: #5b5445;
+      --ink-3: #8a8271;
+      --hair: #ded7c7;
+      --hair-strong: #cbc2ad;
+      --accent: #1e8f87;
+      --accent-soft: rgba(30, 143, 135, 0.12);
+      --proven: #3c7f5b;
+      --proven-bg: rgba(60, 127, 91, 0.12);
+      --open: #a9781f;
+      --open-bg: rgba(169, 120, 31, 0.14);
+      --fail: #b44a3d;
+      --fail-bg: rgba(180, 74, 61, 0.12);
+      --synth: #6e5498;
+      --synth-bg: rgba(110, 84, 152, 0.12);
+      --shadow: none;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: clamp(20px, 4vw, 52px) clamp(16px, 4vw, 40px) 64px;
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  header.mast {
+    border-bottom: 1px solid var(--hair);
+    padding-bottom: 22px;
+    margin-bottom: 26px;
+  }
+  .mast-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .mast h1 {
+    font-family: var(--mono);
+    font-size: clamp(24px, 4.4vw, 36px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 6px 0 0;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  .mast h1 .slug {
+    color: var(--accent);
+  }
+  .mast .meta {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-3);
+    text-align: right;
+  }
+  .stateline {
+    margin-top: 16px;
+    font-size: 15px;
+    color: var(--ink-2);
+    max-width: 68ch;
+  }
+  .stateline b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .legend {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+  }
+  .legend .li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-2);
+    letter-spacing: 0.02em;
+  }
+  .swatch {
+    width: 22px;
+    height: 12px;
+    border-radius: 3px;
+    flex: none;
+  }
+  .swatch.real {
+    background: var(--proven-bg);
+    border: 1px solid var(--proven);
+  }
+  .swatch.synth {
+    background:
+      repeating-linear-gradient(
+        45deg,
+        var(--synth-bg),
+        var(--synth-bg) 3px,
+        transparent 3px,
+        transparent 6px
+      ),
+      var(--panel);
+    border: 1px dashed var(--synth);
+  }
+
+  .sec-h {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 38px 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .sec-h::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--hair);
+  }
+
+  .gates {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .phase-label {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 8px 0 -4px 2px;
+  }
+  .gate {
+    position: relative;
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    gap: 18px;
+    background: var(--panel);
+    border: 1px solid var(--hair);
+    border-left-width: 3px;
+    border-radius: 8px;
+    padding: 16px 18px 16px 20px;
+    box-shadow: var(--shadow);
+  }
+  .gate.s-proven {
+    border-left-color: var(--proven);
+  }
+  .gate.s-fail {
+    border-left-color: var(--fail);
+  }
+  .gate.s-open {
+    border-left-color: var(--open);
+  }
+  .gate.s-idle {
+    border-left-color: var(--hair-strong);
+  }
+  .gate.s-bet {
+    border-left-color: var(--open);
+    border-left-style: dashed;
+  }
+  .gate.synthetic {
+    background:
+      repeating-linear-gradient(
+        45deg,
+        var(--synth-bg),
+        var(--synth-bg) 4px,
+        transparent 4px,
+        transparent 9px
+      ),
+      var(--panel);
+    border-left-color: var(--synth);
+    border-left-style: dashed;
+  }
+  @media (max-width: 560px) {
+    .gate {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+
+  .gate-id .g-name {
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .gate-id .g-sub {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    margin-top: 2px;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 999px;
+    margin-top: 9px;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+  .pill .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex: none;
+  }
+  .pill.proven {
+    color: var(--proven);
+    background: var(--proven-bg);
+    border-color: color-mix(in srgb, var(--proven) 40%, transparent);
+  }
+  .pill.proven .dot {
+    background: var(--proven);
+  }
+  .pill.fail {
+    color: var(--fail);
+    background: var(--fail-bg);
+    border-color: color-mix(in srgb, var(--fail) 40%, transparent);
+  }
+  .pill.fail .dot {
+    background: var(--fail);
+  }
+  .pill.open {
+    color: var(--open);
+    background: var(--open-bg);
+    border-color: color-mix(in srgb, var(--open) 40%, transparent);
+  }
+  .pill.open .dot {
+    background: var(--open);
+  }
+  .pill.bet {
+    color: var(--open);
+    background: transparent;
+    border: 1px dashed var(--open);
+  }
+  .pill.bet .dot {
+    background: var(--open);
+  }
+  .pill.synth {
+    color: var(--synth);
+    background: transparent;
+    border: 1px dashed var(--synth);
+  }
+  .pill.synth .dot {
+    background: var(--synth);
+  }
+  .pill.idle {
+    color: var(--ink-3);
+    background: var(--panel-2);
+    border-color: var(--hair-strong);
+  }
+  .pill.idle .dot {
+    background: var(--ink-3);
+  }
+
+  .gate-body {
+    min-width: 0;
+  }
+  .gate-body p {
+    margin: 0 0 8px;
+    font-size: 13.5px;
+    color: var(--ink-2);
+  }
+  .gate-body p:last-child {
+    margin-bottom: 0;
+  }
+  .artifact {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink);
+    background: var(--panel-2);
+    border: 1px solid var(--hair);
+    border-radius: 5px;
+    padding: 8px 10px;
+    margin: 4px 0 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .closes {
+    font-size: 13px;
+    color: var(--ink-2);
+    border-top: 1px dashed var(--hair-strong);
+    padding-top: 9px;
+  }
+  .closes .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-right: 8px;
+  }
+  .closes .tag.human {
+    color: var(--open);
+  }
+  .closes .tag.skill {
+    color: var(--accent);
+  }
+  .closes .tag.due {
+    color: var(--fail);
+  }
+  code {
+    font-family: var(--mono);
+    font-size: 0.92em;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+
+  .manifest {
+    background: var(--panel);
+    border: 1px solid var(--hair);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .manifest table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .manifest td {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--hair);
+    vertical-align: top;
+  }
+  .manifest tr:last-child td {
+    border-bottom: none;
+  }
+  .manifest .m-path {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .manifest .m-role {
+    color: var(--ink-2);
+  }
+  .manifest .m-field {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    white-space: nowrap;
+  }
+
+  .runnable {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .run {
+    background: var(--panel);
+    border: 1px solid var(--hair);
+    border-radius: 8px;
+    padding: 16px 16px 15px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .run .run-h {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+  .run .run-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+  .run p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--ink-2);
+  }
+  .run .caveat {
+    font-size: 12px;
+    color: var(--open);
+  }
+  .run .input {
+    margin-top: auto;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    border-top: 1px solid var(--hair);
+    padding-top: 9px;
+  }
+  .run.parallel {
+    border-color: color-mix(in srgb, var(--accent) 30%, var(--hair));
+  }
+
+  .throughline {
+    margin-top: 34px;
+    background: var(--open-bg);
+    border: 1px dashed var(--open);
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .throughline.synthetic {
+    background: var(--synth-bg);
+    border-color: var(--synth);
+  }
+  .throughline .th-h {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--open);
+    margin-bottom: 6px;
+  }
+  .throughline.synthetic .th-h {
+    color: var(--synth);
+  }
+  .throughline p {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--ink-2);
+  }
+  .throughline b {
+    color: var(--ink);
+  }
+
+  footer {
+    margin-top: 40px;
+    padding-top: 18px;
+    border-top: 1px solid var(--hair);
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+</style>
+
+<div class="wrap">
+  <header class="mast">
+    <div class="mast-row">
+      <div>
+        <div class="eyebrow">Design Team OS · Conductor readout</div>
+        <h1>work: <span class="slug">{{WORK_SLUG}}</span></h1>
+      </div>
+      <div class="meta">{{LEDGER_POINTER}}<br />read {{READ_DATE}}</div>
+    </div>
+    <p class="stateline">{{STATE_LINE}}</p>
+    <!-- state:synthetic -->
+    <div class="legend">
+      <span class="li"
+        ><span class="swatch real"></span> Real artifact — counts as
+        proven</span
+      >
+      <span class="li"
+        ><span class="swatch synth"></span> Synthetic / demo data — reads as
+        open</span
+      >
+    </div>
+    <!-- /state:synthetic -->
+  </header>
+
+  <div class="sec-h">Gate state</div>
+  <div class="gates">
+    <!-- repeat:gate -->
+    {{G_PHASE_HTML}}
+    <div class="gate {{G_CLASS}}">
+      <div class="gate-id">
+        <div class="g-name">{{G_NAME}}</div>
+        <div class="g-sub">{{G_SUB}}</div>
+        <span class="pill {{G_PILL_CLASS}}"
+          ><span class="dot"></span>{{G_PILL}}</span
+        >
+      </div>
+      <div class="gate-body">
+        <p>{{G_BODY}}</p>
+        <div class="artifact">{{G_ARTIFACT}}</div>
+        {{G_CLOSES_HTML}}
+      </div>
+    </div>
+    <!-- /repeat:gate -->
+  </div>
+
+  <div class="sec-h">Artifact manifest</div>
+  <div class="manifest">
+    <table>
+      <tbody>
+        <!-- repeat:artifact -->
+        <tr>
+          <td class="m-path">{{A_PATH}}</td>
+          <td class="m-role">{{A_ROLE}}</td>
+          <td class="m-field">{{A_FIELD}}</td>
+        </tr>
+        <!-- /repeat:artifact -->
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-h">Runnable now</div>
+  <div class="runnable">
+    <!-- repeat:run -->
+    <div class="run {{R_CLASS}}">
+      <div class="run-h">{{R_KIND}}</div>
+      <div class="run-title">{{R_TITLE}}</div>
+      <p>{{R_BODY}}</p>
+      {{R_CAVEAT_HTML}}
+      <div class="input">input · {{R_INPUT}}</div>
+    </div>
+    <!-- /repeat:run -->
+  </div>
+
+  <!-- state:throughline -->
+  <div class="throughline {{TH_CLASS}}">
+    <div class="th-h">{{TH_TITLE}}</div>
+    <p>{{TH_BODY}}</p>
+  </div>
+  <!-- /state:throughline -->
+
+  <footer>
+    <span>{{FOOTER_NOTE}}</span>
+    <span>conductor · routes, never judges</span>
+  </footer>
+</div>

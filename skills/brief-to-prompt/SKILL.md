@@ -36,6 +36,10 @@ Read the target from the request and adapt these lines. If a `design-os.profile.
 
 Three to five specific things to inspect in the generated output before iterating, derived from the quality bar in the brief. The checklist is what separates this from a prompt pack: the skill hands the team the prompt and the eyes to judge what comes back. For a full-app builder, include at least one data-integrity check — mocked data that looks wrong undermines the validation the prototype exists to produce.
 
+## Orientation — one line in, one line out
+
+Open with the spine position: this sits **inside Gate 2 (Decision)** — behind it a brief with a ratified bar, ahead of it a generated prototype that has earned nothing yet. When the prompt is handed over, look one gate ahead: the output goes to `prototype-triage` before any human review, and triage will judge it against the brief's criteria plus empty, loading, and error states — say so, so nobody walks a fresh generation into a review meeting first.
+
 ## Quality bar
 
 One paste-ready prompt with an explicit out-of-scope line and a Discernment checklist, or a list of what the brief is missing — never a prompt built around a gap the brief never closed.
