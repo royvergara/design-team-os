@@ -45,7 +45,14 @@ The argument is a verb: `run` (default), `status`, or `clean`.
 is inferred ──`), then continue by **systematic inference**: each value extrapolated
    from the client's actual context (their real metrics' order of magnitude, their real
    competitor findings, their real constraints — never generic numbers), each flagged
-   `⚠️ inferred` with one line naming what it extrapolates from.
+   `⚠️ inferred` with one line naming what it extrapolates from. One hybrid state recurs
+   below the boundary and deserves its own honesty: a **real observation judged against an
+   inferred bar** — e.g. the client's live product genuinely inspected, triaged against
+   criteria nobody ratified. Record the observation as real (a `real_observation` field in
+   the ledger entry, named as real on the board) and the _verdict_ as inferred; collapsing
+   the two either way wastes the finding or launders the judgment. These are the cheapest
+   conversions in the debrief — a ratified bar makes the same observation a real verdict
+   the same day.
 5. **Land.** Carry the inferred continuation through `outcome-readout` to a verdict, then
    render the conductor board and the scorecard via `node scripts/render.mjs` with
    `"states": { "demo": true }`, written into `design-os.demo/`. On the board, real gates
