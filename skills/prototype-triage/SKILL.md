@@ -25,6 +25,10 @@ PASS only if every criterion is met and the required states exist — then it ha
 
 If a `design-os.work/<slug>.yaml` ledger is present, record this verdict to `decision.triage` with the prototype it judged, the criteria fraction (`criteria: "4 of 6 MET"`), the attempt number (`attempt: 2` — how many triages this work has taken), and, on FAIL, the punch list — the criteria result itself, never a bare PASS — so a resumed session sees why review was or wasn't earned (see [templates/work-ledger.schema.md](../../templates/work-ledger.schema.md)). The entry still replaces the last one — history lives in git — but the fraction and attempt count make distance and trajectory readable at a glance. No ledger changes nothing about the triage above.
 
+## Orientation — one line in, one line out
+
+Open with the spine position: this is the **exit of Gate 2 (Decision)** — behind it the brief and its bar, ahead of it the team's scarce review time. State the look-ahead with the verdict either way: a PASS goes to `design-system-enforcement` and `critique-synthesis` (neither blocks the other), and beyond them `prototype-to-spec` will demand a validation signal before any spec — a FAIL goes back to `brief-to-prompt` with the punch list, and the brief itself stays closed unless the punch list contradicts it.
+
 ## Quality bar
 
 Every brief criterion appears in the criteria table, and the verdict matches it — no PASS sitting above a MISSING row. If you wrote a compliment, you left the skill's job.
