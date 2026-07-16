@@ -8,6 +8,21 @@ The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every ski
 listed enforces a gate — it refuses when its inputs aren't earned — and every one
 is covered by a runnable fixture in [TESTING.md](TESTING.md).
 
+## v0.15.2 — 2026-07-16
+
+Pre-demo smoke check caught a render-path bug that would break the live render in any repo
+that isn't this library.
+
+### Fixed
+- **Render references now resolve cross-repo.** `commands/demo.md`, `outcomes-scorecard`, and
+  `conductor` told the model to run `node scripts/render.mjs templates/…` as bare relative
+  paths — correct inside this library, but `nothing` when a skill runs in the user's product
+  repo (the script and templates live in the plugin install). All three now use
+  `${CLAUDE_PLUGIN_ROOT}/scripts/render.mjs` + `${CLAUDE_PLUGIN_ROOT}/templates/…` for the
+  script and template, with the data and output on repo paths — matching the convention
+  `init.md` already followed. Without this, the live render step of `/demo run` would fail to
+  find the script in front of an audience, or silently fall back to slow hand-filling.
+
 ## v0.15.1 — 2026-07-16
 
 Mobile + readability polish on the render templates, from phone-screenshot review of the

@@ -54,9 +54,14 @@ is inferred ──`), then continue by **systematic inference**: each value extr
    conversions in the debrief — a ratified bar makes the same observation a real verdict
    the same day.
 5. **Land.** Carry the inferred continuation through `outcome-readout` to a verdict, then
-   render the conductor board and the scorecard via `node scripts/render.mjs` with
-   `"states": { "demo": true }`, written into `design-os.demo/`. On the board, real gates
-   render solid, inferred ones hatched — the evidence boundary is _visible_, not narrated.
+   render the conductor board and the scorecard. The script and templates live in the plugin,
+   the data and output live in this repo — so run
+   `node ${CLAUDE_PLUGIN_ROOT}/scripts/render.mjs ${CLAUDE_PLUGIN_ROOT}/templates/conductor.html design-os.demo/<data>.json design-os.demo/<out>.html`
+   (and likewise `templates/scorecard.html`), always with `"states": { "demo": true }` in the
+   data so the ribbon shows. Never reference `scripts/` or `templates/` as bare relative paths
+   — the product repo is not the plugin, and the bare path resolves to nothing. On the board,
+   real gates render solid, inferred ones hatched — the evidence boundary is _visible_, not
+   narrated.
 6. **Debrief.** Close with three things, plainly: the evidence boundary ("your artifacts
    carry this work through X; everything past it is inference"), each real refusal and the
    smallest evidence that would clear it (that list is their roadmap, and the follow-up

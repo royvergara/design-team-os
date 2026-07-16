@@ -125,9 +125,12 @@ Multiple work items in one ask get this per item, shortest first.
 
 When asked to render, share, or publish the readout (never by default), fill
 [templates/conductor.html](../../templates/conductor.html) from the same state set you just
-reported — prefer the deterministic filler (`node scripts/render.mjs templates/conductor.html
-data.json out.html`, data shape in the script's header) over hand-filling token by token, and
-write the output beside the ledger it reads (e.g. `design-os.reviews/<slug>-conductor.html`).
+reported — prefer the deterministic filler (`node ${CLAUDE_PLUGIN_ROOT}/scripts/render.mjs
+${CLAUDE_PLUGIN_ROOT}/templates/conductor.html data.json out.html`, data shape in the script's
+header) over hand-filling token by token. The script and template come from the plugin
+(`${CLAUDE_PLUGIN_ROOT}`); the data and output live in the product repo — a bare
+`scripts/`/`templates/` path resolves to nothing there. Write the output beside the ledger it
+reads (e.g. `design-os.reviews/<slug>-conductor.html`).
 The page is the report in visual form, and every rule above survives the rendering: each gate
 card carries its artifact pointer, open gates name the missing thing and whether it is a
 skill's work or a human input, the runnable set keeps its caveats on the cards, and the
