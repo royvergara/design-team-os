@@ -1,0 +1,34 @@
+# Historical release → commit map, used only by .github/workflows/release.yml
+# to place BACKFILLED tags at the commit that shipped each version.
+#
+# Releases stopped being cut after v0.5 while the plugin kept shipping (the
+# manifest reached 0.15.2). This file pins every documented CHANGELOG version
+# between the v0.5 tag and now to the last commit that carried that version,
+# so the one-time backfill tags each release at its real historical commit
+# instead of at HEAD.
+#
+# The workflow only reads this for versions that have no release yet, so once a
+# version is released the row is inert. New versions do NOT need a row here —
+# the workflow tags them at the merge commit that bumped the manifest. This
+# file is a frozen record of pre-automation history; leave it as-is.
+#
+# Format: <changelog-tag><TAB><commit>   (comments and blank lines ignored)
+v0.5.1	b1d3cb6ae94c
+v0.5.2	06b97242980e
+v0.6	7392d4e6e58d
+v0.6.1	2096bf4a2c5c
+v0.7	9fe5a605776a
+v0.8	9877e9272192
+v0.8.1	aeeaee5ef4b1
+v0.8.2	1d96aab0be39
+v0.8.3	b216b5f50a63
+v0.9	0301e4c017e6
+v0.9.1	5482cb7961b3
+v0.10	10663145f0eb
+v0.11	de54d68bd168
+v0.12	b26204929e2e
+v0.13	935c79a04941
+v0.14	571f835b2b07
+v0.15	6420ba2d9d76
+v0.15.1	64e45960c1aa
+v0.15.2	d6303e500615

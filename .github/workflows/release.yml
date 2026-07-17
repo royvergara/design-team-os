@@ -1,0 +1,114 @@
+# Cut GitHub Releases from the CHANGELOG, automatically.
+#
+# The plugin ships by manifest version: installed users only pick up a change
+# when .claude-plugin/plugin.json is bumped, and check-version.sh already forces
+# every bump to add a matching `## vX.Y` heading to CHANGELOG.md. This workflow
+# closes the last gap — it turns each of those documented versions into a real
+# git tag + GitHub Release, so the Releases page and the manifest never drift
+# apart again (they had: releases stopped at v0.5 while the manifest reached
+# 0.15.2).
+#
+# What it does, idempotently, on every push to main that touches a release
+# input: for each `## vX.Y[.Z]` heading in CHANGELOG.md that has no release yet,
+# it creates the tag + Release, using that heading's section as the notes. Old
+# versions are placed at their historical commit via .github/release-commits.tsv;
+# the version just merged (not in that map) is tagged at the triggering commit.
+# Existing releases are left untouched, so the first run backfills v0.5.1..current
+# and every run after only adds the new one.
+#
+# A version is only released if it is in the map OR its major.minor matches the
+# current manifest version. That is what makes the current release auto-cut
+# without a map row, and it deliberately leaves the pre-v0.5 headings
+# (v0.1..v0.4) alone — v0.5 was the first release and there is no commit to tag
+# those honestly against. Add a map row if you ever want them.
+#
+# Manual re-run: Actions tab -> "release" -> Run workflow (workflow_dispatch).
+
+name: release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.claude-plugin/plugin.json'
+      - 'CHANGELOG.md'
+      - '.github/release-commits.tsv'
+      - '.github/workflows/release.yml'
+  workflow_dispatch:
+
+# gh release create needs to write tags and releases.
+permissions:
+  contents: write
+
+# Never let two runs create the same tag at once.
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Create tags + releases for any un-released CHANGELOG version
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          CHANGELOG="CHANGELOG.md"
+          MAP=".github/release-commits.tsv"
+
+          # The current shipped version, e.g. 0.15.2 -> major.minor 0.15. Used to
+          # let the just-merged release cut itself without a map row, while
+          # pre-v0.5 headings stay unreleased.
+          manifest="$(sed -n 's/.*"version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' .claude-plugin/plugin.json | head -1)"
+          manifest_mm="$(printf '%s' "$manifest" | cut -d. -f1,2)"
+
+          # Newest-first list of documented versions, e.g. v0.15.2, v0.15.1, ...
+          mapfile -t versions < <(grep -oE '^## v[0-9]+\.[0-9]+(\.[0-9]+)?' "$CHANGELOG" | sed 's/^## //')
+          newest="${versions[0]:-}"
+
+          for tag in "${versions[@]}"; do
+            if gh release view "$tag" >/dev/null 2>&1; then
+              echo "= $tag already released, skipping"
+              continue
+            fi
+
+            # Historical versions get their real commit from the map; the version
+            # just merged (no map row) is tagged at this commit.
+            sha="$(awk -F'\t' -v t="$tag" '/^[[:space:]]*#/ || NF<2 {next} $1==t {print $2; exit}' "$MAP")"
+
+            # Only release mapped versions or the current one — never invent a
+            # tag at HEAD for a heading we have no honest commit for.
+            if [ -z "$sha" ]; then
+              tag_mm="$(printf '%s' "${tag#v}" | cut -d. -f1,2)"
+              if [ "$tag_mm" != "$manifest_mm" ]; then
+                echo "- $tag has no map row and is not the current version, skipping"
+                continue
+              fi
+              sha="$HEAD_SHA"
+            fi
+
+            # Notes = everything between this heading and the next `## ` heading.
+            notes="$(mktemp)"
+            awk -v t="$tag" '
+              /^## / { if (grab) exit; if ($2 == t) { grab=1; next } }
+              grab { print }
+            ' "$CHANGELOG" > "$notes"
+
+            # Newest documented version is the "latest" release; older backfilled
+            # ones are explicitly not, so the badge lands on the current version.
+            latest_flag=false
+            [ "$tag" = "$newest" ] && latest_flag=true
+
+            echo "+ creating $tag at ${sha:0:12} (latest=$latest_flag)"
+            gh release create "$tag" \
+              --target "$sha" \
+              --title "$tag" \
+              --notes-file "$notes" \
+              --latest="$latest_flag"
+          done
