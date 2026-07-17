@@ -12,23 +12,27 @@
 # the workflow tags them at the merge commit that bumped the manifest. This
 # file is a frozen record of pre-automation history; leave it as-is.
 #
+# SHAs are full 40-char: `gh release create --target` (and the releases API's
+# target_commitish) rejects abbreviated SHAs. The workflow re-resolves via
+# `git rev-parse` anyway, so it also tolerates short SHAs — full is for clarity.
+#
 # Format: <changelog-tag><TAB><commit>   (comments and blank lines ignored)
-v0.5.1	b1d3cb6ae94c
-v0.5.2	06b97242980e
-v0.6	7392d4e6e58d
-v0.6.1	2096bf4a2c5c
-v0.7	9fe5a605776a
-v0.8	9877e9272192
-v0.8.1	aeeaee5ef4b1
-v0.8.2	1d96aab0be39
-v0.8.3	b216b5f50a63
-v0.9	0301e4c017e6
-v0.9.1	5482cb7961b3
-v0.10	10663145f0eb
-v0.11	de54d68bd168
-v0.12	b26204929e2e
-v0.13	935c79a04941
-v0.14	571f835b2b07
-v0.15	6420ba2d9d76
-v0.15.1	64e45960c1aa
-v0.15.2	d6303e500615
+v0.5.1	b1d3cb6ae94c52910df2cb3d6cc2d17a72561cd2
+v0.5.2	06b97242980ec1c47f3edbace4377f8daf280709
+v0.6	7392d4e6e58dd883e78db6319a379b6a1a808de6
+v0.6.1	2096bf4a2c5c04b41b002fdcb23e3286bc219b05
+v0.7	9fe5a605776a089be2eebc393b366c072e4d1665
+v0.8	9877e9272192e9ee13381f663d9f938df879fda9
+v0.8.1	aeeaee5ef4b151ebdfdfbde5d95eb681c6098366
+v0.8.2	1d96aab0be391845190f186f78323949060dcc09
+v0.8.3	b216b5f50a639ddf289e5404bb56b77ccf43aecd
+v0.9	0301e4c017e6779681a09731b0eccc091f57f7ce
+v0.9.1	5482cb7961b34b1b0aecec48191219c38d58cf7d
+v0.10	10663145f0eb2e8af7e31c7a04de4b1a89c7bdf2
+v0.11	de54d68bd168b365f9db8b6f8b5c95feb0b5c4f9
+v0.12	b26204929e2e75e69aca14c01ff3049cf15cf664
+v0.13	935c79a049417b31f37b33bd6cd54d260954c61a
+v0.14	571f835b2b076ccc3138592d8e89f1c66ec146c5
+v0.15	6420ba2d9d760159bad5a047a60b6bc782c6b809
+v0.15.1	64e45960c1aaae17a8811ad0098830726db38a00
+v0.15.2	d6303e500615922d746495f62e3ede5caeece84e
