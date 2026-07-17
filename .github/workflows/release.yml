@@ -93,6 +93,11 @@ jobs:
               sha="$HEAD_SHA"
             fi
 
+            # Resolve to a full 40-char SHA — `gh release create --target` (the
+            # releases API target_commitish) rejects abbreviated SHAs with a 422.
+            # fetch-depth: 0 guarantees the commit is present to resolve.
+            sha="$(git rev-parse "$sha")"
+
             # Notes = everything between this heading and the next `## ` heading.
             notes="$(mktemp)"
             awk -v t="$tag" '
