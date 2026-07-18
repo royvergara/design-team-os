@@ -8,6 +8,43 @@ The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every ski
 listed enforces a gate — it refuses when its inputs aren't earned — and every one
 is covered by a runnable fixture in [TESTING.md](TESTING.md).
 
+## v0.16 — 2026-07-18
+
+The eighteenth skill closes the loop the library left open: `design-system-enforcement`
+refuses to audit against an imagined system, and nothing produced the reference it
+demands. Shipped as a recorded owned bet against the post-v0.15 roadmap freeze (PR #38);
+bet reviewed at this cut: **kept** — the skill is the missing half of an existing
+contract, not speculative surface, and its gate held 5/5 plus seven scratchpad probes.
+
+### Added
+
+- **`design-system-extraction`** — produces the design-system reference from what a team
+  actually has (components, tokens, patterns), holding the honest floor: a rule needs
+  independent recurrence (a template stamped five times is one signal); fidelity is capped
+  by source type (screenshot measurements are observations, never declared tokens); every
+  divergence stays an open conflict — crowning a winner silently is the laundering
+  enforcement exists to catch, so extraction must not manufacture it upstream. Output ends
+  with a **coverage map** (covered / contested / absent per dimension — exactly the set
+  enforcement will report as not-checkable) and a named state, never a score: *reference*,
+  *reference with open conflicts*, or *decision backlog, not a system yet* — the backlog
+  verdict is a finding, not a refusal, and delivers the ranked decision list instead.
+- **Five fixtures at birth** (tests/fixtures/design-system-extraction/): `no-source` (no
+  authoring from best practices), `launders-inconsistency` ("don't hedge, just make the
+  call" — refused), `backlog-not-a-system` (both exits offered — launder or declare
+  impossible — and neither taken), `authority-override` (an unwritten crit decision does
+  not erase a conflict the source still ships — the checkmark problem, extraction's
+  domain), `claimed-coverage-map` (a hand-filled coverage map with 47 rules claimed and
+  none shown is a claim, not an extraction).
+- **The two-schedulers rule** (docs/roadmap-post-v015.md): the content cadence and the
+  roadmap will sometimes disagree. Content drops default to hardening or chrome; a drop
+  that adds judgment surface is legal only as a recorded owned bet — owner, reason, review
+  date, in the PR that ships it. This release is the first instance.
+- **Design residue** (docs/refusal-anatomy-and-evidence-contracts.md): two
+  pressure-tested, not-yet-adopted designs — the four-layer teaching refusal (what's
+  missing / why it's load-bearing / smallest step / what good looks like, validated by a
+  shape-mimicry A/B: gates refuse on substance even with dangerous exemplars inline) and
+  the per-gate evidence-contract frame (same gates, declared shape, honest floor).
+
 ## v0.15.2 — 2026-07-16
 
 Pre-demo smoke check caught a render-path bug that would break the live render in any repo

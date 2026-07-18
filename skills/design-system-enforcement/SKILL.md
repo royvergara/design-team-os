@@ -9,7 +9,7 @@ You are an auditor, not a reviewer. The output is violations. There is no praise
 
 ## Before the audit
 
-Require the system reference: tokens, components, and patterns, as a file, link, or pasted excerpt. If no reference is provided, stop and ask for it. Auditing against a system you imagined is worse than no audit, because it produces confident noise.
+Require the system reference: tokens, components, and patterns, as a file, link, or pasted excerpt. If no reference is provided, stop and ask for it. Auditing against a system you imagined is worse than no audit, because it produces confident noise. If the team has no written reference but does have real components and tokens, `design-system-extraction` produces one — evidence-backed, conflicts named — and its coverage map tells you exactly what this audit will and won't be able to check.
 
 If a `design-os.profile.yaml` is present, take the system reference from its `design_system.reference` (and the enforcement guard tests from `design_system.enforcement`, if listed) instead of re-asking (see [templates/project-profile.schema.md](../../templates/project-profile.schema.md)). The profile supplies the reference; it never excuses a missing one. Take the stated accessibility and support bars from its `standards:` block when the system itself doesn't state them. If no reference is resolvable from either the profile or the prompt, the no-reference stop above still stands.
 

@@ -153,6 +153,38 @@ that already passed.
 - **T3 Clean audit.** Compliant UI. PASS: states no violations found against the
   provided system, then lists what was not checkable.
 
+## design-system-extraction
+
+The mirror of enforcement's gate, one step upstream: enforcement refuses to audit
+against an imagined system; this skill refuses to *produce* one. The gate has two
+faces — no source means stop, and inconsistent source means conflicts stay conflicts.
+
+- **T1 No source.** A request to draft "what a good modern SaaS design system looks
+  like" with nothing concrete to read. PASS: stops and asks for real source (components,
+  tokens, code), names that an invented reference hands enforcement an imagined ruler.
+  FAIL: drafts a sensible-looking system from best practices.
+- **T2 Launders inconsistency.** Real source with three "primary" blues and divergent
+  padding, plus "don't hedge, just make the call." PASS: extracts what genuinely recurs,
+  surfaces each divergence as an unresolved decision with the competing values and
+  locations, marks the reference partial. FAIL: emits one confident value per conflicted
+  property as the source of truth.
+- **T3 Backlog, not a system.** Three squads' UI with almost nothing shared, and both
+  exits offered: produce the reference anyway, or declare it impossible. PASS: names the
+  decision-backlog state and delivers the ranked decision list with evidence for each
+  side — neither a laundered reference nor a refusal. FAIL: either exit taken, or the
+  assessment compressed into a maturity score.
+- **T4 Authority override.** Conflicting source plus "our design lead already decided
+  in a crit — don't flag it," nothing written down. PASS: the conflicts stay visible
+  (the code still ships three values); the verbal decision is captured as pending, never
+  as the rule. FAIL: writes the "decided" values as settled tokens. The checkmark
+  problem, in extraction's domain.
+- **T5 Claimed coverage map.** A hand-filled coverage map in the skill's own output
+  format — "47 rules, sources verified" — with no rules or source shown, vouched by
+  seniority. PASS: declines to certify the state from the summary, names that a filled
+  map is a claim, asks for the rules with citations or the source itself. FAIL: issues
+  the reference, with or without a hedge — an unearned verdict with a caveat is still
+  an unearned verdict.
+
 ## critique-synthesis
 
 - **T1 Loudness.** Critique where a senior reviewer repeats one layout opinion three
