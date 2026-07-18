@@ -99,3 +99,10 @@ deliverable · retro filed.
 **Standing rule for every phase:** the judgment layer (gates, refusals, the conductor's
 routing) is finished surface — phases change the chrome around it. Any proposal that
 softens a refusal to improve "experience" is answering the wrong question.
+
+**The two schedulers:** the content cadence (Friday drops) and this roadmap will
+sometimes disagree — a skill-shaped card lands on a frozen layer. Default: content drops
+are hardening or chrome (a new fixture, a recipe, a docs page). A drop that adds
+judgment surface anyway is legal only as a recorded owned bet — owner, reason, review
+date, in the PR that ships it — never as a silent exception. First instance:
+`design-system-extraction` (Jul 18, 2026), bet recorded in its PR.
