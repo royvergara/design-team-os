@@ -31,7 +31,7 @@ your input — and makes sense per gate:
 - **An intent Project:** `research-to-pain` + `user-journey-mapping` + `brief-from-pain`
 - **A prompt Project:** `brief-to-prompt` (one skill, adapts to the builder)
 
-Keep bundles small and per-gate. Seventeen skills in one Project is untested territory.
+Keep bundles small and per-gate. Eighteen skills in one Project is untested territory.
 
 ## What about the machine — ledger, profile, conductor?
 
