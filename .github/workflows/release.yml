@@ -98,12 +98,34 @@ jobs:
             # fetch-depth: 0 guarantees the commit is present to resolve.
             sha="$(git rev-parse "$sha")"
 
-            # Notes = everything between this heading and the next `## ` heading.
+            # Notes = everything between this heading and the next `## ` heading,
+            # then UNWRAPPED: the CHANGELOG is hard-wrapped at ~90 cols, but GitHub
+            # renders release notes with single newlines as hard <br> breaks (unlike
+            # file view, which reflows). Without this, notes read as ragged
+            # orphan-word lines on any narrow viewport. Joins continuation lines
+            # into their paragraph or bullet; preserves blank lines, headings,
+            # fences, tables, quotes, and new list items.
             notes="$(mktemp)"
             awk -v t="$tag" '
               /^## / { if (grab) exit; if ($2 == t) { grab=1; next } }
               grab { print }
-            ' "$CHANGELOG" > "$notes"
+            ' "$CHANGELOG" | awk '
+              function flush() { if (buf != "") { print buf; buf = "" } }
+              /^```/                           { flush(); fence = !fence; print; next }
+              fence                            { print; next }
+              /^[[:space:]]*$/                 { flush(); print ""; next }
+              /^#/                             { flush(); print; next }
+              /^\|/                            { flush(); print; next }
+              /^>/                             { flush(); print; next }
+              /^[[:space:]]*([-*+]|[0-9]+\.) / { flush(); buf = $0; next }
+              {
+                line = $0
+                sub(/^[[:space:]]+/, "", line)
+                buf = (buf == "" ? line : buf " " line)
+                next
+              }
+              END { flush() }
+            ' > "$notes"
 
             # Newest documented version is the "latest" release; older backfilled
             # ones are explicitly not, so the badge lands on the current version.
