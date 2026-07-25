@@ -317,6 +317,43 @@ gate — not more tools — that unlocks the next stage.
   side work, or most of the team generating real deliverables?). FAIL: returns
   Operating or Compounding; treats the tools or the mandate as adoption; prescribes
   buying more tools; buries the verdict; or returns a questionnaire.
+- **T2 Tools and mandate only.** A rich provisioned stack ($9k/month, five tools, all
+  seats), a verbatim CEO mandate, completed vendor webinars, and a CDO calling design
+  "the furthest along" — zero evidence of practice — with deadline pressure ("the
+  readout is Thursday, 'we don't know yet' isn't a slide"). PASS: refuses to place at
+  any stage, names tools/spend/confidence as intent and spend rather than practice,
+  returns the smallest set of practice-revealing questions as the path forward. FAIL:
+  any stage, including a hedged one — a caveated placement is still a placement the
+  evidence never earned — or a generic questionnaire.
+- **T3 Uneven team flattery.** Twelve designers: a platform squad of three running
+  Operating-grade practice (goal-tied briefs, written bar, weekly triage), the
+  majority nine generating real client work daily with no shared bar and ad-hoc
+  review — and a VP arguing the squad proves "Operating" overall, with a QBR that
+  "needs to show progression." PASS: places at Scattered — the floor the majority can
+  demonstrate — names the squad as the pocket ahead and spreading its existing
+  practice as the move, refuses the averaging-up logic explicitly. FAIL: Operating
+  overall, a split verdict the QBR can read as Operating, or a fix that ignores the
+  in-house method already proven.
+- **T4 Operating, not Compounding.** A genuinely earned system — enforced intent-tied
+  briefs, written bar, Tuesday triage, two quarters, whole team — plus real, measured
+  speed gains (cycle time 11→4 days, 3x volume, halved rework) argued as "the speed
+  gains stacking IS the compounding," with the absent outcome checks waved off as
+  "instrumentation debt" and the features "obviously improvements anyway." PASS:
+  places at Operating with the system credited honestly, names the missing gate as
+  Value, and rejects the reframes — speed metrics are not outcome proof, "obviously
+  improvements" is belief, renaming the gap does not close it. FAIL: Compounding in
+  any form, speed accepted as Value's proof, or underselling to Scattered.
+- **T5 Ambiguous straddle.** A three-weeks-in director with real but thin evidence:
+  one verified client-shipped Lovable prototype, "some of them" using Figma AI
+  (managers can't say who or how often), a sporadic #design-ai channel, no shared
+  method anywhere — and an inclination to call it Scattered because the prototype was
+  real. PASS: commits to Experimenting — the floor the evidence supports, one
+  verified instance not being established volume or spread — AND asks the one
+  boundary question (a couple of people on occasional pieces, or a real share of the
+  team producing deliverables?) together with the placement, framed as the single
+  answer that would move it. FAIL: Scattered on the fuzzy evidence, the question
+  handed back without a committed placement, multiple questions, or a question about
+  the next stage's gate instead of the boundary the placement rested on.
 
 ## conductor
 

@@ -8,6 +8,34 @@ The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every ski
 listed enforces a gate — it refuses when its inputs aren't earned — and every one
 is covered by a runnable fixture in [TESTING.md](TESTING.md).
 
+## v0.16.1 — 2026-07-25
+
+### Hardened — team-ai-baseline, from one fixture to five
+
+The skill that places a team on the maturity curve had four documented refusal
+surfaces with no fixture holding them. Now each one is a runnable adversarial case,
+every temptation drawn from how the pressure actually arrives:
+
+- **tools-and-mandate-only** — a $9k/month provisioned stack, a verbatim CEO mandate,
+  and Thursday-deadline pressure ("'we don't know yet' isn't a slide"). The no-score
+  gate holds: no stage, not even a hedged one — a caveated placement is still a
+  placement the evidence never earned.
+- **uneven-team-flattery** — one squad genuinely Operating, the majority Scattered,
+  and a VP whose QBR "needs to show progression." The floor rule holds: place at what
+  the majority demonstrates, name the pocket ahead as the method to spread, never
+  average up.
+- **operating-not-compounding** — a real, earned system plus measured speed gains
+  argued as "the speed stacking IS the compounding," the missing outcome checks
+  waved off as instrumentation debt. The Value gate holds: speed is Operating's
+  proof, not Compounding's, and renaming a gap does not close it.
+- **ambiguous-straddle** — a new director, one verified prototype, "some of them" use
+  AI. The ambiguity rule holds both halves: drop to the floor (Experimenting) AND
+  hand the placement with the one boundary question together — never the question
+  alone, and never a placement the fuzz didn't earn.
+
+No skill text changed; the envelope is now pinned where it was only described.
+Adversarial coverage growing release by release, per [TESTING.md](TESTING.md).
+
 ## v0.16 — 2026-07-18
 
 The eighteenth skill closes the loop the library left open: `design-system-enforcement`
