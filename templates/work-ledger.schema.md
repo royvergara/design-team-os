@@ -27,6 +27,12 @@ Two consequences:
 - **A missing key is an open gate.** The ledger is a state *set*, not a checklist: entries
   appear in any order, get overwritten when work cycles (a triage FAIL becomes a PASS by
   replacement — history lives in git), and can be deleted when evidence is retracted.
+- **The entry quotes the substance; a link only corroborates.** Evidence lives in tools
+  that rot — a Figma share link dies, a dashboard outlives its query, access differs
+  across the team and ends entirely at a handoff. So the load-bearing content is quoted
+  into the entry itself (the number, the count, the verbatim signal — exactly as the
+  example below does), with the pointer beside it for anyone who wants the source. A bare
+  link with nothing quoted is a claim, not an artifact.
 
 ## Shape
 
@@ -124,6 +130,27 @@ building on an unproven gate, and `outcome-readout` scores the bet at `review_by
 other bar. Enthusiasm is not a bet — "the VP loved it" claims merit; a bet says "we know we
 have no evidence, and here is who owns that."
 
+Two boundary rules keep the bet honest over time. **A bet exists only at a gate.** A
+roadmap line, a planning commitment, next quarter's list — work that hasn't reached a gate
+yet is future work, not a bet; nothing needs declaring until the work proceeds past a gate
+its artifact hasn't earned. Counting the roadmap as bets makes the count meaningless in
+both directions. And **a bet whose owner has left is orphaned, never inherited.** The named
+owner was the point, so a departure doesn't pass the bet to a successor silently: it stands
+as **orphaned** — the `conductor` reports it as such — until a new named human re-owns it
+with a fresh dated entry (new `owner`, new `declared`, the terms kept or revised), or
+someone closes it. Silent inheritance is a checkmark wearing a person's name.
+
+## Sign-offs from outside the machine
+
+Organizations with their own governance — risk review, compliance, an architecture board —
+sometimes require a formal approval this schema doesn't demand. Record it the way
+everything else is recorded: as an artifact of a decision, never a flag. Who signed, when,
+against which version of which artifact, with a pointer to the record ("risk approved
+briefs/partner-portal.md as of 2026-08-12, memo: design-os.reviews/partner-portal-risk.md").
+A bare `signoff: true` — or a name with nothing it signed against — is a checkmark, and
+every skill reads it as one. A recorded sign-off satisfies the org's gate, never one of
+these three: the evidence rules above don't move for it.
+
 ## Who writes it, who reads it
 
 Skills append their own artifact when they complete (`research-to-pain` writes `intent`,
@@ -131,6 +158,12 @@ Skills append their own artifact when they complete (`research-to-pain` writes `
 on). The `conductor` skill reads the whole file to report which gates are proven, which are
 open, and what is runnable now. Humans read it in review — a ledger diff in a PR is the
 work's state changing, visible to the whole team.
+
+One boundary keeps the file honest inside a real toolchain: **the ledger is the evidence
+record, never the scheduling record.** A tracker — Jira, Linear, a Notion board — says when
+work is planned and who is on it; this file says what has been proven. Link a ticket to its
+ledger freely, but never mirror a tracker status into an entry or a gate state into a
+tracker column: a synced status is a checkmark with a webhook behind it.
 
 ## In a Claude Project (chat)
 

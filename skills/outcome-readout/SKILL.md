@@ -17,6 +17,8 @@ If a `design-os.profile.yaml` is present, read the metric's meaning from its `me
 
 Never score the launch against a criterion invented after it. "Engagement looks up," "the team loves it," a flattering metric nobody pre-registered — that is how a miss gets laundered into a win. Judge only against the bar set before the build.
 
+Internal-facing work — a platform, a design system, tooling other teams consume — reads the same way, with one difference in what the number is: the legitimate measure is often second-order (consuming teams' adoption, their cycle time, their defect rate), and that is fine **when the pre-registered bar named it in advance**. What stays refused is the swap to a second-order number after the fact because the first-order one didn't move — same laundering, one hop removed.
+
 ## When the gate passes, render the readout
 
 State the pre-registered bar, the measured value and where it came from, then the verdict — one word from a fixed set, tied to the number, not the impression:
@@ -29,7 +31,7 @@ The mapping is mechanical: cleared the bar → **solved**; short of the bar but 
 
 If guardrails were pre-registered, read each one beside the bar — **held**, **broken**, or **unread**, with its numbers — and the verdict carries both reads: "solved, guardrail broken" is legal and required. A cleared bar never silences a broken guardrail.
 
-Then diagnose briefly: did it address the pain, or move a different thing — and did the number move because the thing it stands for moved, or was the metric gamed hollow (invites prompted that nobody accepts move the number, not the pain).
+Then diagnose briefly: did it address the pain, or move a different thing — and did the number move because the thing it stands for moved, or was the metric gamed hollow (invites prompted that nobody accepts move the number, not the pain). When a guardrail broke, that proxy question is asked out loud, in the render, about the headline number itself: name the mechanism that could have moved the bar without moving the pain, and say whether the bar's jump survives it. Diagnosing the gaming while leaving the headline number standing unquestioned answers the small question and skips the load-bearing one.
 
 ## Always end with the next Intent input
 

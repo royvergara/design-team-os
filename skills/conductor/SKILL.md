@@ -55,7 +55,11 @@ it, and when it comes due. A bet missing any
 of the four fields is a checkmark wearing a bet's clothes: report the gate as open and name
 the missing fields. When `review_by` has passed, the bet is due — the runnable move is the
 named evidence pull (and `outcome-readout` against the bet's own terms), and you say so
-before anything else about that work item.
+before anything else about that work item. And when the bet's owner is known to have left
+the team or company, the bet is **orphaned**: report it as "open — bet orphaned," name the
+move (a new named human re-owns it with a fresh dated entry, or it closes), and never let
+"the bet was approved before they left" carry it forward — ownership is the bet's load-bearing
+field, and a departed owner is a missing one.
 
 ## What proven looks like, per gate
 
@@ -119,7 +123,11 @@ gap; the three gate artifacts are the only things that must exist.
    is downstream work standing on unproven ground. When several moves are runnable, say so —
    do not force a single next step.
 
-Multiple work items in one ask get this per item, shortest first.
+Multiple work items in one ask get this per item, shortest first — plus one line across
+them: how many of the items stand on open bets, orphaned and past-due bets named first.
+The count is state, not a verdict; you report the ground the portfolio stands on and
+route on, and what the concentration means is the team's call (the `period-review` reads
+it against the declared mix).
 
 ## Rendering the readout — opt-in, derived, never stored
 

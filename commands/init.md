@@ -70,3 +70,5 @@ One line under it: every gate demands its artifact before the next runs, work ca
 - **Not sure / several of these** → the `conductor` — describe what exists and it routes
 
 Close with the standing reminder: none of these files ever satisfies a gate — the profile supplies context, the ledger carries evidence, the reviews directory holds what the evidence points to, and the skills still judge.
+
+And if the user came to judge one thing today — a prototype to triage, research to rank — say so plainly: none of this scaffolding is required for that. Every skill judges alone; these files start paying the moment one work item's state is worth carrying across sessions and people, and not a moment before.

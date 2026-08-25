@@ -33,7 +33,9 @@ Each of these is a refusal, not a caveat you note and proceed past.
 2. **Small-n floor.** Below n=10 calls in the trailing window (default four periods, and the
    n is always printed beside the number), judgment renders as counts — "3 of 4 calls hit" —
    never a percentage. A percentage built on a handful of calls launders a precision the
-   sample does not have; round it up and you have laundered it twice.
+   sample does not have; round it up and you have laundered it twice. And "never" means
+   nowhere in the render — not beside the counts, not "for reference," not in a footnote:
+   a percentage that appears anywhere is the percentage you refused.
 3. **Coverage is always shown.** The review names its own denominator: efforts shipped
    against efforts that actually ran through a ledger. Work that bypassed the machine is
    reported as uncovered, by name or by count, never dropped silently to make the covered
@@ -42,7 +44,17 @@ Each of these is a refusal, not a caveat you note and proceed past.
    lives in a dated `<period>.intent.md` written before the period ran. Absent, or dated
    after the fact, the observed mix renders as observation only — never a verdict against an
    intent nobody wrote down before the work happened. A strategy declared in hindsight grades
-   itself.
+   itself. An "amendment" to the intent file obeys the same rule, and the test is
+   mechanical — run it before the amendment is used for anything: compare the amendment's
+   own date to the change it describes and the work it covers. Dated after either, it is
+   hindsight with a new name: it renders nothing, no mix verdict cites it (no
+   "on-strategy" on its credit, however reasonable the pivot was), and the observed mix
+   reads as observation against the period-start declaration alone. The refusal names
+   what would have passed: a **dated amendment** appended at the moment the strategy
+   actually changed — original declaration left intact, each span of the period then read
+   against the declaration that governed it, amendment dates printed. That is the one
+   legal mid-course change; a pivot recorded when it happens is strategy, recorded at
+   close it is a grade the quarter gave itself.
 5. **Staleness flags.** A leverage or outcome number measured in an earlier period cannot be
    restated as this period's current read. Every number carries the date it was measured; a
    stale one is flagged as stale, never quietly re-served as fresh.
@@ -67,8 +79,11 @@ silently correct.
 Content, top to bottom: masthead (the period, the declared strategy, and its declaration
 date) → the period's one-sentence headline → the coverage line → outcomes rollup (effort ·
 class · bar · verdict) → judgment (calibration, kill economics, observed mix against
-declared) → bets ledger (open / reviewed / overdue) → the trend strip against prior frozen
-reviews, present only when gate one allows it.
+declared) → bets ledger (open / reviewed / overdue / orphaned, plus the concentration
+read: open bets against active ledgers, printed beside the declared mix — and beside the
+declared bet budget, when the period's intent file names one; a concentration with no
+declared budget renders as observation, never breach) → the trend strip against prior
+frozen reviews, present only when gate one allows it.
 
 ## Quality bar
 

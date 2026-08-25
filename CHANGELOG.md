@@ -8,6 +8,50 @@ The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every ski
 listed enforces a gate — it refuses when its inputs aren't earned — and every one
 is covered by a runnable fixture in [TESTING.md](TESTING.md).
 
+## v0.17 — 2026-08-25
+
+The scenario release: the machine run through real organizational shapes — enterprise
+intake, mid-quarter pivots, platform teams, personnel churn, external governance — and
+every gap that surfaced closed with a sentence, not a system. No new judge, no new
+required concept; each addition is a sanctioned path for pressure that previously had
+only a dishonest outlet. Two of the paths change judgment surfaces, and both arrive
+fixture-pinned at birth.
+
+### Added
+
+- **The orphaned bet.** A bet whose named owner has left the org is **orphaned, never
+  inherited** — the `conductor` reports "open — bet orphaned" and names the move (a new
+  named human re-declares with a fresh dated entry, or the bet closes); `weekly-review`
+  routes it to Decisions needed. Silent inheritance is a checkmark wearing a person's
+  name. Fixture: `conductor/bet-orphaned`.
+- **The dated amendment.** A mid-period pivot may re-declare the bet mix by appending a
+  dated amendment to `<period>.intent.md` at the moment the strategy changes — original
+  declaration intact, each span read against the declaration that governed it. An
+  amendment dated after the work it blesses is hindsight with a new name and keeps gate
+  four's refusal. Fixture: `period-review/hindsight-amendment`.
+- **Bet concentration, reported never verdicted.** The `conductor` (across multiple
+  items) and `weekly-review` (closing the agenda) print how many items stand on open
+  bets, orphaned and past-due first; `period-review`'s bets ledger adds the concentration
+  read beside the declared mix — and beside a declared bet budget when the period's
+  intent file names one. A count is state; what it means stays the team's call.
+- **Bets begin at gates** (schema): a roadmap line that hasn't reached a gate is future
+  work, not a bet — nothing needs declaring until work proceeds past a gate its artifact
+  hasn't earned. Keeps the concentration number meaningful in both directions.
+- **The quote-inline rule** (schema): the entry quotes the load-bearing substance; a link
+  only corroborates. A bare pointer with nothing quoted is a claim, not an artifact —
+  what the example ledger always did, now stated as the rule links rot against.
+- **Sign-offs from outside the machine** (schema): an org's own governance approvals
+  record as artifacts of decisions — who signed, when, against which artifact version,
+  pointer to the record. `signoff: true` stays a checkmark; a recorded sign-off satisfies
+  the org's gate, never one of these three.
+- **The tracker boundary** (schema): the ledger is the evidence record, never the
+  scheduling record. Link tickets freely; never mirror a status either direction — a
+  synced status is a checkmark with a webhook behind it.
+- **Second-order value, pre-registered** (`outcome-readout`): internal-facing work may
+  legitimately bar on consuming teams' adoption, cycle time, or defect rate — when the
+  bar named it in advance. Swapping to second-order after the first-order number didn't
+  move is the same laundering, one hop removed.
+
 ## v0.16.1 — 2026-07-25
 
 ### Hardened — team-ai-baseline, from one fixture to five
