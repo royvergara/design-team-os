@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  <a href="#quickstart-install"><b>Get started</b></a> ·
+  <a href="#try-it"><b>Get started</b></a> ·
   <a href="https://baseline.fluentxdesign.com/?utm_source=github&utm_medium=readme"><b>Run the baseline</b></a> ·
   <a href="https://fluentxdesign.com/?utm_source=github&utm_medium=readme"><b>fluentxdesign.com</b></a> ·
   <a href="https://fluentxdesign.substack.com"><b>Newsletter</b></a> ·
@@ -28,12 +28,26 @@
 
 ---
 
+<a name="try-it"></a>
+<p align="center"><b>Try it in 60 seconds — nothing to install.</b></p>
+
+Copy one skill's `SKILL.md` into a Claude Project — or paste it at the top of a plain
+chat — and hand it something real:
+
+- **A generated prototype and its brief** → [`prototype-triage`](skills/prototype-triage/SKILL.md)
+  returns the verdict, criterion by criterion, before the prototype earns a human's time.
+- **A pile of interview notes, tickets, analytics** → [`research-to-pain`](skills/research-to-pain/SKILL.md)
+  returns ranked pains with the evidence named — or refuses to crown one, if what you
+  really have is three execs agreeing. That refusal is the product working.
+- **"Here's what we have — where are we?"** → the [`conductor`](skills/conductor/SKILL.md)
+  reads whatever you describe and answers with which gates are proven and what can run next.
+
+Every skill judges alone, with nothing else installed and no team buy-in. The full
+no-terminal path, per-gate bundles included: [PROJECTS.md](PROJECTS.md).
+
 <a name="quickstart-install"></a>
-<p align="center"><b>Get started in 60 seconds.</b></p>
-
-<p align="center"><b>Designer, no terminal?</b> Copy a skill's <code>SKILL.md</code> into a Claude Project → <a href="PROJECTS.md">the 60-second path</a></p>
-
-**In Claude Code** — add the marketplace, install, then reload to make it live:
+**When you want the whole machine** — in Claude Code, add the marketplace, install, then
+reload to make it live:
 
 ```
 /plugin marketplace add royvergara/design-team-os
@@ -43,7 +57,31 @@
 
 <sub>More detail, per-gate bundles, and the install-by-hand path → <a href="#install--two-doors">Install ↓</a></sub>
 
-Most AI skill libraries are built for a single designer trying to move faster. This is an operating system for the whole team: three gates that keep speed intentional, skills that enforce them and refuse when the inputs aren't earned, a ledger that carries the evidence from pain to shipped outcome, and a conductor that always knows what can run next. It connects a company's AI mandate to what its design team actually ships, so every fast, cheap prototype stays tied to something that matters.
+## Start shallow, go deep
+
+The system runs at three depths, and each depth pays for itself before the next asks
+anything of you:
+
+1. **Judge one thing, today.** One skill, one artifact, one person — the sixty seconds
+   above. Nothing to set up, nobody to convince.
+2. **Carry one work item.** Add a ledger — one `design-os.work/<slug>.yaml` for one
+   feature — and the work's state survives sessions, handoffs, and holidays: which gates
+   are proven, with the evidence itself embedded. "Where are we?" gets a real answer in
+   seconds instead of a status meeting. [EXAMPLES.md](EXAMPLES.md) walks one feature end
+   to end, refusals included.
+3. **Run the program.** The profile, the rituals, the weekly review, the scorecard, the
+   period review — the machine that turns a team's motion into proof a leader can carry
+   upward. [ADOPTION.md](ADOPTION.md) is the on-ramp: the pilot pod, week one, and the
+   coverage number that measures adoption honestly.
+
+Most AI skill libraries are built for depth one and stop there. This one is built so
+depth one is complete on its own — and so nothing you do at depth one gets redone on the
+way to depth three: the gate you meet in a single pasted skill is the same gate the whole
+program runs on. At full depth it connects a company's AI mandate to what its design team
+actually ships — three gates that keep speed intentional, skills that refuse when the
+inputs aren't earned, a ledger that carries the evidence from pain to shipped outcome,
+and a conductor that always knows what can run next — so every fast, cheap prototype
+stays tied to something that matters.
 
 ## What it is
 
@@ -61,7 +99,7 @@ Heads of Design, VPs of Design, and Design Directors at product led companies, u
 
 You have the AI tools. Your team is experimenting in private. Quality is all over the place, engineering is racing ahead, and you do not yet have a shared way of working that turns all that motion into proof. That gap is what this library closes.
 
-And if you're the designer on that team, not the one leading it: the skills work for you alone, in claude.ai, today — copy one file into a Claude Project and go ([60-second path](PROJECTS.md)). The system is built for the team; every piece of it is useful solo.
+And if you're the designer on that team, not the one leading it: the skills work for you alone, in claude.ai, today — copy one file into a Claude Project and go ([60-second path](PROJECTS.md)). The system is built for the team; every piece of it is useful solo. That is depth one above, and it is a complete place to stay — the deeper layers wait until one work item is worth carrying.
 
 Want to see it work before reading another word? [EXAMPLES.md](EXAMPLES.md) walks one feature through the whole loop — including the moments the skills refuse, which is the point. Ready to run it? [practice/](practice/) is that same loop as a hands-on lab on fictional inputs, and [ADOPTION.md](ADOPTION.md) is the team on-ramp: the pilot pod, week one, and the coverage number that measures adoption honestly.
 
