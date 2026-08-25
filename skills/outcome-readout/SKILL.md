@@ -17,6 +17,8 @@ If a `design-os.profile.yaml` is present, read the metric's meaning from its `me
 
 Never score the launch against a criterion invented after it. "Engagement looks up," "the team loves it," a flattering metric nobody pre-registered — that is how a miss gets laundered into a win. Judge only against the bar set before the build.
 
+Internal-facing work — a platform, a design system, tooling other teams consume — reads the same way, with one difference in what the number is: the legitimate measure is often second-order (consuming teams' adoption, their cycle time, their defect rate), and that is fine **when the pre-registered bar named it in advance**. What stays refused is the swap to a second-order number after the fact because the first-order one didn't move — same laundering, one hop removed.
+
 ## When the gate passes, render the readout
 
 State the pre-registered bar, the measured value and where it came from, then the verdict — one word from a fixed set, tied to the number, not the impression:

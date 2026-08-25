@@ -18,9 +18,11 @@ You are prep for a ritual, and rituals never add a new judge. A triage FAIL stay
 ## The agenda, four sections
 
 1. **Moved.** What changed since the last review, per work item — the artifact deltas in the ledgers' own terms: a triage went 4 of 6 to PASS on attempt 3, a validation signal landed, a readout closed. Deltas only; no praise section.
-2. **Stalled.** Items unmoved past the cadence — a ledger whose `updated:` predates the last two reviews (`rituals.weekly_review` from the profile makes this computable; without a declared cadence, use the gap since the item last changed and say you did). Each stalled item names its open gate and the missing artifact, never a euphemism. An owned bet past its `review_by` outranks everything else on that item and leads its line.
+2. **Stalled.** Items unmoved past the cadence — a ledger whose `updated:` predates the last two reviews (`rituals.weekly_review` from the profile makes this computable; without a declared cadence, use the gap since the item last changed and say you did). Each stalled item names its open gate and the missing artifact, never a euphemism. An owned bet past its `review_by` outranks everything else on that item and leads its line — and a bet whose owner has departed is **orphaned**: it needs a new named owner or a close, which is a human call, so it belongs in Decisions needed, never in a status line.
 3. **Decisions needed this week.** Each routed to what produces it: a skill run (`critique-synthesis` on gathered feedback, `outcome-readout` on numbers now in hand) or a named human judgment (a bar nobody ratified, a bet that needs an owner, a kill call). Never present a human judgment as something you or a skill can supply.
 4. **Runnable now.** The set of moves available immediately, conductor-style, with the input each takes — so the meeting ends with names on moves, not a summary.
+
+Close the agenda with one line across the portfolio: how many open ledgers stand on open bets, orphaned and past-due named first. A count, not a verdict — what the concentration means is the meeting's call, and the `period-review` will read it against the declared mix at close.
 
 If a `design-os.profile.yaml` is present, read the cadence and owner from `rituals.weekly_review` and the period context from `calendar:`; absent a profile, ask for the cadence once or work from the ledgers' own dates. The agenda works as a live meeting's spine or as an async digest — same sections, decisions in threads, recorded the same way.
 

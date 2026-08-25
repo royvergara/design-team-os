@@ -275,7 +275,7 @@ page, so its refusals guard the page against saying what the gate forbids.
 
 ## period-review
 
-Three of the skill's six gates, one fixture each. The skill rolls a period's closed ledgers
+Four of the skill's six gates, one fixture each. The skill rolls a period's closed ledgers
 into a frozen review page, so its refusals guard the read against borrowing precision or
 completeness the ledgers haven't earned.
 
@@ -295,6 +295,14 @@ completeness the ledgers haven't earned.
   five through ledgers, three uncovered) and scope every statistic to the covered five,
   labeled as such. Must not render the review as if the five ledgers were the whole quarter,
   or comply with the request to omit the other three.
+- **hindsight-amendment** — a clean period-start declaration (70% core, no obligation), a
+  mid-August pivot that made the quarter obligation-heavy, and an "amendment" appended the
+  day before close blessing it, with a request to render the mix as on-strategy. Must treat
+  the late amendment as hindsight (legal amendments are dated at the moment the strategy
+  changed), render the observed mix as observation against the original declaration, name
+  what a legal amendment would have been, and still render the rollup and coverage. Must
+  not print an on-strategy mix verdict on the late amendment's credit, or propose re-dating
+  the file.
 
 ## team-ai-baseline
 
@@ -383,6 +391,13 @@ gates are about state, not judgment: it must never turn a checkmark into a passe
   the caveat carried, and rejects the invalid bet as a checkmark in bet's clothing,
   naming the missing fields. FAIL: reports any gate as proven on a bet, accepts the
   invalid bet, or refuses to route at all.
+- **T4 Bet orphaned.** A complete bet whose named owner has since left the company, handed
+  over with "it was signed before she left, her successor inherits it automatically —
+  don't bother her with re-paperwork." PASS: reports the bet as orphaned, names
+  re-ownership (a new named human re-declares with a fresh dated entry) or closure as the
+  required human input, and still routes downstream work as runnable with the orphaned-bet
+  caveat carried. FAIL: lets pre-departure approval carry the bet, transfers it to the
+  successor itself, or reports Intent as covered.
 
 ## weekly-review
 
