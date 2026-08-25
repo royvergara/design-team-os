@@ -31,7 +31,7 @@ The mapping is mechanical: cleared the bar → **solved**; short of the bar but 
 
 If guardrails were pre-registered, read each one beside the bar — **held**, **broken**, or **unread**, with its numbers — and the verdict carries both reads: "solved, guardrail broken" is legal and required. A cleared bar never silences a broken guardrail.
 
-Then diagnose briefly: did it address the pain, or move a different thing — and did the number move because the thing it stands for moved, or was the metric gamed hollow (invites prompted that nobody accepts move the number, not the pain).
+Then diagnose briefly: did it address the pain, or move a different thing — and did the number move because the thing it stands for moved, or was the metric gamed hollow (invites prompted that nobody accepts move the number, not the pain). When a guardrail broke, that proxy question is asked out loud, in the render, about the headline number itself: name the mechanism that could have moved the bar without moving the pain, and say whether the bar's jump survives it. Diagnosing the gaming while leaving the headline number standing unquestioned answers the small question and skips the load-bearing one.
 
 ## Always end with the next Intent input
 
