@@ -132,6 +132,40 @@ a bar-writing session with the ratifiers, before anyone proposes "more process."
 team ratifies or overrides at the close ritual; either way the choice traces to
 artifacts, which is the whole Hex lesson at zero daemons.
 
+## Addendum — from Hex's governance workbook (read after the spec's first draft)
+
+Hex's internal "Document your data governance" fill-and-go deck (reviewed 2026-08-26)
+adds two things the web study didn't surface:
+
+**D — The sensitivity rule (joins workstream B's schema batch).** Hex classifies content
+(`PII`, `Confidential`, `Internal Only`) as a first-class governance move. This library
+has no equivalent — and v0.17's quote-inline rule sharpens the exposure: told "quote the
+load-bearing substance," a diligent team will paste interview quotes with names attached
+into a YAML file committed to a repo with wider read access than the research tool it
+came from. One schema paragraph closes it: **quote the signal, never the identity** —
+evidence lines carry the observation and the count, with persons de-identified
+("6 of 8 new admins," never the named admin), and raw material that can't be
+de-identified stays in the governed research store with the ledger pointing at it. Not a
+new field; a rule on the quoting the schema already mandates. The `unendorsed-source`
+fixture gains a MUST NOT row for it, or a second small fixture pins it.
+
+**E — The workbook instrument (Fluent by Design collateral, not repo surface).** The
+deck's real cleverness is its framing: "every team is already doing some form of
+governance — document what exists." That is this library's adoption-intake posture,
+packaged as a *discovery instrument* whose filled tables compile directly into product
+configuration. The translation writes itself: a **"Document your design judgment"**
+workbook whose sections mirror the profile's blocks (workflows → builders →
+stakeholders ≈ work classes + `people:`; groups ≈ decision rights; sources +
+can-query/can-view ≈ `metrics.source` + ratifiers) and whose final page is "run
+`/design-team-os:init` and hand it this." One artifact serving as lead magnet, working
+session agenda, and profile bootstrap. Lives with Fluent by Design's collateral, not in
+this repo — the repo's contribution is that the profile schema already is its compile
+target. Also noted for `docs/ai-governance.md`: Hex's Endorsed status is a *governed
+checkmark* — quality asserted by an authorized role — which is exactly the object this
+library refuses; the honest crosswalk line is that Hex endorses content by role where
+this library proves work by artifact, complementary at different layers, and the
+contrast is the positioning in one sentence.
+
 ## Sizing, budget, sequencing
 
 - **Net new:** one doc (`ai-governance.md`), one fixture, ~15 sentences across four
