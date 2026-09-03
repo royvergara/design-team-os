@@ -17,6 +17,8 @@ what prior periods earned, with nothing borrowed from hope or from a single good
 - The period's dated strategy declaration, if one exists: `design-os.reviews/<period>.intent.md`,
   written at the period's start, naming the bet mix the team meant to run.
 - Prior frozen reviews in `design-os.reviews/` — the only source a trend may ever cite.
+- The profile, `design-os.profile.yaml`, if present — for the period boundaries, the declared
+  cadence, and which of its blocks are still TODO.
 
 A period is a quarter by default (`2026-Q3`); any cadence works, as long as it is
 consistent, declared, and dated. You do not choose the cadence — you read whatever the team
@@ -35,7 +37,9 @@ Each of these is a refusal, not a caveat you note and proceed past.
    never a percentage. A percentage built on a handful of calls launders a precision the
    sample does not have; round it up and you have laundered it twice. And "never" means
    nowhere in the render — not beside the counts, not "for reference," not in a footnote:
-   a percentage that appears anywhere is the percentage you refused.
+   a percentage that appears anywhere is the percentage you refused. The observed bet
+   mix obeys the same floor: below it, the mix renders as counts against the declaration
+   ("1 of 5 efforts core, against a declared 70%"), never as a computed share.
 3. **Coverage is always shown.** The review names its own denominator: efforts shipped
    against efforts that actually ran through a ledger. Work that bypassed the machine is
    reported as uncovered, by name or by count, never dropped silently to make the covered
@@ -82,8 +86,45 @@ class · bar · verdict) → judgment (calibration, kill economics, observed mix
 declared) → bets ledger (open / reviewed / overdue / orphaned, plus the concentration
 read: open bets against active ledgers, printed beside the declared mix — and beside the
 declared bet budget, when the period's intent file names one; a concentration with no
-declared budget renders as observation, never breach) → the trend strip against prior
-frozen reviews, present only when gate one allows it.
+declared budget renders as observation, never breach) → machine health (below) → the
+trend strip against prior frozen reviews, present only when gate one allows it.
+
+## Machine health — where the machine rubbed
+
+One section, three to five lines, so that next period's process fix is chosen from where
+the machine actually rubbed and not from whoever spoke last at the close. It is fed
+**exclusively by artifacts that already exist for their own sake** — nothing is logged for
+this section, no skill reports on its user, and there is no counter anywhere to read:
+
+- **Regeneration burn** — the distribution of `decision.triage.attempt` across the period's
+  ledgers, with the bar language the high-attempt items share, when they share one.
+- **Stalls** — ledgers whose `updated:` fell behind the declared cadence (`rituals:` in the
+  profile), rolled up from what `weekly-review` already reads week by week.
+- **Context gaps** — profile blocks still sitting as init's commented-out TODOs.
+- **Bypass** — the coverage line, restated as a machine signal.
+- **Evidence debt** — bet concentration, orphaned and overdue bets, from the bets ledger.
+- **Kill economics** — `decision.kills[]`: how much died, where, at what cost.
+
+Each line points at its artifacts. The section closes with **one named candidate fix for
+next period**, phrased as a candidate the humans ratify at the close ritual — never a
+prescription. The review reports; the team judges. The six gates above apply unchanged:
+counts below the floor render as counts, no trend without two frozen files, stale numbers
+flagged. A period whose signals are quiet renders the section as **one line — "the machine
+ran quiet this period"** — and nothing else: no per-signal bullets marked "quiet," no
+six-row table of nothing, no fix line. The single sentence is the whole section. It is
+never padded to look actionable, and a candidate fix the artifacts do not support is never
+manufactured to give the section a closing line: when the machine ran quiet, the honest
+render has no fix to name, and says so in that one line.
+
+**The one refusal this section carries: it reports on the machine, never on the people.**
+Friction attributes to gates and to work items — "Gate 2 took three or more triage attempts
+on 4 of 11 items, and those items share a bar written in adjectives" — never to a squad, a
+pod, or a named person, and never as a ranking. The moment this section can be read as a
+per-team productivity table, the honest recording it depends on stops: a team that will
+look worse for logging a triage FAIL regenerates without logging one, and the signal dies at
+its source. Distributions render in aggregate. A team may pull its own breakdown, and nobody
+else's. Asked to name the slowest squad, decline, say why in one sentence, and render the
+aggregate.
 
 ## Quality bar
 
@@ -91,4 +132,4 @@ Every trend line traces to at least two frozen files it can point to, or it does
 Every percentage prints its n beside it. Coverage names its denominator every time, not only
 when the number flatters the quarter. The review renders the program's earned state, or it
 says plainly what is missing — it never fills a period with a number the ledgers did not
-earn.
+earn. Machine health names one candidate fix or none, and never a person.
