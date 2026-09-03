@@ -69,6 +69,21 @@ a filled profile and installed plugin are config, not adoption.
 | **IC designer** | the loop skills (research → brief → prompt → triage → spec) | the evidence, the work itself | the gap reports — they name your next move |
 | **PM / partner** | — | the PRD's stated goal and pain, the numbers after ship | the readout and its next-Intent line |
 
+### The authority cut
+
+The lanes above say what you *do*. This says what you may **decide** — and where the
+decision is recorded, because an authority whose exercise leaves no artifact is the
+checkmark this library refuses. The five conditions that make any of it official are in
+[docs/ai-governance.md](docs/ai-governance.md).
+
+| Role | You may ratify | You may never | Recorded as | If you skip it |
+| --- | --- | --- | --- | --- |
+| **Bar ratifier** (`people.bar_ratifiers`) | the success criteria, before anything is generated | invent the bar after launch, or ratify one you wrote alone when the profile names others | `decision.bar` — criteria verbatim, plus confidence if stated | the brief does not complete; triage and the readout have nothing to score against |
+| **Bet owner** (`people.bet_authority`) | proceeding without the evidence, in your own name | own a bet as a team, or inherit one from someone who left | the four bet fields — owner, reason, declared, review_by | the gate reads open with no bet: downstream work stands on nothing and the conductor says so |
+| **Scorecard owner** (`people.scorecard_owner`) | what goes upward, and its classification | let a leverage number stand in for a verdict you have not earned | the rendered scorecard, from ledger verdicts | the folio renders without an owner, and nobody is answerable for the claim |
+| **Period closer** | the period's declared strategy, before the period runs; the candidate fix at the close | declare or amend strategy after the work it blesses | `<period>.intent.md`, dated · the frozen `<period>.html` | no mix verdict is possible — the observed mix renders as observation only |
+| **Any maker** | nothing — you supply evidence, the gates judge it | carry a checkmark forward, or quote a person's identity where the signal would do | the ledger artifact your skill writes | the gate stays open, by design, until the artifact exists |
+
 ## Spreading past the pod
 
 When the pod's first item closes its loop — a readout with a verdict, honest either way —
