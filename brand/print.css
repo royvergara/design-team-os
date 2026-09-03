@@ -117,10 +117,10 @@
 }
 .t--xl { font-size: 42pt; line-height: 1.02; max-width: 6.4in; }
 .sub {
-  font-family: var(--d-font-serif); font-size: 15pt; line-height: 1.3; color: var(--d-muted);
-  max-width: var(--measure); margin: 0 0 20pt; text-wrap: balance;
+  font-family: var(--d-font-sans); font-size: 13.5pt; line-height: 1.4; color: var(--d-muted);
+  max-width: var(--measure); margin: 4pt 0 22pt; text-wrap: pretty;
 }
-.lede { font-family: var(--d-font-serif); font-size: 14.5pt; line-height: 1.35; color: var(--d-muted); max-width: var(--measure); margin: 0 0 12pt; text-wrap: balance; }
+.lede { font-family: var(--d-font-sans); font-size: 13.5pt; line-height: 1.42; color: var(--d-muted); max-width: var(--measure); margin-bottom: 12pt; text-wrap: pretty; }
 .doc p, .ws td, .tbl td { text-wrap: pretty; }
 .pg:not(.pg--dark) .num { color: var(--d-accent); }
 .h2 { font-family: var(--d-font-serif); font-size: 15pt; line-height: 1.2; margin: 16pt 0 6pt; }
@@ -198,8 +198,11 @@
 .spec .reply b { color: var(--d-accent); font-weight: 700; }
 
 /* ---- the play (every chapter ends in one) ----------------------------- */
+.cols { display: grid; grid-template-columns: minmax(0, 1fr) 1.9in; gap: 0 0.32in; align-items: start; }
+.play--col { position: static !important; left: auto; right: auto; bottom: auto; grid-template-columns: 1fr; gap: 6pt; border-top: 2px solid var(--d-mark); }
+.play--pin { position: absolute !important; left: var(--pg-pad-x); right: var(--pg-pad-x); bottom: 0.95in; margin-top: 0; }
 .play {
-  position: absolute; left: var(--pg-pad-x); right: var(--pg-pad-x); bottom: 0.95in;
+  position: static; margin-top: 26pt;
   border-top: 1px solid var(--d-hair); padding-top: 9pt;
   display: grid; grid-template-columns: 0.95in minmax(0, 1fr); gap: 10pt; align-items: baseline;
 }
@@ -232,17 +235,20 @@
 /* ---- cover ------------------------------------------------------------ */
 .pg--cover { display: block; padding-top: 1.1in; padding-bottom: 0.9in; }
 .pg--cover .k { position: absolute; top: 0.9in; left: var(--pg-pad-x); }
-.pg--cover .cover-text { position: absolute; left: var(--pg-pad-x); right: var(--pg-pad-x); bottom: 2.4in; }
-.pg--cover .t--xl { margin-top: 0; font-size: 46pt; }
-.pg--cover .sub { font-size: 16pt; max-width: 6.7in; margin: 14pt 0 0; }
+.pg--cover .cover-text { position: absolute; left: var(--pg-pad-x); right: var(--pg-pad-x); bottom: 2.0in; padding-top: 20pt; border-top: 1px solid rgba(var(--fxd-turquoise-rgb), 0.35); }
+.pg--cover .t--xl { margin-top: 0; font-size: 48pt; line-height: 1.0; }
+.pg--cover .sub { font-family: var(--d-font-sans); font-size: 14pt; max-width: 6.2in; margin: 14pt 0 0; color: var(--fxd-seaglass-400); }
 .pg--cover .wordmark { position: absolute; left: var(--pg-pad-x); bottom: 0.9in; font-size: 10pt; }
-.gates { position: absolute; right: 0.6in; top: 3.2in; width: 4.6in; height: 3in; }
-.gates .halo { fill: none; stroke: var(--fxd-turquoise-500); stroke-width: 4; opacity: .5; filter: url(#g); }
-.gates .floor { fill: none; stroke: var(--fxd-turquoise-500); stroke-width: 1; opacity: .18; }
-.gates rect { fill: none; stroke: var(--fxd-turquoise-500); stroke-width: 1.2; }
-.gates .glow { fill: rgba(var(--fxd-turquoise-rgb), 0.08); stroke: none; }
-.gates line { stroke: rgba(var(--fxd-turquoise-rgb), 0.35); stroke-width: 1; }
-.gates text { fill: var(--fxd-seaglass-400); font-family: var(--d-font-machine); font-size: 6.5px; letter-spacing: 0.12em; }
+.gates { position: absolute; left: var(--pg-pad-x); right: var(--pg-pad-x); top: 1.5in; height: 4.4in; width: auto; }
+.gates .frame { fill: rgba(var(--fxd-turquoise-rgb), 0.06); stroke: var(--fxd-turquoise-500); stroke-width: 1.2; }
+.gates .halo { fill: none; stroke: var(--fxd-turquoise-500); stroke-width: 7; opacity: 0.4; filter: url(#pblur); }
+.gates .floor { fill: none; stroke: var(--fxd-turquoise-500); stroke-width: 1; opacity: 0.16; }
+.gates .lead { stroke: var(--fxd-turquoise-500); stroke-width: 1; opacity: 0.45; }
+.gates .pip { fill: var(--fxd-turquoise-500); }
+.gates text { fill: var(--fxd-seaglass-400); font-family: var(--d-font-machine); font-size: 8.5px; letter-spacing: 0.12em; }
+.gates .sheet { fill: rgba(var(--fxd-ink-rgb), 0.04); stroke: rgba(var(--fxd-ink-rgb), 0.35); stroke-width: 1; }
+.gates .rule { stroke: rgba(var(--fxd-ink-rgb), 0.22); stroke-width: 1; }
+.gates .ink { stroke: var(--fxd-turquoise-500); stroke-width: 1.4; opacity: 0.8; fill: none; }
 
 /* ---- five conditions strip -------------------------------------------- */
 .five { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8pt; margin: 10pt 0 0; }
