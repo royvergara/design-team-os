@@ -72,7 +72,10 @@ anything of you:
 3. **Run the program.** The profile, the rituals, the weekly review, the scorecard, the
    period review — the machine that turns a team's motion into proof a leader can carry
    upward. [ADOPTION.md](ADOPTION.md) is the on-ramp: the pilot pod, week one, and the
-   coverage number that measures adoption honestly.
+   coverage number that measures adoption honestly. At this depth the profile is your
+   **judgment context layer** and the whole thing is an AI governance layer for design
+   work — accountability, transparency, oversight and audit, each one citing the test
+   that fails when it lapses: [docs/ai-governance.md](docs/ai-governance.md).
 
 Most AI skill libraries are built for depth one and stop there. This one is built so
 depth one is complete on its own — and so nothing you do at depth one gets redone on the

@@ -8,6 +8,15 @@ when the period closes). A skill reads it instead of interrogating you. Constant
 is also the machine's cheapest reliability win: the same declared inputs produce far
 steadier outputs than context re-typed slightly differently every run.
 
+**What it is, named:** the profile is this machine's **judgment context layer** — what the
+skills judge *from*. It is the same object the analytics world calls a semantic layer, at the
+design-work layer instead: metric definitions that settle what a number means before a bar is
+registered against it, the source of truth each number is read from, the goals work is checked
+against, and who holds which decision right. Declared once, versioned in git, read by every
+skill — and never a judge itself. No profile field has ever supplied a verdict; it supplies
+the context a verdict is reached in. See [docs/ai-governance.md](../docs/ai-governance.md)
+for how a declaration here becomes binding.
+
 File name: **`design-os.profile.yaml`**, in **your product repo** — not in this library.
 This library ships only the schema (this file) and an example
 ([`project-profile.example.yaml`](project-profile.example.yaml)).
