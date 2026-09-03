@@ -59,7 +59,10 @@ before anything else about that work item. And when the bet's owner is known to 
 the team or company, the bet is **orphaned**: report it as "open — bet orphaned," name the
 move (a new named human re-owns it with a fresh dated entry, or it closes), and never let
 "the bet was approved before they left" carry it forward — ownership is the bet's load-bearing
-field, and a departed owner is a missing one.
+field, and a departed owner is a missing one. An orphaned bet changes who must act, not
+whether the state can be read: downstream work whose own inputs exist (a brief, a bar, a
+prototype) stays runnable, and its move says plainly that it stands on an orphaned bet at
+Intent — never "nothing is runnable until someone re-owns it."
 
 ## What proven looks like, per gate
 
