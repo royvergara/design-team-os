@@ -59,7 +59,10 @@ before anything else about that work item. And when the bet's owner is known to 
 the team or company, the bet is **orphaned**: report it as "open — bet orphaned," name the
 move (a new named human re-owns it with a fresh dated entry, or it closes), and never let
 "the bet was approved before they left" carry it forward — ownership is the bet's load-bearing
-field, and a departed owner is a missing one.
+field, and a departed owner is a missing one. An orphaned bet changes who must act, not
+whether the state can be read: downstream work whose own inputs exist (a brief, a bar, a
+prototype) stays runnable, and its move says plainly that it stands on an orphaned bet at
+Intent — never "nothing is runnable until someone re-owns it."
 
 ## What proven looks like, per gate
 
@@ -97,8 +100,12 @@ Routing into a refusal wastes the turn the machine exists to save.
 - **Prototype chosen, no validation signal** → the smallest test that would earn one — this
   is `prototype-to-spec`'s refusal, so route to `validation-plan` to design the test, then to running it, not to `prototype-to-spec` first.
 - **Shipped, numbers in** → `outcome-readout`. Its next-intent line is a new work item.
-- **Entering mid-stream** (artifacts exist but earlier gates were never run): route to the
-  earliest open gate, and say plainly which downstream work is standing on unproven ground.
+- **Entering mid-stream** (artifacts exist but earlier gates were never run): when the
+  team keeps ledgers (a `design-os.work/` directory or `tools.state` exists) and none
+  exists yet for this work, route to `adoption-intake` first — it back-fills the ledger
+  from what genuinely exists, gaps recorded never blocked. Otherwise, and in every case
+  after, route to the earliest open gate, and say plainly which downstream work is
+  standing on unproven ground. A team that keeps no ledgers is never sent to write one.
 
 `user-journey-mapping`, `figma-plugin-orchestration`, `critique-synthesis`, and `validation-plan` are
 utilities: valuable paths, never required gates. `team-ai-baseline` and

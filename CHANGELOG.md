@@ -8,6 +8,60 @@ The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every ski
 listed enforces a gate — it refuses when its inputs aren't earned — and every one
 is covered by a runnable fixture in [TESTING.md](TESTING.md).
 
+## v0.18 — 2026-09-03
+
+The front door and the friction loop. Three judgment-surface changes, each carried as a
+recorded owned bet in its PR, each fixture-pinned at birth: a nineteenth skill for the
+moment adoption actually happens (work already in flight), a machine-health read in the
+period close so next period's process fix is chosen from where the machine rubbed, and the
+endorsement read at the readout so a number from the wrong source never becomes the bar's
+verdict. No new required concept; every addition is a door into objects that already exist.
+
+### Added
+
+- **`adoption-intake`** — first contact with work already in flight. Back-fills one
+  ledger per live work item from what genuinely exists, marks every back-filled line as
+  such in its own text, and records gaps **never blocked** — the only place that posture
+  is sanctioned; from the next move onward the gates apply at full strength. Three
+  mechanical rules: a document's citations may be evidence, its assertions are not; dates
+  decide, not eloquence (a criterion dated after the build is stated intent, never
+  `decision.bar`); a tracker status is never a gate state. It is precise in both
+  directions (the well-run effort reads proven with its artifacts named) and it never
+  becomes a report card — coverage at intake is a baseline, attribution is to work items
+  never squads. Six fixtures: `prd-assertion-as-evidence`, `backdated-bar`,
+  `tracker-done-is-not-state`, `report-card-pressure`, `credits-the-good-one`,
+  `reconstruction-sheet-as-proof` (an adversarial pass at birth: a reconstruction sheet's
+  ticks are someone's checkmarks, an adjective is not a bar, and the ledger takes the
+  schema's shape with no status field). The
+  `conductor`'s mid-stream row now routes here first; ADOPTION.md names it under "Start
+  where you are."
+- **Machine health** (`period-review`) — one section, three to five lines, fed exclusively
+  by artifacts that already exist for their own sake: triage-attempt distribution, stalls
+  against the declared cadence, profile blocks still TODO, coverage, bet concentration and
+  orphans, kill economics. Closes with one candidate fix the humans ratify at the close —
+  or with none, when the artifacts support none; a quiet period renders as one line. **It
+  reports on the machine, never on the people:** friction attributes to gates and work
+  items, never to a squad or a name, because a per-team ranking kills the honest logging
+  the signal depends on. Fixture: `period-review/machine-health-padding`.
+- **The endorsement read** (`outcome-readout`) — the declared source is part of the
+  metric's definition. A value from a source other than the profile's `metrics[].source`
+  is not yet the pre-registered metric's value: the readout names the mismatch, scores
+  nothing on it, hands back the exact pull, and records the foreign number at most as a
+  labeled different measurement. The escape hatch that keeps this from becoming a trap: a
+  source may be **re-declared, dated** (profile schema) at the moment it changed; the
+  undated swap at readout time stays refused. Fixture: `outcome-readout/unendorsed-source`.
+- **Quote the signal, never the identity** (schema, `outcome-readout`, `research-to-pain`)
+  — evidence lines carry the observation and the count with the person de-identified; raw
+  material that can't be de-identified stays in the research store, pointed at. Narrows
+  nothing about the quote-inline rule: the substance stays verbatim, the person leaves.
+  Fixture: `outcome-readout/named-quote`.
+
+### Changed
+
+- `templates/work-ledger.schema.md`: `value.outcome.measured` names its source as the rule,
+  not the example's habit.
+- `templates/project-profile.schema.md`: `metrics[].source` gains the dated re-declaration.
+
 ## v0.17 — 2026-08-25
 
 The scenario release: the machine run through real organizational shapes — enterprise

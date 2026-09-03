@@ -23,6 +23,11 @@ it returns names the one gate to fix — and the honest floor beats the hopeful 
 because every plan built on the ceiling breaks on contact with the team. If the placement
 stings, that's the baseline doing its job; it is also your before-picture.
 
+If the work is already moving — the PRD written, the roadmap committed, features live —
+run [`adoption-intake`](skills/adoption-intake/SKILL.md) on one effort at a time. It writes
+the first ledgers from what genuinely exists, records every gap without blocking anyone,
+and never grades last quarter. Your coverage line starts there, as a baseline.
+
 ## The pilot pod — never big-bang
 
 Two or three designers, one or two live work items, two weeks. Not the whole team, not a

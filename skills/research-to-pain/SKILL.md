@@ -32,7 +32,7 @@ Return a small set, three to five, not an exhaustive inventory. For each pain:
 
 Rank by signal strength, never by how loud or how senior the source was. The strongest pain is the one the most independent evidence agrees on, even if no executive named it. End by stating which pain in the set is weakest and exactly what it would take to validate it, so the team knows where the floor is before anyone builds on top of it.
 
-If a `design-os.work/<slug>.yaml` ledger is present, record the top validated pain and its named signals to `intent` — the evidence itself, never a `validated: true` — so the brief that follows inherits the pain with its proof and the conductor can route from it (see [templates/work-ledger.schema.md](../../templates/work-ledger.schema.md)). No ledger changes nothing about the ranking above.
+If a `design-os.work/<slug>.yaml` ledger is present, record the top validated pain and its named signals to `intent` — the evidence itself, never a `validated: true`, and quoting the signal never the identity (the count and the verbatim observation, with the person de-identified; raw notes stay wherever they already live, pointed at by store, project and dates) — so the brief that follows inherits the pain with its proof and the conductor can route from it (see [templates/work-ledger.schema.md](../../templates/work-ledger.schema.md)). No ledger changes nothing about the ranking above.
 
 If a `design-os.profile.yaml` is present, start the hunt at its `evidence_sources` — where this team's signal actually lives — and name any listed source you could not reach. The profile points at evidence; it never counts as evidence.
 

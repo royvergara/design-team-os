@@ -1,0 +1,13 @@
+/* Fluent by Design — the three faces (DESIGN-DNA.md §3), loaded from Google Fonts.
+   Gloock for every heading and for serif subtitles; Source Sans 3 for body and UI;
+   Archivo for the wordmark's machine voice and wide-tracked labels.
+   tokens.css expects --font-gloock / --font-source-sans / --font-archivo on body
+   (the site sets them with next/font); this file sets them for static pages.
+   For offline print rendering replace the @import with local @font-face rules. */
+@import url('https://fonts.googleapis.com/css2?family=Gloock&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Archivo:wght@400;500;600;700&display=swap');
+
+body {
+  --font-gloock: 'Gloock';
+  --font-source-sans: 'Source Sans 3';
+  --font-archivo: 'Archivo';
+}

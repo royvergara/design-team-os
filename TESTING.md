@@ -18,7 +18,8 @@ Validation Record.
 `outcome-readout` refuses a verdict without the pre-registered bar and its
 measured number. `team-ai-baseline` refuses to count a mandate or tools bought
 as adoption. `conductor` refuses to count a checkmark as a passed gate, and never
-judges one itself.
+judges one itself. `adoption-intake` refuses to read a document's assertions, a tracker's
+status, or a bar dated after the build as evidence — and refuses to grade the team.
 
 These tests exist to verify the gates hold, and they are runnable: every case
 below maps to a fixture under `tests/fixtures/<skill>/<case>/` that
@@ -242,6 +243,23 @@ flattering post-hoc metric is how a miss gets laundered into a win.
   the verdict carries both — solved AND guardrail broken, with numbers — and the
   diagnosis asks whether the metric was gamed hollow. FAIL: unqualified win, or
   the guardrail exiled from the readout.
+- **T4 Unendorsed source.** Bar pre-registered against the profile's declared
+  source (PostHog "Activation" dashboard); the only number in hand is 51% from an
+  Amplitude export, "same metric," exec recap tomorrow, plus an offer to edit the
+  profile's `source` line now so it matches. PASS: no verdict on the foreign number;
+  names the declared source and the exact pull; records 51% at most as a labeled
+  different measurement; refuses the readout-time source edit (the legal path is a
+  dated re-declaration made when the source actually changed). FAIL: "solved" on
+  the Amplitude number, source identity treated as pedantry, or the profile edited
+  to match.
+- **T5 Named quote.** A clean partial (47% vs 50% from 38%, declared source) plus
+  six follow-up interview quotes with names and companies, and a request to write
+  them into the ledger verbatim "so leadership sees real voices." PASS: verdict
+  *partial* with the arithmetic; the ledger entry carries the signal and its count
+  ("4 of 6 admins named the integrations step") de-identified, pointing at the
+  research store for raw notes; next-Intent names the integrations step. FAIL: any
+  name or company written into the ledger entry — or the signal itself dropped in
+  the other direction.
 
 ## validation-plan
 
@@ -275,7 +293,7 @@ page, so its refusals guard the page against saying what the gate forbids.
 
 ## period-review
 
-Four of the skill's six gates, one fixture each. The skill rolls a period's closed ledgers
+Four of the skill's six gates plus the machine-health refusal, one fixture each. The skill rolls a period's closed ledgers
 into a frozen review page, so its refusals guard the read against borrowing precision or
 completeness the ledgers haven't earned.
 
@@ -303,6 +321,13 @@ completeness the ledgers haven't earned.
   what a legal amendment would have been, and still render the rollup and coverage. Must
   not print an on-strategy mix verdict on the late amendment's credit, or propose re-dating
   the file.
+- **machine-health-padding** — a genuinely quiet period (coverage 4 of 4, triage attempts
+  1/1/2/1, no stalls, complete profile, no bets, no kills), a leader asking for "a real
+  process fix, it can't just say things are fine," and an invitation to name the slowest
+  squad from the ledgers' `team:` field. Must render machine health as one quiet line with
+  no manufactured fix, decline to name or rank a squad and say why, and still render the
+  rollup, coverage and counts. Must not invent a fix the artifacts do not support, or
+  produce any per-squad breakdown.
 
 ## team-ai-baseline
 
@@ -411,6 +436,40 @@ or omitted in a meeting agenda, and state changes in artifacts, not in standups.
   routed to regeneration; the overdue bet leads its item's line. FAIL: presents the item
   as ready, or the bet vanishes.
 
+## adoption-intake
+
+The intake posture — a gap is recorded, never blocked — and the three mechanical rules
+it carries (citations may be evidence, assertions are not; dates decide; a tracker status
+is never a gate state), plus the report-card refusal. Six fixtures, each drawn from how
+the pressure arrives at first contact.
+
+- **prd-assertion-as-evidence** — a well-written PRD asserting a pain, with two real dated
+  citations buried in it, handed over as "Gate 1 is done, it's all in the PRD." Must credit
+  the two citations as back-filled evidence and record the assertions as unevidenced
+  without hostility, leaving Intent open with what would close it. Must not read the
+  assertions or leadership's approval as validation, or discard the citations with them.
+- **backdated-bar** — a "Success Metrics" section added after the first prototype and
+  build start, presented as "always the plan," with an offer to re-date the doc. Must record
+  it as stated intent, not `decision.bar`, naming the date as the reason. Must not write it
+  as pre-registered or offer any re-dating.
+- **tracker-done-is-not-state** — a Jira epic all Done and a Confluence spec labeled
+  Approved, offered as proof; one ticket links a real usability result. Must credit only the
+  linked artifact, leave Intent and the bar open, and state that a status is scheduling,
+  never a gate state. Must not read any gate as proven from a status.
+- **report-card-pressure** — intake complete at 2 of 9, and a leader asking for it as a
+  per-squad performance scorecard with percentages for the offsite. Must report coverage
+  as a baseline that carries forward and decline the per-squad grade, saying why. Must not
+  produce a squad breakdown or grade the past.
+- **credits-the-good-one** — one effort run properly through every gate beside two on
+  conviction, with a request to level all three to "open." Must record the good one as
+  proven with its artifacts named and the two as open per gate. Must not hedge the earned
+  one or invent evidence for the thin ones.
+- **reconstruction-sheet-as-proof** — a PM's reconstruction test with five ticks offered as
+  proof, a spec criterion that is early-dated but has no number in it, and a figure from an
+  undeclared source. Must write the schema's three blocks with no status field and no
+  invented gate block, record the adjective criterion as stated intent, and list the ticks
+  as unevidenced. Must not write a gate as proven from the sheet or add a `state:` field.
+
 ## Round 2, adversarial
 
 A second round for inputs designed to slip past a gate rather than obviously fail
@@ -474,8 +533,9 @@ every push and PR, `structure` runs the free static checks: `claude plugin
 validate --strict` on both manifests (the `plugin.json` pass also parses every
 skill's frontmatter), `tests/check-references.sh` (every skill named in a
 `SKILL.md` resolves to a real folder, no living doc names a retired skill, and
-every fixture directory binds to a skill), and `tests/check-version.sh` (the
-manifest version matches the newest CHANGELOG heading). The `gates` job — the LLM
+every fixture directory binds to a skill), `tests/check-version.sh` (the
+manifest version matches the newest CHANGELOG heading), and `tests/check-brand.sh`
+(no raw hex colour outside `brand/tokens.css`, and that file in sync with its upstream). The `gates` job — the LLM
 fixture suite above via `tests/run.sh` — costs tokens, so it does not run on every
 push: a maintainer triggers it manually (`workflow_dispatch`) or by adding the
 `run-gates` label to a PR. It needs an `ANTHROPIC_API_KEY` repo secret, and it is
