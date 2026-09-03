@@ -1,9 +1,10 @@
 # Design: the Hex translation — judgment context, endorsed sources, machine health
 
 What a competitive study of [Hex](https://hex.tech) (AI analytics, "where trust meets
-insight") translates into this stack, and — as important — what it doesn't. Three
-workstreams; two are naming what already shipped, one wires a loop v0.12 explicitly
-deferred. No new skill; the count stays eighteen.
+insight") translates into this stack, and — as important — what it doesn't. Five
+workstreams: A–C from the product study, D–E added by the governance workbook (addendum
+at the end). Three of them name or sharpen what already shipped, one wires a loop v0.12
+explicitly deferred, one ships outside this repo. No new skill; the count stays eighteen.
 
 ## Why now
 
@@ -139,7 +140,9 @@ adds two things the web study didn't surface:
 
 **D — The sensitivity rule (joins workstream B's schema batch).** Hex classifies content
 (`PII`, `Confidential`, `Internal Only`) as a first-class governance move. This library
-has no equivalent — and v0.17's quote-inline rule sharpens the exposure: told "quote the
+has one already, but at a different surface: `reporting.classification` sets the folio
+default `outcomes-scorecard` stamps on what goes upward. What has no rule is the
+*evidence* itself — and v0.17's quote-inline rule sharpens that exposure: told "quote the
 load-bearing substance," a diligent team will paste interview quotes with names attached
 into a YAML file committed to a repo with wider read access than the research tool it
 came from. One schema paragraph closes it: **quote the signal, never the identity** —
