@@ -55,12 +55,29 @@ verdict. No new required concept; every addition is a door into objects that alr
   material that can't be de-identified stays in the research store, pointed at. Narrows
   nothing about the quote-inline rule: the substance stays verbatim, the person leaves.
   Fixture: `outcome-readout/named-quote`.
+- **The brand layer, ported** (`brand/`) — the token layer the repo's own renders and
+  Fluent by Design's documents now share, so a scorecard and a field guide read as one
+  system. `tokens.css` is a verbatim copy of the canonical file upstream; `print.css` is
+  the document surface (fixed pages, dark openers, worksheet tables, the refusal
+  specimen), `artifact.css` the web surface (twelve-column grid, the type registers, the
+  three-gates instrument, a light-theme remap for un-stamped viewers, and small-screen
+  behaviour at 960 and 640), `fonts.css` the three faces. `tests/check-brand.sh` fails on
+  any raw hex outside `tokens.css` and on drift from upstream, and runs in the `structure`
+  CI job — the port cannot rot quietly.
+- **The design system, slated**
+  (`docs/superpowers/specs/2026-09-03-fluent-design-system-design.md`) — the registers and
+  their rules written down, with six increments named. Increment 1 (the web surface) ships
+  here; the rest are slated, not promised.
 
 ### Changed
 
 - `templates/work-ledger.schema.md`: `value.outcome.measured` names its source as the rule,
   not the example's habit.
 - `templates/project-profile.schema.md`: `metrics[].source` gains the dated re-declaration.
+- `conductor`: an orphaned bet changes **who must act, not what is runnable**. Downstream
+  work whose own inputs exist stays runnable and says plainly that it stands on an
+  orphaned bet at Intent — never "nothing is runnable until someone re-owns it." Pinned by
+  `conductor/bet-orphaned`.
 
 ## v0.17 — 2026-08-25
 
