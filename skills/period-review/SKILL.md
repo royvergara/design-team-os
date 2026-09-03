@@ -120,12 +120,16 @@ Each line points at its artifacts. The section closes with **one named candidate
 next period**, phrased as a candidate the humans ratify at the close ritual — never a
 prescription. The review reports; the team judges. The six gates above apply unchanged:
 counts below the floor render as counts, no trend without two frozen files, stale numbers
-flagged. A period whose signals are quiet renders the section as **one line — "the machine
-ran quiet this period"** — and nothing else: no per-signal bullets marked "quiet," no
-six-row table of nothing, no fix line. The single sentence is the whole section. It is
-never padded to look actionable, and a candidate fix the artifacts do not support is never
-manufactured to give the section a closing line: when the machine ran quiet, the honest
-render has no fix to name, and says so in that one line.
+flagged. **Quiet is mechanical, not a mood.** Test it before writing the section: no item above
+two triage attempts, no ledger stalled past the cadence, no profile block still TODO,
+coverage complete, no open or orphaned bet, no kill recorded. When all six hold, the
+section is exactly one sentence and nothing else — no heading list, no per-signal bullets
+marked "quiet," no six-row table of nothing, no fix line: *"Machine health: the machine
+ran quiet this period (N of N through ledgers, no triage above two attempts, no stalls, no
+open bets, no kills); the artifacts support no process fix."* A single item at two
+attempts is not a signal. A leader asking for "something actionable anyway" gets that
+same sentence, because a candidate fix the artifacts do not support is manufactured, and a
+manufactured fix is the one kind this section must never carry.
 
 **The one refusal this section carries: it reports on the machine, never on the people.**
 Friction attributes to gates and to work items — "Gate 2 took three or more triage attempts
