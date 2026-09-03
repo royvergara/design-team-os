@@ -12,14 +12,17 @@
     --fxd-ink: var(--fxd-ink-950); --fxd-muted: var(--fxd-slate-600);
     --fxd-accent: var(--fxd-forest-500); --fxd-accent-strong: var(--fxd-forest-600);
     --fxd-on-accent: var(--fxd-ink-050); --fxd-hairline: rgba(var(--fxd-ink-950-rgb), 0.14); --fxd-eyebrow-color: var(--fxd-forest-600);
+    --band: rgba(var(--fxd-forest-rgb), 0.07);
   }
 }
+:root[data-theme="light"] { --band: rgba(var(--fxd-forest-rgb), 0.07); }
 :root {
   /* v2 layout + type roles (derived from tokens; no new colours) */
   --grid-max: 1200px; --gutter: 24px; --rail: 300px;
   --t-title: clamp(40px, 7.2vw, 92px);
   --t-h2: clamp(32px, 3.6vw, 46px);
-  --t-quote: clamp(24px, 2.6vw, 32px);
+  --t-h2-sm: clamp(26px, 2.4vw, 32px);
+  --t-quote: clamp(28px, 3.4vw, 44px);
   --t-num: clamp(40px, 4.4vw, 56px);
   --t-deck: clamp(19px, 1.7vw, 22px);
   --t-body: 18px; --t-small: 15px; --t-label: 11.5px;
@@ -27,6 +30,7 @@
   --mark: var(--fxd-accent);          /* text-bearing accent: turquoise on dark, forest on light */
   --glow: var(--fxd-turquoise-500);   /* rules and glows only: always turquoise */
   --num-color: var(--fxd-accent);
+  --band: var(--fxd-surface-1);
 }
 body {
   --font-gloock: 'Gloock'; --font-source-sans: 'Source Sans 3'; --font-archivo: 'Archivo';
@@ -45,7 +49,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 /* ---- grid ---- */
 .grid { max-width: var(--grid-max); margin: 0 auto; padding: 0 var(--gutter); display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
 .c-main { grid-column: 1 / span 7; min-width: 0; }
-.c-rail { grid-column: 9 / span 4; min-width: 0; align-self: start; }
+.c-rail { grid-column: 9 / span 4; min-width: 0; align-self: start; position: sticky; top: 32px; }
 .c-full { grid-column: 1 / -1; min-width: 0; }
 .c-wide { grid-column: 1 / span 9; min-width: 0; }
 @media (max-width: 960px) { .c-main, .c-rail, .c-wide { grid-column: 1 / -1; } }
@@ -147,7 +151,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .tbl td.was { color: var(--fxd-muted); }
 .tbl td.now { font-weight: 600; }
 .tbl td.now::before { content: '\2192\00a0'; color: var(--glow); font-weight: 400; }
-.tbl code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13.5px; color: var(--fxd-accent); }
+.tbl code, .src code, .chip-code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; color: var(--fxd-ink); background: rgba(var(--fxd-turquoise-rgb), 0.10); padding: 1px 5px; border-radius: 3px; }
 
 /* ---- tiles ---- */
 .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
@@ -158,8 +162,8 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .tile p { font-size: var(--t-small); color: var(--fxd-muted); line-height: 1.5; }
 
 /* ---- pull quote band ---- */
-.quote-band { padding: clamp(48px, 6vw, 80px) 0; background: var(--fxd-surface-1); border-top: 1px solid var(--fxd-hairline); border-bottom: 1px solid var(--fxd-hairline); }
-.quote { font-family: var(--fxd-font-serif); font-size: var(--t-quote); line-height: 1.25; letter-spacing: -0.005em; hanging-punctuation: first; max-width: 30ch; }
+.quote-band { padding: clamp(48px, 6vw, 80px) 0; background: var(--band); border-top: 1px solid var(--fxd-hairline); border-bottom: 1px solid var(--fxd-hairline); }
+.quote { font-family: var(--fxd-font-serif); font-size: var(--t-quote); line-height: 1.18; letter-spacing: -0.01em; hanging-punctuation: first; max-width: 24ch; }
 .quote::before { content: '\201C'; color: var(--mark); margin-right: 2px; }
 .quote::after { content: '\201D'; color: var(--mark); margin-left: 2px; }
 .quote-band .cite { margin-top: 18px; }
@@ -184,7 +188,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .src { list-style: none; padding: 0; border-top: 1px solid var(--fxd-hairline); }
 .src li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--fxd-hairline); font-size: 16px; line-height: 1.5; }
 .src .num { font-size: 18px; }
-.src code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13.5px; color: var(--fxd-accent); }
+
 
 /* ---- footer ---- */
 .foot { border-top: 1px solid var(--fxd-hairline); padding: 56px 0 72px; }

@@ -37,8 +37,8 @@
   --d-font-machine: var(--font-archivo), system-ui, sans-serif;
 
   font-family: var(--d-font-sans);
-  font-size: 11.5pt;
-  line-height: 1.52;
+  font-size: 12pt;
+  line-height: 1.5;
   color: var(--d-ink);
   -webkit-font-smoothing: antialiased;
   -webkit-print-color-adjust: exact;
@@ -122,7 +122,7 @@
 }
 .lede { font-family: var(--d-font-sans); font-size: 13.5pt; line-height: 1.42; color: var(--d-muted); max-width: var(--measure); margin-bottom: 12pt; text-wrap: pretty; }
 .doc p, .ws td, .tbl td { text-wrap: pretty; }
-.pg:not(.pg--dark) .num { color: var(--d-accent); }
+.pg:not(.pg--dark) .num { font-family: var(--d-font-serif); color: var(--d-mark); font-variant-numeric: tabular-nums; }
 .h2 { font-family: var(--d-font-serif); font-size: 15pt; line-height: 1.2; margin: 16pt 0 6pt; }
 .h3 { font-family: var(--d-font-sans); font-weight: 700; font-size: 11.5pt; line-height: 1.3; margin: 0 0 2pt; }
 .muted { color: var(--d-muted); }
@@ -140,7 +140,7 @@
   display: grid; grid-template-columns: 30pt minmax(0, 1fr); gap: 0 12pt;
   padding: 10pt 0; border-bottom: 1px solid var(--d-hair);
 }
-.row .num { font-size: 9pt; padding-top: 2pt; }
+.row .num { font-size: 14pt; line-height: 1; padding-top: 0; }
 .row p { max-width: 5in; }
 .row .tell { font-weight: 600; font-size: 10.5pt; color: var(--d-ink); margin-top: 4pt; padding-left: 10pt; border-left: 2px solid var(--d-ink); }
 .rows--links .row { grid-template-columns: 0 minmax(0, 1fr); gap: 0; }
@@ -214,7 +214,7 @@
 .toc { list-style: none; margin: 8pt 0 0; padding: 0; }
 .toc li { display: grid; grid-template-columns: 26pt minmax(0, 1fr) 40pt; gap: 0 10pt; align-items: baseline; padding: 6pt 0; border-bottom: 1px solid var(--d-hair); }
 .toc li:first-child { border-top: 1px solid var(--d-hair); }
-.toc .num { font-size: 9pt; }
+.toc .num { font-size: 12pt; }
 .toc .lab { font-family: var(--d-font-serif); font-size: 12pt; }
 .toc .lab small { display: block; font-family: var(--d-font-sans); font-size: 9.5pt; color: var(--d-muted); margin-top: 2pt; }
 .toc .pgn { font-family: var(--d-font-machine); font-size: 8pt; color: var(--d-faint); text-align: right; }
