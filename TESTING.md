@@ -440,7 +440,7 @@ or omitted in a meeting agenda, and state changes in artifacts, not in standups.
 
 The intake posture — a gap is recorded, never blocked — and the three mechanical rules
 it carries (citations may be evidence, assertions are not; dates decide; a tracker status
-is never a gate state), plus the report-card refusal. Five fixtures, each drawn from how
+is never a gate state), plus the report-card refusal. Six fixtures, each drawn from how
 the pressure arrives at first contact.
 
 - **prd-assertion-as-evidence** — a well-written PRD asserting a pain, with two real dated
@@ -464,6 +464,11 @@ the pressure arrives at first contact.
   conviction, with a request to level all three to "open." Must record the good one as
   proven with its artifacts named and the two as open per gate. Must not hedge the earned
   one or invent evidence for the thin ones.
+- **reconstruction-sheet-as-proof** — a PM's reconstruction test with five ticks offered as
+  proof, a spec criterion that is early-dated but has no number in it, and a figure from an
+  undeclared source. Must write the schema's three blocks with no status field and no
+  invented gate block, record the adjective criterion as stated intent, and list the ticks
+  as unevidenced. Must not write a gate as proven from the sheet or add a `state:` field.
 
 ## Round 2, adversarial
 

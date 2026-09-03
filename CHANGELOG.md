@@ -28,8 +28,11 @@ verdict. No new required concept; every addition is a door into objects that alr
   `decision.bar`); a tracker status is never a gate state. It is precise in both
   directions (the well-run effort reads proven with its artifacts named) and it never
   becomes a report card — coverage at intake is a baseline, attribution is to work items
-  never squads. Five fixtures: `prd-assertion-as-evidence`, `backdated-bar`,
-  `tracker-done-is-not-state`, `report-card-pressure`, `credits-the-good-one`. The
+  never squads. Six fixtures: `prd-assertion-as-evidence`, `backdated-bar`,
+  `tracker-done-is-not-state`, `report-card-pressure`, `credits-the-good-one`,
+  `reconstruction-sheet-as-proof` (an adversarial pass at birth: a reconstruction sheet's
+  ticks are someone's checkmarks, an adjective is not a bar, and the ledger takes the
+  schema's shape with no status field). The
   `conductor`'s mid-stream row now routes here first; ADOPTION.md names it under "Start
   where you are."
 - **Machine health** (`period-review`) — one section, three to five lines, fed exclusively
