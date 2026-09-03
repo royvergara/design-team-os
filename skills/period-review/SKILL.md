@@ -41,7 +41,8 @@ Each of these is a refusal, not a caveat you note and proceed past.
    mix obeys the same floor: below it, the mix renders as counts against the declaration
    ("1 of 5 efforts core, against a declared 70%"), never as a computed share.
 3. **Coverage is always shown.** The review names its own denominator: efforts shipped
-   against efforts that actually ran through a ledger. Work that bypassed the machine is
+   against efforts that actually ran through a ledger — a ledger carrying at least one
+   gate artifact; a back-filled ledger of intake gaps counts as uncovered. Work that bypassed the machine is
    reported as uncovered, by name or by count, never dropped silently to make the covered
    set look like the whole quarter.
 4. **Strategy declared at the period's start, or no mix verdict.** The declared bet mix
@@ -98,9 +99,12 @@ this section, no skill reports on its user, and there is no counter anywhere to 
 
 - **Regeneration burn** — the distribution of `decision.triage.attempt` across the period's
   ledgers, with the bar language the high-attempt items share, when they share one.
-- **Stalls** — ledgers whose `updated:` fell behind the declared cadence (`rituals:` in the
-  profile), rolled up from what `weekly-review` already reads week by week.
-- **Context gaps** — profile blocks still sitting as init's commented-out TODOs.
+- **Stalls** — ledgers whose *artifacts* did not change across the declared cadence
+  (`rituals:` in the profile), rolled up from what `weekly-review` already reads week by
+  week. Read the entries, not the `updated:` line: an `updated:` that moved with no entry
+  behind it is reported as exactly that.
+- **Context gaps** — profile blocks still sitting as init's commented-out TODOs. With no
+  profile at all this line does not render; absence is a choice, not a TODO.
 - **Bypass** — the coverage line, restated as a machine signal.
 - **Evidence debt** — bet concentration, orphaned and overdue bets, from the bets ledger.
 - **Kill economics** — `decision.kills[]`: how much died, where, at what cost.
@@ -122,8 +126,9 @@ on 4 of 11 items, and those items share a bar written in adjectives" — never t
 pod, or a named person, and never as a ranking. The moment this section can be read as a
 per-team productivity table, the honest recording it depends on stops: a team that will
 look worse for logging a triage FAIL regenerates without logging one, and the signal dies at
-its source. Distributions render in aggregate. A team may pull its own breakdown, and nobody
-else's. Asked to name the slowest squad, decline, say why in one sentence, and render the
+its source. Distributions render in aggregate. No per-team cut renders in or beside the frozen
+review; a team that wants its own read runs it on its own ledgers, outside the close.
+Asked to name the slowest squad, decline, say why in one sentence, and render the
 aggregate.
 
 ## Quality bar

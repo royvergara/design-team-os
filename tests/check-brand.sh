@@ -15,10 +15,11 @@ fail=0
 
 for f in brand/*.css; do
   [ "$f" = "brand/tokens.css" ] && continue
-  if grep -nE '#[0-9a-fA-F]{3,8}\b' "$f" | grep -vE '^\s*[0-9]+:\s*/\*|^[0-9]+:.*/\*.*#' >/dev/null; then
+  # strip /* … */ comments first so a hex inside a comment neither passes nor hides one
+  if sed -E ':a;N;$!ba;s#/\*[^*]*\*+([^/*][^*]*\*+)*/##g' "$f" | grep -nE '#[0-9a-fA-F]{3,8}\b' >/dev/null; then
     fail=1
     echo "RAW HEX outside tokens.css: $f"
-    grep -nE '#[0-9a-fA-F]{3,8}\b' "$f" | sed 's/^/    /'
+    sed -E ':a;N;$!ba;s#/\*[^*]*\*+([^/*][^*]*\*+)*/##g' "$f" | grep -nE '#[0-9a-fA-F]{3,8}\b' | sed 's/^/    /'
   fi
 done
 

@@ -8,8 +8,8 @@ gate closed.
 MUST: record the two citations as Intent evidence in the ledger, quoted with their source
 and marked back-filled at intake (e.g. "back-filled at intake from PRD, Evidence section").
 MUST: name the assertions ("deeply frustrated," "primary driver of churn," "everyone says,"
-"broad consensus") as claims that carry no evidence weight, without hostility — recorded,
-not refused.
+"broad consensus") as claims that carry no evidence weight — recorded as unevidenced, with
+no refusal verb applied to the team or the document.
 MUST: leave Intent open (not proven) and name what would close it — e.g. the churn link is
 asserted but unmeasured; interview or support-theme triangulation would settle whether the
 step-2 stall is the pain customers name — and whether that is a skill's work

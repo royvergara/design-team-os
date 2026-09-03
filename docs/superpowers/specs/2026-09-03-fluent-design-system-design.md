@@ -64,7 +64,8 @@ Each increment is shippable alone and leaves the system more true than it found 
    `brand/tokens.css` in this repo, verbatim, with a header naming fluentxdesign as
    canonical and a diff check against it. Add `brand/print.css` from the four-stages
    guide idiom and `brand/README.md` pointing at Design DNA. Rebuild the two published
-   artifacts on it. Add the raw-hex guard for `brand/` and `templates/`.
+   artifacts on it. Add the raw-hex guard for `brand/` (the `templates/` guard arrives with increment 2, when
+   the templates read tokens).
 2. **Templates onto tokens.** `scorecard.html` and `conductor.html` read `brand/tokens.css`
    instead of carrying their palette by hand. The renders skills emit stop drifting from
    the site. Verify by screenshot against the styleguide.

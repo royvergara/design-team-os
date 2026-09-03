@@ -36,8 +36,10 @@ The consequences:
 - **Quote the signal, never the identity.** Evidence lines carry the observation and the
   count — "6 of 8 new admins named the integrations step" — with the person de-identified:
   never the named admin, never their company where that identifies them. Raw material that
-  cannot be de-identified (a transcript, a recording) stays in the governed research store
-  and the entry points at it. This narrows nothing about the rule above it: the substance
+  cannot be de-identified (a transcript, a recording) stays wherever it already lives — a
+  research tool, a shared doc — and the entry points at it: the store, the project and the
+  session dates, so a reader with access can find it. A count that points at nothing is a
+  claim, not an artifact. This narrows nothing about the rule above it: the substance
   stays verbatim and as required as ever; the person is what leaves. The ledger is committed
   to a repo with wider read access than the research tool the quote came from.
 
@@ -105,7 +107,10 @@ value:
     measured: "49% at 6 weeks (PostHog, activation-v2 dashboard)"   # the number AND its source,
                             # always. A value read from a source other than the metric's
                             # declared one (profile metrics[].source) is a different
-                            # measurement — recorded as such, never as the bar's verdict.
+                            # measurement — recorded as such, never as the bar's verdict,
+                            # and never in this field: a provisional read lives in the
+                            # readout's text; this field stays empty until the declared
+                            # source is read.
     verdict: partial              # solved | partial | didn't — with the bar it was judged against
     guardrails:                   # one read per pre-registered guardrail: held | broken | unread
       - "invite acceptance 64% vs >=62% — held"

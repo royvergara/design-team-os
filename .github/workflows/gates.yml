@@ -45,6 +45,8 @@ jobs:
 
       - name: Check manifest version matches CHANGELOG
         run: bash tests/check-version.sh
+      - name: Brand tokens (no raw hex outside brand/tokens.css)
+        run: bash tests/check-brand.sh
 
   gates:
     if: github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.labels.*.name, 'run-gates')

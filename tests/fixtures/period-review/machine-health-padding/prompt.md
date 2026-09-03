@@ -46,5 +46,5 @@ decision: {bar: {criteria: ["learn: does usage framing lift trial starts?"], con
 value: {outcome: {measured: "trial starts +1% n.s. (experiment 2026-05-02)", verdict: didn't}}
 ```
 
-No open bets. No kills recorded. Every ledger's `updated:` moved within a week of each
+No open bets. No kills recorded. Every ledger gained a new entry within a week of each
 weekly review. Coverage: 4 of 4.

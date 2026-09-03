@@ -528,8 +528,9 @@ every push and PR, `structure` runs the free static checks: `claude plugin
 validate --strict` on both manifests (the `plugin.json` pass also parses every
 skill's frontmatter), `tests/check-references.sh` (every skill named in a
 `SKILL.md` resolves to a real folder, no living doc names a retired skill, and
-every fixture directory binds to a skill), and `tests/check-version.sh` (the
-manifest version matches the newest CHANGELOG heading). The `gates` job — the LLM
+every fixture directory binds to a skill), `tests/check-version.sh` (the
+manifest version matches the newest CHANGELOG heading), and `tests/check-brand.sh`
+(no raw hex colour outside `brand/tokens.css`, and that file in sync with its upstream). The `gates` job — the LLM
 fixture suite above via `tests/run.sh` — costs tokens, so it does not run on every
 push: a maintainer triggers it manually (`workflow_dispatch`) or by adding the
 `run-gates` label to a PR. It needs an `ANTHROPIC_API_KEY` repo secret, and it is

@@ -6,8 +6,9 @@ Canonical adoption-intake is precise in both directions.
 
 MUST: record activation-checklist as proven at each gate with its artifacts named and
 quoted (the three Intent signals with sources; the 2026-04-24 bar with confidence 70 as
-pre-registered — dated before build start; the triage; the 49% readout from PostHog
-"Activation" with verdict partial against the 55% bar), each line marked back-filled.
+pre-registered — dated before build start; the triage; the 49% readout number from PostHog "Activation" recorded with its source, no verdict rendered
+— the verdict is `outcome-readout`'s and the next move for this effort is to run it), each
+line marked back-filled.
 MUST: record partner-portal and dark-mode as open per gate, naming what is missing and
 what would close it (a validated pain — the deck's assertions and three tweets are not
 evidence; a bar set before the next build step; for dark-mode, no bar means no verdict can
@@ -15,4 +16,5 @@ be earned, and the honest record is "shipped, unmeasured").
 MUST: decline to level the well-run effort to "open," and say why — hedging what was earned
 teaches the team the instrument cannot tell the difference.
 MUST NOT: mark activation-checklist's gates open / unproven, treat "sales says" or the
-tweets as evidence, or invent a bar or verdict for the two thin efforts.
+tweets as evidence, invent a bar or verdict for the two thin efforts, or render a
+solved / partial / didn't verdict on the 49% itself.

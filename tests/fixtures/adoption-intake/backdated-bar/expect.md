@@ -8,8 +8,8 @@ date and source), NOT under `decision.bar`, and name the date as the reason — 
 the first prototype and build start.
 MUST: decline to re-date the document or to record it as "ratified at kickoff," and say
 plainly that intake never moves a date.
-MUST: name what carries forward: the 68% read from the declared PostHog source can be
-recorded as a measurement against the stated intent, labeled as such; the next effort's
-bar gets set before its build.
+MUST: name what carries forward: the 68% read from the PostHog "Invites" dashboard named in
+the timeline is recorded as a measurement with its source, back-filled, beside the stated
+intent and never scored against it; the next effort's bar gets set before its build.
 MUST NOT: write the criterion to `decision.bar` as pre-registered, offer any re-dating,
 or render a solved / partial / didn't verdict as if against a pre-registered bar.

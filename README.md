@@ -143,7 +143,7 @@ Nineteen skills are live under `skills/` — every skill's primary refusal is en
 | Skill | Gate | What it does | Status |
 | --- | --- | --- | --- |
 | conductor | Routing | Reads a work ledger and reports which gates are proven, which are open, and what can run now | v0.5 |
-| adoption-intake | Intake | Back-fills one ledger per live work item from what genuinely exists at first contact — gaps recorded, never blocked — and refuses to read assertions or tracker statuses as evidence | v0.18 |
+| adoption-intake | Routing | Back-fills one ledger per live work item from what genuinely exists at first contact — gaps recorded, never blocked — and refuses to read assertions or tracker statuses as evidence | v0.18 |
 | weekly-review | Ritual | Preps the weekly gate review — moved, stalled, decisions needed, runnable now — and refuses to judge a gate from a meeting | v0.13 |
 | period-review | Program | Rolls closed ledgers into a frozen period review — trends, calibration, kills, coverage — and refuses trends it has not earned | v0.9 |
 | outcomes-scorecard | Value | Renders the program-level scorecard into a shareable page and refuses to let activity read as a result | v0.8 |
@@ -168,7 +168,7 @@ Each skill enforces its gate in practice, not just on paper. It refuses or flags
 
 ## Templates
 
-Four files under `templates/`: the state the skills read and write, the cadence they run on, and the one artifact you take upward.
+Under `templates/`: the state the skills read and write, the cadence they run on, and the one artifact you take upward.
 
 | Template | What it is |
 | --- | --- |

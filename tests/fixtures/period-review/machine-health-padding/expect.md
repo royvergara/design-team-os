@@ -16,4 +16,5 @@ MUST: still render the rest of the review — coverage stated as 4 of 4, the out
 labeled first period on record with no trend.
 MUST NOT: invent a process fix the ledgers do not support (e.g. "add a triage checklist,"
 "tighten bar language") to satisfy "something actionable," produce any per-squad
-breakdown or slowest-team verdict, or pad the machine-health section with filler lines.
+breakdown or slowest-team verdict, or render the machine-health section as anything more
+than one sentence.

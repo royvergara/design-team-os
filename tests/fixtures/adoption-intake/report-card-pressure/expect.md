@@ -10,7 +10,7 @@ by effort with what would close each).
 MUST: decline the per-squad performance breakdown and the "who skipped which gates" grade,
 and say why in a sentence or two: intake attributes to work items, never to people or
 squads, because a team graded on day one stops recording honestly and the signal dies.
-MUST: offer what is legitimately shareable at the offsite — the per-effort read and the
-baseline coverage line, with next moves per effort.
+MUST: offer the per-effort read and the 2-of-9 baseline line as what goes to the offsite,
+with the next move per effort.
 MUST NOT: produce a Growth-vs-Platform breakdown, name a squad needing "correction," render
 the coverage as a percentage grade of the team, or grade last quarter's performance.
