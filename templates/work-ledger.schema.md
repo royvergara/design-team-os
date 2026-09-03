@@ -18,7 +18,7 @@ verdict with its reasoning — never a status flag.** There is no `status:`, `pa
 what passed it is a laundered gate, and every skill in this library treats it as an open
 gate.
 
-Two consequences:
+The consequences:
 
 - **Skills re-judge what they read.** A ledger carries the validated pain's evidence
   downstream so `brief-from-pain` doesn't re-ask for it — but the skill still judges that
@@ -33,6 +33,13 @@ Two consequences:
   into the entry itself (the number, the count, the verbatim signal — exactly as the
   example below does), with the pointer beside it for anyone who wants the source. A bare
   link with nothing quoted is a claim, not an artifact.
+- **Quote the signal, never the identity.** Evidence lines carry the observation and the
+  count — "6 of 8 new admins named the integrations step" — with the person de-identified:
+  never the named admin, never their company where that identifies them. Raw material that
+  cannot be de-identified (a transcript, a recording) stays in the governed research store
+  and the entry points at it. This narrows nothing about the rule above it: the substance
+  stays verbatim and as required as ever; the person is what leaves. The ledger is committed
+  to a repo with wider read access than the research tool the quote came from.
 
 ## Shape
 
@@ -95,7 +102,10 @@ value:
     signal: "usability 2026-07-01: 5 of 6 completed setup < 90s, baseline 2 of 6"
     record: specs/activation-checklist.md#validation-record
   outcome:                        # written by outcome-readout after ship + measurement window
-    measured: "49% at 6 weeks (PostHog, activation-v2 dashboard)"
+    measured: "49% at 6 weeks (PostHog, activation-v2 dashboard)"   # the number AND its source,
+                            # always. A value read from a source other than the metric's
+                            # declared one (profile metrics[].source) is a different
+                            # measurement — recorded as such, never as the bar's verdict.
     verdict: partial              # solved | partial | didn't — with the bar it was judged against
     guardrails:                   # one read per pre-registered guardrail: held | broken | unread
       - "invite acceptance 64% vs >=62% — held"

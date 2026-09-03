@@ -84,7 +84,7 @@ one sentence in its own SKILL.md; anything not listed there is convention a fork
 | `tools.state` | Where ledgers live (`git` \| `notion`). Read by the `conductor`. |
 | `tools.analytics` / `tools.support` / `tools.design` | Names of the products in the stack — names only, never credentials. |
 | `goals.period`, `goals.list` | This period's business goals, verbatim. Read by `prd-to-ia` (mapping check) and `brief-from-pain`. |
-| `metrics[]` | The KPI dictionary — `name`, `definition`, `source` per metric. Definitions kill "two teams compute activation differently." Read by `brief-from-pain` and `outcome-readout`. |
+| `metrics[]` | The KPI dictionary — `name`, `definition`, `source` per metric. Definitions kill "two teams compute activation differently." The source is part of the definition: `outcome-readout` scores a bar only on a value read from it, and records a value from anywhere else as a different measurement. A source may change honestly (a dashboard renamed, a tool migrated): **re-declare it dated** — edit `source` to name the new source, the date it took effect, and the source it replaces, at the moment of the change; the git diff is the record. A source edited without a date is an undated swap, and the readout treats it as one. Read by `brief-from-pain` and `outcome-readout`. |
 | `people.scorecard_owner` | Who carries the scorecard upward. Read by `outcomes-scorecard`. |
 | `people.bar_ratifiers` | Who *may* ratify a bar (a right, never an act). Read by `brief-from-pain`. |
 | `people.bet_authority` | Who *may* own a bet (same rule). Read by the bet path. |
