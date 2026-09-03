@@ -97,8 +97,11 @@ Routing into a refusal wastes the turn the machine exists to save.
 - **Prototype chosen, no validation signal** → the smallest test that would earn one — this
   is `prototype-to-spec`'s refusal, so route to `validation-plan` to design the test, then to running it, not to `prototype-to-spec` first.
 - **Shipped, numbers in** → `outcome-readout`. Its next-intent line is a new work item.
-- **Entering mid-stream** (artifacts exist but earlier gates were never run): route to the
-  earliest open gate, and say plainly which downstream work is standing on unproven ground.
+- **Entering mid-stream** (artifacts exist but earlier gates were never run): when no
+  ledger exists yet for work already in flight, route to `adoption-intake` first — it
+  back-fills the ledger from what genuinely exists, gaps recorded never blocked — then
+  route to the earliest open gate, and say plainly which downstream work is standing on
+  unproven ground.
 
 `user-journey-mapping`, `figma-plugin-orchestration`, `critique-synthesis`, and `validation-plan` are
 utilities: valuable paths, never required gates. `team-ai-baseline` and

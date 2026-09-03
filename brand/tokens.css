@@ -1,0 +1,312 @@
+/* ─────────────────────────────────────────────────────────────
+   Fluent by Design — design tokens (single source of truth)
+   Tier 1 primitives → Tier 2 semantic → theme scopes.
+   This is the ONLY file permitted to contain raw hex.
+   ───────────────────────────────────────────────────────────── */
+:root {
+  /* ── Tier 1 — primitives (raw scale; components never read these directly) ── */
+  --fxd-teal-950: #021a19;
+  --fxd-teal-900: #042f2e;
+  --fxd-teal-800: #0a3433;
+  --fxd-teal-700: #133b3b;
+  --fxd-teal-600: #264b4a;
+  --fxd-mist-section: #d8e3de;   /* light "mist" section bg */
+  --fxd-turquoise-500: #40e0d0;
+  --fxd-turquoise-300: #7fece0;
+  --fxd-forest-500: #0c8579;
+  --fxd-forest-600: #0a6d63;
+  --fxd-ink-050: #e3eded;
+  --fxd-ink-950: #0f2523;        /* ink on light */
+  --fxd-seaglass-400: #9bacab;
+  --fxd-seaglass-500: #8a9c9b;   /* muted-on-light, darker step than seaglass-400 */
+  --fxd-slate-600: #45605c;      /* muted-on-light, AA on #d8e3de */
+  --fxd-slate-550: #5a706d;      /* muted-on-light, between slate-500/600 */
+  /* slate-500 (page's light-muted, #4a615e) is near-but-not-equal to the
+     light-theme --fxd-muted (slate-600, #45605c). Keeping both exact for now;
+     flagged for Roy to unify later. */
+  --fxd-slate-500: #4a615e;      /* muted-on-light variant, see note above */
+  --fxd-slate-450: #6b7f7c;      /* muted-on-light, between slate-400/500 */
+  --fxd-slate-400: #6f8a86;      /* muted-on-light, lighter step */
+  --fxd-slate-425: #6f8483;      /* Task 7 audit (site-fx.tsx): ImageSlot placeholder text, no prior exact match */
+  --fxd-ink-300: #c5d1cf;        /* secondary ink on light, lighter than ink-950 */
+  --fxd-ink-100: #e6ecea;        /* near-white ink on light */
+  --fxd-mist-200: #d4ddda;       /* light section bg variant, darker than mist-section */
+  --fxd-teal-920: #0b302f;       /* dark surface variant, between teal-900/950 */
+  --fxd-teal-850: #21403c;       /* dark surface variant, between teal-800/900 */
+  --fxd-teal-750: #3d5451;       /* dark surface variant, between teal-700/800 */
+  --fxd-coral-400: #f2a297;      /* error/danger state (baseline form validation) */
+
+  /* r,g,b triplets — for composing one-off glow/overlay rgba() at alphas that
+     don't match any Tier 2 elevation token (Task 3 audit: globals.css/site.css
+     use rgba(64,224,208,·) etc. at many distinct alphas — 0.06 to 0.6 — for
+     tuned decorative glows, not a single reusable value). Components compose
+     these as rgba(var(--fxd-*-rgb), N) rather than embedding raw digits. */
+  --fxd-turquoise-rgb: 64, 224, 208;  /* = --fxd-turquoise-500 */
+  --fxd-ink-rgb: 227, 237, 237;       /* = --fxd-ink-050 */
+  --fxd-seaglass-rgb: 155, 172, 171;  /* = --fxd-seaglass-400 */
+  --fxd-forest-rgb: 12, 133, 121;     /* = --fxd-forest-500 */
+  --fxd-void-rgb: 3, 36, 35;          /* near-black teal; distinct from teal-950 — baseline input/overlay backgrounds only */
+  --fxd-ink-950-rgb: 15, 37, 35;      /* = --fxd-ink-950 */
+  --fxd-teal-800-rgb: 10, 52, 51;     /* = --fxd-teal-800 */
+  --fxd-mask-opaque: #000;            /* mask-image opaque stop; RGB is irrelevant to a mask (only alpha matters) */
+
+  /* Task 3 audit (page.tsx): additional one-off rgb triplets with no prior
+     token — added exact, never approximated. */
+  --fxd-black-rgb: 0, 0, 0;                 /* neutral drop shadows (hero panel, pricing group) */
+  --fxd-teal-900-rgb: 4, 47, 46;             /* = --fxd-teal-900 / --fxd-bg — header bg, hero radial fade-to-bg */
+  --fxd-turquoise-light-rgb: 96, 236, 223;   /* lighter than turquoise-500; hero fxdGlowA conic-gradient ring */
+  --fxd-void-hero-a-rgb: 3, 28, 27;          /* hero bottom-vignette radial-gradient, stop 1 */
+  --fxd-void-hero-b-rgb: 3, 26, 25;          /* hero bottom-vignette radial-gradient, stop 2 */
+  --fxd-void-hero-c-rgb: 2, 22, 21;          /* hero bottom-vignette radial-gradient, stop 3 */
+  --fxd-void-hero-glow-rgb: 4, 26, 25;       /* hero copy-panel underlay glow + ghost CTA bg */
+  --fxd-void-hero-caption-rgb: 3, 20, 19;    /* hero live-panel caption pill bg */
+
+  /* Task 7 audit (site-fx.tsx): one-off triplet, no prior exact match. */
+  --fxd-scrim-rgb: 2, 15, 14;                /* mobile nav full-viewport tap-to-dismiss scrim */
+
+  /* radii */
+  --fxd-radius-sm: 8px;
+  --fxd-radius-md: 14px;
+  --fxd-radius-lg: 22px;
+  --fxd-radius-pill: 999px;
+
+  /* space scale (4px base) */
+  --fxd-space-1: 4px;  --fxd-space-2: 8px;  --fxd-space-3: 12px; --fxd-space-4: 16px;
+  --fxd-space-5: 20px; --fxd-space-6: 24px; --fxd-space-8: 32px; --fxd-space-10: 40px;
+  --fxd-space-12: 48px; --fxd-space-16: 64px;
+  /* gap-step (Task 5): exact, non-scale value. The FAQ answer paragraph's
+     left indent must sum-match its open <summary>'s number-badge + gap +
+     padding, which after snapping is 24 (padding-6) + 22 (number minWidth,
+     untouched) + 20 (gap-5) = 66px, not the nearest scale step 64 — that
+     2px gap misaligned the answer text from the question text above it
+     (confirmed via getBoundingClientRect during the Task 5 parity sweep). */
+  --fxd-space-16_5: 66px;
+
+  /* type scale */
+  --fxd-text-eyebrow: 12px;
+  --fxd-text-body: clamp(15px, 1.1vw, 17px);
+  --fxd-text-lede: clamp(18px, 1.6vw, 22px);
+  --fxd-text-h3: clamp(20px, 2.2vw, 27px);
+  --fxd-text-h2: clamp(28px, 3.8vw, 44px);
+  /* floor 40 (was 32): at ~390px the 6vw slope fell below the old floor, so
+     phones were pinned to the smallest size; 9vw lets mid-size phones scale
+     too. Desktop cap stays 68. */
+  --fxd-text-h1: clamp(40px, 9vw, 68px);
+
+  /* responsive heading scale — completes the clamp() sizes. */
+  --fxd-text-h4: clamp(23px, 2.8vw, 32px);    /* <- clamp(23px,2.8vw,32px) (practitioner h2) */
+  --fxd-text-h5: clamp(19px, 2.1vw, 24px);    /* <- clamp(19px,2.1vw,24px) (guarantee band) */
+  --fxd-text-h6: clamp(17px, 2vw, 20px);      /* <- clamp(17px,2vw,20px) (FAQ question) */
+  /* exact display sizes kept distinct — folding these into h4/h5/h6 shrank
+     prominent elements perceptibly (whole-branch review, 2026-07-13), so each
+     keeps its own exact clamp. */
+  --fxd-text-price: clamp(32px, 3.6vw, 40px);      /* the install price ($10-15k) */
+  --fxd-text-proof-closer: clamp(20px, 2.6vw, 28px); /* proof section closing line */
+  --fxd-text-lede-hero: clamp(17px, 1.6vw, 20px);  /* hero subhead (gentler vw slope than h6) */
+
+  /* fixed type scale — snapped from raw px values found across both fronts;
+     nothing consumes these yet (added ahead of the consuming task). */
+  --fxd-text-2xs: 11px;  /* <- 10, 11 */
+  --fxd-text-xs: 12px;   /* <- 12 */
+  --fxd-text-sm: 14px;   /* <- 13, 14 */
+  --fxd-text-md: 15px;   /* <- 15 */
+  --fxd-text-base: 17px; /* <- 16, 17 */
+  --fxd-text-lg: 19px;   /* <- 18, 19 */
+  --fxd-text-xl: 22px;   /* <- 20, 21, 22 */
+  --fxd-text-2xl: 24px;  /* <- 23, 24 */
+  --fxd-text-3xl: 28px;  /* <- 28 */
+  --fxd-text-4xl: 32px;  /* <- 32 */
+
+  /* NOTE: font tokens are NOT here — see the body{} block below.
+     next/font sets --font-gloock/--font-source-sans/--font-archivo on <body>
+     (layout.tsx), so those vars are UNDEFINED at :root. Defining
+     --fxd-font-serif: var(--font-gloock) here would compute invalid at :root
+     and silently break fonts. The existing globals.css proves the pattern:
+     it references var(--font-gloock) only on in-body elements, never at :root. */
+
+  /* letter-spacing */
+  --fxd-track-eyebrow: 0.22em;
+  --fxd-track-mini: 0.18em;
+  --fxd-track-heading: -0.01em; /* negative tightening on serif h2/h4 (Task 6 straggler); separate scale from the positive tracking steps below */
+
+  /* letter-spacing scale — normalized from inline tracking values found
+     across both fronts; nothing consumes these yet (added ahead of the
+     consuming task). */
+  --fxd-track-tight: 0.03em;   /* <- 0.02, 0.03 */
+  --fxd-track-snug: 0.05em;    /* <- 0.04, 0.06 */
+  --fxd-track-normal: 0.08em;  /* <- 0.08 */
+  --fxd-track-wide: 0.14em;    /* <- 0.12, 0.14 */
+  --fxd-track-wider: 0.16em;   /* <- 0.16 */
+  --fxd-track-xl: 0.2em;       /* Task 5 audit (Wordmark.tsx): "Fluent" tracking, exact — falls between wider(0.16)/mini(0.18) and eyebrow(0.22), no existing step matches */
+  --fxd-track-2xl: 0.3em;      /* Wordmark */
+
+  /* line-height scale — normalized from inline lineHeight values found
+     across both fronts; nothing consumes these yet. */
+  --fxd-leading-none: 1.05;     /* <- 1.05, 1.1 */
+  --fxd-leading-tight: 1.15;    /* <- 1.15 */
+  --fxd-leading-snug: 1.3;      /* <- 1.25, 1.3 */
+  --fxd-leading-normal: 1.45;   /* <- 1.4, 1.45 */
+  --fxd-leading-relaxed: 1.55;  /* <- 1.5, 1.55, 1.6 */
+
+  /* font-weight scale — discrete, exact. */
+  --fxd-weight-normal: 400;
+  --fxd-weight-semibold: 600;
+  --fxd-weight-bold: 700;
+  --fxd-weight-heavy: 800;
+
+  /* motion */
+  --fxd-dur-fast: 160ms;
+  --fxd-dur-med: 250ms;   /* <- transition 0.25s */
+  --fxd-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* elevation */
+  --fxd-ring-hairline: inset 0 0 0 1px rgba(227, 237, 237, 0.12);
+  --fxd-ring-accent: inset 0 0 0 1px rgba(64, 224, 208, 0.4);
+  --fxd-glow-accent: 0 0 34px rgba(64, 224, 208, 0.08);
+  --fxd-shadow-elevated: 0 10px 34px rgba(0, 0, 0, 0.25); /* neutral drop shadow, no brand tint */
+
+  /* ── Tier 2 — semantic (default = dark theme; this is what components read) ── */
+  --fxd-bg: var(--fxd-teal-900);
+  --fxd-surface-1: var(--fxd-teal-700);
+  --fxd-surface-2: var(--fxd-teal-600);
+  --fxd-ink: var(--fxd-ink-050);
+  --fxd-muted: var(--fxd-seaglass-400);
+  --fxd-accent: var(--fxd-turquoise-500);
+  --fxd-accent-strong: var(--fxd-turquoise-300);
+  --fxd-on-accent: var(--fxd-teal-900);
+  --fxd-hairline: rgba(227, 237, 237, 0.12);
+  --fxd-eyebrow-color: var(--fxd-accent);
+  --fxd-danger: var(--fxd-coral-400);
+
+  /* semantic layout */
+  --fxd-section-max: 1080px;
+  --fxd-section-pad-y: clamp(80px, 11vh, 140px);
+  --fxd-section-pad-x: clamp(24px, 5vw, 56px);
+
+  /* section-padding variants for the vh-clamps; nothing consumes these yet. */
+  --fxd-section-pad-y-md: clamp(72px, 10vh, 120px); /* <- clamp(72px,10vh,120px) */
+  --fxd-section-pad-y-sm: clamp(48px, 7vh, 72px);   /* <- clamp(48px,7vh,72px) */
+
+  /* hero band + interior rhythm. Both were viewport-height-scaled (90vh band +
+     11vh/8vh padding), so they compounded and ballooned the hero into a nearly
+     empty screen on tall monitors. Bound them: the band caps at 760px on big
+     displays (still ~fills the fold on laptops), and the top/bottom padding
+     scales with vh but is clamped top and bottom (also tightens mobile). */
+  --fxd-hero-min-h: min(88vh, 760px);      /* <- min(88vh,760px) */
+  --fxd-hero-pad-y: clamp(56px, 7vh, 96px); /* <- clamp(56px,7vh,96px); symmetric top/bottom */
+
+  /* fluid gap/padding (clamp) — EXACT, for the responsive column gaps + card
+     paddings that scale with viewport. These are SPACING, not type: a clamp()
+     used as gap/padding must reference these, never a --fxd-text-* token. */
+  --fxd-space-fluid-sm: clamp(16px, 2.4vw, 26px);  /* pricing-group padding */
+  --fxd-space-fluid-md: clamp(28px, 3.4vw, 42px);  /* featured pricing card padding */
+  --fxd-space-fluid-lg: clamp(26px, 4vw, 52px);    /* offer-split column gap */
+  --fxd-space-fluid-xl: clamp(36px, 5vw, 64px);    /* hero 2-col grid gap */
+  --fxd-space-fluid-2xl: clamp(32px, 6vw, 80px);   /* proof-line split gap */
+
+  /* z-index layers — nothing consumes these yet. */
+  --fxd-z-base: 0;
+  --fxd-z-raised: 1;
+  --fxd-z-panel: 2;
+  --fxd-z-float: 55;   /* BackToTop */
+  --fxd-z-scrim: 56;   /* mobile scrim */
+  --fxd-z-header: 60;
+  --fxd-z-behind: -1;  /* Task 4 audit (page.tsx): hero copy-panel behind-glow layer */
+
+  /* opacity — nothing consumes these yet. */
+  --fxd-opacity-faint: 0.06; /* <- 0.03, 0.06 — decorative overlays */
+  --fxd-opacity-dim: 0.7;
+
+  /* border widths — nothing consumes these yet. */
+  --fxd-border-hairline: 1px;
+  --fxd-border: 2px;
+
+  /* blur — nothing consumes these yet. */
+  --fxd-blur-sm: 6px;  /* <- 4, 6 */
+  --fxd-blur-md: 14px;
+  --fxd-blur-lg: 54px; /* <- 52, 56 */
+  --fxd-blur-fab: 10px; /* Task 5 audit (site-fx.tsx): BackToTop backdrop blur, exact — sits exactly between --fxd-blur-sm(6)/md(14), snapping either way is a visible +/-40% blur-radius change */
+
+  /* sizes — Task 4 audit (page.tsx): component-specific dimensions with no
+     --fxd-space-* scale match. EXACT, never snapped — these are structural
+     (a wrong value moves or resizes the element). Named by role. */
+  --fxd-size-dot-sm: 6px;             /* Gate 3 fast-pulse status dot (hero live panel) */
+  --fxd-size-dot-inset: 5px;          /* inner-dot inset inside the 20px proof-line markers */
+  --fxd-size-proof-line-y: 9px;       /* top offset aligning the proof-line connector with its 20px markers */
+  --fxd-size-faq-num: 22px;           /* FAQ number-badge minWidth; sums into --fxd-space-16_5 above, keep exact */
+  --fxd-size-rule-w: 26px;            /* eyebrow underline rule width, next to Eyebrow */
+  --fxd-size-step-line-y: 26px;       /* "how it starts" connector line top offset = half of --fxd-size-node */
+  --fxd-size-accent-line-inset: 28px; /* featured pricing card's top accent line, left/right inset */
+  --fxd-size-node: 52px;              /* gate-progression + funnel-step circle diameter */
+  --fxd-size-panel-fade-h: 110px;     /* hero live-panel top fade-in gradient strip height */
+  --fxd-size-panel-shadow-h: 60px;    /* hero live-panel bottom ambient glow height */
+  --fxd-size-panel-shadow-y: 26px;    /* hero live-panel bottom ambient glow's negative bottom offset */
+  --fxd-size-sparkline: 58px;         /* hero live-panel sparkline svg height */
+  --fxd-size-min-block: 280px;        /* custom/retainer card's text-block minWidth before wrap */
+  --fxd-size-donut-inner: 106px;      /* gap-ledger donut inner (mist-colored) circle */
+  --fxd-size-donut: 140px;            /* gap-ledger donut outer circle + matching caption maxWidth */
+  --fxd-size-avatar: 96px;            /* practitioner section headshot */
+  --fxd-size-prose-sm: 520px;         /* hero lede / practitioner bio paragraph maxWidth */
+  --fxd-size-prose-md: 560px;         /* offer section intro paragraph maxWidth */
+  --fxd-size-prose-lg: 600px;         /* method/scope/resources intro paragraph maxWidth */
+  --fxd-size-heading-wrap: 720px;     /* section heading-block maxWidth (method/offer/scope/start/resources) */
+  --fxd-size-heading-wrap-lg: 900px;  /* proof section heading-block maxWidth */
+  --fxd-size-container-sm: 760px;     /* practitioner section container maxWidth */
+  --fxd-size-container-md: 820px;     /* FAQ list container maxWidth */
+  --fxd-size-container-lg: 920px;     /* proof-line ("speed -> outcome") container maxWidth */
+
+  /* Task 5 audit (site-fx.tsx): component-specific dimensions with no
+     --fxd-space-* scale match. EXACT, never snapped. */
+  --fxd-size-nav-toggle: 42px;        /* MobileNav hamburger button width/height */
+  --fxd-size-fab: 46px;               /* BackToTop floating button width/height */
+  --fxd-size-fab-offset: 22px;        /* BackToTop right/bottom offset from viewport edge */
+}
+
+/* Font tokens live on body, where next/font's --font-* vars are defined.
+   THREE families — do not collapse them:
+     serif   = Gloock (headings)
+     sans    = Source Sans 3 (eyebrows + body — confirmed by Task 1 capture)
+     display = Archivo (wide tracked labels; available so migration preserves
+               exact per-element fonts)
+   Components reference these; because every rendered element is a descendant
+   of body, the resolved font stack inherits down correctly. */
+body {
+  --fxd-font-serif:   var(--font-gloock), Georgia, serif;
+  --fxd-font-sans:    var(--font-source-sans), system-ui, sans-serif;
+  --fxd-font-display: var(--font-archivo), system-ui, sans-serif;
+  --fxd-font-mono:    ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* ── light "mist" theme scope — SAME components, remapped tokens ── */
+[data-theme="light"] {
+  --fxd-bg: var(--fxd-mist-section);
+  --fxd-surface-1: #eef3f1;
+  --fxd-surface-2: #ffffff;
+  --fxd-ink: var(--fxd-ink-950);
+  --fxd-muted: var(--fxd-slate-600);
+  --fxd-accent: var(--fxd-forest-500);
+  --fxd-accent-strong: var(--fxd-forest-600);
+  --fxd-on-accent: #ffffff;
+  --fxd-hairline: rgba(15, 37, 35, 0.14);
+  /* forest-500 on mist-section is 3.44:1, below AA 4.5:1 for the eyebrow's
+     small uppercase text (audited via /styleguide, Task 5). forest-600
+     (already used as --fxd-accent-strong) is ~4.72:1 — use it here instead. */
+  --fxd-eyebrow-color: var(--fxd-forest-600);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --fxd-dur-fast: 0ms; }
+}
+
+/* Large-screen container: the section width is capped at 1080 up to ~1440px,
+   then steps up so wide/high-res displays don't strand the content in a
+   narrow column with big empty gutters. Text blocks are inner-capped, so
+   only the multi-column grids gain the extra room. Consumed by the offer
+   page's section shells (and the header/footer via max(1180px, …)); the
+   baseline uses its own .wrap width and is unaffected. */
+@media (min-width: 1440px) {
+  :root { --fxd-section-max: 1200px; }
+}
+@media (min-width: 1920px) {
+  :root { --fxd-section-max: 1320px; }
+}
