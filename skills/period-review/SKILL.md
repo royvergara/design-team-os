@@ -68,6 +68,13 @@ Each of these is a refusal, not a caveat you note and proceed past.
    as a miss or a hit — and the opt-in rate, how many calls stated confidence at all, prints
    beside the count.
 
+## Four lines that render in every review
+
+Whatever else a gate refuses, these four always print, in this order, before anything
+else: the period label — **"first period on record"** whenever gate one applies; the
+coverage line with its denominator; judgment as counts with n; and machine health, one
+line when the period ran quiet. A review missing any of them is unfinished, not concise.
+
 ## When the gates pass, render
 
 Render `design-os.reviews/<period>.html` in the scorecard's visual system — the same
