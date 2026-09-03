@@ -33,7 +33,7 @@ One `design-os.work/<slug>.yaml` per live work item, and nothing else (see [temp
 
 - **Artifacts that genuinely exist**, quoted with their source and marked back-filled.
 - **Gaps, each naming what would close it** — and whether that is a skill's work (`research-to-pain` can mine the support pile) or a human judgment input (a bar nobody set is not something you can supply).
-- **The routing set** — what is runnable now given what is actually proven, deferring to the `conductor`'s table rather than restating it.
+- **The routing set** — what is runnable now given what is actually proven, deferring to the `conductor`'s table rather than restating it. Route only to skills that exist — `research-to-pain`, `brief-from-pain`, `validation-plan`, `prototype-triage`, `outcome-readout`, `period-review`, or the `conductor` itself — never to a gate name you coined; an invented route is a checkmark with a hyphen in it.
 - **The coverage line** — efforts found against efforts whose ledger carries at least one genuine gate artifact, as a baseline. A back-filled ledger of gaps is a placeholder: it never counts as "ran through a ledger" here or at the period close, or intake would launder the coverage denominator through the front door.
 
 Work one effort at a time, on what a human hands you. A tracker export turned into twenty ledgers is checkmark laundering at scale; decline the bulk import and ask which effort to start with.
