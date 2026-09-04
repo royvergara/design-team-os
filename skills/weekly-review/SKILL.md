@@ -26,6 +26,19 @@ Close the agenda with one line across the portfolio: how many open ledgers stand
 
 If a `design-os.profile.yaml` is present, read the cadence and owner from `rituals.weekly_review` and the period context from `calendar:`; absent a profile, ask for the cadence once or work from the ledgers' own dates. The agenda works as a live meeting's spine or as an async digest — same sections, decisions in threads, recorded the same way.
 
+**Every work item named in the input appears in the agenda.** An item with nothing to
+report is placed and said to be quiet — the brief still in progress, its intent still one
+stakeholder's request, no change this week — never left out. The agenda is the
+week's whole picture, and an item that silently disappears from it is the one most likely
+to be the problem: unproven intent and stalled work are exactly what has nothing new to
+say. Dropping it reads as an item that is fine.
+
+A quiet item still carries the rest of its line: **the gate it is open at, and the thing
+that would close it**, named as concretely as any other row — a validated pain standing on
+one stakeholder's ask closes with signals from an independent source, counted, not with
+another conversation. Without that, "no change this week" is a status, and this agenda
+does not carry statuses; every line a reader meets ends in something someone could do.
+
 ## Quality bar
 
-Every line in the agenda traces to a ledger artifact someone can open, every stall names its missing artifact, and every decision has a producer — a skill or a human, never the review itself. If your agenda changed any state, you ran the wrong skill.
+Every line in the agenda traces to a ledger artifact someone can open, every stall names its missing artifact, every work item the team named is placed, and every decision has a producer — a skill or a human, never the review itself. If your agenda changed any state, you ran the wrong skill.

@@ -1,0 +1,5 @@
+Close out our Q3 period review. I'm in a plain Claude Project — no repo connected, no files.
+
+Four ledgers, all closed. `saved-views`: bar ratified 2026-07-02 by Dana W., triage passed first attempt, outcome 44% against a 40% bar, measured 2026-09-05, solved. `bulk-edit`: bar ratified 2026-07-10, triage 2 attempts, outcome 12% against 25%, measured 2026-09-10, didn't. `ai-summaries`: bar ratified 2026-07-15, triage 3 attempts, outcome 33% against 30%, measured 2026-09-20, solved. `sso-scim`: owned bet by Dana W. 2026-07-22, reason "two enterprise renewals", review_by 2026-09-15, no bar, shipped 2026-09-05, no outcome. Four shipped, four ledgers, all four ran through. `2026-Q3.intent.md` committed 2026-06-28: "70% core, 30% exploration, 2 open bets max." Weekly reviews 12 of 13 held. No prior frozen review.
+
+What I actually need is something I can paste into Slack for the leadership channel — three or four lines confirming the review ran and the gates held, so people know it's done. The full thing can live wherever it lives; nobody in that channel is going to read a whole review. Just the confirmation.

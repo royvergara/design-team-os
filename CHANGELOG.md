@@ -8,6 +8,52 @@ The format is loosely [Keep a Changelog](https://keepachangelog.com/). Every ski
 listed enforces a gate — it refuses when its inputs aren't earned — and every one
 is covered by a runnable fixture in [TESTING.md](TESTING.md).
 
+## v0.18.1 — 2026-09-04
+
+Hardening from a practical smoke run: thirteen scenarios across thirteen team shapes — a
+solo designer at a seed startup, a director six weeks into a 40-person org, a studio whose
+client owns the analytics, an enterprise design-ops lead facing a risk officer, a PM
+covering for a designer who left, a first close, a quiet close, a reorg with a departed bet
+owner — each run against one skill with a fresh model and nothing else installed. The
+gates held where they were pinned. What the run found instead were four ways a rendered
+output drifts from the rules the skill already states, and each fix arrives with the
+fixture that pins it.
+
+### Changed
+
+- **`period-review` renders the review, or says what it could not render.** With no
+  filesystem — a plain chat or a Claude Project, which is the path the README recommends
+  for first contact — the review renders inline, in full. A report that the review
+  happened ("all six gates passed," "complete and ready for the close") with the review
+  nowhere in the response is a claim of a finished artifact, which is the checkmark this
+  system exists to refuse. Fixture: `period-review/review-announced-not-rendered`.
+- **The small-n floor governs every number the review prints**, not only the judgment
+  line: the observed mix, the trend strip, and any comparison across periods. Two small
+  periods added together are still two small periods — "2 of 4 beside 2 of 4," never "50%
+  and 50%, flat." Stating the floor and then printing the share anyway is the same failure
+  as never stating it. Fixture: `period-review/trend-percentage-below-floor`.
+- **Every machine-health signal quotes the line it read** — the field and its value, as
+  written. A signal that cannot be quoted was inferred, not read, and an inferred signal is
+  a manufactured one wearing a number. This is also what stops a misread from becoming a
+  finding: "6 of 6 criteria met on the first attempt" is one attempt, and quoting the line
+  makes that visible before it reaches the section. A comparison to what is "typical" needs
+  the periods it is typical across, quoted the same way. Fixture:
+  `period-review/signal-not-in-the-line`.
+- **The coverage denominator is whatever the team says shipped, wherever they said it** —
+  in the brief, in a parenthesis, in a sentence about something else. Taking the ledger
+  count as the denominator because the larger number arrived casually is the same
+  laundering as being asked to drop it. Fixture: `period-review/denominator-in-passing`.
+- **`conductor` names the move, never its duration.** No "two to three weeks," no "this
+  week," no count of people to interview: the skill has seen no calendar, no staffing, and
+  no record of how long this team's last one took, so any such number is invented, and
+  schedule is not an exception to the rule against invented numbers. Asked directly for
+  dates, it declines in a sentence, says what would price each move, and hands back the
+  moves anyway. Fixture: `conductor/invented-timeline`.
+- **`weekly-review` places every work item the team named**, including the quiet one, with
+  the gate it is open at and the thing that would close it. An item that silently
+  disappears from the agenda reads as an item that is fine, and unproven intent is exactly
+  what has nothing new to say each week. Fixture: `weekly-review/item-dropped`.
+
 ## v0.18 — 2026-09-03
 
 The front door and the friction loop. Three judgment-surface changes, each carried as a
@@ -55,12 +101,29 @@ verdict. No new required concept; every addition is a door into objects that alr
   material that can't be de-identified stays in the research store, pointed at. Narrows
   nothing about the quote-inline rule: the substance stays verbatim, the person leaves.
   Fixture: `outcome-readout/named-quote`.
+- **The brand layer, ported** (`brand/`) — the token layer the repo's own renders and
+  Fluent by Design's documents now share, so a scorecard and a field guide read as one
+  system. `tokens.css` is a verbatim copy of the canonical file upstream; `print.css` is
+  the document surface (fixed pages, dark openers, worksheet tables, the refusal
+  specimen), `artifact.css` the web surface (twelve-column grid, the type registers, the
+  three-gates instrument, a light-theme remap for un-stamped viewers, and small-screen
+  behaviour at 960 and 640), `fonts.css` the three faces. `tests/check-brand.sh` fails on
+  any raw hex outside `tokens.css` and on drift from upstream, and runs in the `structure`
+  CI job — the port cannot rot quietly.
+- **The design system, slated**
+  (`docs/superpowers/specs/2026-09-03-fluent-design-system-design.md`) — the registers and
+  their rules written down, with six increments named. Increment 1 (the web surface) ships
+  here; the rest are slated, not promised.
 
 ### Changed
 
 - `templates/work-ledger.schema.md`: `value.outcome.measured` names its source as the rule,
   not the example's habit.
 - `templates/project-profile.schema.md`: `metrics[].source` gains the dated re-declaration.
+- `conductor`: an orphaned bet changes **who must act, not what is runnable**. Downstream
+  work whose own inputs exist stays runnable and says plainly that it stands on an
+  orphaned bet at Intent — never "nothing is runnable until someone re-owns it." Pinned by
+  `conductor/bet-orphaned`.
 
 ## v0.17 — 2026-08-25
 
