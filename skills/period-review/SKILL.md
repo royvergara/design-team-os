@@ -39,10 +39,19 @@ Each of these is a refusal, not a caveat you note and proceed past.
    nowhere in the render — not beside the counts, not "for reference," not in a footnote:
    a percentage that appears anywhere is the percentage you refused. The observed bet
    mix obeys the same floor: below it, the mix renders as counts against the declaration
-   ("1 of 5 efforts core, against a declared 70%"), never as a computed share.
+   ("1 of 5 efforts core, against a declared 70%"), never as a computed share. The floor
+   governs **every number the review prints** — judgment, the observed mix, the trend
+   strip, and any comparison across periods. Two small periods added together are still
+   two small periods: 2 of 4 beside 2 of 4 renders as counts, never as "50% and 50%,
+   flat." Stating the floor and then printing the share anyway is the same failure as
+   never stating it.
 3. **Coverage is always shown.** The review names its own denominator: efforts shipped
    against efforts that actually ran through a ledger — a ledger carrying at least one
-   gate artifact; a back-filled ledger of intake gaps counts as uncovered. Work that bypassed the machine is
+   gate artifact; a back-filled ledger of intake gaps counts as uncovered. The denominator
+   is whatever the team says shipped, **wherever they said it** — in the brief, in a
+   parenthesis, in a sentence about something else. A number mentioned in passing is
+   still the number; taking the ledger count as the denominator because the larger one
+   arrived casually is the same laundering as being asked to drop it. Work that bypassed the machine is
    reported as uncovered, by name or by count, never dropped silently to make the covered
    set look like the whole quarter.
 4. **Strategy declared at the period's start, or no mix verdict.** The declared bet mix
@@ -83,6 +92,16 @@ Read [templates/scorecard.html](../../templates/scorecard.html) for the design l
 dedicated review template is future work, so borrow its palette and registers rather than
 invent a new visual system for one page. If a `design-os.profile.yaml` is present, take the period label and boundaries from its `calendar:` block — the period definition only; every number still comes from the frozen ledgers.
 
+**With nowhere to write, render it here.** The file is where the review lives when there
+is a repo to hold it; in a plain chat or a Claude Project there is no filesystem, and the
+review renders inline instead, in full, in the same order. What is never acceptable is a
+report that the review happened: "the review has been rendered," "all six gates passed,"
+"complete and ready for the close" — a claim of a finished artifact, with the artifact
+nowhere in the response, is the checkmark this system exists to refuse, and it is worse
+here than elsewhere because the reader has no way to see what is missing. Either the
+review is in the response or in a file the response names, or the response says plainly
+what it could not render and why.
+
 **Frozen: a prior period's file is never edited.** The trend is the sequence of frozen
 files, not a running total — a new period adds a new file; it never rewrites the one before
 it. Git is the event log here; there is no dashboard and no service holding state you could
@@ -116,7 +135,14 @@ this section, no skill reports on its user, and there is no counter anywhere to 
 - **Evidence debt** — bet concentration, orphaned and overdue bets, from the bets ledger.
 - **Kill economics** — `decision.kills[]`: how much died, where, at what cost.
 
-Each line points at its artifacts. The section closes with **one named candidate fix for
+Each line points at its artifacts, and **each one quotes the line it read** — the field
+and its value, as written: `decision.triage.attempt: 3`, not "high triage burn." A signal
+that cannot be quoted was not read, it was inferred, and an inferred signal is a
+manufactured one wearing a number. This is also what keeps a misread from becoming a
+finding: "6 of 6 criteria met on the first attempt" is one attempt, and quoting the line
+makes the difference visible before it reaches the section. A comparison to what is
+"typical" needs the periods it is typical across, quoted the same way, or it does not
+render. The section closes with **one named candidate fix for
 next period**, phrased as a candidate the humans ratify at the close ritual — never a
 prescription. The review reports; the team judges. The six gates above apply unchanged:
 counts below the floor render as counts, no trend without two frozen files, stale numbers
