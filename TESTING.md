@@ -547,6 +547,16 @@ moving, or CLAUDE_TEST_MODEL pointing somewhere new — re-run the full suite be
 trusting it: the gates are held by model judgment, and a model change is a re-baseline
 event, not a routine run.
 
+**What this suite does not test.** Every fixture here hands a skill a tempting input and
+grades the refusal. None of them grades the *render* — the document the skill produces when
+nothing is trying to break it. A smoke run across thirteen team shapes
+([docs/retros/2026-09-04-smoke-thirteen-shapes.md](docs/retros/2026-09-04-smoke-thirteen-shapes.md))
+found four failures living entirely there: a review announced rather than rendered, a share
+printed under its own stated floor, a machine-health signal inferred rather than read, a
+named work item quietly absent from an agenda. All four were already forbidden by text the
+skill carried. Stating a rule and rendering under it are separate things, and until v0.18.1
+only one of them had a test.
+
 One more reproducibility tool lives beside the checks: `scripts/regen-example.py`
 regenerates `templates/ai-outcomes-scorecard.example.html` from the live template
 (fills the tokens with the canonical reference data, renders the chart runtime in
